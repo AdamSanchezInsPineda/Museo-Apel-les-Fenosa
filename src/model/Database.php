@@ -1,4 +1,5 @@
 <?php
+/*
 
 class Database
 {
@@ -15,4 +16,4 @@ class Database
         }
         return $this->$db;
     }
-}
+}*/

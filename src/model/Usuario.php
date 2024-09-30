@@ -1,5 +1,6 @@
 <?php
-require_once("Database.php");
+/*
+require_once("../src/model/Database.php");
 class Usuario extends Database
 {
     function comprovarUsuario($nom,$usuario) {
