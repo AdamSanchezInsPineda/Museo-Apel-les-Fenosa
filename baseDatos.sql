@@ -53,7 +53,7 @@ CREATE TABLE Ubicaciones (
 CREATE TABLE Objetos (
     ObjetoID INT PRIMARY KEY,
     RegistroNº VARCHAR(6) NOT NULL UNIQUE, -- Generado por el sistema
-    Imagenes VARCHAR(255),
+    Imagen VARCHAR(255),
     Nombre VARCHAR(255) NOT NULL,
     ClasificacionGenericaID INT,
     ColeccionProcedencia VARCHAR(255),
