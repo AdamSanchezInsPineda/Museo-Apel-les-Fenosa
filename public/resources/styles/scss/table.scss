@@ -1,8 +1,18 @@
-div{
-    height: 100vh;
+link + div{
+    margin-top: 5%;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+link + div > div{
+    width: fit-content;
+}
+div > div > div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5%;
+}
+table{
+    display: block;
 }
 th, td{
     height: 50px;
@@ -16,4 +26,9 @@ th{
 }
 td{
     background-color: #D8D9DA;
+}
+button{
+    outline: none;
+    background: none;
+    border: none;
 }

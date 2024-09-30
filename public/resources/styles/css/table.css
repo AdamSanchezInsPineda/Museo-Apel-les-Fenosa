@@ -1,8 +1,22 @@
-div {
-  height: 100vh;
+link + div {
+  margin-top: 5%;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+link + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+
+table {
+  display: block;
 }
 
 th, td {
@@ -19,4 +33,10 @@ th {
 
 td {
   background-color: #D8D9DA;
+}
+
+button {
+  outline: none;
+  background: none;
+  border: none;
 }/*# sourceMappingURL=table.css.map */

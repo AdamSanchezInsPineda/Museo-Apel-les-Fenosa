@@ -15,7 +15,7 @@
         <div>
             <form action="/login" method="post">
 
-                <h1>Inici de Sesió</h1>
+                <h1>Inici de Sessió</h1>
 
                 <label for="nom">Usuari</label>
                 <input type="text" id="nom" name="nom" class="text" required>
