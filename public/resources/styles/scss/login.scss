@@ -1,0 +1,80 @@
+
+html{
+    background-image: linear-gradient(to right, rgba(97,103,122, 0.80) 46%, rgba(216,217,218, 0.80) 46%), url("../../images/loginBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+body{
+    display: flex;
+    align-items: center;
+    height: 900px;
+}
+
+body>div{
+    margin: 0 auto;
+    width: 1200px; 
+    height:750px; 
+    background-color: #D8D9DA;
+    border: 2px solid #272829;
+    border-radius: 15px;
+    box-shadow: 2px 10px 45px rgba(0,0,0, 0.75);
+    display: flex;
+}
+
+body>div>div:first-child{
+    width: 43.6%;
+    background-color: #61677A;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+}
+div+div{
+    width: 56.4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto'
+}
+h1{
+    font-size: 28px;
+    text-align: center;
+}
+label{
+    font-size: 20px;
+    color: rgb(39, 40, 41, 0.5);
+    margin-top: 12.5%;
+    margin-bottom: 5%;
+}
+
+input{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: rgb(39, 40, 41, 0.4);
+}
+
+input:last-child{
+    margin-top: 10%;
+    width: 150px;
+    height: 45px;
+    align-self: center;
+    background-color: #FFF6E0;
+    color: rgb(39, 40, 41);
+    font-size: 24px;
+}
+
+img{
+    width: 485px;
+    height: 345px;
+    margin-top: 30%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+p{
+    margin-top: 10px;
+    color: red;
+}
