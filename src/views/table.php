@@ -1,7 +1,6 @@
 <?php 
     include "resources/components/header.php";
 ?>
-<link rel="stylesheet" href="../resources/styles/css/table.css">
 <body>
     <!--Contenido variable de la pagina-->   
     

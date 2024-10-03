@@ -1,52 +1,54 @@
-link + div{
+body{
+    header + div{
     margin-top: 5%;
     display: flex;
     justify-content: center;
-}
-link + div > div{
-    width: fit-content;
-}
-div > div > div{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5%;
-}
-table{
-    display: block;
-}
-th, td{
-    height: 50px;
-    text-align: center;
-    font-size: 20px;
-    padding: 0 20px;
-}
-th{
-    background-color: #61677A;
-    color: white;
-}
-td{
-    background-color: #D8D9DA;
-}
-button{
-    outline: none;
-    background: none;
-    border: none;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-}
-button>img{
-    width: 35px;
-    height: 35px;
-    margin-left: 0;
-}
-input{
-    background: #D8D9DA;
-    border: 1px black solid;
-    font-size: 18px;
-    background-image: url(/resources/images/lupa.png);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-position: 0.5rem center;
-    padding-left: 35px;
+    }
+    header + div > div{
+        width: fit-content;
+    }
+    div > div > div{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5%;
+    }
+    table{
+        display: block;
+    }
+    th, td{
+        height: 50px;
+        text-align: center;
+        font-size: 20px;
+        padding: 0 20px;
+    }
+    th{
+        background-color: #61677A;
+        color: white;
+    }
+    td{
+        background-color: #D8D9DA;
+    }
+    button{
+        outline: none;
+        background: none;
+        border: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    button>img{
+        width: 35px;
+        height: 35px;
+        margin-left: 0;
+    }
+    input{
+        background: #D8D9DA;
+        border: 1px black solid;
+        font-size: 18px;
+        background-image: url(/resources/images/lupa.png);
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: 0.5rem center;
+        padding-left: 35px;
+    }
 }
