@@ -9,7 +9,7 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <button>Fer un nou registre</button>
+                <button>Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></button>
             </div>
             <table>
                 <?php
@@ -25,8 +25,7 @@
                         echo "<tr>";
                             foreach ($registro as $key => $dato){
                                 if ($key == "Imatges") {
-                                    echo"<td>Imatge</td>";
-                                    /*echo '<img src="resources/images/obras/{$dato}" alt="Foto de {$dato}">';*/
+                                    echo '<td><img src="resources/images/obras/{$dato}" alt="Foto de {$dato}"></td>';
                                 }
                                 else{
                                     echo "<td>{$dato}</td>";

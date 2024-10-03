@@ -1,8 +1,8 @@
 <?php
-/*
 
 class Database
 {
+    private $db;
     function connection(){
         $font = 'mysql:host=localhost;dbname=museu';
         $username = 'admindb';
@@ -14,6 +14,6 @@ class Database
         } catch (PDOException $e) {
             echo 'Connection failed: ' . $e->getMessage();
         }
-        return $db;
+        return $this->db;
     }
-}*/
+}

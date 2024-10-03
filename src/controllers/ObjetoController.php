@@ -1,8 +1,9 @@
 <?php
+require_once '../src/model/Objeto.php';
 class ObjetoController {
     public function table() {
-        require '../src/model/register.php';
-        $this->render('table', ['registros' => getAllObjetos()]);
+        $objeto = new Objeto();
+        $this->render('table', ['registros' => $objeto->getAllObjetos()]);
     }
 
     public function project($project) {
