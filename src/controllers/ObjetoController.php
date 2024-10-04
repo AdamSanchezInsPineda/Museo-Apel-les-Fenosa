@@ -1,9 +1,29 @@
 <?php
+
 require_once '../src/model/Objeto.php';
+require_once '../src/model/Usuario.php';
+
 class ObjetoController {
     public function table() {
-        $objeto = new Objeto();
-        $this->render('table', ['registros' => $objeto->getAllObjetos()]);
+        session_start();
+        $user = new Usuario();
+        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+
+            if ($state) {
+                $objeto = new Objeto();
+
+                $this->render('table', ['registros' => $objeto->getAllObjetos()]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+        
+        
     }
 
     public function project($project) {
