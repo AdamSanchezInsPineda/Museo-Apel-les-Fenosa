@@ -1,7 +1,7 @@
 <?php 
     include "resources/components/header.php";
 ?>
-<body>
+<body class = "table">
     <!--Contenido variable de la pagina-->   
     
     <div>
@@ -23,8 +23,12 @@
                     foreach ($registros as $registro) {
                         echo "<tr>";
                             foreach ($registro as $key => $dato){
-                                if ($key == "Imatges") {
-                                    echo '<td><img src="resources/images/obras/{$dato}" alt="Foto de {$dato}"></td>';
+                                if ($key == "Imagen") {
+                                    echo "<td><img src='resources/images/obras/{$dato}.jpeg' alt='Foto de {$dato}' class='button1'></td>";
+                                    echo "<div class='img-preview'>";
+                                        echo "<button class='button2'>Salir</button>";
+                                        echo "<img src='resources/images/obras/{$dato}.jpeg' alt='Foto de {$dato}'>";
+                                    echo "</div>";
                                 }
                                 else{
                                     echo "<td>{$dato}</td>";
@@ -37,7 +41,7 @@
         </div>
     </div>
     <!--Scripts-->
-    
+    <script src="resources/js/imagePreview.js"></script>
 </body>
 
 <?php

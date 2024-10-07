@@ -42,10 +42,6 @@ header div img {
   display: flex;
   justify-content: center;
 }
-.table td > img {
-  height: 40px;
-  width: 40px;
-}
 .table header + div > div {
   width: -moz-fit-content;
   width: fit-content;
@@ -94,28 +90,12 @@ header div img {
   background-position: 0.5rem center;
   padding-left: 35px;
 }
-.table .img-preview {
-  display: none;
-}
-.table .img-preview.active {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  position: absolute;
-  place-content: center;
-  background-color: rgba(0, 0, 0, 0.712);
-}
 
 .login {
   background-image: linear-gradient(to right, rgba(97, 103, 122, 0.8) 50%, rgba(216, 217, 218, 0.8) 50%), url("../../images/loginBackground.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .login body {
   display: flex;
@@ -125,8 +105,8 @@ header div img {
 }
 .login body > div {
   margin: 0 auto;
-  width: 950px;
-  height: 650px;
+  width: 1200px;
+  height: 750px;
   background-color: #D8D9DA;
   border: 2px solid #272829;
   border-radius: 15px;
@@ -146,38 +126,38 @@ header div img {
   align-items: center;
 }
 .login h1 {
-  font-size: 26px;
+  font-size: 28px;
   text-align: center;
   margin-bottom: 5%;
 }
 .login label {
-  font-size: 18px;
+  font-size: 20px;
   color: rgba(39, 40, 41, 0.5);
-  margin-top: 5%;
-  margin-bottom: 2%;
+  margin-top: 7.5%;
+  margin-bottom: 2.5%;
 }
 .login input {
-  width: 250px;
-  height: 35px;
-  border-radius: 8px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
   border-color: rgba(39, 40, 41, 0.4);
-  padding-left: 8px;
-  font-size: 16px;
+  padding-left: 10px;
+  font-size: 18px;
 }
 .login input:last-child {
   padding-left: 0;
-  margin-top: 5%;
-  width: 100px;
-  height: 35px;
+  margin-top: 7.5%;
+  width: 150px;
+  height: 45px;
   align-self: center;
   background-color: #FFF6E0;
   color: rgb(39, 40, 41);
-  font-size: 20px;
+  font-size: 24px;
 }
 .login img {
-  width: 410px;
-  height: 280px;
-  margin-top: 25%;
+  width: 485px;
+  height: 345px;
+  margin-top: 30%;
 }
 .login form {
   display: flex;

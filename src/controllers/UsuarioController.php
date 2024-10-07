@@ -30,10 +30,17 @@
             }
         }
 
+        public function logout(){
+            session_start();
+            session_unset();
+            session_destroy();
+            header('Location: /');
+        }
+
         private function render($view, $data = []) {
             extract($data);
             $viewFile = "../src/views/$view.php";
-
+            
             if (file_exists($viewFile)) {
                 require $viewFile;
 

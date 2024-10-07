@@ -11,8 +11,9 @@ class ObjetoController {
 
             if ($state) {
                 $objeto = new Objeto();
-
-                $this->render('table', ['registros' => $objeto->getAllObjetos()]);
+                $rol = rolUsuario($_SESSION['nom'], $_SESSION['password']);
+                $objeto->getAllObjetos();
+                $this->render('table', ['registros' => $objeto, 'rol' => $rol]);
                 exit;
 
             } else {

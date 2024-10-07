@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="login">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="resources/styles/css/login.css">
+    <link rel="stylesheet" href="resources/styles/css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
@@ -13,21 +13,24 @@
             <img src="resources/images/logoMuseu.png" alt="Logo del museo">
         </div>
         <div>
-            <form action="/login" method="post">
+            <div></div>
+            <div>
+                <form action="/login" method="post">
 
-                <h1>Inici de Sessió</h1>
+                    <h1>Inici de Sessió</h1>
 
-                <label for="nom">Usuari</label>
-                <input type="text" id="nom" name="nom" class="text" required>
+                    <label for="nom">Usuari</label>
+                    <input type="text" id="nom" name="nom" class="text" required>
 
-                <label for="password">Contrasenya</label>
-                <input type="password" id="password" name="password" class="text" required>
+                    <label for="password">Contrasenya</label>
+                    <input type="password" id="password" name="password" class="text" required>
 
-                <p><?php echo $error; ?></p>
-                
-                <input type="submit" value="Entrar" >
+                    <p><?php echo $error; ?></p>
+                    
+                    <input type="submit" value="Entrar" >
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </body>

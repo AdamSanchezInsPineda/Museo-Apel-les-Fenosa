@@ -10,6 +10,8 @@ $router->get('/', 'UsuarioController@index');
 
 $router->post('/login', 'UsuarioController@login');
 
+$router->get('/logout', 'UsuarioController@logout');
+
 $router->get('/registers', 'ObjetoController@table');
 
 $router->get('/registers/{obra}', 'ObjetoController@register');

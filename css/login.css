@@ -3,9 +3,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .login body {
   display: flex;
@@ -65,9 +62,9 @@
   font-size: 24px;
 }
 .login img {
-  width: 410px;
-  height: 280px;
-  margin-top: 25%;
+  width: 485px;
+  height: 345px;
+  margin-top: 30%;
 }
 .login form {
   display: flex;

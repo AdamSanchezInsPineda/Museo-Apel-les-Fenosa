@@ -7,5 +7,15 @@
     <link rel="stylesheet" href="../resources/styles/css/main.css">
 </head>
 <header>
-    <img src="resources/images/logoMuseu.png" alt="Logo del museo">
+    <img src="resources/images/logoBlancMuseu.png" alt="Logo del museo">
+    <nav>
+        <a href="">Usuaris</a>
+        <a href="">Vocabulari</a>
+        <a href="">Ubicacions</a>
+        <a href="">Copies de seguretat</a>
+    </nav>
+    <div>
+        <p><?php echo "Administrador"; ?></p>
+        <a href="/logout"><img src="resources/images/tancarSessió.svg" alt="Tancar sessió"></a>
+    </div>
 </header>
