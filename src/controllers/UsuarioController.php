@@ -16,6 +16,9 @@
             $_SESSION['password'] = $_POST["password"];
 
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $rol = $user->rolUsuario($_SESSION['nom'] , $_SESSION['password']);
+            
+            $_SESSION['rol'] = $rol;
 
             if ($state) {
                 header('Location: /registers');

@@ -33,6 +33,6 @@
             $sql->execute();
             $result = $sql->fetchAll();
 
-            return $result;
+            return $result[0]['Rol'];
         }
     }

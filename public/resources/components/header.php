@@ -1,3 +1,6 @@
+<?php
+    session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,7 @@
         <a href="">Copies de seguretat</a>
     </nav>
     <div>
-        <p><?php echo "Administrador"; ?></p>
+        <p><?php echo $_SESSION['rol']; ?></p>
         <a href="/logout"><img src="resources/images/tancarSessió.svg" alt="Tancar sessió"></a>
     </div>
 </header>

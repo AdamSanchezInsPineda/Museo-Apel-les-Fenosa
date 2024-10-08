@@ -10,10 +10,8 @@ class ObjetoController {
         $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
 
             if ($state) {
-                $objeto = new Objeto();
-                $rol = rolUsuario($_SESSION['nom'], $_SESSION['password']);
-                $objeto->getAllObjetos();
-                $this->render('table', ['registros' => $objeto, 'rol' => $rol]);
+                $objeto = new Objeto();              
+                $this->render('table', ['registros' => $objeto->getAllObjetos()/*, 'rol' => $rol*/]);
                 exit;
 
             } else {
