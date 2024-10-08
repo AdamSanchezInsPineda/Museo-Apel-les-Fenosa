@@ -1,18 +1,38 @@
 <?php
-require_once("Database.php");
-class Usuario extends Database
-{
-    function comprovarUsuario($nom,$usuario) {
-        // Use named placeholders for safety
-        $sql = $db->prepare('SELECT * FROM Usuarios WHERE Nombre = :nombre AND Contraseña = :password');
 
-        // Bind the parameters
-        $sql->bindParam(':nombre', $nom);
-        $sql->bindParam(':password', $usuario);
+    require_once "../src/model/Database.php";
 
-        $sql->execute();
-        $result = $sql->fetchAll();
+    class Usuario extends Database
+    {
+        private $db;
+        
+        public function __construct()
+        {
+            $this -> db = $this -> connection();
+        }
+        
+        function comprovarUsuario($nom,$usuario) {
+            
+            $sql = $this -> db->prepare('SELECT * FROM Usuarios WHERE Nombre = :nombre AND Contraseña = :password');
 
-        return $result != null;
+            $sql->bindParam(':nombre', $nom);
+            $sql->bindParam(':password', $usuario);
+
+            $sql->execute();
+            $result = $sql->fetchAll();
+
+            return $result != null;
+        }
+
+        function rolUsuario($nom,$usuario){
+            $sql = $this -> db->prepare('SELECT Rol FROM Usuarios WHERE Nombre = :nombre AND Contraseña = :password');
+
+            $sql->bindParam(':nombre', $nom);
+            $sql->bindParam(':password', $usuario);
+
+            $sql->execute();
+            $result = $sql->fetchAll();
+
+            return $result;
+        }
     }
-}

@@ -2,6 +2,7 @@
 
 class Database
 {
+    private $db;
     function connection(){
         $font = 'mysql:host=localhost;dbname=museu';
         $username = 'admindb';
