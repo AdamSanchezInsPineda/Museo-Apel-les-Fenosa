@@ -1,17 +1,19 @@
 <?php
 
 require_once '../src/Router.php';
-require_once '../src/controllers/HomeController.php';
-require_once '../src/controllers/RegisterController.php';
+require_once '../src/controllers/UsuarioController.php';
+require_once '../src/controllers/ObjetoController.php';
 
 $router = new Router();
 
-$router->get('/', 'HomeController@index');
+$router->get('/', 'UsuarioController@index');
 
-$router->post('/login', 'HomeController@login');
+$router->post('/login', 'UsuarioController@login');
 
-$router->get('/registers', 'RegisterController@table');
+$router->get('/logout', 'UsuarioController@logout');
 
-$router->get('/registers/{obra}', 'HomeController@register');
+$router->get('/registers', 'ObjetoController@table');
+
+$router->get('/registers/{obra}', 'ObjetoController@register');
 
 $router->dispatch();
