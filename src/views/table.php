@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include "resources/components/header.php";
 ?>
 <body class = "table">
@@ -8,7 +9,7 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <button>Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></button>
+                <a href="">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
             <table>
                 <?php
@@ -34,6 +35,16 @@
                                     echo "<td>{$dato}</td>";
                                 }
                             }
+                            echo "<td>";
+                            echo "<a href=''><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
+                            if ($_SESSION['rol'] != "Convidat"){
+                                echo "<a href=''><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
+                            }
+                            if ($_SESSION['rol'] == "Administració") {
+                                echo "<a href=''><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
+                            }
+
+                            echo "</td>";
                         echo"</tr>";
                     }
                 ?>

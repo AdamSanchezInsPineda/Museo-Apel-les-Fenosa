@@ -46,6 +46,10 @@ header div img {
   height: 40px;
   width: 40px;
 }
+.table td > a > img {
+  height: 35px;
+  width: 35px;
+}
 .table header + div > div {
   width: -moz-fit-content;
   width: fit-content;
@@ -71,15 +75,14 @@ header div img {
 .table td {
   background-color: #D8D9DA;
 }
-.table button {
-  outline: none;
-  background: none;
-  border: none;
+.table input + a {
+  text-decoration: none;
+  color: black;
   font-size: 20px;
   display: flex;
   align-items: center;
 }
-.table button > img {
+.table input + a > img {
   width: 35px;
   height: 35px;
   margin-left: 0;

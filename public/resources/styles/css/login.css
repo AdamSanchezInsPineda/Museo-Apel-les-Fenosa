@@ -15,8 +15,8 @@
 }
 .login body > div {
   margin: 0 auto;
-  width: 1200px;
-  height: 750px;
+  width: 950px;
+  height: 650px;
   background-color: #D8D9DA;
   border: 2px solid #272829;
   border-radius: 15px;
@@ -36,33 +36,33 @@
   align-items: center;
 }
 .login h1 {
-  font-size: 28px;
+  font-size: 26px;
   text-align: center;
   margin-bottom: 5%;
 }
 .login label {
-  font-size: 20px;
+  font-size: 18px;
   color: rgba(39, 40, 41, 0.5);
-  margin-top: 7.5%;
-  margin-bottom: 2.5%;
+  margin-top: 5%;
+  margin-bottom: 2%;
 }
 .login input {
-  width: 300px;
-  height: 40px;
-  border-radius: 10px;
+  width: 250px;
+  height: 35px;
+  border-radius: 8px;
   border-color: rgba(39, 40, 41, 0.4);
-  padding-left: 10px;
-  font-size: 18px;
+  padding-left: 8px;
+  font-size: 16px;
 }
 .login input:last-child {
   padding-left: 0;
-  margin-top: 7.5%;
-  width: 150px;
-  height: 45px;
+  margin-top: 5%;
+  width: 100px;
+  height: 35px;
   align-self: center;
   background-color: #FFF6E0;
   color: rgb(39, 40, 41);
-  font-size: 24px;
+  font-size: 20px;
 }
 .login img {
   width: 410px;
