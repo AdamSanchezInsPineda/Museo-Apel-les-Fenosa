@@ -2,7 +2,7 @@
     session_start();
     include "resources/components/header.php";
 ?>
-<body class = "table">
+<body class = "objects">
     <!--Contenido variable de la pagina-->   
     
     <div>

@@ -25,6 +25,7 @@
         }
 
         function rolUsuario($nom,$usuario){
+            
             $sql = $this -> db->prepare('SELECT Rol FROM Usuarios WHERE Nombre = :nombre AND Contraseña = :password');
 
             $sql->bindParam(':nombre', $nom);

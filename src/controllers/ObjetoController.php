@@ -11,7 +11,7 @@ class ObjetoController {
 
             if ($state) {
                 $objeto = new Objeto();              
-                $this->render('table', ['registros' => $objeto->getAllObjetos()/*, 'rol' => $rol*/]);
+                $this->render('objects', ['registros' => $objeto->getAllObjetos()/*, 'rol' => $rol*/]);
                 exit;
 
             } else {
