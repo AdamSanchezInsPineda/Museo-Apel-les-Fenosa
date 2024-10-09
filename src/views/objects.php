@@ -1,5 +1,4 @@
-<?php 
-    session_start();
+<?php
     include "resources/components/header.php";
 ?>
 <body class = "objects">
