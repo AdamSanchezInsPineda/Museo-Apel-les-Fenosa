@@ -18,4 +18,7 @@ $router->get('/registers/new', 'ObjetoController@new');
 
 $router->get('/registers/{obra}', 'ObjetoController@register');
 
+$router->get('/users', 'UsuarioController@table');
+
+
 $router->dispatch();

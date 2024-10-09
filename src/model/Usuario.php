@@ -36,4 +36,12 @@
 
             return $result[0]['Rol'];
         }
+
+        function mostrarUsuarios() {
+            $sql = $this -> db->prepare('SELECT UsuarioID, Nombre, Rol FROM Usuarios');
+
+            $sql->execute();
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }

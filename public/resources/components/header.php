@@ -9,7 +9,7 @@
 <header>
     <img src="resources/images/logoBlancMuseu.png" alt="Logo del museo">
     <nav>
-        <a href="">Usuaris</a>
+        <a href="/users">Usuaris</a>
         <a href="">Vocabulari</a>
         <a href="">Ubicacions</a>
         <a href="">Copies de seguretat</a>

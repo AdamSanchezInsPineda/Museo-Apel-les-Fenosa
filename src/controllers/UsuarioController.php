@@ -40,6 +40,28 @@
             header('Location: /');
         }
 
+        public function table(){
+            session_start();
+            $user = new Usuario();
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
+            if ($state) {             
+                $this->render('users', ['usuarios' => $user->mostrarUsuarios()]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+        }
+
         private function render($view, $data = []) {
             extract($data);
             $viewFile = "../src/views/$view.php";
