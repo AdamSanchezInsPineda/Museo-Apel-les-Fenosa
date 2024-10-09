@@ -24,9 +24,11 @@
 
                     <label for="password">Contrasenya</label>
                     <input type="password" id="password" name="password" class="text" required>
-
-                    <p><?php echo $error; ?></p>
-                    
+                    <?php
+                        if ($error) {
+                        echo "<p> {$error}; </p>";
+                        }
+                    ?>
                     <input type="submit" value="Entrar" >
 
                 </form>
