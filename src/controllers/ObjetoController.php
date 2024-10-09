@@ -6,7 +6,7 @@ require_once '../src/model/Usuario.php';
 class ObjetoController {
     public function table() {
         session_start();
-        if (isset($_SESSION['nom'])){
+        if (!isset($_SESSION['nom'])){
             $state = false;
         }
         else{
