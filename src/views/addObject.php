@@ -1,5 +1,4 @@
 <?php 
-    session_start();
     include "resources/components/header.php";
 ?>
 <body class = "addObject">

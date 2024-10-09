@@ -11,7 +11,7 @@ class ObjetoController {
 
             if ($state) {
                 $objeto = new Objeto();              
-                $this->render('objects', ['registros' => $objeto->getAllObjetos()/*, 'rol' => $rol*/]);
+                $this->render('objects', ['registros' => $objeto->getAllObjetos()]);
                 exit;
 
             } else {
@@ -21,12 +21,29 @@ class ObjetoController {
                 $this->render("login", ["error"=> $error]);
                 exit;
             }
-        
-        
     }
 
     public function project($project) {
         $this->render('project', ['project' => $project]);
+    }
+
+    public function new() {
+        session_start();
+        $user = new Usuario();
+        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+
+            if ($state) {
+                $objeto = new Objeto();              
+                $this->render('objects', ['registros' => $objeto->getAllObjetos()]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
     }
 
     private function render($view, $data = []) {

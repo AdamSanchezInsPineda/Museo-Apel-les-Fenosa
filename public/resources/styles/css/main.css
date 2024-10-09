@@ -21,7 +21,7 @@ header nav {
 }
 header nav a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   font-weight: 700;
 }
 header nav a:hover {
@@ -29,8 +29,18 @@ header nav a:hover {
 }
 header div {
   display: flex;
-  color: white;
+  color: #ffffff;
   align-items: center;
+}
+header div div {
+  display: block;
+}
+header div div :first-child {
+  font-size: 20px;
+}
+header div div p + p {
+  margin-top: 0;
+  font-size: 10px;
 }
 header div img {
   margin-left: 0;
@@ -70,7 +80,7 @@ header div img {
 }
 .objects th {
   background-color: #61677A;
-  color: white;
+  color: #ffffff;
 }
 .objects td {
   background-color: #D8D9DA;
