@@ -6,9 +6,13 @@ require_once '../src/model/Usuario.php';
 class ObjetoController {
     public function table() {
         session_start();
-        $user = new Usuario();
-        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-
+        if (isset($_SESSION['nom'])){
+            $state = false;
+        }
+        else{
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+        }
             if ($state) {
                 $objeto = new Objeto();              
                 $this->render('objects', ['registros' => $objeto->getAllObjetos()]);
