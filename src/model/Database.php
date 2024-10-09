@@ -4,7 +4,7 @@ class Database
 {
     private $db;
     function connection(){
-        $config = parse_ini_file('./config/config.ini');
+        $config = parse_ini_file(__DIR__ . '/config/config.ini');
         $font = 'mysql:host=' . $config['host'] . ';dbname=' . $config['db'];
         $username = $config['username'];
         $password = $config['password'];

@@ -1,3 +1,5 @@
+@import "vars";
+
 .objects{
     header + div{
     margin-top: 5%;
@@ -38,7 +40,7 @@
     }
     input + a{
         text-decoration: none;
-        color: black;
+        color: $color4;
         font-size: 20px;
         display: flex;
         align-items: center;
@@ -50,7 +52,7 @@
     }
     input{
         background: #D8D9DA;
-        border: 1px black solid;
+        border: 1px $color4 solid;
         font-size: 18px;
         background-image: url(/resources/images/lupa.png);
         background-size: 20px 20px;
