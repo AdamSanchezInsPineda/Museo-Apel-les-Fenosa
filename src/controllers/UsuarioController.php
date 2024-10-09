@@ -4,7 +4,8 @@
     class UsuarioController {
 
         public function index() {
-            $this->render('login');
+            $error = "";
+            $this->render("login", ["error"=> $error]);
         }
 
         public function login() {
