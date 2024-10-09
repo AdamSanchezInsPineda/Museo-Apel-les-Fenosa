@@ -32,11 +32,11 @@
         padding: 0 20px;
     }
     th{
-        background-color: #61677A;
+        background-color: $color3;
         color: white;
     }
     td{
-        background-color: #D8D9DA;
+        background-color: $color2;
     }
     input + a{
         text-decoration: none;
@@ -51,7 +51,7 @@
         margin-left: 0;
     }
     input{
-        background: #D8D9DA;
+        background: $color2;
         border: 1px $color4 solid;
         font-size: 18px;
         background-image: url(/resources/images/lupa.png);
