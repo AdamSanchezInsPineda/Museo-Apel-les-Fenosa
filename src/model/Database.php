@@ -4,9 +4,10 @@ class Database
 {
     private $db;
     function connection(){
-        $font = 'mysql:host=localhost;dbname=museu';
-        $username = 'admindb';
-        $password = 'museo';
+        $config = parse_ini_file('./config/config.ini');
+        $font = 'mysql:host=' . $config['host'] . ';dbname=' . $config['db'];
+        $username = $config['username'];
+        $password = $config['password'];
 
         try {
             $this->db = new PDO($font, $username, $password);
