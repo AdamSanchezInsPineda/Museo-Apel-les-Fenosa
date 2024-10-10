@@ -14,7 +14,7 @@ $router->get('/logout', 'UsuarioController@logout');
 
 $router->get('/registers', 'ObjetoController@table');
 
-$router->get('/registers/new', 'ObjetoController@new');
+$router->get('/registers/add', 'ObjetoController@new');
 
 $router->get('/registers/{obra}', 'ObjetoController@register');
 

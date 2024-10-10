@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../resources/styles/css/main.css">
 </head>
 <header>
-    <img src="resources/images/logoBlancMuseu.png" alt="Logo del museo">
+    <a href="/registers"><img src="../resources/images/logoBlancMuseu.png" alt="Logo del museo"></a>
     <nav>
         <a href="/users">Usuaris</a>
         <a href="">Vocabulari</a>
@@ -19,6 +19,6 @@
             <p><?php echo $_SESSION['nom']; ?></p>
             <p><?php echo $_SESSION['rol']; ?></p>
         </div>
-        <a href="/logout"><img src="resources/images/tancarSessió.svg" alt="Tancar sessió"></a>
+        <a href="/logout"><img src="../resources/images/tancarSessió.svg" alt="Tancar sessió"></a>
     </div>
 </header>

@@ -1,14 +1,14 @@
 <?php
     include "resources/components/header.php";
 ?>
-<body class = "objects">
+<body class = "users">
     <!--Contenido variable de la pagina-->   
     
     <div>
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="">Crear un nou usuari<img src="resources/images/plus.png" alt="Afegir registre"></a>
+                <a href="">Crear un nou usuari<img src="resources/images/plus.png" alt="Afegir usuari"></a>
 
                 
             </div>
@@ -39,7 +39,6 @@
         </div>
     </div>
     <!--Scripts-->
-    <script src="resources/js/imagePreview.js"></script>
 </body>
 
 <?php

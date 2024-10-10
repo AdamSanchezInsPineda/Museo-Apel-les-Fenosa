@@ -8,7 +8,7 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
+                <a href="/registers/add">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
             <table>
                 <?php

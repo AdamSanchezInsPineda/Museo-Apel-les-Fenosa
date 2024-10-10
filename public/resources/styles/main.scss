@@ -1,11 +1,21 @@
+//Individual styles
 @import "scss/header.scss";
-@import "scss/objects.scss";
 @import "scss/login.scss";
+
+//Tables
+@import "scss/objects.scss";
+@import "scss/users.scss";
+
+//Adders
 @import "scss/addObject.scss";
 
+//General styles
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 

@@ -1,0 +1,9 @@
+@import "vars";
+@import "table";
+
+.users{
+    @include tableStyle;
+    td{
+        padding: 0 50px;
+    }
+}

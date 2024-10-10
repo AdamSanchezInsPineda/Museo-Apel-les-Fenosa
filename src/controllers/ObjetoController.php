@@ -38,7 +38,7 @@ class ObjetoController {
 
             if ($state) {
                 $objeto = new Objeto();              
-                $this->render('objects', ['registros' => $objeto->getAllObjetos()]);
+                $this->render('addObject');
                 exit;
 
             } else {
