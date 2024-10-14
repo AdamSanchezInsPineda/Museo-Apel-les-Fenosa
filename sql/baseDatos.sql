@@ -366,3 +366,23 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `Ubicaciones` (`UbicacionID`, `Nombre`, `FechaInicioUbicacion`, `FechaFinUbicacion`, `ComentarioUbicacion`) VALUES
+(6, 'Sala 4', '2021-01-01 00:00:00', '2026-01-01 00:00:00', 'Sala de exposiciones temporales'),
+(7, 'Sala 5', '2021-06-01 00:00:00', '2026-06-01 00:00:00', 'Sala de arte contemporáneo'),
+(8, 'Sala 6', '2022-01-01 00:00:00', NULL, 'Sala dedicada a exposiciones de fotografía');
+
+INSERT INTO `Objetos` (`ObjetoID`, `RegistroNº`, `Imagen`, `Nombre`, `ClasificacionGenericaID`, `ColeccionProcedencia`, `Altura`, `Anchura`, `Profundidad`, `MaterialID`, `TecnicaID`, `AutorID`, `Titulo`, `AnyInicial`, `AnyFinal`, `Datacion`, `UbicacionActualID`, `FechaRegistro`, `NumeroEjemplares`, `FormaIngreso`, `FechaIngreso`, `FuenteIngreso`, `Baja`, `CausaBaja`, `FechaBaja`, `PersonaAutorizadaBaja`, `EstadoConservacionID`, `LugarEjecucion`, `LugarProcedencia`, `NumeroTiraje`, `OtrosNrosIdentificacion`, `ValoracionEconomica`, `CodigoRestauracion`, `FechaInicioRestauracion`, `FechaFinRestauracion`, `Bibliografia`, `Descripcion`, `HistoriaObjeto`, `MuseoID`) VALUES
+(6, '001006', 'images', 'El jardín de las maravillas', NULL, 'Colección Moderna', '2.00', '3.00', '0.50', NULL, NULL, 2, 'El jardín de las maravillas', NULL, NULL, 'Acrílico sobre lienzo', 2, '2021-07-01 00:00:00', 1, 'Donación', '2021-07-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Madrid', 'España', NULL, NULL, '500000.00', NULL, NULL, NULL, 'Bibliografía de El jardín de las maravillas', 'Descripción de El jardín de las maravillas', 'Historia de El jardín de las maravillas', NULL),
+(7, '001007', NULL, 'Retrato de una dama', NULL, 'Colección Contemporánea', '1.50', '2.50', '0.30', NULL, NULL, 3, 'Retrato de una dama', NULL, NULL, 'Óleo sobre lienzo', 3, '2022-01-01 00:00:00', 1, 'Compra', '2022-01-01 00:00:00', 'Galería de arte moderno', NULL, NULL, NULL, NULL, NULL, 'Barcelona', 'España', NULL, NULL, '700000.00', NULL, NULL, NULL, 'Bibliografía de Retrato de una dama', 'Descripción de Retrato de una dama', 'Historia de Retrato de una dama', NULL);
+(8, '001008', 'images', 'La danza', NULL, 'Colección Moderna', '1.80', '2.20', '0.40', NULL, NULL, 6, 'La danza', NULL, NULL, 'Óleo sobre lienzo', 2, '2021-09-01 00:00:00', 1, 'Donación', '2021-09-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'París', 'Francia', NULL, NULL, '800000.00', NULL, NULL, NULL, 'Bibliografía de La danza', 'Descripción de La danza', 'Historia de La danza', NULL),
+(9, '001009', NULL, 'Naturaleza muerta con frutas', NULL, 'Colección Contemporánea', '1.20', '1.80', '0.30', NULL, NULL, 7, 'Naturaleza muerta con frutas', NULL, NULL, 'Acrílico sobre lienzo', 3, '2022-03-01 00:00:00', 1, 'Compra', '2022-03-01 00:00:00', 'Galería de arte moderno', NULL, NULL, NULL, NULL, NULL, 'Nueva York', 'Estados Unidos', NULL, NULL, '900000.00', NULL, NULL, NULL, 'Bibliografía de Naturaleza muerta con frutas', 'Descripción de Naturaleza muerta con frutas', 'Historia de Naturaleza muerta con frutas', NULL),
+(10, '001010', 'images', 'El violinista', NULL, 'Colección Clásica', '2.50', '3.00', '0.50', NULL, NULL, 8, 'El violinista', NULL, NULL, 'Óleo sobre lienzo', 2, '2021-11-01 00:00:00', 1, 'Donación', '2021-11-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Viena', 'Austria', NULL, NULL, '1000000.00', NULL, NULL, NULL, 'Bibliografía de El violinista', 'Descripción de El violinista', 'Historia de El violinista', NULL),
+(11, '001011', NULL, 'La mujer con sombrero', NULL, 'Colección Moderna', '1.80', '2.20', '0.40', NULL, NULL, 6, 'La mujer con sombrero', NULL, NULL, 'Acrílico sobre lienzo', 2, '2022-05-01 00:00:00', 1, 'Donación', '2022-05-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Berlín', 'Alemania', NULL, NULL, '1200000.00', NULL, NULL, NULL, 'Bibliografía de La mujer con sombrero', 'Descripción de La mujer con sombrero', 'Historia de La mujer con sombrero', NULL);
+(12, '001012', 'images', 'Paisaje al atardecer', NULL, 'Colección Clásica', '1.50', '2.00', '0.40', NULL, NULL, 5, 'Paisaje al atardecer', NULL, NULL, 'Óleo sobre lienzo', 2, '2023-01-15 00:00:00', 1, 'Donación', '2023-01-15 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Florencia', 'Italia', NULL, NULL, '950000.00', NULL, NULL, NULL, 'Bibliografía de Paisaje al atardecer', 'Descripción de Paisaje al atardecer', 'Historia de Paisaje al atardecer', NULL);
+
+INSERT INTO `Autors` (`AutorID`, `Nombre`) VALUES
+(6, 'Henri Matisse'),
+(7, 'Georgia O\'Keeffe'),
+(8, 'Marc Chagall');
+
