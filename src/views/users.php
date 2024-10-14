@@ -8,7 +8,7 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="">Crear un nou usuari<img src="resources/images/plus.png" alt="Afegir usuari"></a>
+                <a href="/users/add">Crear un nou usuari<img src="resources/images/plus.png" alt="Afegir usuari"></a>
 
                 
             </div>

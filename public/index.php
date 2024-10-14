@@ -14,11 +14,14 @@ $router->get('/logout', 'UsuarioController@logout');
 
 $router->get('/registers', 'ObjetoController@table');
 
-$router->get('/registers/add', 'ObjetoController@new');
+$router->get('/registers/add', 'ObjetoController@create');
 
-$router->get('/registers/{obra}', 'ObjetoController@register');
+$router->get('/registers/{obra}', 'ObjetoController@new');
 
 $router->get('/users', 'UsuarioController@table');
 
+$router->get('/users/add', 'UsuarioController@create');
+
+$router->get('/users/{user}', 'UsuarioController@new');
 
 $router->dispatch();

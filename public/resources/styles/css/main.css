@@ -261,6 +261,20 @@ header div img {
   padding: 0 50px;
 }
 
+.addObject header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+
+.addUser header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+
 * {
   margin: 0px;
   padding: 0px;

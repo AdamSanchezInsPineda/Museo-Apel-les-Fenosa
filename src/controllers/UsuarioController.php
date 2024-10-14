@@ -62,6 +62,24 @@
             }
         }
 
+        public function create() {
+            session_start();
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+    
+                if ($state) {        
+                    $this->render('addUser');
+                    exit;
+    
+                } else {
+                    session_unset();
+                    session_destroy();
+                    $error = " La sessió no s'ha iniciat ";
+                    $this->render("login", ["error"=> $error]);
+                    exit;
+                }
+        }
+
         private function render($view, $data = []) {
             extract($data);
             $viewFile = "../src/views/$view.php";

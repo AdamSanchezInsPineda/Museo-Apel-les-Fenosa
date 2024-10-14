@@ -1,10 +1,10 @@
 <?php 
     include "resources/components/header.php";
 ?>
-<body class = "addObject">
+<body class = "addUser">
     <!--Contenido variable de la pagina-->   
     <div>
-        <h1>Fer un nou registre</h1>
+        <h1>Crear un nou usuari</h1>
     </div>
     
 </body>

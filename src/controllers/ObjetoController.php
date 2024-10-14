@@ -31,7 +31,7 @@ class ObjetoController {
         $this->render('project', ['project' => $project]);
     }
 
-    public function new() {
+    public function create() {
         session_start();
         $user = new Usuario();
         $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
