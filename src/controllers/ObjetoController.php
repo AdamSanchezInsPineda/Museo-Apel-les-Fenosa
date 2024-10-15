@@ -15,7 +15,7 @@ class ObjetoController {
         }
             if ($state) {
                 $objeto = new Objeto();              
-                $this->render('objects', ['registros' => $objeto->getAllObjetos()]);
+                $this->render('objects/objects', ['registros' => $objeto->getAllObjetos()]);
                 exit;
 
             } else {
@@ -27,10 +27,6 @@ class ObjetoController {
             }
     }
 
-    public function project($project) {
-        $this->render('project', ['project' => $project]);
-    }
-
     public function create() {
         session_start();
         $user = new Usuario();
@@ -38,7 +34,61 @@ class ObjetoController {
 
             if ($state) {
                 $objeto = new Objeto();              
-                $this->render('addObject');
+                $this->render('objects/createObject');
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+    }
+
+    public function new($nRegistro) {
+        session_start();
+        $user = new Usuario();
+        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+
+            if ($state) {         
+                $this->render('objects/newObject', [$nRegistro]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+    }
+
+    public function update($nRegistro) {
+        session_start();
+        $user = new Usuario();
+        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+
+            if ($state) {         
+                $this->render('objects/updateObject', [$nRegistro]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+    }
+
+    public function delete($nRegistro) {
+        session_start();
+        $user = new Usuario();
+        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+
+            if ($state) {         
+                $this->render('objects/deleteObject', [$nRegistro]);
                 exit;
 
             } else {

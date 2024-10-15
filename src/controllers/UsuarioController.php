@@ -50,7 +50,7 @@
                 $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             }
             if ($state) {             
-                $this->render('users', ['usuarios' => $user->mostrarUsuarios()]);
+                $this->render('users/users', ['usuarios' => $user->mostrarUsuarios()]);
                 exit;
 
             } else {
@@ -68,7 +68,61 @@
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
     
                 if ($state) {        
-                    $this->render('addUser');
+                    $this->render('users/createUser');
+                    exit;
+    
+                } else {
+                    session_unset();
+                    session_destroy();
+                    $error = " La sessió no s'ha iniciat ";
+                    $this->render("login", ["error"=> $error]);
+                    exit;
+                }
+        }
+
+        public function new($id) {
+            session_start();
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+    
+                if ($state) {         
+                    $this->render('users/newUser', [$id]);
+                    exit;
+    
+                } else {
+                    session_unset();
+                    session_destroy();
+                    $error = " La sessió no s'ha iniciat ";
+                    $this->render("login", ["error"=> $error]);
+                    exit;
+                }
+        }
+
+        public function update($id) {
+            session_start();
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+    
+                if ($state) {         
+                    $this->render('users/updateUser', [$id]);
+                    exit;
+    
+                } else {
+                    session_unset();
+                    session_destroy();
+                    $error = " La sessió no s'ha iniciat ";
+                    $this->render("login", ["error"=> $error]);
+                    exit;
+                }
+        }
+
+        public function delete($id) {
+            session_start();
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+    
+                if ($state) {         
+                    
                     exit;
     
                 } else {

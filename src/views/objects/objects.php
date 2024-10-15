@@ -19,7 +19,6 @@
                         echo "<th>{$column}</th>";
 
                     echo"</tr>";
-                    
                     foreach ($registros as $registro) {
                         echo "<tr>";
                             foreach ($registro as $key => $dato){
@@ -35,12 +34,12 @@
                                 }
                             }
                             echo "<td>";
-                            echo "<a href=''><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
+                            echo "<a href='/registers/{$registro['RegistroNº']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
                             if ($_SESSION['rol'] != "Convidat"){
-                                echo "<a href=''><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
+                                echo "<a href='/registers/{$registro['RegistroNº']}/update'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                             }
                             if ($_SESSION['rol'] == "Administració") {
-                                echo "<a href=''><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
+                                echo "<a href='/registers/{$registro['RegistroNº']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
                             }
 
                             echo "</td>";
