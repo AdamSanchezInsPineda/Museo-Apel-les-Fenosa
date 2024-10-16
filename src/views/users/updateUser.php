@@ -6,7 +6,7 @@
     <div>
         <h1>Modificar un usuari<?php echo $usuario[0]['Nombre']?></h1>
     </div>
-    <form action="/users/<?php echo $usuario['UsuarioID'] ?>/update" method="post">
+    <form action="/users/<?php echo $usuario[0]['UsuarioID'] ?>/update" method="post">
         
         <div>
             <label for="Nom">Nom</label>

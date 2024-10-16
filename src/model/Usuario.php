@@ -61,8 +61,11 @@
             return $result;
         }
 
-        function updateUsuario($id) {
+        function updateUsuario($nombre, $contraseña, $rol, $id) {
+            
+            $sql = $this -> db->prepare('UPDATE Usuarios SET Nombre = ?, Contraseña = ?, Rol = ? WHERE UsuarioID = ?');
 
+            $sql->execute([$nombre, $contraseña, $rol, $id]);
         }
 
         function eliminarUsuario($id) {

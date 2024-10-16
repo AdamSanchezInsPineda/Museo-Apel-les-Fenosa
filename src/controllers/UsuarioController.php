@@ -127,18 +127,24 @@
             session_start();
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-    
-                if ($state) {        
-                     
-                    $this->render('users/updateUser', [$id]);
-    
-                } else {
-                    session_unset();
-                    session_destroy();
-                    $error = " La sessió no s'ha iniciat ";
-                    $this->render("login", ["error"=> $error]);
+            if ($state) {     
+                if ($_SESSION['rol'] == "Administració"){
+                    $user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
+                    header('Location: /users');
                 }
-                exit;
+                else{
+                    //Warning de que no tiene permisos para ejecutar esta orden
+                    header('Location: /registres');
+                }
+
+            } 
+            else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+            }
+            exit;
         }
 
         public function delete($id) {
