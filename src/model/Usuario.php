@@ -53,7 +53,12 @@
         }
         
         function updateViewUsuario($id) {
-            
+            $sql = $this -> db->prepare('SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID = :id');
+
+            $sql->bindParam(':id', $id);
+            $sql->execute();
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
         }
 
         function updateUsuario($id) {

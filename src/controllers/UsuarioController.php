@@ -83,7 +83,6 @@
             if ($state) {     
                 if ($_SESSION['rol'] == "Administració"){
                     $user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
-                    sleep(5);
                     header('Location: /users');
                 }
                 else{
@@ -107,7 +106,7 @@
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             if ($state) {     
                 if ($_SESSION['rol'] == "Administració"){
-                    $this->render('users/updateUser', [$usuario]);
+                    $this->render('users/updateUser', ['usuario' => $user->updateViewUsuario($id)]);
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden

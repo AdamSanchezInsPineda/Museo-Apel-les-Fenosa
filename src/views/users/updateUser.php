@@ -4,15 +4,15 @@
 <body class = "createUser">
     <!--Contenido variable de la pagina-->   
     <div>
-        <h1>Modificar un usuari</h1>
+        <h1>Modificar un usuari<?php echo $usuario[0]['Nombre']?></h1>
     </div>
-    <form action="/users/create" method="post">
+    <form action="/users/<?php echo $usuario['UsuarioID'] ?>/update" method="post">
         
         <div>
             <label for="Nom">Nom</label>
-            <input type="text" id="Nom" name="Nom" required>
+            <input type="text" id="Nom" name="Nom" value="<?php echo $usuario[0]['Nombre']?>" required>
         </div>
-
+        
         <div>
             <label for="Contraseña">Contraseña</label>
             <input type="text" id="Contraseña" name="Contraseña" required>
@@ -21,9 +21,24 @@
         <div>
             <label for="Rol">Rol</label>
             <select name="Rol" id="Rol">
-                <option value="Administració">Administració</option>
-                <option value="Tècnic">Tècnic</option>
-                <option value="Convidat">Convidat</option>
+            <?php 
+            switch ($usuario[0]['Rol']){
+                case "Administració":
+                    echo "<option value='Administració' selected>Administració</option>";
+                    echo "<option value='Tècnic'>Tècnic</option>";
+                    echo "<option value='Convidat'>Convidat</option>";
+                    break;
+                case "Tècnic":
+                    echo "<option value='Administració'>Administració</option>";
+                    echo "<option value='Tècnic' selected>Tècnic</option>";
+                    echo "<option value='Convidat'>Convidat</option>";
+                case "Convidat":
+                    echo "<option value='Administració'>Administració</option>";
+                    echo "<option value='Tècnic'>Tècnic</option>";
+                    echo "<option value='Convidat' selected>Convidat</option>";
+            }
+                
+            ?>
             </select>
         </div>
         
