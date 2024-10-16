@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Temps de generació: 09-10-2024 a les 09:40:13
--- Versió del servidor: 10.6.18-MariaDB-0ubuntu0.22.04.1
--- Versió de PHP: 8.1.2-1ubuntu2.19
+-- Host: mysql
+-- Generation Time: Oct 16, 2024 at 08:26 AM
+-- Server version: 8.1.0
+-- PHP Version: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,371 +18,465 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `museu`
+-- Database: `museu`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Autors`
+-- Table structure for table `Autors`
 --
 
 CREATE TABLE `Autors` (
-  `AutorID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Bolcament de dades per a la taula `Autors`
---
-
-INSERT INTO `Autors` (`AutorID`, `Nombre`) VALUES
-(1, 'Pablo Picasso'),
-(2, 'Salvador Dalí'),
-(3, 'Joan Miró'),
-(4, 'Francisco Goya'),
-(5, 'El Greco');
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `Clasificaciones`
---
-
-CREATE TABLE `Clasificaciones` (
-  `ClasificacionID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL
+  `AutorID` int NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `EstadosConservacion`
---
-
-CREATE TABLE `EstadosConservacion` (
-  `EstadoConservacionID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `Exposiciones`
+-- Table structure for table `Exposiciones`
 --
 
 CREATE TABLE `Exposiciones` (
-  `ExposicionID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL,
+  `ExposicionID` int NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `FechaInicio` datetime DEFAULT NULL,
   `FechaFin` datetime DEFAULT NULL,
-  `TipoExposicion` varchar(255) DEFAULT NULL,
-  `LugarExposicion` varchar(255) DEFAULT NULL
+  `TipoExposicionID` int NOT NULL,
+  `LugarExposicion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Materiales`
---
-
-CREATE TABLE `Materiales` (
-  `MaterialID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `Museos`
+-- Table structure for table `Museos`
 --
 
 CREATE TABLE `Museos` (
-  `MuseoID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL,
-  `Fotografia` text DEFAULT NULL
+  `MuseoID` int NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Fotografia` text COLLATE utf8mb4_general_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `ObjetoExposicion`
+-- Table structure for table `ObjetoExposicion`
 --
 
 CREATE TABLE `ObjetoExposicion` (
-  `ObjetoExposicionID` int(11) NOT NULL,
-  `ObjetoID` int(11) DEFAULT NULL,
-  `ExposicionID` int(11) DEFAULT NULL
+  `ObjetoExposicionID` int NOT NULL,
+  `ObjetoID` int DEFAULT NULL,
+  `ExposicionID` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Objetos`
+-- Table structure for table `Objetos`
 --
 
 CREATE TABLE `Objetos` (
-  `ObjetoID` int(11) NOT NULL,
-  `RegistroNº` varchar(6) NOT NULL,
-  `Imagen` varchar(255) DEFAULT NULL,
-  `Nombre` varchar(255) NOT NULL,
-  `ClasificacionGenericaID` int(11) DEFAULT NULL,
-  `ColeccionProcedencia` varchar(255) DEFAULT NULL,
+  `ObjetoID` int NOT NULL,
+  `RegistroNº` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
+  `Imagen` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ClasificacionGenericaID` int DEFAULT NULL,
+  `ColeccionProcedencia` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Altura` decimal(10,2) DEFAULT NULL,
   `Anchura` decimal(10,2) DEFAULT NULL,
   `Profundidad` decimal(10,2) DEFAULT NULL,
-  `MaterialID` int(11) DEFAULT NULL,
-  `TecnicaID` int(11) DEFAULT NULL,
-  `AutorID` int(11) DEFAULT NULL,
-  `Titulo` varchar(255) DEFAULT NULL,
-  `AnyInicial` date DEFAULT NULL,
-  `AnyFinal` date DEFAULT NULL,
-  `Datacion` varchar(255) DEFAULT NULL,
-  `UbicacionActualID` int(11) DEFAULT NULL,
+  `MaterialID` int DEFAULT NULL,
+  `TecnicaID` int DEFAULT NULL,
+  `AutorID` int DEFAULT NULL,
+  `Titulo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `DatacionID` int DEFAULT NULL,
+  `UbicacionActualID` int DEFAULT NULL,
   `FechaRegistro` datetime NOT NULL,
-  `NumeroEjemplares` int(11) DEFAULT NULL,
-  `FormaIngreso` varchar(255) DEFAULT NULL,
+  `NumeroEjemplares` int DEFAULT NULL,
+  `FormaIngresoID` int DEFAULT NULL,
   `FechaIngreso` datetime DEFAULT NULL,
-  `FuenteIngreso` varchar(255) DEFAULT NULL,
-  `Baja` varchar(255) DEFAULT NULL,
-  `CausaBaja` varchar(255) DEFAULT NULL,
+  `FuenteIngreso` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `BajaID` int DEFAULT NULL,
+  `CausaBajaID` int DEFAULT NULL,
   `FechaBaja` datetime DEFAULT NULL,
-  `PersonaAutorizadaBaja` varchar(255) DEFAULT NULL,
-  `EstadoConservacionID` int(11) DEFAULT NULL,
-  `LugarEjecucion` varchar(255) DEFAULT NULL,
-  `LugarProcedencia` varchar(255) DEFAULT NULL,
-  `NumeroTiraje` varchar(255) DEFAULT NULL,
-  `OtrosNrosIdentificacion` varchar(255) DEFAULT NULL,
+  `PersonaAutorizadaBaja` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `EstadoConservacionID` int DEFAULT NULL,
+  `LugarEjecucion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `LugarProcedencia` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `NumeroTiraje` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `OtrosNrosIdentificacion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `ValoracionEconomica` decimal(10,2) DEFAULT NULL,
-  `CodigoRestauracion` varchar(255) DEFAULT NULL,
-  `FechaInicioRestauracion` datetime DEFAULT NULL,
-  `FechaFinRestauracion` datetime DEFAULT NULL,
-  `Bibliografia` text DEFAULT NULL,
-  `Descripcion` text DEFAULT NULL,
-  `HistoriaObjeto` varchar(255) DEFAULT NULL,
-  `MuseoID` int(11) DEFAULT NULL
+  `Bibliografia` text COLLATE utf8mb4_general_ci,
+  `Descripcion` text COLLATE utf8mb4_general_ci,
+  `HistoriaObjeto` text COLLATE utf8mb4_general_ci,
+  `MuseoID` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Bolcament de dades per a la taula `Objetos`
---
-
-INSERT INTO `Objetos` (`ObjetoID`, `RegistroNº`, `Imagen`, `Nombre`, `ClasificacionGenericaID`, `ColeccionProcedencia`, `Altura`, `Anchura`, `Profundidad`, `MaterialID`, `TecnicaID`, `AutorID`, `Titulo`, `AnyInicial`, `AnyFinal`, `Datacion`, `UbicacionActualID`, `FechaRegistro`, `NumeroEjemplares`, `FormaIngreso`, `FechaIngreso`, `FuenteIngreso`, `Baja`, `CausaBaja`, `FechaBaja`, `PersonaAutorizadaBaja`, `EstadoConservacionID`, `LugarEjecucion`, `LugarProcedencia`, `NumeroTiraje`, `OtrosNrosIdentificacion`, `ValoracionEconomica`, `CodigoRestauracion`, `FechaInicioRestauracion`, `FechaFinRestauracion`, `Bibliografia`, `Descripcion`, `HistoriaObjeto`, `MuseoID`) VALUES
-(3, '001003', '1', 'Las Meninas', NULL, 'Colección Goya', '3.20', '6.50', '0.50', NULL, NULL, 4, 'Las Meninas', NULL, NULL, 'Óleo sobre lienzo', 1, '2020-01-01 00:00:00', 1, 'Donación', '2020-01-01 00:00:00', 'Fundación Goya', NULL, NULL, NULL, NULL, NULL, 'Madrid', 'España', NULL, NULL, '800000.00', NULL, NULL, NULL, 'Bibliografía de Las Meninas', 'Descripción de Las Meninas', 'Historia de Las Meninas', NULL),
-(4, '001004', '2', 'Las Meninas', NULL, 'Colección Goya', '3.20', '6.50', '0.50', NULL, NULL, 4, 'Las Meninas', NULL, NULL, 'Óleo sobre lienzo', 1, '2020-01-01 00:00:00', 1, 'Donación', '2020-01-01 00:00:00', 'Fundación Goya', NULL, NULL, NULL, NULL, NULL, 'Madrid', 'España', NULL, NULL, '800000.00', NULL, NULL, NULL, 'Bibliografía de Las Meninas', 'Descripción de Las Meninas', 'Historia de Las Meninas', NULL),
-(5, '001005', 3, 'El caballero con la mano en el pecho', NULL, 'Colección El Greco', '1.80', '4.20', '0.50', NULL, NULL, 5, 'El caballero con la mano en el pecho', NULL, NULL, 'Óleo sobre lienzo', 2, '2020-06-01 00:00:00', 1, 'Compra', '2020-06-01 00:00:00', 'Galería de arte antiguo', NULL, NULL, NULL, NULL, NULL, 'Toledo', 'España', NULL, NULL, '300000.00', NULL, NULL, NULL, 'Bibliografía de El caballero con la mano en el pecho', 'Descripción de El caballero con la mano en el pecho', 'Historia de El caballero con la mano en el pecho', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Restauraciones`
+-- Table structure for table `ObjetosPrueba`
+--
+
+CREATE TABLE `ObjetosPrueba` (
+  `ObjetoID` int NOT NULL,
+  `Registro` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
+  `Imagen` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Titulo` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Autor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Datacio` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Ubicacio` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ObjetosPrueba`
+--
+
+INSERT INTO `ObjetosPrueba` (`ObjetoID`, `Registro`, `Imagen`, `Nombre`, `Titulo`, `Autor`, `Datacio`, `Ubicacio`) VALUES
+(1, '001001', '1', 'Las Meninas', 'Las Meninas', 'Francisco Goya', 'Siglo XIX', 'Sala 1'),
+(2, '001002', '2', 'Las Meninas', 'Las Meninas', 'Francisco Goya', 'Siglo XIX', 'Sala 1'),
+(3, '001003', '3', 'El caballero con la mano en el pecho', 'El caballero con la mano en el pecho', 'El Greco', 'Siglo XIX', 'Sala 2'),
+(4, '001004', '4', 'Las Meninas', 'Las Meninas', 'Francisco Goya', 'Siglo XIX', 'Sala 1'),
+(5, '001005', '5', 'Las Meninas', 'Las Meninas', 'Francisco Goya', 'Siglo XIX', 'Sala 1'),
+(6, '001006', '6', 'El caballero con la mano en el pecho', 'El caballero con la mano en el pecho', 'El Greco', 'Siglo XIX', 'Sala 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Restauraciones`
 --
 
 CREATE TABLE `Restauraciones` (
-  `RestauracionID` int(11) NOT NULL,
-  `ObjetoID` int(11) DEFAULT NULL,
-  `CodigoRestauracion` varchar(255) DEFAULT NULL,
+  `RestauracionID` int NOT NULL,
+  `ObjetoID` int DEFAULT NULL,
+  `CodigoRestauracion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `FechaInicio` datetime DEFAULT NULL,
   `FechaFin` datetime DEFAULT NULL,
-  `ComentarioRestauracion` text DEFAULT NULL,
-  `NombreRestaurador` varchar(255) DEFAULT NULL
+  `ComentarioRestauracion` text COLLATE utf8mb4_general_ci,
+  `NombreRestaurador` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Tecnicas`
---
-
-CREATE TABLE `Tecnicas` (
-  `TecnicaID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `Ubicaciones`
+-- Table structure for table `Ubicaciones`
 --
 
 CREATE TABLE `Ubicaciones` (
-  `UbicacionID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL,
-  `FechaInicioUbicacion` datetime DEFAULT NULL,
-  `FechaFinUbicacion` datetime DEFAULT NULL,
-  `ComentarioUbicacion` text DEFAULT NULL
+  `UbicacionID` int NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `UbicacionPadre` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Bolcament de dades per a la taula `Ubicaciones`
---
-
-INSERT INTO `Ubicaciones` (`UbicacionID`, `Nombre`, `FechaInicioUbicacion`, `FechaFinUbicacion`, `ComentarioUbicacion`) VALUES
-(1, 'Sala 1', '2020-01-01 00:00:00', '2025-01-01 00:00:00', 'Sala principal del museo'),
-(2, 'Sala 2', '2020-06-01 00:00:00', '2025-06-01 00:00:00', 'Sala de arte moderno'),
-(3, 'Almacén 1', '2020-01-01 00:00:00', NULL, 'Almacén de objetos en restauración'),
-(4, 'Sala 3', '2020-09-01 00:00:00', '2025-09-01 00:00:00', 'Sala de arte contemporáneo'),
-(5, 'Depósito', '2020-01-01 00:00:00', NULL, 'Depósito de objetos en reserva');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `Usuarios`
+-- Table structure for table `UbicacionObjeto`
+--
+
+CREATE TABLE `UbicacionObjeto` (
+  `UbicacionObjetoID` int NOT NULL,
+  `UbicacionID` int NOT NULL,
+  `ObjetoID` int NOT NULL,
+  `FechaInicioUbicacion` datetime DEFAULT NULL,
+  `FechaFinUbicacion` datetime DEFAULT NULL,
+  `ComentarioUbicacion` text COLLATE utf8mb4_general_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Usuarios`
 --
 
 CREATE TABLE `Usuarios` (
-  `UsuarioID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Nombre` varchar(255) NOT NULL,
-  `Contraseña` varchar(255) NOT NULL,
-  `Rol` enum('Administració','Tècnic','Convidat') NOT NULL
+  `UsuarioID` int NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Contraseña` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Rol` enum('admin','tecnic','convidat') COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Bolcament de dades per a la taula `Usuarios`
+-- Dumping data for table `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`Nombre`, `Contraseña`, `Rol`) VALUES
-('admin', '1234', 'Administració'),
-('tecnic', '1234', 'Tècnic'),
-('convidat', '1234', 'Convidat');
+INSERT INTO `Usuarios` (`UsuarioID`, `Nombre`, `Contraseña`, `Rol`) VALUES
+(1, 'admin', '1234', 'admin');
+
+-- --------------------------------------------------------
 
 --
--- Índexs per a les taules bolcades
+-- Table structure for table `Vocabularios`
+--
+
+CREATE TABLE `Vocabularios` (
+  `id` int NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_general_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Vocabularios`
+--
+
+INSERT INTO `Vocabularios` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'classificacio', 'Classificació genèrica'),
+(2, 'material', 'Material'),
+(3, 'codi_material', 'Codi Getty material'),
+(4, 'tecnica', 'Tècnica'),
+(5, 'codi_tecnica', 'Codi Getty tècnica'),
+(6, 'codi_autor', 'Codi autor'),
+(7, 'forma_ingres', 'Forma d\'ingrés'),
+(8, 'baixa', 'Baixa'),
+(9, 'causa_baixa', 'Causa de baixa'),
+(10, 'estat_conservacio', 'Estat de conservació'),
+(11, 'tipus_exposicio', 'Tipus exposició'),
+(12, 'datacio', 'Datació'),
+(13, 'any_inici', 'Any d\'inici'),
+(14, 'any_final', 'Any final');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Vocabulario_valores`
+--
+
+CREATE TABLE `Vocabulario_valores` (
+  `id` int NOT NULL,
+  `vocabulario_id` int DEFAULT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `padre_id` int DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Índexs per a la taula `Autors`
+-- Indexes for table `Autors`
 --
 ALTER TABLE `Autors`
   ADD PRIMARY KEY (`AutorID`);
 
 --
--- Índexs per a la taula `Clasificaciones`
---
-ALTER TABLE `Clasificaciones`
-  ADD PRIMARY KEY (`ClasificacionID`);
-
---
--- Índexs per a la taula `EstadosConservacion`
---
-ALTER TABLE `EstadosConservacion`
-  ADD PRIMARY KEY (`EstadoConservacionID`);
-
---
--- Índexs per a la taula `Exposiciones`
+-- Indexes for table `Exposiciones`
 --
 ALTER TABLE `Exposiciones`
   ADD PRIMARY KEY (`ExposicionID`);
 
 --
--- Índexs per a la taula `Materiales`
---
-ALTER TABLE `Materiales`
-  ADD PRIMARY KEY (`MaterialID`);
-
---
--- Índexs per a la taula `Museos`
+-- Indexes for table `Museos`
 --
 ALTER TABLE `Museos`
   ADD PRIMARY KEY (`MuseoID`);
 
 --
--- Índexs per a la taula `ObjetoExposicion`
+-- Indexes for table `ObjetoExposicion`
 --
 ALTER TABLE `ObjetoExposicion`
   ADD PRIMARY KEY (`ObjetoExposicionID`),
-  ADD KEY `ObjetoID` (`ObjetoID`),
-  ADD KEY `ExposicionID` (`ExposicionID`);
+  ADD KEY `ObjetoExposicion_ibfk_1` (`ObjetoID`),
+  ADD KEY `ObjetoExposicion_ibfk_2` (`ExposicionID`);
 
 --
--- Índexs per a la taula `Objetos`
+-- Indexes for table `Objetos`
 --
 ALTER TABLE `Objetos`
   ADD PRIMARY KEY (`ObjetoID`),
-  ADD UNIQUE KEY `RegistroNº` (`RegistroNº`),
-  ADD KEY `ClasificacionGenericaID` (`ClasificacionGenericaID`),
-  ADD KEY `MaterialID` (`MaterialID`),
-  ADD KEY `TecnicaID` (`TecnicaID`),
-  ADD KEY `AutorID` (`AutorID`),
-  ADD KEY `UbicacionActualID` (`UbicacionActualID`),
-  ADD KEY `EstadoConservacionID` (`EstadoConservacionID`),
-  ADD KEY `MuseoID` (`MuseoID`);
+  ADD KEY `Objetos_ibfk_1` (`ClasificacionGenericaID`),
+  ADD KEY `Objetos_ibfk_2` (`MaterialID`),
+  ADD KEY `Objetos_ibfk_3` (`TecnicaID`),
+  ADD KEY `Objetos_ibfk_4` (`AutorID`),
+  ADD KEY `Objetos_ibfk_5` (`UbicacionActualID`),
+  ADD KEY `Objetos_ibfk_6` (`EstadoConservacionID`),
+  ADD KEY `Objetos_ibfk_7` (`MuseoID`),
+  ADD KEY `Objetos_ibfk_8` (`DatacionID`),
+  ADD KEY `Objetos_ibfk_9` (`BajaID`),
+  ADD KEY `Objetos_ibfk_10` (`CausaBajaID`),
+  ADD KEY `Objetos_ibfk_11` (`FormaIngresoID`);
 
 --
--- Índexs per a la taula `Restauraciones`
+-- Indexes for table `ObjetosPrueba`
+--
+ALTER TABLE `ObjetosPrueba`
+  ADD PRIMARY KEY (`ObjetoID`);
+
+--
+-- Indexes for table `Restauraciones`
 --
 ALTER TABLE `Restauraciones`
   ADD PRIMARY KEY (`RestauracionID`),
+  ADD KEY `Restauraciones_ibfk_1` (`ObjetoID`);
+
+--
+-- Indexes for table `Ubicaciones`
+--
+ALTER TABLE `Ubicaciones`
+  ADD PRIMARY KEY (`UbicacionID`),
+  ADD KEY `UbicacionPadre` (`UbicacionPadre`);
+
+--
+-- Indexes for table `UbicacionObjeto`
+--
+ALTER TABLE `UbicacionObjeto`
+  ADD PRIMARY KEY (`UbicacionObjetoID`),
+  ADD KEY `UbicacionID` (`UbicacionID`),
   ADD KEY `ObjetoID` (`ObjetoID`);
 
 --
--- Índexs per a la taula `Tecnicas`
+-- Indexes for table `Usuarios`
 --
-ALTER TABLE `Tecnicas`
-  ADD PRIMARY KEY (`TecnicaID`);
+ALTER TABLE `Usuarios`
+  ADD PRIMARY KEY (`UsuarioID`);
 
 --
--- Índexs per a la taula `Ubicaciones`
+-- Indexes for table `Vocabularios`
+--
+ALTER TABLE `Vocabularios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Vocabulario_valores`
+--
+ALTER TABLE `Vocabulario_valores`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vocabulario_id` (`vocabulario_id`),
+  ADD KEY `padre_id` (`padre_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Autors`
+--
+ALTER TABLE `Autors`
+  MODIFY `AutorID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Exposiciones`
+--
+ALTER TABLE `Exposiciones`
+  MODIFY `ExposicionID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Museos`
+--
+ALTER TABLE `Museos`
+  MODIFY `MuseoID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ObjetoExposicion`
+--
+ALTER TABLE `ObjetoExposicion`
+  MODIFY `ObjetoExposicionID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Objetos`
+--
+ALTER TABLE `Objetos`
+  MODIFY `ObjetoID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ObjetosPrueba`
+--
+ALTER TABLE `ObjetosPrueba`
+  MODIFY `ObjetoID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `Restauraciones`
+--
+ALTER TABLE `Restauraciones`
+  MODIFY `RestauracionID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Ubicaciones`
 --
 ALTER TABLE `Ubicaciones`
-  ADD PRIMARY KEY (`UbicacionID`);
+  MODIFY `UbicacionID` int NOT NULL AUTO_INCREMENT;
 
 --
--- Índexs per a la taula `Usuarios`
+-- AUTO_INCREMENT for table `UbicacionObjeto`
+--
+ALTER TABLE `UbicacionObjeto`
+  MODIFY `UbicacionObjetoID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Usuarios`
+--
+ALTER TABLE `Usuarios`
+  MODIFY `UsuarioID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Vocabularios`
+--
+ALTER TABLE `Vocabularios`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `Vocabulario_valores`
+--
+ALTER TABLE `Vocabulario_valores`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Restriccions per a les taules bolcades
---
-
---
--- Restriccions per a la taula `ObjetoExposicion`
+-- Constraints for table `ObjetoExposicion`
 --
 ALTER TABLE `ObjetoExposicion`
   ADD CONSTRAINT `ObjetoExposicion_ibfk_1` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`),
   ADD CONSTRAINT `ObjetoExposicion_ibfk_2` FOREIGN KEY (`ExposicionID`) REFERENCES `Exposiciones` (`ExposicionID`);
 
 --
--- Restriccions per a la taula `Objetos`
+-- Constraints for table `Objetos`
 --
 ALTER TABLE `Objetos`
-  ADD CONSTRAINT `Objetos_ibfk_1` FOREIGN KEY (`ClasificacionGenericaID`) REFERENCES `Clasificaciones` (`ClasificacionID`),
-  ADD CONSTRAINT `Objetos_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `Materiales` (`MaterialID`),
-  ADD CONSTRAINT `Objetos_ibfk_3` FOREIGN KEY (`TecnicaID`) REFERENCES `Tecnicas` (`TecnicaID`),
+  ADD CONSTRAINT `Objetos_ibfk_1` FOREIGN KEY (`ClasificacionGenericaID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_10` FOREIGN KEY (`CausaBajaID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_11` FOREIGN KEY (`FormaIngresoID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_3` FOREIGN KEY (`TecnicaID`) REFERENCES `Vocabulario_valores` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_4` FOREIGN KEY (`AutorID`) REFERENCES `Autors` (`AutorID`),
   ADD CONSTRAINT `Objetos_ibfk_5` FOREIGN KEY (`UbicacionActualID`) REFERENCES `Ubicaciones` (`UbicacionID`),
-  ADD CONSTRAINT `Objetos_ibfk_6` FOREIGN KEY (`EstadoConservacionID`) REFERENCES `EstadosConservacion` (`EstadoConservacionID`),
-  ADD CONSTRAINT `Objetos_ibfk_7` FOREIGN KEY (`MuseoID`) REFERENCES `Museos` (`MuseoID`);
+  ADD CONSTRAINT `Objetos_ibfk_6` FOREIGN KEY (`EstadoConservacionID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_7` FOREIGN KEY (`MuseoID`) REFERENCES `Museos` (`MuseoID`),
+  ADD CONSTRAINT `Objetos_ibfk_8` FOREIGN KEY (`DatacionID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_9` FOREIGN KEY (`BajaID`) REFERENCES `Vocabulario_valores` (`id`);
 
 --
--- Restriccions per a la taula `Restauraciones`
+-- Constraints for table `Restauraciones`
 --
 ALTER TABLE `Restauraciones`
   ADD CONSTRAINT `Restauraciones_ibfk_1` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
+
+--
+-- Constraints for table `Ubicaciones`
+--
+ALTER TABLE `Ubicaciones`
+  ADD CONSTRAINT `Ubicaciones_ibfk_1` FOREIGN KEY (`UbicacionPadre`) REFERENCES `Ubicaciones` (`UbicacionID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `UbicacionObjeto`
+--
+ALTER TABLE `UbicacionObjeto`
+  ADD CONSTRAINT `UbicacionObjeto_ibfk_1` FOREIGN KEY (`UbicacionID`) REFERENCES `Ubicaciones` (`UbicacionID`),
+  ADD CONSTRAINT `UbicacionObjeto_ibfk_2` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
+
+--
+-- Constraints for table `Vocabulario_valores`
+--
+ALTER TABLE `Vocabulario_valores`
+  ADD CONSTRAINT `Vocabulario_valores_ibfk_1` FOREIGN KEY (`vocabulario_id`) REFERENCES `Vocabularios` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `Vocabulario_valores_ibfk_2` FOREIGN KEY (`padre_id`) REFERENCES `Vocabulario_valores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-INSERT INTO `Ubicaciones` (`UbicacionID`, `Nombre`, `FechaInicioUbicacion`, `FechaFinUbicacion`, `ComentarioUbicacion`) VALUES
-(6, 'Sala 4', '2021-01-01 00:00:00', '2026-01-01 00:00:00', 'Sala de exposiciones temporales'),
-(7, 'Sala 5', '2021-06-01 00:00:00', '2026-06-01 00:00:00', 'Sala de arte contemporáneo'),
-(8, 'Sala 6', '2022-01-01 00:00:00', NULL, 'Sala dedicada a exposiciones de fotografía');
-
-INSERT INTO `Autors` (`AutorID`, `Nombre`) VALUES
-(6, 'Henri Matisse'),
-(7, 'Georgia O\'Keeffe'),
-(8, 'Marc Chagall');
-
-INSERT INTO `Objetos` (`ObjetoID`, `RegistroNº`, `Imagen`, `Nombre`, `ClasificacionGenericaID`, `ColeccionProcedencia`, `Altura`, `Anchura`, `Profundidad`, `MaterialID`, `TecnicaID`, `AutorID`, `Titulo`, `AnyInicial`, `AnyFinal`, `Datacion`, `UbicacionActualID`, `FechaRegistro`, `NumeroEjemplares`, `FormaIngreso`, `FechaIngreso`, `FuenteIngreso`, `Baja`, `CausaBaja`, `FechaBaja`, `PersonaAutorizadaBaja`, `EstadoConservacionID`, `LugarEjecucion`, `LugarProcedencia`, `NumeroTiraje`, `OtrosNrosIdentificacion`, `ValoracionEconomica`, `CodigoRestauracion`, `FechaInicioRestauracion`, `FechaFinRestauracion`, `Bibliografia`, `Descripcion`, `HistoriaObjeto`, `MuseoID`) VALUES
-(6, '001006', '4', 'El jardín de las maravillas', NULL, 'Colección Moderna', '2.00', '3.00', '0.50', NULL, NULL, 2, 'El jardín de las maravillas', NULL, NULL, 'Acrílico sobre lienzo', 2, '2021-07-01 00:00:00', 1, 'Donación', '2021-07-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Madrid', 'España', NULL, NULL, '500000.00', NULL, NULL, NULL, 'Bibliografía de El jardín de las maravillas', 'Descripción de El jardín de las maravillas', 'Historia de El jardín de las maravillas', NULL),
-(7, '001007', '5', 'Retrato de una dama', NULL, 'Colección Contemporánea', '1.50', '2.50', '0.30', NULL, NULL, 3, 'Retrato de una dama', NULL, NULL, 'Óleo sobre lienzo', 3, '2022-01-01 00:00:00', 1, 'Compra', '2022-01-01 00:00:00', 'Galería de arte moderno', NULL, NULL, NULL, NULL, NULL, 'Barcelona', 'España', NULL, NULL, '700000.00', NULL, NULL, NULL, 'Bibliografía de Retrato de una dama', 'Descripción de Retrato de una dama', 'Historia de Retrato de una dama', NULL),
-(8, '001008', '6', 'La danza', NULL, 'Colección Moderna', '1.80', '2.20', '0.40', NULL, NULL, 6, 'La danza', NULL, NULL, 'Óleo sobre lienzo', 2, '2021-09-01 00:00:00', 1, 'Donación', '2021-09-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'París', 'Francia', NULL, NULL, '800000.00', NULL, NULL, NULL, 'Bibliografía de La danza', 'Descripción de La danza', 'Historia de La danza', NULL),
-(9, '001009', '7', 'Naturaleza muerta con frutas', NULL, 'Colección Contemporánea', '1.20', '1.80', '0.30', NULL, NULL, 7, 'Naturaleza muerta con frutas', NULL, NULL, 'Acrílico sobre lienzo', 3, '2022-03-01 00:00:00', 1, 'Compra', '2022-03-01 00:00:00', 'Galería de arte moderno', NULL, NULL, NULL, NULL, NULL, 'Nueva York', 'Estados Unidos', NULL, NULL, '900000.00', NULL, NULL, NULL, 'Bibliografía de Naturaleza muerta con frutas', 'Descripción de Naturaleza muerta con frutas', 'Historia de Naturaleza muerta con frutas', NULL),
-(10, '001010', '8', 'El violinista', NULL, 'Colección Clásica', '2.50', '3.00', '0.50', NULL, NULL, 8, 'El violinista', NULL, NULL, 'Óleo sobre lienzo', 2, '2021-11-01 00:00:00', 1, 'Donación', '2021-11-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Viena', 'Austria', NULL, NULL, '1000000.00', NULL, NULL, NULL, 'Bibliografía de El violinista', 'Descripción de El violinista', 'Historia de El violinista', NULL),
-(11, '001011', '9', 'La mujer con sombrero', NULL, 'Colección Moderna', '1.80', '2.20', '0.40', NULL, NULL, 6, 'La mujer con sombrero', NULL, NULL, 'Acrílico sobre lienzo', 2, '2022-05-01 00:00:00', 1, 'Donación', '2022-05-01 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Berlín', 'Alemania', NULL, NULL, '1200000.00', NULL, NULL, NULL, 'Bibliografía de La mujer con sombrero', 'Descripción de La mujer con sombrero', 'Historia de La mujer con sombrero', NULL),
-(12, '001012', '10', 'Paisaje al atardecer', NULL, 'Colección Clásica', '1.50', '2.00', '0.40', NULL, NULL, 5, 'Paisaje al atardecer', NULL, NULL, 'Óleo sobre lienzo', 2, '2023-01-15 00:00:00', 1, 'Donación', '2023-01-15 00:00:00', 'Colección privada', NULL, NULL, NULL, NULL, NULL, 'Florencia', 'Italia', NULL, NULL, '950000.00', NULL, NULL, NULL, 'Bibliografía de Paisaje al atardecer', 'Descripción de Paisaje al atardecer', 'Historia de Paisaje al atardecer', NULL);
-
-
-

@@ -12,7 +12,7 @@
         }
         function getAllObjetos() {
             
-            $sql = $this -> db->prepare('SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre AS autor, o.Datacion, u.Nombre AS ubicacion FROM (Objetos o INNER JOIN Autors a ON o.AutorID = a.AutorID) INNER JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID');
+            $sql = $this -> db->prepare('SELECT Registro, Imagen, Nombre, Titulo, Autor, Datacio, Ubicacio FROM ObjetosPrueba');
             
             $sql->execute();
             

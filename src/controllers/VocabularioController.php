@@ -13,13 +13,13 @@ class VocabularioController {
         $user = new Usuario();
 
         switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'Administració':
+            case 'admin':
                 $this->render("vocabularios/indexVocabulario");
                 break;
-            case 'Tècnic':
+            case 'tecnic':
                 $this->render("vocabularios/indexVocabulario");
                 break;
-            case 'Convidat':
+            case 'convidat':
                 header('Location: /registers');
                 break;
             
