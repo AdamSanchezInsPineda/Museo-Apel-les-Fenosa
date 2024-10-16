@@ -21,7 +21,7 @@
         <div>
             <label for="Rol">Rol</label>
             <select name="Rol" id="Rol">
-                <option value="Administració">Administració</option>
+                <option value="admin">Administració</option>
                 <option value="Tècnic">Tècnic</option>
                 <option value="Convidat">Convidat</option>
             </select>

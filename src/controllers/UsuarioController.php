@@ -81,7 +81,7 @@
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             if ($state) {     
-                if ($_SESSION['rol'] == "Administració"){
+                if ($_SESSION['rol'] == "admin"){
                     $user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
                     header('Location: /users');
                 }
@@ -105,7 +105,7 @@
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             if ($state) {     
-                if ($_SESSION['rol'] == "Administració"){
+                if ($_SESSION['rol'] == "admin"){
                     $this->render('users/updateUser', ['usuario' => $user->updateViewUsuario($id)]);
                 }
                 else{
@@ -147,7 +147,7 @@
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
     
                 if ($state) {         
-                    if ($_SESSION['rol'] == "Administració"){
+                    if ($_SESSION['rol'] == "admin"){
                         $user->eliminarUsuario($id);
                         header('Location: /users');
                     }

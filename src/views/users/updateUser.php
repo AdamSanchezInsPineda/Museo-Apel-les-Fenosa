@@ -23,19 +23,19 @@
             <select name="Rol" id="Rol">
             <?php 
             switch ($usuario[0]['Rol']){
-                case "Administració":
-                    echo "<option value='Administració' selected>Administració</option>";
-                    echo "<option value='Tècnic'>Tècnic</option>";
-                    echo "<option value='Convidat'>Convidat</option>";
+                case "admin":
+                    echo "<option value='admin' selected>Administració</option>";
+                    echo "<option value='tecnic'>Tècnic</option>";
+                    echo "<option value='convidat'>Convidat</option>";
                     break;
-                case "Tècnic":
-                    echo "<option value='Administració'>Administració</option>";
-                    echo "<option value='Tècnic' selected>Tècnic</option>";
-                    echo "<option value='Convidat'>Convidat</option>";
-                case "Convidat":
-                    echo "<option value='Administració'>Administració</option>";
-                    echo "<option value='Tècnic'>Tècnic</option>";
-                    echo "<option value='Convidat' selected>Convidat</option>";
+                case "tecnic":
+                    echo "<option value='admin'>Administració</option>";
+                    echo "<option value='tecnic' selected>Tècnic</option>";
+                    echo "<option value='convidat'>Convidat</option>";
+                case "convidat":
+                    echo "<option value='admin'>Administració</option>";
+                    echo "<option value='tecnic'>Tècnic</option>";
+                    echo "<option value='convidat' selected>Convidat</option>";
             }
                 
             ?>
