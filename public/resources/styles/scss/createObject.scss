@@ -5,4 +5,27 @@
         display: flex;
         justify-content: center;
     }
+    form{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        table{
+            td{
+                text-align: right;
+                padding-bottom: 50px;
+                padding: 0 35px 50px;
+
+                label{
+                    font-size: 20px;
+                }
+                input{
+                    display: block;
+                    padding-left: 5px;
+                    width: 320px;
+                    height: 40px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
 }

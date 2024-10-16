@@ -4,7 +4,7 @@
 <body class = "createUser">
     <!--Contenido variable de la pagina-->   
     <div>
-        <h1>Crear un nou usuari</h1>
+        <h1>Modificar un usuari</h1>
     </div>
     <form action="/users/create" method="post">
         
@@ -27,7 +27,7 @@
             </select>
         </div>
         
-        <input type="submit" value="Afegir" class="submit">
+        <input type="submit" value="Modificar" class="submit">
     </form>
 </body>
     

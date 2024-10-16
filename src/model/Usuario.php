@@ -24,12 +24,12 @@
             return $result != null;
         }
 
-        function rolUsuario($nom,$usuario){
+        function rolUsuario($nombre,$password){
             
             $sql = $this -> db->prepare('SELECT Rol FROM Usuarios WHERE Nombre = :nombre AND Contraseña = :password');
 
-            $sql->bindParam(':nombre', $nom);
-            $sql->bindParam(':password', $usuario);
+            $sql->bindParam(':nombre', $nombre);
+            $sql->bindParam(':password', $password);
 
             $sql->execute();
             $result = $sql->fetchAll();
@@ -43,5 +43,28 @@
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $result;
+        }
+
+        function crearUsuario($nombre, $password, $rol){
+            
+            $sql = $this -> db->prepare('INSERT INTO `Usuarios` (`Nombre`, `Contraseña`, `Rol`) VALUES (?, ?, ?)');
+
+            $sql->execute([$nombre, $password, $rol]);
+        }
+        
+        function updateViewUsuario($id) {
+            
+        }
+
+        function updateUsuario($id) {
+
+        }
+
+        function eliminarUsuario($id) {
+            $sql = $this -> db->prepare('DELETE FROM Usuarios WHERE UsuarioID = :id');
+            
+            $sql->bindParam(':id', $id);
+
+            $sql->execute();
         }
     }

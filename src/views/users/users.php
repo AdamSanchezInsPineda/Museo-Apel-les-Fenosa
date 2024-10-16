@@ -28,9 +28,8 @@
                                 echo "<td>{$dato}</td>";
                             }
                             echo "<td>";
-                            echo "<a href='/users/{$usuario['id']}/update'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                            echo "<a href='/users/{$usuario['id']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
-
+                            echo "<a href='/users/{$usuario['UsuarioID']}'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
+                            echo "<a href='/users/{$usuario['UsuarioID']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
                             echo "</td>";
                         echo"</tr>";
                     }

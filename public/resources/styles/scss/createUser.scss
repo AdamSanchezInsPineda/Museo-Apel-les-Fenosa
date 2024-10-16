@@ -1,8 +1,35 @@
+@import "vars";
+
 .createUser{
     header + div{
         margin: 2.5% auto;
         width: 900px;
         display: flex;
         justify-content: center;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        label{
+            margin-left: 15px;
+            margin-bottom: 5px;
+        }
+        input{
+            padding-left: 15px;
+        }
+        input, select{
+            display: block;
+            width: 275px;
+            height: 35px;
+            margin-bottom: 25px;
+        }
+    }
+    .submit{
+        width: 100px;
+        background-color: $color1;
+        border-radius: 10px;
+        border-color: rgb(39, 40, 41, 0.4);
+        padding: 0;
     }
 }
