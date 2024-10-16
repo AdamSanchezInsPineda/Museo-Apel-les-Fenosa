@@ -22,15 +22,14 @@
                 $rol = $user->rolUsuario($_SESSION['nom'] , $_SESSION['password']);
                 $_SESSION['rol'] = $rol;
                 header('Location: /registers');
-                exit;
-
-            } else {
+            } 
+            else {
                 session_unset();
                 session_destroy();
                 $error = "* Nom d'usuari o contrasenya incorrecta";
                 $this->render("login", ["error"=> $error]);
-                exit;
             }
+            exit;
         }
 
         public function logout(){
@@ -51,69 +50,96 @@
             }
             if ($state) {             
                 $this->render('users/users', ['usuarios' => $user->mostrarUsuarios()]);
-                exit;
-
-            } else {
+            } 
+            else {
                 session_unset();
                 session_destroy();
                 $error = " La sessió no s'ha iniciat ";
                 $this->render("login", ["error"=> $error]);
-                exit;
             }
+            exit;
+        }
+
+        public function createView() {
+            session_start();
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            if ($state) {     
+                $this->render('users/createUser');
+            } 
+            else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+            }
+            exit;
         }
 
         public function create() {
             session_start();
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-    
-                if ($state) {        
-                    $this->render('users/createUser');
-                    exit;
-    
-                } else {
-                    session_unset();
-                    session_destroy();
-                    $error = " La sessió no s'ha iniciat ";
-                    $this->render("login", ["error"=> $error]);
-                    exit;
+            if ($state) {     
+                if ($_SESSION['rol'] == "Administració"){
+                    $user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
+                    sleep(5);
+                    header('Location: /users');
                 }
+                else{
+                    //Warning de que no tiene permisos para ejecutar esta orden
+                    header('Location: /registres');
+                }
+
+            } 
+            else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+            }
+            exit;
         }
 
-        public function new($id) {
+        public function updateView($id) {
             session_start();
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-    
-                if ($state) {         
-                    $this->render('users/newUser', [$id]);
-                    exit;
-    
-                } else {
-                    session_unset();
-                    session_destroy();
-                    $error = " La sessió no s'ha iniciat ";
-                    $this->render("login", ["error"=> $error]);
-                    exit;
+            if ($state) {     
+                if ($_SESSION['rol'] == "Administració"){
+                    $this->render('users/updateUser', [$usuario]);
                 }
+                else{
+                    //Warning de que no tiene permisos para ejecutar esta orden
+                    header('Location: /registres');
+                }                
+            } 
+            else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+            }
+            exit;
         }
+        
 
         public function update($id) {
             session_start();
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
     
-                if ($state) {         
+                if ($state) {        
+                     
                     $this->render('users/updateUser', [$id]);
-                    exit;
     
                 } else {
                     session_unset();
                     session_destroy();
                     $error = " La sessió no s'ha iniciat ";
                     $this->render("login", ["error"=> $error]);
-                    exit;
                 }
+                exit;
         }
 
         public function delete($id) {
@@ -122,16 +148,22 @@
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
     
                 if ($state) {         
-                    
-                    exit;
-    
+                    if ($_SESSION['rol'] == "Administració"){
+                        $user->eliminarUsuario($id);
+                        header('Location: /users');
+                    }
+                    else{
+                        //Warning de que no tiene permisos para ejecutar esta orden
+                        header('Location: /registres');
+                    }
+
                 } else {
                     session_unset();
                     session_destroy();
                     $error = " La sessió no s'ha iniciat ";
-                    $this->render("login", ["error"=> $error]);
-                    exit;
+                    $this->render("login", ["error"=> $error]);  
                 }
+                exit;
         }
 
         private function render($view, $data = []) {

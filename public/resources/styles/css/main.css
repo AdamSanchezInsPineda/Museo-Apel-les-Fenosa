@@ -271,12 +271,57 @@ header div img {
   display: flex;
   justify-content: center;
 }
+.createObject form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.createObject form table td {
+  text-align: right;
+  padding-bottom: 50px;
+  padding: 0 35px 50px;
+}
+.createObject form table td label {
+  font-size: 20px;
+}
+.createObject form table td input {
+  display: block;
+  padding-left: 5px;
+  width: 320px;
+  height: 40px;
+  font-size: 18px;
+}
 
 .createUser header + div {
   margin: 2.5% auto;
   width: 900px;
   display: flex;
   justify-content: center;
+}
+.createUser form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createUser form label {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+.createUser form input {
+  padding-left: 15px;
+}
+.createUser form input, .createUser form select {
+  display: block;
+  width: 275px;
+  height: 35px;
+  margin-bottom: 25px;
+}
+.createUser .submit {
+  width: 100px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
 }
 
 * {
