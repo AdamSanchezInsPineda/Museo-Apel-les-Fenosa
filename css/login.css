@@ -1,0 +1,79 @@
+.login {
+  background-image: linear-gradient(to right, rgba(97, 103, 122, 0.8) 50%, rgba(216, 217, 218, 0.8) 50%), url("../../images/loginBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login body {
+  display: flex;
+  align-items: center;
+  height: 900px;
+  font-family: "Poppins";
+}
+.login body > div {
+  margin: 0 auto;
+  width: 950px;
+  height: 650px;
+  background-color: #D8D9DA;
+  border: 2px solid #272829;
+  border-radius: 15px;
+  box-shadow: 2px 10px 45px rgba(0, 0, 0, 0.75);
+  display: flex;
+}
+.login body > div > div:first-child {
+  width: 50%;
+  background-color: #61677A;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+.login div + div {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 5%;
+}
+.login label {
+  font-size: 18px;
+  color: rgba(39, 40, 41, 0.5);
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+.login input {
+  width: 250px;
+  height: 35px;
+  border-radius: 8px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding-left: 8px;
+  font-size: 16px;
+}
+.login input:last-child {
+  padding-left: 0;
+  margin-top: 5%;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  background-color: #FFF6E0;
+  color: #272829;
+  font-size: 20px;
+}
+.login img {
+  width: 410px;
+  height: 280px;
+  margin-top: 25%;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.login p {
+  margin-top: 10px;
+  color: red;
+}/*# sourceMappingURL=login.css.map */

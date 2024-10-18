@@ -1,0 +1,72 @@
+.users header + div {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.users td > a > img {
+  height: 35px;
+  width: 35px;
+}
+.users header + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.users div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+.users table {
+  display: block;
+}
+.users th, .users td {
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 20px;
+}
+.users th {
+  background-color: #61677A;
+  color: #ffffff;
+}
+.users td {
+  background-color: #D8D9DA;
+}
+.users input + a {
+  text-decoration: none;
+  color: #272829;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.users input + a > img {
+  width: 35px;
+  height: 35px;
+  margin-left: 0;
+}
+.users input {
+  background: #D8D9DA;
+  border: 1px #272829 solid;
+  font-size: 18px;
+  background-image: url(/resources/images/lupa.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  padding-left: 35px;
+}
+.users td {
+  padding: 0 50px;
+}
+.users header + div > div {
+  min-width: 30%;
+}
+.users th {
+  width: 40%;
+}
+.users th + th {
+  width: 30%;
+}
+.users td + td + td {
+  display: flex;
+  align-items: center;
+}/*# sourceMappingURL=users.css.map */

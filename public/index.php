@@ -46,12 +46,28 @@ $router->get('/vocabulary/autors/add', 'VocabularioController@newAutor');
 
 $router->post('/vocabulary/autors/create', 'VocabularioController@createAutor');
 
-
 $router->get('/vocabulary/autors/{autor}', 'VocabularioController@editAutor');
 
 $router->post('/vocabulary/autors/{autor}/update', 'VocabularioController@updateAutor');
 
 $router->get('/vocabulary/autors/{autor}/delete', 'VocabularioController@deleteAutor');
+
+$router->get('/vocabulary/campsLlista', 'VocabularioController@indexCampsLlista');
+
+$router->get('/vocabulary/campsLlista/add', 'VocabularioController@newCampsLlista');
+
+$router->post('/vocabulary/campsLlista/create', 'VocabularioController@createCampsLlista');
+
+$router->get('/vocabulary/campsLlista/{campLlista}', 'VocabularioController@editCampsLlista');
+
+$router->post('/vocabulary/campsLlista/{campLlista}/update', 'VocabularioController@updateCampsLlista');
+
+$router->get('/vocabulary/campsLlista/{campLlista}/delete', 'VocabularioController@deleteCampsLlista');
+
+
+
+
+
 
 
 
