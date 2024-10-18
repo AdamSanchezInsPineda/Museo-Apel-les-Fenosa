@@ -1,6 +1,7 @@
 <?php
 
 require_once '../src/model/Usuario.php';
+require_once '../src/model/Vocabulario.php';
 
 class VocabularioController {
 
@@ -22,9 +23,51 @@ class VocabularioController {
             case 'convidat':
                 header('Location: /registers');
                 break;
-            
-            default:
-                # code...
+        }
+    }
+
+    function indexLlistas(){
+        session_start();
+        if (!isset($_SESSION['nom'])){
+            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
+        }
+
+        $user = new Usuario();
+
+        $vocabularis = new Vocabulario();
+
+        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
+            case 'admin':
+                $this->render("vocabularios/campsLlista", ["vocabularis" => $vocabularis->getAllVocabularios()]);
+                break;
+            case 'tecnic':
+                $this->render("vocabularios/campsLlista", ["vocabularis" => $vocabularis->getAllVocabularios()]);
+                break;
+            case 'convidat':
+                header('Location: /registers');
+                break;
+        }
+    }
+
+    function indexAutors(){
+        session_start();
+        if (!isset($_SESSION['nom'])){
+            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
+        }
+
+        $user = new Usuario();
+
+        $autors = new Autor();
+
+        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
+            case 'admin':
+                $this->render("vocabularios/indexVocabulario");
+                break;
+            case 'tecnic':
+                $this->render("vocabularios/indexVocabulario");
+                break;
+            case 'convidat':
+                header('Location: /registers');
                 break;
         }
     }
