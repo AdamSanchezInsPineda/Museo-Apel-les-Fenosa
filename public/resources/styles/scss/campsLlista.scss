@@ -3,23 +3,4 @@
 
 .campsLlista{
     @include tableStyle;
-    td{
-        padding: 0 50px;
-    }
-    header + div > div{
-        min-width: 30%;
-    }
-    th{
-        width: 30%;
-    }
-    th + th{
-        width: 40%;
-    }
-    th + th + th{
-        width: 30%;
-    }
-    td + td + td + td{
-       display: flex;
-       align-items: center; 
-    }
 }
