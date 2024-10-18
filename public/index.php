@@ -48,6 +48,6 @@ $router->get('/vocabulary/autors/{autor}', 'VocabularioController@editAutor');
 
 $router->get('/vocabulary/autors/{autor}/delete', 'VocabularioController@deleteAutor');
 
-
+$router->get('/vocabulary/llistas', 'VocabularioController@indexLlistas');
 
 $router->dispatch();
