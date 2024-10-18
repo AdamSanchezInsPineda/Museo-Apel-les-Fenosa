@@ -40,4 +40,14 @@ $router->get('/users/{user}/delete', 'UsuarioController@delete');
 //Vocabularios
 $router->get('/vocabulary', 'VocabularioController@index');
 
+$router->get('/vocabulary/autors', 'VocabularioController@indexAutors');
+
+$router->get('/vocabulary/autors/add', 'VocabularioController@newAutor');
+
+$router->get('/vocabulary/autors/{autor}', 'VocabularioController@editAutor');
+
+$router->get('/vocabulary/autors/{autor}/delete', 'VocabularioController@deleteAutor');
+
+
+
 $router->dispatch();

@@ -1,0 +1,34 @@
+@import "vars";
+
+@mixin h1-gray-btn {
+    background-color: $color2;
+    color: $colorNegro;
+    font-family: $fontfamily;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 300px;
+    text-align: center;
+
+    &:hover {
+        background-color: $color3;
+        color: $colorBlanco;
+    }
+    transition-duration: 0.2s;
+}
+
+.index-vocabulary{
+    height: 100%;
+
+    main {
+        margin-top: 140px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            @include h1-gray-btn;
+        }
+    }
+}

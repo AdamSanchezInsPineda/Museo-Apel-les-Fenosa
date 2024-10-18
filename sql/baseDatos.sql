@@ -215,28 +215,30 @@ INSERT INTO `Usuarios` (`UsuarioID`, `Nombre`, `Contraseña`, `Rol`) VALUES
 CREATE TABLE `Vocabularios` (
   `id` int NOT NULL,
   `nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_general_ci
+  `descripcion` text COLLATE utf8mb4_general_ci,
+  `padre_id` int DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Vocabularios`
 --
 
-INSERT INTO `Vocabularios` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'classificacio', 'Classificació genèrica'),
-(2, 'material', 'Material'),
-(3, 'codi_material', 'Codi Getty material'),
-(4, 'tecnica', 'Tècnica'),
-(5, 'codi_tecnica', 'Codi Getty tècnica'),
-(6, 'codi_autor', 'Codi autor'),
-(7, 'forma_ingres', 'Forma d\'ingrés'),
-(8, 'baixa', 'Baixa'),
-(9, 'causa_baixa', 'Causa de baixa'),
-(10, 'estat_conservacio', 'Estat de conservació'),
-(11, 'tipus_exposicio', 'Tipus exposició'),
-(12, 'datacio', 'Datació'),
-(13, 'any_inici', 'Any d\'inici'),
-(14, 'any_final', 'Any final');
+INSERT INTO `Vocabularios` (`id`, `nombre`, `descripcion`, `padre_id`) VALUES
+(1, 'classificacio', 'Classificació genèrica', NULL),
+(2, 'material', 'Material', NULL),
+(3, 'codi_material', 'Codi Getty material', NULL),
+(4, 'tecnica', 'Tècnica', NULL),
+(5, 'codi_tecnica', 'Codi Getty tècnica', NULL),
+(6, 'codi_autor', 'Codi autor', NULL),
+(7, 'forma_ingres', 'Forma d\'ingrés', NULL),
+(8, 'baixa', 'Baixa', NULL),
+(9, 'causa_baixa', 'Causa de baixa', NULL),
+(10, 'estat_conservacio', 'Estat de conservació', NULL),
+(11, 'tipus_exposicio', 'Tipus exposició', NULL),
+(12, 'datacio', 'Datació', NULL),
+(13, 'any_inici', 'Any d\'inici', 12),
+(14, 'any_final', 'Any final', 12);
 
 -- --------------------------------------------------------
 
@@ -247,9 +249,7 @@ INSERT INTO `Vocabularios` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `Vocabulario_valores` (
   `id` int NOT NULL,
   `vocabulario_id` int DEFAULT NULL,
-  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `padre_id` int DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT '1'
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -337,15 +337,14 @@ ALTER TABLE `Usuarios`
 -- Indexes for table `Vocabularios`
 --
 ALTER TABLE `Vocabularios`
-  ADD PRIMARY KEY (`id`);
-
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `padre_id` (`padre_id`);
 --
 -- Indexes for table `Vocabulario_valores`
 --
 ALTER TABLE `Vocabulario_valores`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `vocabulario_id` (`vocabulario_id`),
-  ADD KEY `padre_id` (`padre_id`);
+  ADD KEY `vocabulario_id` (`vocabulario_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -469,12 +468,14 @@ ALTER TABLE `UbicacionObjeto`
   ADD CONSTRAINT `UbicacionObjeto_ibfk_1` FOREIGN KEY (`UbicacionID`) REFERENCES `Ubicaciones` (`UbicacionID`),
   ADD CONSTRAINT `UbicacionObjeto_ibfk_2` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
 
+ALTER TABLE `Vocabularios`
+  ADD CONSTRAINT `Vocabularios_ibfk_1` FOREIGN KEY (`padre_id`) REFERENCES `Vocabularios` (`id`) ON DELETE CASCADE;
+
 --
 -- Constraints for table `Vocabulario_valores`
 --
 ALTER TABLE `Vocabulario_valores`
-  ADD CONSTRAINT `Vocabulario_valores_ibfk_1` FOREIGN KEY (`vocabulario_id`) REFERENCES `Vocabularios` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `Vocabulario_valores_ibfk_2` FOREIGN KEY (`padre_id`) REFERENCES `Vocabulario_valores` (`id`);
+  ADD CONSTRAINT `Vocabulario_valores_ibfk_1` FOREIGN KEY (`vocabulario_id`) REFERENCES `Vocabularios` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

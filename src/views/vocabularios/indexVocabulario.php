@@ -1,13 +1,15 @@
 <?php 
-    include "resources/components/header.php";
+        include "resources/components/header.php";
 ?>
-<body class = "createVocabulario">
-    <div>
-        <h1>Vocabularis</h1>
-    </div>
-    
-</body>
+<body class = "index-vocabulary">
+    <main>
+        <a href="#"><h1>Autors</h1></a>
 
-<?php
+        <a href="#"><h1>Ubicacions</h1></a>
+
+        <a href="#"><h1>Camps llista</h1></a>
+    </main>
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>

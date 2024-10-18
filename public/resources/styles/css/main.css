@@ -337,8 +337,38 @@ header div img {
   padding: 0;
 }
 
+.index-vocabulary {
+  height: 100%;
+}
+.index-vocabulary main {
+  margin-top: 140px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.index-vocabulary main a {
+  background-color: #D8D9DA;
+  color: #000000;
+  font-family: "Poppins";
+  text-decoration: none;
+  padding: 10px 20px;
+  width: 300px;
+  text-align: center;
+  transition-duration: 0.2s;
+}
+.index-vocabulary main a:hover {
+  background-color: #61677A;
+  color: #ffffff;
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+html {
+  height: 100%;
 }/*# sourceMappingURL=main.css.map */

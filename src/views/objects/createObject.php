@@ -2,7 +2,7 @@
     include "resources/components/header.php";
 ?>
 <body class = "createObject">
-    <!--Contenido variable de la pagina-->   
+    <!--Contenido variable de la pagina-->
     <div>
         <h1>Afegir un registre</h1>
     </div>
@@ -60,8 +60,7 @@
             </tr>
         </table>
     </form>
-</body>
-
-<?php
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>
