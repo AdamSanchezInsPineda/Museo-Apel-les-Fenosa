@@ -13,10 +13,10 @@
             <table>
                 <?php
                     if ($_SESSION['rol'] == "admin")
-                        $columns = ["ID","Usuari","Rol","Accions"];
+                        $columns = ["Usuari","Rol","Accions"];
 
                     else
-                        $columns = ["ID","Usuari","Rol"];
+                        $columns = ["Usuari","Rol"];
 
                     echo"<tr>";
 
@@ -28,7 +28,9 @@
                     foreach ($usuarios as $usuario) {
                         echo "<tr>";
                             foreach ($usuario as $key => $dato){
-                                echo "<td>{$dato}</td>";
+                                if ($key != "UsuarioID"){
+                                    echo "<td>{$dato}</td>";
+                                }
                             }
                             if ($_SESSION['rol'] == "admin"){
                                 echo "<td>";
