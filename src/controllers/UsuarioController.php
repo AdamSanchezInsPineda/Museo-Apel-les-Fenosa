@@ -48,8 +48,15 @@
             else{
                 $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             }
-            if ($state) {             
-                $this->render('users/users', ['usuarios' => $user->mostrarUsuarios()]);
+            if ($state) {   
+                if ($_SESSION['rol'] != "convidat"){
+                    $this->render('users/users', ['usuarios' => $user->mostrarUsuarios()]);
+                }
+                else{
+                    //Warning de que no tiene permisos para ejecutar esta orden
+                    header('Location: /registers');
+                }             
+                
             } 
             else {
                 session_unset();
@@ -63,9 +70,21 @@
         public function createView() {
             session_start();
             $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            if ($state) {     
-                $this->render('users/createUser');
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
+            if ($state) {
+                if ($_SESSION['rol'] != "convidat"){
+                    $this->render('users/createUser');
+                }
+                else{
+                    //Warning de que no tiene permisos para ejecutar esta orden
+                    header('Location: /registers');
+                }     
+                
             } 
             else {
                 session_unset();
@@ -79,15 +98,20 @@
         public function create() {
             session_start();
             $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
             if ($state) {     
-                if ($_SESSION['rol'] == "admin"){
+                if ($_SESSION['rol'] != "convidat"){
                     $user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
                     header('Location: /users');
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registres');
+                    header('Location: /registers');
                 }
 
             } 
@@ -103,14 +127,19 @@
         public function updateView($id) {
             session_start();
             $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
             if ($state) {     
                 if ($_SESSION['rol'] == "admin"){
                     $this->render('users/updateUser', ['usuario' => $user->updateViewUsuario($id)]);
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registres');
+                    header('Location: /registers');
                 }                
             } 
             else {
@@ -126,7 +155,12 @@
         public function update($id) {
             session_start();
             $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
             if ($state) {     
                 if ($_SESSION['rol'] == "admin"){
                     $user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
@@ -134,7 +168,7 @@
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registres');
+                    header('Location: /registers');
                 }
 
             } 
@@ -150,7 +184,12 @@
         public function delete($id) {
             session_start();
             $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
     
                 if ($state) {         
                     if ($_SESSION['rol'] == "admin"){
@@ -159,7 +198,7 @@
                     }
                     else{
                         //Warning de que no tiene permisos para ejecutar esta orden
-                        header('Location: /registres');
+                        header('Location: /registers');
                     }
 
                 } else {

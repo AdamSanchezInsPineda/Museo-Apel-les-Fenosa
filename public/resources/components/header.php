@@ -10,10 +10,24 @@
 <header>
     <a href="/registers"><img src="../resources/images/logoBlancMuseu.png" alt="Logo del museo"></a>
     <nav>
-        <a href="/users">Usuaris</a>
-        <a href="/vocabulary">Vocabulari</a>
-        <a href="">Ubicacions</a>
-        <a href="">Copies de seguretat</a>
+        <?php
+        switch ($_SESSION['rol']){
+            case "admin":
+                echo "<a href='/users'>Usuaris</a>";
+                echo "<a href=''>Vocabulari</a>";
+                echo "<a href=''>Ubicacions</a>";
+                echo "<a href=''>Copies de seguretat</a>";
+                break;
+            case "tecnic":
+                echo "<a href='/users'>Usuaris</a>";
+                echo "<a href=''>Ubicacions</a>";
+                echo "<a href=''>Copies de seguretat</a>";
+                break;
+            case "convidat":
+                echo "<a href=''>Ubicacions</a>";
+                break;
+        }
+        ?>
     </nav>
     <div>
         <div>

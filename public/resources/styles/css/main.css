@@ -264,6 +264,22 @@ header div img {
 .users td {
   padding: 0 50px;
 }
+.users header + div > div {
+  min-width: 30%;
+}
+.users th {
+  width: 30%;
+}
+.users th + th {
+  width: 40%;
+}
+.users th + th + th {
+  width: 30%;
+}
+.users td + td + td + td {
+  display: flex;
+  align-items: center;
+}
 
 .createObject header + div {
   margin: 2.5% auto;
