@@ -56,4 +56,16 @@
 }
 .users td {
   padding: 0 50px;
+}
+.users header + div > div {
+  min-width: 30%;
+}
+.users th {
+  min-width: 30%;
+}
+.users th + th {
+  min-width: 40%;
+}
+.users th + th + th {
+  min-width: 30%;
 }/*# sourceMappingURL=users.css.map */

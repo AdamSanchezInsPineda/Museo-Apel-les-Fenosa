@@ -14,7 +14,12 @@
             </div>
             <table>
                 <?php
-                    $columns = ["ID","Usuari","Rol","Accions"];
+                    if ($_SESSION['rol'] == "admin")
+                        $columns = ["ID","Usuari","Rol","Accions"];
+
+                    else
+                        $columns = ["ID","Usuari","Rol"];
+
                     echo"<tr>";
 
                     foreach ($columns as $column)
@@ -27,10 +32,12 @@
                             foreach ($usuario as $key => $dato){
                                 echo "<td>{$dato}</td>";
                             }
-                            echo "<td>";
-                            echo "<a href='/users/{$usuario['UsuarioID']}'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                            echo "<a href='/users/{$usuario['UsuarioID']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
-                            echo "</td>";
+                            if ($_SESSION['rol'] == "admin"){
+                                echo "<td>";
+                                echo "<a href='/users/{$usuario['UsuarioID']}'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
+                                echo "<a href='/users/{$usuario['UsuarioID']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
+                                echo "</td>";
+                            }
                         echo"</tr>";
                     }
                 ?>

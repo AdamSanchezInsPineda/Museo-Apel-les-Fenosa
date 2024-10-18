@@ -35,7 +35,7 @@
                             }
                             echo "<td>";
                             echo "<a href='/registers/{$registro['Registro']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
-                            if ($_SESSION['rol'] != "Convidat"){
+                            if ($_SESSION['rol'] != "convidat"){
                                 echo "<a href='/registers/{$registro['Registro']}/update'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                             }
                             if ($_SESSION['rol'] == "admin") {
