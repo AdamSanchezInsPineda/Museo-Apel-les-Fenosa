@@ -1,8 +1,8 @@
 <?php 
     include "resources/components/header.php";
-?>
+?> 
 <body class = "createUser">
-    <!--Contenido variable de la pagina-->   
+    <!--Contenido variable de la pagina-->  
     <div>
         <h1>Modificar un usuari<?php echo $usuario[0]['Nombre']?></h1>
     </div>
@@ -44,8 +44,7 @@
         
         <input type="submit" value="Modificar" class="submit">
     </form>
-</body>
-    
 <?php
     include "resources/components/footer.php";
 ?>
+</body>

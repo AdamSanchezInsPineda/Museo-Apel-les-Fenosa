@@ -11,7 +11,7 @@
     <a href="/registers"><img src="../resources/images/logoBlancMuseu.png" alt="Logo del museo"></a>
     <nav>
         <a href="/users">Usuaris</a>
-        <a href="">Vocabulari</a>
+        <a href="/vocabulary">Vocabulari</a>
         <a href="">Ubicacions</a>
         <a href="">Copies de seguretat</a>
     </nav>

@@ -3,7 +3,6 @@
 ?>
 <body class = "objects">
     <!--Contenido variable de la pagina-->   
-    
     <div>
         <div>
             <div>
@@ -51,8 +50,7 @@
     </div>
     <!--Scripts-->
     <script src="resources/js/imagePreview.js"></script>
-</body>
-
-<?php
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>

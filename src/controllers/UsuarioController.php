@@ -128,7 +128,7 @@
             $user = new Usuario();
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             if ($state) {     
-                if ($_SESSION['rol'] == "Administració"){
+                if ($_SESSION['rol'] == "admin"){
                     $user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
                     header('Location: /users');
                 }

@@ -1,9 +1,7 @@
 <?php
     include "resources/components/header.php";
-?>
-<body class = "users">
-    <!--Contenido variable de la pagina-->   
-    
+?> 
+<body class = "users">    
     <div>
         <div>
             <div>
@@ -38,8 +36,7 @@
         </div>
     </div>
     <!--Scripts-->
-</body>
-
-<?php
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>

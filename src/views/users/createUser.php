@@ -29,8 +29,7 @@
         
         <input type="submit" value="Afegir" class="submit">
     </form>
-</body>
-    
-<?php
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>
