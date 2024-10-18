@@ -6,8 +6,11 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="/exposicions/add">Crear una nova exposició<img src="resources/images/plus.png" alt="Afegir exposició"></a>
-
+                <?php
+                    if ($_SESSION['rol'] == "admin"){
+                        echo "<a href='exposicions/add'>Crear una exposició<img src='resources/images/plus.png' alt='Afegir exposició'></a>";
+                    }
+                ?>
                 
             </div>
             <table>

@@ -68,7 +68,7 @@ $router->get('/vocabulary/llista/{llista}/delete', 'VocabularioController@delete
 
 //Exposicions
 
-$router->get('/exposicions', controller: 'ExposicionsControler@index');
+$router->get('/exposicions',  'ExposicionsControler@index');
 
 $router->get('/exposicions/add', 'ExposicionsController@newExposicio');
 
@@ -76,15 +76,17 @@ $router->post('/exposicions/create', 'ExposicionsController@createExposicio');
 
 $router->get('/exposicions/{exposicio}', 'ExposicionsController@editExposicio');
 
-$router->post('/exposicions/{autor}/update', 'ExposicionsController@updateExposicio');
+$router->post('/exposicions/{exposicio}/update', 'ExposicionsController@updateExposicio');
 
-$router->get('/exposicions/{autor}/delete', 'ExposicionsController@deleteExposicio');
+$router->get('/exposicions/{exposicio}/delete', 'ExposicionsController@deleteExposicio');
 
 $router->get('/exposicions/{exposicio}/bens', 'ExposicionsController@bensExposicio');
 
-$router->post('/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAddExposicio');
+$router->get( '/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAddExposicio');
 
-$router->get('/exposicions/{exposicio}/bens/{objeto}/delete', 'ExposicionsController@bensAddExposicio');
+$router->post( '/exposicions/{exposicio}/bens/create', 'ExposicionsController@bensCreateExposicio');
+
+$router->get('/exposicions/{exposicio}/bens/{objeto}/delete', 'ExposicionsController@bensDeleteExposicio');
 
 
 

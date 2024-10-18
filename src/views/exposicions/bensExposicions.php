@@ -6,8 +6,11 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="exposicions/<?php echo $exposicio[0]['ExposicioID'] ?>/bens/add">Afegir bens patrimonials<img src="resources/images/plus.png" alt="Afegir exposició"></a>
-
+                <?php
+                    if ($_SESSION['rol'] == "admin"){
+                        echo "<a href='exposicions/{$exposicio['ExposicionID']}/bens/add'>Afegir bens patrimonials<img src='resources/images/plus.png' alt='Afegir exposició'></a>";
+                    }
+                ?>
                 
             </div>
             <table>

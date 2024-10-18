@@ -48,7 +48,7 @@
             ?>
             </select>
         </div>
-        <button>Afegir un ben patrimonial</button>
+        <button> <a href="/exposicions/<?php echo $exposicio[0]['ExposicionID']?>/bens"> Bens patrimonials</button>
         <input type="submit" value="Guardar" class="submit">
     </form>
     <?php
