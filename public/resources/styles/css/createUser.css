@@ -22,7 +22,7 @@
   height: 35px;
   margin-bottom: 25px;
 }
-.createUser .submit {
+.createUser button {
   width: 100px;
   background-color: #FFF6E0;
   border-radius: 10px;

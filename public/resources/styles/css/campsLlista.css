@@ -53,6 +53,7 @@
   background-repeat: no-repeat;
   background-position: 0.5rem center;
   padding-left: 35px;
+<<<<<<< HEAD
 }
 .campsLlista td {
   padding: 0 50px;
@@ -72,4 +73,6 @@
 .campsLlista td + td + td + td {
   display: flex;
   align-items: center;
+=======
+>>>>>>> refs/remotes/origin/dev
 }/*# sourceMappingURL=campsLlista.css.map */
