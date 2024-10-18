@@ -38,7 +38,7 @@
         }
 
         function mostrarUsuarios() {
-            $sql = $this -> db->prepare('SELECT UsuarioID, Nombre, Rol FROM Usuarios');
+            $sql = $this -> db->prepare('SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID != 1');
 
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);

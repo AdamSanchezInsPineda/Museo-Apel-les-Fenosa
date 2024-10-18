@@ -61,11 +61,12 @@
   min-width: 30%;
 }
 .users th {
-  min-width: 30%;
+  width: 40%;
 }
 .users th + th {
-  min-width: 40%;
+  width: 30%;
 }
-.users th + th + th {
-  min-width: 30%;
+.users td + td + td {
+  display: flex;
+  align-items: center;
 }/*# sourceMappingURL=users.css.map */

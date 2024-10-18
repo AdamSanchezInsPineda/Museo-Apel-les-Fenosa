@@ -268,15 +268,12 @@ header div img {
   min-width: 30%;
 }
 .users th {
-  width: 30%;
-}
-.users th + th {
   width: 40%;
 }
-.users th + th + th {
+.users th + th {
   width: 30%;
 }
-.users td + td + td + td {
+.users td + td + td {
   display: flex;
   align-items: center;
 }

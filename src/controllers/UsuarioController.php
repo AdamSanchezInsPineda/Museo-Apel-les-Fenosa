@@ -133,14 +133,20 @@
             else{
                 $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             }
-            if ($state) {     
-                if ($_SESSION['rol'] == "admin"){
-                    $this->render('users/updateUser', ['usuario' => $user->updateViewUsuario($id)]);
+            if ($state) {   
+                if ($id != 1){  
+                    if ($_SESSION['rol'] == "admin"){
+                        $this->render('users/updateUser', ['usuario' => $user->updateViewUsuario($id)]);
+                    }
+                    else{
+                        //Warning de que no tiene permisos para ejecutar esta orden
+                        header('Location: /registers');
+                    }
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registers');
-                }                
+                    header('Location: /users');
+                }          
             } 
             else {
                 session_unset();
@@ -162,13 +168,19 @@
                 $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             }
             if ($state) {     
-                if ($_SESSION['rol'] == "admin"){
-                    $user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
-                    header('Location: /users');
+                if ($id != 1){
+                    if ($_SESSION['rol'] == "admin"){
+                        $user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
+                        header('Location: /users');
+                    }
+                    else{
+                        //Warning de que no tiene permisos para ejecutar esta orden
+                        header('Location: /registers');
+                    }
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registers');
+                    header('Location: /users');
                 }
 
             } 
@@ -191,14 +203,20 @@
                 $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             }
     
-                if ($state) {         
-                    if ($_SESSION['rol'] == "admin"){
-                        $user->eliminarUsuario($id);
-                        header('Location: /users');
+                if ($state) {
+                    if ($id != 1){         
+                        if ($_SESSION['rol'] == "admin"){
+                            $user->eliminarUsuario($id);
+                            header('Location: /users');
+                        }
+                        else{
+                            //Warning de que no tiene permisos para ejecutar esta orden
+                            header('Location: /registers');
+                        }
                     }
                     else{
                         //Warning de que no tiene permisos para ejecutar esta orden
-                        header('Location: /registers');
+                        header('Location: /users');
                     }
 
                 } else {
