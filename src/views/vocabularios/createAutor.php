@@ -6,7 +6,7 @@
     <div>
         <h1>Crear un nou autor</h1>
     </div>
-    <form action="/users/create" method="post">
+    <form action="/vocabulary/autors/create" method="post">
         
         <div>
             <label for="Nom">Nom</label>
