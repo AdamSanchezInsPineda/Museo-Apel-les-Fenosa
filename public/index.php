@@ -38,7 +38,7 @@ $router->post('/users/{user}/update', 'UsuarioController@update');
 $router->get('/users/{user}/delete', 'UsuarioController@delete');
 
 //Vocabularios
-$router->get('/vocabulary', 'VocabularioController@index');
+$router->get('/vocabulary', controller: 'VocabularioController@index');
 
 $router->get('/vocabulary/autors', 'VocabularioController@indexAutors');
 
@@ -65,5 +65,28 @@ $router->get('/vocabulary/llista/{llista}', 'VocabularioController@editLlista');
 $router->post('/vocabulary/llista/{llista}/update', 'VocabularioController@updateLlista');
 
 $router->get('/vocabulary/llista/{llista}/delete', 'VocabularioController@deleteLlista');
+
+//Exposicions
+
+$router->get('/exposicions', controller: 'ExposicionsControler@index');
+
+$router->get('/exposicions/add', 'ExposicionsController@newExposicio');
+
+$router->post('/exposicions/create', 'ExposicionsController@createExposicio');
+
+$router->get('/exposicions/{exposicio}', 'ExposicionsController@editExposicio');
+
+$router->post('/exposicions/{autor}/update', 'ExposicionsController@updateExposicio');
+
+$router->get('/exposicions/{autor}/delete', 'ExposicionsController@deleteExposicio');
+
+$router->get('/exposicions/{exposicio}/bens', 'ExposicionsController@bensExposicio');
+
+$router->post('/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAddExposicio');
+
+
+
+
+
 
 $router->dispatch();
