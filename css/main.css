@@ -1,0 +1,374 @@
+header {
+  width: 100%;
+  height: 80px;
+  background-color: #61677A;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+header img {
+  margin-left: 2.5%;
+  height: 75px;
+  margin-left: 15px;
+  width: 115px;
+}
+header nav {
+  margin-left: 15%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+header nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 700;
+}
+header nav a:hover {
+  color: #D8D9DA;
+}
+header div {
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+}
+header div div {
+  display: block;
+}
+header div div :first-child {
+  font-size: 20px;
+}
+header div div p + p {
+  margin-top: 0;
+  font-size: 10px;
+}
+header div img {
+  margin-left: 0;
+  height: 30px;
+}
+
+.login {
+  background-image: linear-gradient(to right, rgba(97, 103, 122, 0.8) 50%, rgba(216, 217, 218, 0.8) 50%), url("../../images/loginBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login body {
+  display: flex;
+  align-items: center;
+  height: 900px;
+  font-family: "Poppins";
+}
+.login body > div {
+  margin: 0 auto;
+  width: 950px;
+  height: 650px;
+  background-color: #D8D9DA;
+  border: 2px solid #272829;
+  border-radius: 15px;
+  box-shadow: 2px 10px 45px rgba(0, 0, 0, 0.75);
+  display: flex;
+}
+.login body > div > div:first-child {
+  width: 50%;
+  background-color: #61677A;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+.login div + div {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 5%;
+}
+.login label {
+  font-size: 18px;
+  color: rgba(39, 40, 41, 0.5);
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+.login input {
+  width: 250px;
+  height: 35px;
+  border-radius: 8px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding-left: 8px;
+  font-size: 16px;
+}
+.login input:last-child {
+  padding-left: 0;
+  margin-top: 5%;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  background-color: #FFF6E0;
+  color: #272829;
+  font-size: 20px;
+}
+.login img {
+  width: 410px;
+  height: 280px;
+  margin-top: 25%;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.login p {
+  margin-top: 10px;
+  color: red;
+}
+
+.objects header + div {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.objects td > a > img {
+  height: 35px;
+  width: 35px;
+}
+.objects header + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.objects div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+.objects table {
+  display: block;
+}
+.objects th, .objects td {
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 20px;
+}
+.objects th {
+  background-color: #61677A;
+  color: #ffffff;
+}
+.objects td {
+  background-color: #D8D9DA;
+}
+.objects input + a {
+  text-decoration: none;
+  color: #272829;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.objects input + a > img {
+  width: 35px;
+  height: 35px;
+  margin-left: 0;
+}
+.objects input {
+  background: #D8D9DA;
+  border: 1px #272829 solid;
+  font-size: 18px;
+  background-image: url(/resources/images/lupa.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  padding-left: 35px;
+}
+.objects td > img {
+  height: 40px;
+  width: 40px;
+}
+.objects .img-preview {
+  display: none;
+}
+.objects .img-preview.active {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: absolute;
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.712);
+}
+.objects .img-preview.active img {
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+.users header + div {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.users td > a > img {
+  height: 35px;
+  width: 35px;
+}
+.users header + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.users div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+.users table {
+  display: block;
+}
+.users th, .users td {
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 20px;
+}
+.users th {
+  background-color: #61677A;
+  color: #ffffff;
+}
+.users td {
+  background-color: #D8D9DA;
+}
+.users input + a {
+  text-decoration: none;
+  color: #272829;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.users input + a > img {
+  width: 35px;
+  height: 35px;
+  margin-left: 0;
+}
+.users input {
+  background: #D8D9DA;
+  border: 1px #272829 solid;
+  font-size: 18px;
+  background-image: url(/resources/images/lupa.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  padding-left: 35px;
+}
+.users td {
+  padding: 0 50px;
+}
+.users header + div > div {
+  min-width: 30%;
+}
+.users th {
+  width: 40%;
+}
+.users th + th {
+  width: 30%;
+}
+.users td + td + td {
+  display: flex;
+  align-items: center;
+}
+
+.createObject header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+.createObject form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.createObject form table td {
+  text-align: right;
+  padding-bottom: 50px;
+  padding: 0 35px 50px;
+}
+.createObject form table td label {
+  font-size: 20px;
+}
+.createObject form table td input {
+  display: block;
+  padding-left: 5px;
+  width: 320px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.createUser header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+.createUser form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createUser form label {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+.createUser form input {
+  padding-left: 15px;
+}
+.createUser form input, .createUser form select {
+  display: block;
+  width: 275px;
+  height: 35px;
+  margin-bottom: 25px;
+}
+.createUser .submit {
+  width: 100px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
+}
+
+.index-vocabulary {
+  height: 100%;
+}
+.index-vocabulary main {
+  margin-top: 140px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.index-vocabulary main a {
+  background-color: #D8D9DA;
+  color: #000000;
+  font-family: "Poppins";
+  text-decoration: none;
+  padding: 10px 20px;
+  width: 300px;
+  text-align: center;
+  transition-duration: 0.2s;
+}
+.index-vocabulary main a:hover {
+  background-color: #61677A;
+  color: #ffffff;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,31 @@
+.createAutor header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+.createAutor form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createAutor form label {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+.createAutor form input {
+  padding-left: 15px;
+}
+.createAutor form input, .createAutor form select {
+  display: block;
+  width: 275px;
+  height: 35px;
+  margin-bottom: 25px;
+}
+.createAutor .submit {
+  width: 100px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
+}/*# sourceMappingURL=createAutor.css.map */
