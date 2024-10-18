@@ -24,15 +24,25 @@
         }
         function getAllVocabularios() {
             
-            $sql = $this -> db->prepare('SELECT id, nombre, descripcion FROM Vocabularios WHERE padre_id IS NULL AND activo = 1');
+            $sql = $this -> db->prepare('SELECT id, nombre, descripcion FROM Vocabularios WHERE activo = 1');
             
             $sql->execute();
             
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($result as &$row) {
-                $row["valors"] = $this->getAllVocabularioValores($row["id"]);
-            }
+            return $result;
+        }
+        function getVocabulario($id) {
+            
+            $sql = $this -> db->prepare('SELECT id, nombre, descripcion FROM Vocabularios WHERE activo = 1 AND id = :id');
+
+            $sql->bindParam(':id', $id);
+            
+            $sql->execute();
+            
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+            
+            $row[0]["valors"] = $this->getAllVocabularioValores($row["id"]);
 
             return $result;
         }

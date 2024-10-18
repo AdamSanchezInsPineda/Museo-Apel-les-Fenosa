@@ -4,6 +4,7 @@
 <body class = "campsLlista">
     <div>
         <div>
+            <h1></h1>
             <div>
                 <input type="text" placeholder="Cercar">
                 <a href="/vocabulary/llista/add">Afegir un vocabulari nou<img src="/resources/images/plus.png" alt="Afegir camp llista nou"></a>
@@ -25,20 +26,14 @@
 
                     echo"</tr>";
                     
-                    foreach ($vocabularis as $vocabularis) {
+                    foreach ($vocabulari["valors"] as $row) {
                         echo "<tr>";
                             foreach ($vocabularis as $key => $value){
                                 if ($key == "id"){
                                     continue;
                                 }
-                                if ($key == "valors") {
-                                    echo "<td>";
-                                    echo "<select>";
-                                    foreach ($value as $data) {
-                                        echo "<option value='". $data["id"] ."'>". $data["valor"] ."</option>";
-                                    }
-                                    echo "</select>";
-                                    echo "</td>";
+                                elseif ($key == "voca"){
+
                                 }
                                 else{
                                     echo "<td>{$value}</td>";

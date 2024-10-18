@@ -1,0 +1,34 @@
+.createCAmpsLlista header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+.createCAmpsLlista form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createCAmpsLlista form label {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+.createCAmpsLlista form input {
+  padding-left: 15px;
+}
+.createCAmpsLlista form input, .createCAmpsLlista form select {
+  display: block;
+  width: 275px;
+  height: 35px;
+  margin-bottom: 25px;
+}
+.createCAmpsLlista button.submit {
+  padding: 30px;
+}
+.createCAmpsLlista .submit {
+  width: 100px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
+}/*# sourceMappingURL=createCampsLlista.css.map */
