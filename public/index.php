@@ -84,6 +84,9 @@ $router->get('/exposicions/{exposicio}/bens', 'ExposicionsController@bensExposic
 
 $router->post('/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAddExposicio');
 
+$router->get('/exposicions/{exposicio}/bens/{objeto}/delete', 'ExposicionsController@bensAddExposicio');
+
+
 
 
 

@@ -35,7 +35,7 @@
                             }
                             if ($_SESSION['rol'] == "admin"){
                                 echo "<td>";
-                                echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
+                                echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicioObjeto['ObjetoExposicionID']}/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
 
                                 echo "</td>";
                             }
