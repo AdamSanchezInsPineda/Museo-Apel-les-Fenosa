@@ -1,18 +1,38 @@
-// Obtener todos los enlaces con la clase 'delete-link'
-const deleteLink = document.querySelectorAll('.delete-link');
+const links = document.querySelectorAll('.links');
 
-// Iterar sobre cada enlace para agregar el evento de confirmación
-deleteLink.forEach(link => {
+links.forEach(link => {
     link.addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que el enlace se siga automáticamente
+        event.preventDefault();
+        
+        user = this.getAttribute('data-usuario');
+        
+        confirm = new Popup({
+            id: "confirmation",     
+            title: "Delete Confirmation",
+            content: `¿Estás seguro de que deseas borrar el usuario ${user}? Esta acción no se puede deshacer.custom-space-out big-margin§{btn-cancel}[Cancelar]{btn-accept}[Aceptar]`,
+            sideMargin: "1.5em",
+            fontSizeMultiplier: "1.2",
+            backgroundColor: "#FFFEE3",
+            allowClose: false,
+            css: `
+            .popup.override .custom-space-out {
+                display: flex;
+                justify-content: center;
+                gap: 1.5em;
+            }`,
+                
+            loadCallback: () => {
+                document.querySelector("button.cancel").onclick = () => {
+                    confirm.hide();
+                };
 
-        // Mostrar la confirmación al usuario
-        const name = this.getAttribute('data-usuario');
-        const confirmacion = confirm(`¿Estás seguro de que deseas borrar el usuario ${name}? Esta acción no se puede deshacer.`);
-
-        // Si el usuario confirma, redirige al enlace de borrado
-        if (confirmacion) {
-            window.location.href = this.href; // Redirige a la URL del enlace (borrado del usuario)
-        }
+                document.querySelector("button.accept").onclick = () => {
+                    confirm.hide();
+                    window.location.href = this.href;
+                };
+            },
+        });
+        
+        confirm.show();
     });
 });

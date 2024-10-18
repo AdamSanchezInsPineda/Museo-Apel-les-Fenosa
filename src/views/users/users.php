@@ -7,8 +7,6 @@
             <div>
                 <input type="text" placeholder="Cercar">
                 <a href="/users/add">Crear un nou usuari<img src="resources/images/plus.png" alt="Afegir usuari"></a>
-
-                
             </div>
             <table>
                 <?php
@@ -36,7 +34,7 @@
                                 echo "<td>";
                                 echo "<a href='/users/{$usuario['UsuarioID']}'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                                 //echo "<a href='/users/{$usuario['UsuarioID']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
-                                echo "<a href='/users/{$usuario['UsuarioID']}/delete' class='delete-link' data-usuario='{$usuario['Nombre']}'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
+                                echo "<a href='/users/{$usuario['UsuarioID']}/delete' class='links' data-usuario='{$usuario['Nombre']}'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
 
                                 echo "</td>";
                             }
@@ -47,6 +45,7 @@
         </div>
     </div>
     <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
     <script src="resources/js/delete.js"></script>
     <?php
     include "resources/components/footer.php";
