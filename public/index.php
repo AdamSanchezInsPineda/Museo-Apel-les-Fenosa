@@ -46,6 +46,8 @@ $router->get('/vocabulary/autors/add', 'VocabularioController@newAutor');
 
 $router->get('/vocabulary/autors/{autor}', 'VocabularioController@editAutor');
 
+$router->get('/vocabulary/autors/{autor}/update', 'VocabularioController@updateAutor');
+
 $router->get('/vocabulary/autors/{autor}/delete', 'VocabularioController@deleteAutor');
 
 
