@@ -4,6 +4,8 @@ require_once '../src/Router.php';
 require_once '../src/controllers/UsuarioController.php';
 require_once '../src/controllers/ObjetoController.php';
 require_once '../src/controllers/VocabularioController.php';
+require_once '../src/controllers/ExposicionsController.php';
+
 
 $router = new Router();
 
@@ -68,7 +70,7 @@ $router->get('/vocabulary/llista/{llista}/delete', 'VocabularioController@delete
 
 //Exposicions
 
-$router->get('/exposicions',  'ExposicionsControler@index');
+$router->get('/exposicions',  'ExposicionsController@index');
 
 $router->get('/exposicions/add', 'ExposicionsController@newExposicio');
 

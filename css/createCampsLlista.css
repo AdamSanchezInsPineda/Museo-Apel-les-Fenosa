@@ -1,28 +1,31 @@
-.createCAmpsLlista header + div {
+.createCampsLlista header + div {
   margin: 2.5% auto;
   width: 900px;
   display: flex;
   justify-content: center;
 }
-.createCAmpsLlista form {
+.createCampsLlista form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.createCAmpsLlista form label {
+.createCampsLlista form label {
   margin-left: 15px;
   margin-bottom: 5px;
 }
-.createCAmpsLlista form input {
+.createCampsLlista form input {
   padding-left: 15px;
 }
-.createCAmpsLlista form input, .createCAmpsLlista form select {
+.createCampsLlista form input, .createCampsLlista form select {
   display: block;
   width: 275px;
   height: 35px;
   margin-bottom: 25px;
 }
-.createCAmpsLlista .submit {
+.createCampsLlista button.submit {
+  padding: 30px;
+}
+.createCampsLlista .submit {
   width: 100px;
   background-color: #FFF6E0;
   border-radius: 10px;

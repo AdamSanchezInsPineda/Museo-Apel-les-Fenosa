@@ -33,13 +33,14 @@
                             }
                             if ($_SESSION['rol'] == "admin"){
                                 echo "<td>";
+                                echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
                                 echo "<a href='/exposicions/{$exposicio['ExposicionID']}'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                                 echo "<a href='/exposicions/{$exposicio['ExposicionID']}/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
 
                                 echo "</td>";
                             }else{
                                 echo "<td>";
-                                echo "<a href='/exposicions/{$exposicio['ExposicionID']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
+                                echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
                                 echo "</td>";
                             }
                         echo"</tr>";

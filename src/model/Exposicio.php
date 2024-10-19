@@ -20,7 +20,22 @@
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $result;
   
-        }     
+        }  
+
+        function crearExposicion($nombre, $fechaInicio, $fechaFin,  $tipoExposicionID, $lugarExposicion) {
+            
+            $sql = $this -> db->prepare('INSERT INTO `Usuarios` (`Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`,`LugarExposicion`) VALUES (?, ?, ?, ?, ?)');
+
+            $sql->execute([$nombre, $fechaInicio,  $fechaFin, $tipoExposicionID, $lugarExposicion]);
+        }
+        
+        function eliminarExposicion($id) {
+            $sql = $this -> db->prepare('DELETE FROM Exposicions WHERE ExposicionID = :id');
+            
+            $sql->bindParam(':id', $id);
+
+            $sql->execute();
+        }
     }
 //
 //
