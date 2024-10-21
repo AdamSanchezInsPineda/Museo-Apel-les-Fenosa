@@ -53,26 +53,4 @@
   background-repeat: no-repeat;
   background-position: 0.5rem center;
   padding-left: 35px;
-<<<<<<< HEAD
-}
-.campsLlista td {
-  padding: 0 50px;
-}
-.campsLlista header + div > div {
-  min-width: 30%;
-}
-.campsLlista th {
-  width: 30%;
-}
-.campsLlista th + th {
-  width: 40%;
-}
-.campsLlista th + th + th {
-  width: 30%;
-}
-.campsLlista td + td + td + td {
-  display: flex;
-  align-items: center;
-=======
->>>>>>> refs/remotes/origin/dev
 }/*# sourceMappingURL=campsLlista.css.map */

@@ -46,7 +46,7 @@
     </div>
     <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
-    <script src="resources/js/delete.js"></script>
+    <script src="resources/js/confirm.js"></script>
     <?php
     include "resources/components/footer.php";
     ?>

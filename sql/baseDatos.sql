@@ -194,7 +194,7 @@ CREATE TABLE `UbicacionObjeto` (
 
 CREATE TABLE `Usuarios` (
   `UsuarioID` int NOT NULL,
-  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL UNIQUE,
   `Contraseña` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Rol` enum('admin','tecnic','convidat') COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

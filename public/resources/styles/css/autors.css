@@ -53,26 +53,4 @@
   background-repeat: no-repeat;
   background-position: 0.5rem center;
   padding-left: 35px;
-<<<<<<< HEAD
-}
-.autors td {
-  padding: 0 50px;
-}
-.autors header + div > div {
-  min-width: 30%;
-}
-.autors th {
-  width: 30%;
-}
-.autors th + th {
-  width: 40%;
-}
-.autors th + th + th {
-  width: 30%;
-}
-.autors td + td + td + td {
-  display: flex;
-  align-items: center;
-=======
->>>>>>> refs/remotes/origin/dev
 }/*# sourceMappingURL=autors.css.map */
