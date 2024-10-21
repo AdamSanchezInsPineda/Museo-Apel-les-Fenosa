@@ -46,4 +46,18 @@
 
             return $result;
         }
+        function updateVocabulario($params) {
+            $sql = $this -> db->prepare('UPDATE Vocabularios SET codigo = ?, nombre = ? WHERE id = ?');
+
+            $sql->bindParam($params);
+            
+            $sql->execute();
+        }
+        function destroyVocabulario($id){
+            $sql = $this -> db->prepare('UPDATE Vocabularios SET activo = 0 WHERE id = :id');
+
+            $sql->bindParam(':id', $id);
+            
+            $sql->execute();
+        }
     }

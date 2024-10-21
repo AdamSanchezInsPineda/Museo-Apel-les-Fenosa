@@ -72,6 +72,29 @@ class VocabularioController {
         }
     }
 
+    function showLlista($id){
+        session_start();
+        if (!isset($_SESSION['nom'])){
+            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
+        }
+
+        $user = new Usuario();
+
+        $vocabulari = new Vocabulario();
+
+        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
+            case 'admin':
+                $this->render("vocabularios/CampsLlista", ["vocabulari" => $vocabulari.getVocabulario($id)]);
+                break;
+            case 'tecnic':
+                $this->render("vocabularios/showCampsLlista", ["vocabulari" => $vocabulari.getVocabulario($id)]);
+                break;
+            case 'convidat':
+                header('Location: /registers');
+                break;
+        }
+    }
+
     function createLlista(){
         session_start();
         if (!isset($_SESSION['nom'])){

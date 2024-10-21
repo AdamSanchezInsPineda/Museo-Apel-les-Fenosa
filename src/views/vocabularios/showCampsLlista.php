@@ -14,10 +14,10 @@
             <table>
                 <?php
                     if ($_SESSION['rol'] == "admin" |  $_SESSION['rol'] == "tecnic") 
-                        $columns = ["Codi","Vocabulari","Accions"];
+                        $columns = ["Valors","Accions"];
 
                     else
-                        $columns = ["Codi","Vocabulari"];
+                        $columns = ["Valors"];
 
                     echo"<tr>";
 
