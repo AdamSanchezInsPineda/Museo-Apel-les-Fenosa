@@ -47,6 +47,9 @@ CREATE TABLE `Exposiciones` (
   `LugarExposicion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `Exposiciones` (`ExposicionID`, `Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`, `LugarExposicion`) VALUES 
+(2, 'Exposición de arte contemporáneo', '2024-10-01 00:00:00', '2024-10-31 00:00:00 ', 1, 'Museo de Arte Contemporáneo');
+
 -- --------------------------------------------------------
 
 --
