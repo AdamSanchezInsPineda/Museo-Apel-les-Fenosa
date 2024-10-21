@@ -140,6 +140,120 @@ header div img {
   justify-content: space-evenly;
 }
 
+.addBensExposicions header + div {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.addBensExposicions td > a > img {
+  height: 35px;
+  width: 35px;
+}
+.addBensExposicions header + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.addBensExposicions div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+.addBensExposicions table {
+  display: block;
+}
+.addBensExposicions th, .addBensExposicions td {
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 20px;
+}
+.addBensExposicions th {
+  background-color: #61677A;
+  color: #ffffff;
+}
+.addBensExposicions td {
+  background-color: #D8D9DA;
+}
+.addBensExposicions input + a {
+  text-decoration: none;
+  color: #272829;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.addBensExposicions input + a > img {
+  width: 35px;
+  height: 35px;
+  margin-left: 0;
+}
+.addBensExposicions input {
+  background: #D8D9DA;
+  border: 1px #272829 solid;
+  font-size: 18px;
+  background-image: url(/resources/images/lupa.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  padding-left: 35px;
+}
+
+.bensExposicions header + div {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.bensExposicions td > a > img {
+  height: 35px;
+  width: 35px;
+}
+.bensExposicions header + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.bensExposicions div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+.bensExposicions table {
+  display: block;
+}
+.bensExposicions th, .bensExposicions td {
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 20px;
+}
+.bensExposicions th {
+  background-color: #61677A;
+  color: #ffffff;
+}
+.bensExposicions td {
+  background-color: #D8D9DA;
+}
+.bensExposicions input + a {
+  text-decoration: none;
+  color: #272829;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.bensExposicions input + a > img {
+  width: 35px;
+  height: 35px;
+  margin-left: 0;
+}
+.bensExposicions input {
+  background: #D8D9DA;
+  border: 1px #272829 solid;
+  font-size: 18px;
+  background-image: url(/resources/images/lupa.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  padding-left: 35px;
+}
+
 .objects header + div {
   margin-top: 5%;
   display: flex;
@@ -348,6 +462,79 @@ header div img {
   padding-left: 35px;
 }
 
+.exposicions header + div {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.exposicions td > a > img {
+  height: 35px;
+  width: 35px;
+}
+.exposicions header + div > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.exposicions div > div > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5%;
+}
+.exposicions table {
+  display: block;
+}
+.exposicions th, .exposicions td {
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 20px;
+}
+.exposicions th {
+  background-color: #61677A;
+  color: #ffffff;
+}
+.exposicions td {
+  background-color: #D8D9DA;
+}
+.exposicions input + a {
+  text-decoration: none;
+  color: #272829;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.exposicions input + a > img {
+  width: 35px;
+  height: 35px;
+  margin-left: 0;
+}
+.exposicions input {
+  background: #D8D9DA;
+  border: 1px #272829 solid;
+  font-size: 18px;
+  background-image: url(/resources/images/lupa.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0.5rem center;
+  padding-left: 35px;
+}
+.exposicions td {
+  padding: 0 50px;
+}
+.exposicions header + div > div {
+  min-width: 30%;
+}
+.exposicions th {
+  width: 40%;
+}
+.exposicions th + th {
+  width: 30%;
+}
+.exposicions td + td + td + td + td + td {
+  display: flex;
+  align-items: center;
+}
+
 .createCampsLlista header + div {
   margin: 2.5% auto;
   width: 900px;
@@ -376,6 +563,41 @@ header div img {
   padding: 30px;
 }
 .createCampsLlista .submit {
+  width: 100px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
+}
+
+.createExposicions header + div {
+  margin: 2.5% auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+}
+.createExposicions form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createExposicions form label {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+.createExposicions form input {
+  padding-left: 15px;
+}
+.createExposicions form input, .createExposicions form select {
+  display: block;
+  width: 275px;
+  height: 35px;
+  margin-bottom: 25px;
+}
+.createExposicions button.submit {
+  padding: 30px;
+}
+.createExposicions .submit {
   width: 100px;
   background-color: #FFF6E0;
   border-radius: 10px;

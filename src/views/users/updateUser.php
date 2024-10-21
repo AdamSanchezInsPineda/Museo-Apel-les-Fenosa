@@ -32,10 +32,12 @@
                     echo "<option value='admin'>Administració</option>";
                     echo "<option value='tecnic' selected>Tècnic</option>";
                     echo "<option value='convidat'>Convidat</option>";
+                    break;
                 case "convidat":
                     echo "<option value='admin'>Administració</option>";
                     echo "<option value='tecnic'>Tècnic</option>";
                     echo "<option value='convidat' selected>Convidat</option>";
+                    break;
             }
                 
             ?>
