@@ -1,43 +1,11 @@
 <?php
 require_once '../src/model/Usuario.php';
 require_once '../src/model/Exposicio.php';
+require_once '../src/model/Objeto.php';
+
 
 
 class ExposicionsController {
-
-    // function index() {
-    //     session_start();
-        
-    //     if (!isset($_SESSION['nom'])){
-    //         $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-    //     }
-    //         $user = new Usuario();
-    //         $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-    //     if ($state) {
-    //         $exposicio = new Exposicio();              
-    //         $this->render('exposicions', ['exposicions' => $exposicio-> mostrarExposicions()]);
-    //         exit;
-
-    //         switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-    //             case 'admin':
-    //                 $this->render("exposicions");
-    //                 break;
-    //             case 'tecnic':
-    //                 $this->render("exposicions");
-    //                 break;
-    //             case 'convidat':
-    //                 header('Location: /registers');
-    //                 break;
-    //         }
-
-    //     } //else {
-    //         //session_unset();
-    //         //session_destroy();
-    //         //$error = " La sessió no s'ha iniciat ";
-    //         //$this->render("login", ["error"=> $error]);
-    //         //exit;
-    //     //}
-    // }
     function index(){
         session_start();
         if (!isset($_SESSION['nom'])){
@@ -48,17 +16,6 @@ class ExposicionsController {
 
         $exposicio = new Exposicio();
 
-        // switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-        //     case 'admin':
-        //         $this->render("exposicions/exposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
-        //         break;
-        //     case 'tecnic':
-        //         $this->render("exposicions/exposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
-        //         break;
-        //     case 'convidat':
-        //         header('Location: /registers');
-        //         break;
-        // }
         $this->render("exposicions/exposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
 
     
@@ -238,10 +195,8 @@ class ExposicionsController {
             $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
         }
 
-        $user = new Usuario();
-
         $exposicio = new Exposicio();
-
+        $bens = $exposicio->verBens($id);
         // switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
         //     case 'admin':
         //         $this->render("exposicions/bensExposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
@@ -254,7 +209,8 @@ class ExposicionsController {
         //         break;
         // }
 
-        $this->render("exposicions/bensExposicions", ["exposicions" => $exposicio->verBens($id)]);
+        $this->render("exposicions/bensExposicions", ["exposicions" => $bens,
+        "exposicionID" => $id]);
 
 
     }
@@ -262,7 +218,7 @@ class ExposicionsController {
     public function bensAddExposicio(){
         session_start();
         $user = new Usuario();
-        $exposicio = new Exposicio();
+        $objeto = new Objeto();
 
         if (!isset($_SESSION['nom'])){
             $state = false;
@@ -272,7 +228,7 @@ class ExposicionsController {
         }
         if ($state) {
             if ($_SESSION['rol'] != "convidat"){
-                $this->render("exposicions/addBensExposicions", ["exposicions" => $exposicio->getAllObjetos()]);
+                $this->render("exposicions/addBensExposicions", ["objetos" => $objeto->afegirBensObj()]);
             }
             else{
                 //Warning de que no tiene permisos para ejecutar esta orden
@@ -288,50 +244,37 @@ class ExposicionsController {
         }
         exit;
     }
+    
 
-    public function bensCreateExposicio() {
+    public function bensCreateExposicio($exposicionId) {
         session_start();
         $user = new Usuario();
         $exposicio = new Exposicio();
     
-        if (!isset($_SESSION['nom'])) {
-            $state = false;
-        } else {
-            $state = $user->comprovarUsuario($_SESSION['nom'], $_SESSION['password']);
-        }
-    
-        if ($state) {     
-            if ($_SESSION['rol'] != "convidat") {
-                // Comprobar si se recibieron los ObjetoID desde el formulario
-                if (isset($_POST['afegir']) && is_array($_POST['afegir'])) {
-                    // Obtener el ExposicionID, que debe estar definido en la sesión o como un campo oculto en el formulario
-                    $exposicionID = $_SESSION['exposicionID']; // Asegúrate de que este valor esté definido antes de llegar aquí
-    
-                    // Iterar sobre los ObjetoID seleccionados y agregar a la tabla ObjetoExposicion
-                    foreach ($_POST['afegir'] as $objetoID) {
-                        // Llamar a un método en el modelo Exposicio para agregar la relación
-                        $exposicio->afegirBensForm($exposicionID, $objetoID);
-                    }
-    
-                    // Redirigir a la página de exposiciones después de agregar
-                    header('Location: /exposicions');
-                    exit;
-                } else {
-                    // Si no se seleccionó ningún objeto, redirigir o mostrar un mensaje
-                    header('Location: /exposicions');
-                    exit;
-                }
-            } else {
-                // Warning de que no tiene permisos para ejecutar esta orden
-                header('Location: /registers');
-            }
-        } else {
+        if (!isset($_SESSION['nom']) || !$user->comprovarUsuario($_SESSION['nom'], $_SESSION['password'])) {
             session_unset();
             session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error" => $error]);
+            $this->render("login", ["error" => "La sessió no s'ha iniciat"]);
+            exit;
         }
-        exit;
+    
+        if ($_SESSION['rol'] == "convidat") {
+            header('Location: /registers');
+            exit;
+        }
+    
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $objetosSeleccionados = $_POST['objetos'] ?? [];
+            
+            foreach ($objetosSeleccionados as $objetoId) {
+                // Aquí insertas en la tabla ObjetoExposicion
+                $this->$exposicio->insertObjetoExposicion($objetoId, $exposicionId);
+            }
+            
+            // Redirigir o mostrar un mensaje de éxito
+            $this->render("exposicions/bensExposicions", ["exposicions" => $exposicionId]);
+        }
     }
 
     public function bensDeleteExposicio($id) {

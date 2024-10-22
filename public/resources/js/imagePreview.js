@@ -1,13 +1,18 @@
-buttons1 = document.getElementsByClassName("button1");
-buttons2 = document.getElementsByClassName("button2");
-previews = document.getElementsByClassName("img-preview");
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons1 = document.querySelectorAll(".button1");
+    const buttons2 = document.querySelectorAll(".button2");
 
-for (let i = 0; i < buttons1.length; i++) {
-    buttons1[i].addEventListener("click", () => {
-        previews[i].classList.add("active");
+    buttons1.forEach(button => {
+        button.addEventListener("click", function() {
+            const preview = this.nextElementSibling;
+            preview.classList.add("active");
+        });
     });
 
-    buttons2[i].addEventListener("click", () => {
-        previews[i].classList.remove("active");
+    buttons2.forEach(button => {
+        button.addEventListener("click", function() {
+            const preview = this.closest('.img-preview');
+            preview.classList.remove("active");
+        });
     });
-}
+});

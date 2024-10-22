@@ -67,16 +67,6 @@
         }
 
 
-        function getAllObjetos() {
-            
-            $sql = $this -> db->prepare('SELECT ObjetoID, RegistroNº, Imagen, Nombre, Titulo, AutorID, DatacionID, UbicacionActualID FROM Objetos');
-            
-            $sql->execute();
-            
-            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-            return $result;
-        }
 
 
         function eliminarObjetoExposicion($id) {
@@ -87,9 +77,9 @@
             $sql->execute();
         }
 
-        function afegirBensForm($exposicion, $objeto ){
-            $sql = $this -> db->prepare('INSERT INTO `ObjetoExposicion` (`ExposicionID`, `ObjetoID`) VALUES (:exposicionID, :objetoID)');
-                    $sql->execute([$exposicion, $objeto ]);
+        function insertObjetoExposicion($exposicionID, $objetoID) {
+            $sql = $this->db->prepare('INSERT INTO ObjetoExposicion (ExposicionID, ObjetoID) VALUES (?, ?)');
+            return $sql->execute([$exposicionID, $objetoID]);
         }
         
     }

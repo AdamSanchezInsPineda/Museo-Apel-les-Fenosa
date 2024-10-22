@@ -1,25 +1,18 @@
 <?php
     include "resources/components/header.php";
+    
 ?> 
 <body class = "bensExposicions">    
     <div>
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <?php
-                    if ($_SESSION['rol'] == "admin" ){
-                        $exposicio = $exposicions[0]; // Usa el primer elemento de la lista
-                        $uri = explode('/', $_SERVER['REQUEST_URI']);
-                        array_pop($uri);
-                        array_pop($uri);
-                        $base_url = implode('/', $uri);
-                        
-                        echo "<a href='" . $base_url . "/" . $exposicio['ExposicionID'] . "/bens/add'>Afegir bens patrimonials<img src='./resources/images/plus.png' alt='Afegir exposició'></a>";                
-                    }?>
+                <a href="/exposicions/<?php echo $exposicionID ?>/bens/add">Afegir bens patrimonials<img src='/resources/images/plus.png' alt='Afegir exposició'></a>
             </div>
+            <?php if (!empty($exposicions)): ?>
             <table>
                 <?php
-
+                print_r($exposicions);
                     if ($_SESSION['rol'] == "admin")
                         $columns = ["Nº","Objecte","Treure"];                  
 
@@ -43,7 +36,7 @@
                             if ($_SESSION['rol'] == "admin"){
                                 echo "<td>";
                                 if(isset($exposicio['ObjetoExposicionID'])){
-                                    echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicio['ObjetoExposicionID']}/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
+                                    echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicio['ObjetoExposicionID']}/delete'><img src='/resources/images/accions/delete.png' alt='Borrar'></a>";
                                 }
                                 echo "</td>";
                             }
@@ -51,6 +44,9 @@
                     }
                 ?>
             </table>
+            <?php else: ?>
+                <p>No hi ha bens associats a aquesta exposició.</p>
+            <?php endif; ?>
         </div>
     </div>
     <!--Scripts-->

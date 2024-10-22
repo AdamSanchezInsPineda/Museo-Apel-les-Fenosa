@@ -20,4 +20,14 @@
 
             return $result;
         }
+        function afegirBensObj() {
+            
+            $sql = $this -> db->prepare('SELECT ObjetoID, RegistroNº, Imagen, Nombre, Titulo, AutorID, DatacionID, UbicacionActualID FROM Objetos');
+            
+            $sql->execute();
+            
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
     }
