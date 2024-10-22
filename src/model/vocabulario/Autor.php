@@ -1,6 +1,6 @@
 <?php
 
-require_once "../src/model/Database.php";
+require_once __DIR__."../src/model/Database.php";
 
 class Autor extends Database
 {
