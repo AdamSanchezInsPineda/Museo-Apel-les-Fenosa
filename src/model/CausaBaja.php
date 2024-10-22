@@ -2,7 +2,7 @@
 
 require_once "../src/model/Database.php";
 
-class Autor extends Database
+class CausaBaja extends Database
 {
     private $db;
 
@@ -11,45 +11,45 @@ class Autor extends Database
         $this->db = $this->connection();
     }
 
-    function getAllAutors()
+    function getAllCausaBajas()
     {
-        $sql = $this->db->prepare('SELECT * FROM Autor');
+        $sql = $this->db->prepare('SELECT * FROM CausaBaja');
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function getAutor($id)
+    function getCausaBaja($id)
     {
-        $sql = $this->db->prepare('SELECT * FROM Autor WHERE id = :id');
+        $sql = $this->db->prepare('SELECT * FROM CausaBaja WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function addAutor($params)
+    function addCausaBaja($params)
     {
-        $sql = $this->db->prepare('INSERT INTO Autor (Nombre) VALUES (:nombre)');
+        $sql = $this->db->prepare('INSERT INTO CausaBaja (valor) VALUES (:valor)');
         
-        $sql->bindParam(':nombre', $params['Nombre']);
+        $sql->bindParam(':valor', $params['valor']);
         
         $sql->execute();
     }
 
-    function updateAutor($params)
+    function updateCausaBaja($params)
     {
-        $sql = $this->db->prepare('UPDATE Autor SET Nombre = :nombre WHERE id = :id');
+        $sql = $this->db->prepare('UPDATE CausaBaja SET valor = :valor WHERE id = :id');
         
-        $sql->bindParam(':nombre', $params['Nombre']);
+        $sql->bindParam(':valor', $params['valor']);
         $sql->bindParam(':id', $params['id'], PDO::PARAM_INT);
         
         $sql->execute();
     }
 
-    function destroyAutor($id)
+    function destroyCausaBaja($id)
     {
-        $sql = $this->db->prepare('DELETE FROM Autor WHERE id = :id');
+        $sql = $this->db->prepare('DELETE FROM CausaBaja WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
     }
