@@ -55,16 +55,43 @@
 
         function verBens($id){
             $sql = $this -> db->prepare('
-            SELECT o.RegistroNº, o.Nombre 
-            FROM ObjetoExposicion oe 
-            JOIN Objetos o ON oe.ObjetoID = o.ObjetoID 
-            WHERE oe.ExposicionID = :id
-            ');
+                SELECT oe.ObjetoExposicionID, oe.ExposicionID, o.RegistroNº, o.Nombre 
+                FROM ObjetoExposicion oe 
+                JOIN Objetos o ON oe.ObjetoID = o.ObjetoID 
+                WHERE oe.ExposicionID = :id');
             $sql->bindParam(':id', $id);
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $result;
+            
         }
+
+
+        function getAllObjetos() {
+            
+            $sql = $this -> db->prepare('SELECT ObjetoID, RegistroNº, Imagen, Nombre, Titulo, AutorID, DatacionID, UbicacionActualID FROM Objetos');
+            
+            $sql->execute();
+            
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
+
+
+        function eliminarObjetoExposicion($id) {
+            $sql = $this -> db->prepare('DELETE FROM ObjetoExposicion WHERE ObjetoExposicionID = :id');
+            
+            $sql->bindParam(':id', $id);
+
+            $sql->execute();
+        }
+
+        function afegirBensForm($exposicion, $objeto ){
+            $sql = $this -> db->prepare('INSERT INTO `ObjetoExposicion` (`ExposicionID`, `ObjetoID`) VALUES (:exposicionID, :objetoID)');
+                    $sql->execute([$exposicion, $objeto ]);
+        }
+        
     }
 //
 //

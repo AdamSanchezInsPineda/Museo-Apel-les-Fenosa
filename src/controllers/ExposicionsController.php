@@ -259,6 +259,118 @@ class ExposicionsController {
 
     }
 
+    public function bensAddExposicio(){
+        session_start();
+        $user = new Usuario();
+        $exposicio = new Exposicio();
+
+        if (!isset($_SESSION['nom'])){
+            $state = false;
+        }
+        else{
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+        }
+        if ($state) {
+            if ($_SESSION['rol'] != "convidat"){
+                $this->render("exposicions/addBensExposicions", ["exposicions" => $exposicio->getAllObjetos()]);
+            }
+            else{
+                //Warning de que no tiene permisos para ejecutar esta orden
+                header('Location: /registers');
+            }     
+            
+        } 
+        else {
+            session_unset();
+            session_destroy();
+            $error = " La sessió no s'ha iniciat ";
+            $this->render("login", ["error"=> $error]);
+        }
+        exit;
+    }
+
+    public function bensCreateExposicio() {
+        session_start();
+        $user = new Usuario();
+        $exposicio = new Exposicio();
+    
+        if (!isset($_SESSION['nom'])) {
+            $state = false;
+        } else {
+            $state = $user->comprovarUsuario($_SESSION['nom'], $_SESSION['password']);
+        }
+    
+        if ($state) {     
+            if ($_SESSION['rol'] != "convidat") {
+                // Comprobar si se recibieron los ObjetoID desde el formulario
+                if (isset($_POST['afegir']) && is_array($_POST['afegir'])) {
+                    // Obtener el ExposicionID, que debe estar definido en la sesión o como un campo oculto en el formulario
+                    $exposicionID = $_SESSION['exposicionID']; // Asegúrate de que este valor esté definido antes de llegar aquí
+    
+                    // Iterar sobre los ObjetoID seleccionados y agregar a la tabla ObjetoExposicion
+                    foreach ($_POST['afegir'] as $objetoID) {
+                        // Llamar a un método en el modelo Exposicio para agregar la relación
+                        $exposicio->afegirBensForm($exposicionID, $objetoID);
+                    }
+    
+                    // Redirigir a la página de exposiciones después de agregar
+                    header('Location: /exposicions');
+                    exit;
+                } else {
+                    // Si no se seleccionó ningún objeto, redirigir o mostrar un mensaje
+                    header('Location: /exposicions');
+                    exit;
+                }
+            } else {
+                // Warning de que no tiene permisos para ejecutar esta orden
+                header('Location: /registers');
+            }
+        } else {
+            session_unset();
+            session_destroy();
+            $error = " La sessió no s'ha iniciat ";
+            $this->render("login", ["error" => $error]);
+        }
+        exit;
+    }
+
+    public function bensDeleteExposicio($id) {
+        session_start();
+        $user = new Usuario();
+        $exposicio = new Exposicio();
+
+        if (!isset($_SESSION['nom'])){
+            $state = false;
+        }
+        else{
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+        }
+        
+            if ($state) {
+                if ($id != 1){         
+                    if ($_SESSION['rol'] == "admin"){
+                        $exposicio->eliminarObjetoExposicion($id);
+                        header('Location: /exposicions');
+                    }
+                    else{
+                        //Warning de que no tiene permisos para ejecutar esta orden
+                        header('Location: /registers');
+                    }
+                }
+                else{
+                    //Warning de que no tiene permisos para ejecutar esta orden
+                    header('Location: /users');
+                }
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);  
+            }
+            exit;
+    }
+
 
     private function render($view, $data = []) {
         extract($data);

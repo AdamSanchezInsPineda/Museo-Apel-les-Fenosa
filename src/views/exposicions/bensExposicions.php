@@ -7,11 +7,15 @@
             <div>
                 <input type="text" placeholder="Cercar">
                 <?php
-                    if ($_SESSION['rol'] == "admin"){
-                        echo "<a href='exposicions/{$exposicio['ExposicionID']}/bens/add'>Afegir bens patrimonials<img src='resources/images/plus.png' alt='Afegir exposició'></a>";
-                    }
-                ?>
-                
+                    if ($_SESSION['rol'] == "admin" ){
+                        $exposicio = $exposicions[0]; // Usa el primer elemento de la lista
+                        $uri = explode('/', $_SERVER['REQUEST_URI']);
+                        array_pop($uri);
+                        array_pop($uri);
+                        $base_url = implode('/', $uri);
+                        
+                        echo "<a href='" . $base_url . "/" . $exposicio['ExposicionID'] . "/bens/add'>Afegir bens patrimonials<img src='./resources/images/plus.png' alt='Afegir exposició'></a>";                
+                    }?>
             </div>
             <table>
                 <?php
@@ -32,14 +36,15 @@
                     foreach ($exposicions as $exposicio) {
                         echo "<tr>";
                             foreach ($exposicio as $key => $dato){
-                                if ($key != "ExposicionID"){
+                                if ($key != "ExposicionID" && $key != "ObjetoExposicionID" ){
                                     echo "<td>{$dato}</td>";
                                 }
                             }
                             if ($_SESSION['rol'] == "admin"){
                                 echo "<td>";
-                                echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicioObjeto['ObjetoExposicionID']}/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
-
+                                if(isset($exposicio['ObjetoExposicionID'])){
+                                    echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicio['ObjetoExposicionID']}/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
+                                }
                                 echo "</td>";
                             }
                         echo"</tr>";
@@ -54,3 +59,4 @@
     include "resources/components/footer.php";
     ?>
 </body>
+
