@@ -12,17 +12,22 @@
         }
         function getAllObjetos() {
             
-            $sql = $this -> db->prepare('SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo,
+            $sql = $this -> db->prepare('SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo,
                                                     a.Nombre as Autor,
                                                     u.Nombre as Ubicacion,
                                                     d.descripcion as Datacion 
                                                 FROM Objetos o
                                                 LEFT JOIN Autors a ON o.AutorID = a.AutorID
                                                 LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
-                                                LEFT JOIN Datacion d ON o.DatacionID = d.id
-                                                WHERE o.RegistroNº LIKE %'. $q .'% OR o.Imagen LIKE %'. $q .'% OR
-                                                o.Nombre LIKE %'. $q .'% OR o.Titulo LIKE %'. $q .'% OR 
-                                                a.Nombre LIKE % '. $q .' % OR u.Nombre LIKE % '. $q .' % OR d.descripcion');
+                                                LEFT JOIN Datacion d ON o.DatacionID = d.id');
+
+                                                // WHERE o.RegistroNº LIKE %'
+                                                //. $q .'% OR o.Imagen LIKE %'
+                                                //. $q .'% OR o.Nombre LIKE %'
+                                                // . $q .'% OR o.Titulo LIKE %'
+                                                // . $q .'% OR a.Nombre LIKE % '
+                                                // . $q .'% OR u.Nombre LIKE % '
+                                                // . $q .'% OR d.descripcion
             
             $sql->execute();
             
@@ -32,8 +37,22 @@
         }
         function afegirBensObj() {
             
-            $sql = $this -> db->prepare('SELECT ObjetoID, RegistroNº, Imagen, Nombre, Titulo, AutorID, DatacionID, UbicacionActualID FROM Objetos');
-            
+                                            $sql = $this -> db->prepare('SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo,
+                                            a.Nombre as Autor,
+                                            u.Nombre as Ubicacion,
+                                            d.descripcion as Datacion 
+                                                FROM Objetos o
+                                                LEFT JOIN Autors a ON o.AutorID = a.AutorID
+                                                LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
+                                                LEFT JOIN Datacion d ON o.DatacionID = d.id');
+
+                                                // WHERE o.RegistroNº LIKE %'
+                                                //. $q .'% OR o.Imagen LIKE %'
+                                                //. $q .'% OR o.Nombre LIKE %'
+                                                // . $q .'% OR o.Titulo LIKE %'
+                                                // . $q .'% OR a.Nombre LIKE % '
+                                                // . $q .'% OR u.Nombre LIKE % '
+                                                // . $q .'% OR d.descripcion            
             $sql->execute();
             
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);

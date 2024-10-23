@@ -3,12 +3,12 @@
 ?> 
 <body class = "addBensExposicions">  
     <div>
-    <form method="POST" action="/exposicions/<?php echo $exposicionId; ?>/bens/create">
+    <form method="POST" action="/exposicions/<?php echo $exposicions; ?>/bens/create">
 
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="/exposicions/<?php echo $exposicionId; ?>/bens">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
+                <a href="/exposicions/<?php echo $exposicions; ?>/bens">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
             <table>
                 <?php
@@ -22,9 +22,6 @@
                     foreach ($objetos as $objeto) {
                         echo "<tr>";
                             foreach ($objeto as $key => $dato){
-                                if ($key != "ExposicionID" | $key != "ObjetoID"){
-                                    echo "<td>{$dato}</td>";
-                                }
                                 if ($key == "Imagen") {
                                     echo "<td><img src='resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}' class='button1'></td>";
                                     echo "<div class='img-preview'>";
@@ -35,15 +32,15 @@
                                 else{
                                     echo "<td>{$dato}</td>";
                                 }
-                            }if($key == "ObjetoID"){
+                            }
                             echo "<td><input type='checkbox' name='afegir[]' value='{$dato}'></td>";
                             echo"</tr>";
-                        }
                     }
+                    
                 ?>
             </table>
         </div>
-        <button type="submit" class="submit">Añadir objetos seleccionados</button>
+        <button type="submit" class="submit"><a href="/exposicions/<?php echo $exposicions; ?>/bens">Añadir objetos seleccionados</a></button>
     </form>
     </div>
     
