@@ -50,7 +50,7 @@
             }
             if ($state) {   
                 if ($_SESSION['rol'] != "convidat"){
-                    $this->render('users/users', ['usuarios' => $user->mostrarUsuarios()]);
+                    $this->render('users/users');
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
@@ -65,6 +65,18 @@
                 $this->render("login", ["error"=> $error]);
             }
             exit;
+        }
+
+        public function searchDef($found = "") {
+            session_start();
+            $user = new Usuario();
+            exit(json_encode([$user->mostrarUsuarios($found), $_SESSION['rol']]));
+        }
+
+        public function search($found) {
+            session_start();
+            $user = new Usuario();
+            exit(json_encode([$user->mostrarUsuarios($found), $_SESSION['rol']]));
         }
 
         public function createView() {

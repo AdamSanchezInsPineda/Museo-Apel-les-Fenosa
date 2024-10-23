@@ -29,6 +29,10 @@ $router->get('/registers/{obra}/delete', 'ObjetoController@delete');
 //Users
 $router->get('/users', 'UsuarioController@table');
 
+$router->get('/users/search', 'UsuarioController@searchDef');
+
+$router->get('/users/search/{found}', 'UsuarioController@search');
+
 $router->get('/users/add', 'UsuarioController@createView');
 
 $router->post('/users/create', 'UsuarioController@create');

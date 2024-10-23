@@ -37,12 +37,22 @@
             return $result[0]['Rol'];
         }
 
-        function mostrarUsuarios() {
-            $sql = $this -> db->prepare('SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID != 1');
-
-            $sql->execute();
-            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+        function mostrarUsuarios($found) {
+            try {
+                $where= ($found == "") ? "" : " AND (Nombre LIKE '%' :found '%' OR Rol LIKE '%' :found '%')";
+                $sql = $this->db->prepare("SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID != 1 $where");
+        
+                if ($found != "") {
+                    $sql->bindParam(':found', $found);
+                }
+        
+                $sql->execute();
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
+                
+            } catch (PDOException $e) {
+                return "An error occurred: " . $e->getMessage();
+            }
         }
 
         function crearUsuario($nombre, $password, $rol){
