@@ -2,39 +2,51 @@
     include "resources/components/header.php";
 ?> 
 <body class = "addBensExposicions">  
-<form method="POST" action="/exposicions/<?php echo $exposicionId; ?>/bens/create">
-    <table>
-        <thead>
-            <tr>
-                <th>Registro Nº</th>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Datación</th>
-                <th>Ubicación</th>
-                <th>Seleccionar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($objetos as $objeto): ?>
-                <tr>
-                    <td><?php echo $objeto['RegistroNº']; ?></td>
-                    <td><img src="<?php echo $objeto['Imagen']; ?>" alt="Imagen del objeto" style="width: 50px; height: 50px;"></td>
-                    <td><?php echo $objeto['Nombre']; ?></td>
-                    <td><?php echo $objeto['Titulo']; ?></td>
-                    <td><?php echo $objeto['Autor']; ?></td>
-                    <td><?php echo $objeto['Datacion']; ?></td>
-                    <td><?php echo $objeto['Ubicacion']; ?></td>
-                    <td>
-                        <input type="checkbox" name="objetos[]" value="<?php echo $objeto['ObjetoID']; ?>">
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <input type="submit" value="Añadir objetos seleccionados">
-</form>
+    <div>
+    <form method="POST" action="/exposicions/<?php echo $exposicionId; ?>/bens/create">
+
+        <div>
+            <div>
+                <input type="text" placeholder="Cercar">
+                <a href="/exposicions/<?php echo $exposicionId; ?>/bens">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
+            </div>
+            <table>
+                <?php
+                    $columns = ["Nº","Imatge","Objecte","Títol","Autor","Datació","Ubicació","Afegir"];
+                    echo"<tr>";
+
+                    foreach ($columns as $column)
+                        echo "<th>{$column}</th>";
+
+                    echo"</tr>";
+                    foreach ($objetos as $objeto) {
+                        echo "<tr>";
+                            foreach ($objeto as $key => $dato){
+                                if ($key != "ExposicionID" | $key != "ObjetoID"){
+                                    echo "<td>{$dato}</td>";
+                                }
+                                if ($key == "Imagen") {
+                                    echo "<td><img src='resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}' class='button1'></td>";
+                                    echo "<div class='img-preview'>";
+                                        echo "<button class='button2'>Salir</button>";
+                                        echo "<img src='resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}'>";
+                                    echo "</div>";
+                                }
+                                else{
+                                    echo "<td>{$dato}</td>";
+                                }
+                            }if($key == "ObjetoID"){
+                            echo "<td><input type='checkbox' name='afegir[]' value='{$dato}'></td>";
+                            echo"</tr>";
+                        }
+                    }
+                ?>
+            </table>
+        </div>
+        <button type="submit" class="submit">Añadir objetos seleccionados</button>
+    </form>
+    </div>
+    
     <!--Scripts-->
     <script src="/resources/js/imagePreview.js"></script>
     <script src="/resources/js/delete.js"></script>
