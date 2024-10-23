@@ -1,10 +1,10 @@
 <?php
 
-require_once '../src/Router.php';
-require_once '../src/controllers/UsuarioController.php';
-require_once '../src/controllers/ObjetoController.php';
-require_once '../src/controllers/VocabularioController.php';
-require_once '../src/controllers/ExposicionsController.php';
+require_once __DIR__.'/../src/Router.php';
+require_once __DIR__.'/../src/controllers/UsuarioController.php';
+require_once __DIR__.'/../src/controllers/ObjetoController.php';
+require_once __DIR__.'/../src/controllers/ExposicionsController.php';
+require_once __DIR__.'/../Autoload.php';
 
 
 $router = new Router();

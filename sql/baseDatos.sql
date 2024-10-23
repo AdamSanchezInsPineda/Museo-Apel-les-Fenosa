@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Oct 16, 2024 at 08:26 AM
+-- Generation Time: Oct 21, 2024 at 09:51 AM
 -- Server version: 8.1.0
 -- PHP Version: 8.2.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `museu`
+-- Database: `museo`
 --
 
 -- --------------------------------------------------------
@@ -35,6 +35,283 @@ CREATE TABLE `Autors` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Baja`
+--
+
+CREATE TABLE `Baja` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Baja`
+--
+
+INSERT INTO `Baja` (`id`, `valor`) VALUES
+(1, 'No'),
+(2, 'Sí');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CausaBaja`
+--
+
+CREATE TABLE `CausaBaja` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `CausaBaja`
+--
+
+INSERT INTO `CausaBaja` (`id`, `valor`) VALUES
+(1, 'Confiscació'),
+(2, 'Destrucció'),
+(3, 'Estat de conservació molt deficient'),
+(4, 'Manteniment i restauració onerós'),
+(5, 'Pèrdua'),
+(6, 'Robatori'),
+(7, 'Successió interadministrativa'),
+(8, 'Valor patrimonial insuficient');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Classificacion`
+--
+
+CREATE TABLE `Classificacion` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CodigoGetty`
+--
+
+CREATE TABLE `CodigoGetty` (
+  `id` int NOT NULL,
+  `tipo` enum('autor','material','tecnica') COLLATE utf8mb4_general_ci NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Datacion`
+--
+
+CREATE TABLE `Datacion` (
+  `id` int NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `any_inicial` int NOT NULL,
+  `any_final` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Datacion`
+--
+
+INSERT INTO `Datacion` (`id`, `descripcion`, `any_inicial`, `any_final`) VALUES
+(1, 'segle IV ante', -400, -301),
+(2, 'primera meitat segle IV ante', -400, -351),
+(3, 'primer quart segle IV ante', -400, -376),
+(4, 'segon quart segle IV ante', -375, -351),
+(5, 'segona meitat segle IV ante', -350, -301),
+(6, 'tercer quart segle IV ante', -350, -326),
+(7, 'últim quart segle IV ante', -325, -301),
+(8, 'segle III ante', -300, -201),
+(9, 'primera meitat segle III ante', -300, -251),
+(10, 'primer quart segle III ante', -300, -276),
+(11, 'segon quart segle III ante', -275, -251),
+(12, 'segona meitat segle III ante', -250, -201),
+(13, 'tercer quart segle III ante', -250, -226),
+(14, 'últim quart segle III ante', -225, -201),
+(15, 'segle II ante', -200, -101),
+(16, 'primera meitat segle II ante', -200, -151),
+(17, 'primer quart segle II ante', -200, -176),
+(18, 'segon quart segle II ante', -175, -151),
+(19, 'segona meitat segle II ante', -150, -101),
+(20, 'tercer quart segle II ante', -150, -126),
+(21, 'últim quart segle II ante', -125, -101),
+(22, 'segle I ante', -100, -1),
+(23, 'primera meitat segle I ante', -100, -51),
+(24, 'primer quart segle I ante', -100, -76),
+(25, 'segon quart segle I ante', -75, -51),
+(26, 'segona meitat segle I ante', -50, -1),
+(27, 'tercer quart segle I ante', -50, -26),
+(28, 'últim quart segle I ante', -25, -1),
+(29, 'segle I', 1, 100),
+(30, 'primera meitat segle I', 1, 50),
+(31, 'primer quart segle I', 1, 25),
+(32, 'segon quart segle I', 26, 50),
+(33, 'segona meitat segle I', 51, 100),
+(34, 'tercer quart segle I', 51, 75),
+(35, 'últim quart segle I', 76, 100),
+(36, 'segle II', 101, 200),
+(37, 'primera meitat segle II', 101, 150),
+(38, 'primer quart segle II', 101, 125),
+(39, 'segon quart segle II', 126, 150),
+(40, 'segona meitat segle II', 151, 200),
+(41, 'tercer quart segle II', 151, 175),
+(42, 'últim quart segle II', 176, 200),
+(43, 'segle III', 201, 300),
+(44, 'primera meitat segle III', 201, 250),
+(45, 'primer quart segle III', 201, 225),
+(46, 'segon quart segle III', 226, 250),
+(47, 'segona meitat segle III', 251, 300),
+(48, 'tercer quart segle III', 251, 275),
+(49, 'últim quart segle III', 276, 300),
+(50, 'segle IV', 301, 400),
+(51, 'primera meitat segle IV', 301, 350),
+(52, 'primer quart segle IV', 301, 325),
+(53, 'segon quart segle IV', 326, 350),
+(54, 'segona meitat segle IV', 351, 400),
+(55, 'tercer quart segle IV', 351, 375),
+(56, 'últim quart segle IV', 376, 400),
+(57, 'segle V', 401, 500),
+(58, 'primera meitat segle V', 401, 450),
+(59, 'primer quart segle V', 401, 425),
+(60, 'segon quart segle V', 426, 450),
+(61, 'segona meitat segle V', 451, 500),
+(62, 'tercer quart segle V', 451, 475),
+(63, 'últim quart segle V', 476, 500),
+(64, 'segle VI', 501, 600),
+(65, 'primera meitat segle VI', 501, 550),
+(66, 'primer quart segle VI', 501, 525),
+(67, 'segon quart segle VI', 526, 550),
+(68, 'segona meitat segle VI', 551, 600),
+(69, 'tercer quart segle VI', 551, 575),
+(70, 'últim quart segle VI', 576, 600),
+(71, 'segle VII', 601, 700),
+(72, 'primera meitat segle VII', 601, 650),
+(73, 'primer quart segle VII', 601, 625),
+(74, 'segon quart segle VII', 626, 650),
+(75, 'segona meitat segle VII', 651, 700),
+(76, 'tercer quart segle VII', 651, 675),
+(77, 'últim quart segle VII', 676, 700),
+(78, 'segle VIII', 701, 800),
+(79, 'primera meitat segle VIII', 701, 750),
+(80, 'primer quart segle VIII', 701, 725),
+(81, 'segon quart segle VIII', 726, 750),
+(82, 'segona meitat segle VIII', 751, 800),
+(83, 'tercer quart segle VIII', 751, 775),
+(84, 'últim quart segle VIII', 776, 800),
+(85, 'segle IX', 801, 900),
+(86, 'primera meitat segle IX', 801, 850),
+(87, 'primer quart segle IX', 801, 825),
+(88, 'segon quart segle IX', 826, 850),
+(89, 'segona meitat segle IX', 851, 900),
+(90, 'tercer quart segle IX', 851, 875),
+(91, 'últim quart segle IX', 876, 900),
+(92, 'segle X', 901, 1000),
+(93, 'primera meitat segle X', 901, 950),
+(94, 'primer quart segle X', 901, 925),
+(95, 'segon quart segle X', 926, 950),
+(96, 'segona meitat segle X', 951, 1000),
+(97, 'tercer quart segle X', 951, 975),
+(98, 'últim quart segle X', 976, 1000),
+(99, 'segle XI', 1001, 1100),
+(100, 'primera meitat segle XI', 1001, 1050),
+(101, 'primer quart segle XI', 1001, 1025),
+(102, 'segon quart segle XI', 1026, 1050),
+(103, 'segona meitat segle XI', 1051, 1100),
+(104, 'tercer quart segle XI', 1051, 1075),
+(105, 'últim quart segle XI', 1076, 1100),
+(106, 'segle XII', 1101, 1200),
+(107, 'primera meitat segle XII', 1101, 1150),
+(108, 'primer quart segle XII', 1101, 1125),
+(109, 'segon quart segle XII', 1126, 1150),
+(110, 'segona meitat segle XII', 1151, 1200),
+(111, 'tercer quart segle XII', 1151, 1175),
+(112, 'últim quart segle XII', 1176, 1200),
+(113, 'segle XIII', 1201, 1300),
+(114, 'primera meitat segle XIII', 1201, 1250),
+(115, 'primer quart segle XIII', 1201, 1225),
+(116, 'segon quart segle XIII', 1226, 1250),
+(117, 'segona meitat segle XIII', 1251, 1300),
+(118, 'tercer quart segle XIII', 1251, 1275),
+(119, 'últim quart segle XIII', 1276, 1300),
+(120, 'segle XIV', 1301, 1400),
+(121, 'primera meitat segle XIV', 1301, 1350),
+(122, 'primer quart segle XIV', 1301, 1325),
+(123, 'segon quart segle XIV', 1326, 1350),
+(124, 'segona meitat segle XIV', 1351, 1400),
+(125, 'tercer quart segle XIV', 1351, 1375),
+(126, 'últim quart segle XIV', 1376, 1400),
+(127, 'segle XV', 1401, 1500),
+(128, 'primera meitat segle XV', 1401, 1450),
+(129, 'primer quart segle XV', 1401, 1425),
+(130, 'segon quart segle XV', 1426, 1450),
+(131, 'segona meitat segle XV', 1451, 1500),
+(132, 'tercer quart segle XV', 1451, 1475),
+(133, 'últim quart segle XV', 1476, 1500),
+(134, 'segle XVI', 1501, 1600),
+(135, 'primera meitat segle XVI', 1501, 1550),
+(136, 'primer quart segle XVI', 1501, 1525),
+(137, 'segon quart segle XVI', 1526, 1550),
+(138, 'segona meitat segle XVI', 1551, 1600),
+(139, 'tercer quart segle XVI', 1551, 1575),
+(140, 'últim quart segle XVI', 1576, 1600),
+(141, 'segle XVII', 1601, 1700),
+(142, 'primera meitat segle XVII', 1601, 1650),
+(143, 'primer quart segle XVII', 1601, 1625),
+(144, 'segon quart segle XVII', 1626, 1650),
+(145, 'segona meitat segle XVII', 1651, 1700),
+(146, 'tercer quart segle XVII', 1651, 1675),
+(147, 'últim quart segle XVII', 1676, 1700),
+(148, 'segle XVIII', 1701, 1800),
+(149, 'primera meitat segle XVIII', 1701, 1750),
+(150, 'primer quart segle XVIII', 1701, 1725),
+(151, 'segon quart segle XVIII', 1726, 1750),
+(152, 'segona meitat segle XVIII', 1751, 1800),
+(153, 'tercer quart segle XVIII', 1751, 1775),
+(154, 'últim quart segle XVIII', 1776, 1800),
+(155, 'segle XIX', 1801, 1900),
+(156, 'primera meitat segle XIX', 1801, 1850),
+(157, 'primer quart segle XIX', 1801, 1825),
+(158, 'segon quart segle XIX', 1826, 1850),
+(159, 'segona meitat segle XIX', 1851, 1900),
+(160, 'tercer quart segle XIX', 1851, 1875),
+(161, 'últim quart segle XIX', 1876, 1900),
+(162, 'segle XX', 1901, 2000),
+(163, 'primera meitat segle XX', 1901, 1950),
+(164, 'primer quart segle XX', 1901, 1925),
+(165, 'segon quart segle XX', 1926, 1950),
+(166, 'segona meitat segle XX', 1951, 2000),
+(167, 'tercer quart segle XX', 1951, 1975),
+(168, 'últim quart segle XX', 1976, 2000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `EstadoConservacion`
+--
+
+CREATE TABLE `EstadoConservacion` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `EstadoConservacion`
+--
+
+INSERT INTO `EstadoConservacion` (`id`, `valor`) VALUES
+(1, 'Bo'),
+(2, 'Dolent'),
+(3, 'Excel·lent'),
+(4, 'Indeterminat'),
+(5, 'desconeguda'),
+(6, 'Regular');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Exposiciones`
 --
 
@@ -44,11 +321,65 @@ CREATE TABLE `Exposiciones` (
   `FechaInicio` datetime DEFAULT NULL,
   `FechaFin` datetime DEFAULT NULL,
   `TipoExposicionID` int NOT NULL,
-  `LugarExposicion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `LugarExposicion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Activo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `Exposiciones` (`ExposicionID`, `Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`, `LugarExposicion`) VALUES 
-(2, 'Exposición de arte contemporáneo', '2024-10-01 00:00:00', '2024-10-31 00:00:00 ', 1, 'Museo de Arte Contemporáneo');
+--
+-- Dumping data for table `Exposiciones`
+--
+
+INSERT INTO `Exposiciones` (`ExposicionID`, `Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`, `LugarExposicion`, `Activo`) VALUES
+(2, 'Exposición de arte contemporáneo', '2024-10-01 00:00:00', '2024-10-31 00:00:00', 1, 'Museo de Arte Contemporáneo', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `FormaIngreso`
+--
+
+CREATE TABLE `FormaIngreso` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `FormaIngreso`
+--
+
+INSERT INTO `FormaIngreso` (`id`, `valor`) VALUES
+(1, 'cessió'),
+(2, 'comodat'),
+(3, 'compra'),
+(4, 'dació'),
+(5, 'desconeguda'),
+(6, 'dipòsit'),
+(7, 'donació'),
+(8, 'entrega obligatòria'),
+(9, 'excavació'),
+(10, 'expropiació'),
+(11, 'herència'),
+(12, 'intercanvi'),
+(13, 'llegat'),
+(14, 'ocupació'),
+(15, 'ofrena'),
+(16, 'permuta'),
+(17, 'premi'),
+(18, 'propietat directa'),
+(19, 'recol.lecció'),
+(20, 'recuperació'),
+(21, 'successió interadministrativa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Material`
+--
+
+CREATE TABLE `Material` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -74,6 +405,9 @@ CREATE TABLE `ObjetoExposicion` (
   `ExposicionID` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+INSERT INTO  `ObjetoExposicion` (`ObjetoExposicionID`, `ObjetoID`,  `ExposicionID`) VALUES 
+(1, null, 2);
 -- --------------------------------------------------------
 
 --
@@ -125,13 +459,13 @@ CREATE TABLE `Objetos` (
 
 CREATE TABLE `ObjetosPrueba` (
   `ObjetoID` int NOT NULL,
-  `Registro` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `Imagen` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `Titulo` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `Autor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `Datacio` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `Ubicacio` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `Registro` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Titulo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Autor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Datacio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Ubicacio` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -161,6 +495,36 @@ CREATE TABLE `Restauraciones` (
   `ComentarioRestauracion` text COLLATE utf8mb4_general_ci,
   `NombreRestaurador` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Tecnica`
+--
+
+CREATE TABLE `Tecnica` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `TiposExposicion`
+--
+
+CREATE TABLE `TiposExposicion` (
+  `id` int NOT NULL,
+  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `TiposExposicion`
+--
+
+INSERT INTO `TiposExposicion` (`id`, `valor`) VALUES
+(1, 'Aliena'),
+(2, 'Pròpia');
 
 -- --------------------------------------------------------
 
@@ -197,7 +561,7 @@ CREATE TABLE `UbicacionObjeto` (
 
 CREATE TABLE `Usuarios` (
   `UsuarioID` int NOT NULL,
-  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL UNIQUE,
+  `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Contraseña` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Rol` enum('admin','tecnic','convidat') COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -208,634 +572,6 @@ CREATE TABLE `Usuarios` (
 
 INSERT INTO `Usuarios` (`UsuarioID`, `Nombre`, `Contraseña`, `Rol`) VALUES
 (1, 'admin', '1234', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Vocabularios`
---
-
-CREATE TABLE `Vocabularios` (
-  `id` int NOT NULL,
-  `nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `descripcion` text COLLATE utf8mb4_general_ci,
-  `padre_id` int DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Vocabularios`
---
-
-INSERT INTO `Vocabularios` (`nombre`, `descripcion`, `padre_id`) VALUES
-('classificacio', 'Classificació genèrica', NULL),
-('material', 'Material', NULL),
-('codi_material', 'Codi Getty material', NULL),
-('tecnica', 'Tècnica', NULL),
-('codi_tecnica', 'Codi Getty tècnica', NULL),
-('codi_autor', 'Codi autor', NULL),
-('forma_ingres', 'Forma d\'ingrés', NULL),
-('baixa', 'Baixa', NULL),
-('causa_baixa', 'Causa de baixa', NULL),
-('estat_conservacio', 'Estat de conservació', NULL),
-('tipus_exposicio', 'Tipus exposició', NULL),
-('datacio', 'Datació', NULL),
-('any_inici', 'Any d\'inici', 12),
-('any_final', 'Any final', 12);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Vocabulario_valores`
---
-
-CREATE TABLE `Vocabulario_valores` (
-  `id` int NOT NULL,
-  `vocabulario_id` int DEFAULT NULL,
-  `valor` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO `Vocabulario_valores` (`vocabulario_id`, `valor`) VALUES
-(7, 'cessió'),
-(7, 'comodat'),
-(7, 'compra'),
-(7, 'dació'),
-(7, 'desconeguda'),
-(7, 'dipòsit'),
-(7, 'donació'),
-(7, 'entrega obligatòria'),
-(7, 'excavació'),
-(7, 'expropiació'),
-(7, 'herència'),
-(7, 'intercanvi'),
-(7, 'llegat'),
-(7, 'ocupació'),
-(7, 'ofrena'),
-(7, 'permuta'),
-(7, 'premi'),
-(7, 'propietat directa'),
-(7, 'recol.lecció'),
-(7, 'recuperació'),
-(7, 'successió interadministrativa');
-
--- Inserts para Baixa (vocabulario_id = 8)
-INSERT INTO `Vocabulario_valores` (`vocabulario_id`, `valor`) VALUES
-(8, 'No'),
-(8, 'Sí');
-
--- Inserts para Causa de baixa (vocabulario_id = 9)
-INSERT INTO `Vocabulario_valores` (`vocabulario_id`, `valor`) VALUES
-(9, 'Confiscació'),
-(9, 'Destrucció'),
-(9, 'Estat de conservació molt deficient'),
-(9, 'Manteniment i restauració onerós'),
-(9, 'Pèrdua'),
-(9, 'Robatori'),
-(9, 'Successió interadministrativa'),
-(9, 'Valor patrimonial insuficient');
-
--- Inserts para Estat de conservació (vocabulario_id = 10)
-INSERT INTO `Vocabulario_valores` (`vocabulario_id`, `valor`) VALUES
-(10, 'Bo'),
-(10, 'Dolent'),
-(10, 'Excel·lent'),
-(10, 'Indeterminat'),
-(10, 'desconeguda'),
-(10, 'Regular');
-
--- Inserts para Tipus exposició (vocabulario_id = 11)
-INSERT INTO `Vocabulario_valores` (`vocabulario_id`, `valor`) VALUES
-(11, 'Aliena'),
-(11, 'Pròpia');
-
--- Inserts para Datació (vocabulario_id = 12), Any d'inici (vocabulario_id = 13) y Any final (vocabulario_id = 14)
--- Estas son solo algunas de las entradas representativas de los muchos valores
-INSERT INTO `Vocabulario_valores` (`vocabulario_id`, `valor`) VALUES
-(12, 'segle IV ante'),
-(13, '-400'),
-(14, '-301'),
-(12, 'primera meitat segle IV ante'),
-(13, '-400'),
-(14, '-351'),
-(12, 'primer quart segle IV ante'),
-(13, '-400'),
-(14, '-376'),
-(12, 'segon quart segle IV ante'),
-(13, '-375'),
-(14, '-351'),
-(12, 'segona meitat segle IV ante'),
-(13, '-350'),
-(14, '-301'),
-(12, 'tercer quart segle IV ante'),
-(13, '-350'),
-(14, '-326'),
-(12, 'últim quart segle IV ante'),
-(13, '-325'),
-(14, '-301'),
-(12, 'segle III ante'),
-(13, '-300'),
-(14, '-201'),
-(12, 'primera meitat segle III ante'),
-(13, '-300'),
-(14, '-251'),
-(12, 'primer quart segle III ante'),
-(13, '-300'),
-(14, '-276'),
-(12, 'segon quart segle III ante'),
-(13, '-275'),
-(14, '-251'),
-(12, 'segona meitat segle III ante'),
-(13, '-250'),
-(14, '-201'),
-(12, 'tercer quart segle III ante'),
-(13, '-250'),
-(14, '-226'),
-(12, 'últim quart segle III ante'),
-(13, '-225'),
-(14, '-201'),
-(12, 'segle II ante'),
-(13, '-200'),
-(14, '-101'),
-(12, 'primera meitat segle II ante'),
-(13, '-200'),
-(14, '-151'),
-(12, 'primer quart segle II ante'),
-(13, '-200'),
-(14, '-176'),
-(12, 'segon quart segle II ante'),
-(13, '-175'),
-(14, '-151'),
-(12, 'segona meitat segle II ante'),
-(13, '-150'),
-(14, '-101'),
-(12, 'tercer quart segle II ante'),
-(13, '-150'),
-(14, '-126'),
-(12, 'últim quart segle II ante'),
-(13, '-125'),
-(14, '-101'),
-(12, 'segle I ante'),
-(13, '-100'),
-(14, '-1'),
-(12, 'primera meitat segle I ante'),
-(13, '-100'),
-(14, '-51'),
-(12, 'primer quart segle I ante'),
-(13, '-100'),
-(14, '-76'),
-(12, 'segon quart segle I ante'),
-(13, '-75'),
-(14, '-51'),
-(12, 'segona meitat segle I ante'),
-(13, '-50'),
-(14, '-1'),
-(12, 'tercer quart segle I ante'),
-(13, '-50'),
-(14, '-26'),
-(12, 'últim quart segle I ante'),
-(13, '-25'),
-(14, '-1'),
-(12, 'segle I'),
-(13, '1'),
-(14, '100'),
-(12, 'primera meitat segle I'),
-(13, '1'),
-(14, '50'),
-(12, 'primer quart segle I'),
-(13, '1'),
-(14, '25'),
-(12, 'segon quart segle I'),
-(13, '26'),
-(14, '50'),
-(12, 'segona meitat segle I'),
-(13, '51'),
-(14, '100'),
-(12, 'tercer quart segle I'),
-(13, '51'),
-(14, '75'),
-(12, 'últim quart segle I'),
-(13, '76'),
-(14, '100'),
-(12, 'segle II'),
-(13, '101'),
-(14, '200'),
-(12, 'primera meitat segle II'),
-(13, '101'),
-(14, '150'),
-(12, 'primer quart segle II'),
-(13, '101'),
-(14, '125'),
-(12, 'segon quart segle II'),
-(13, '126'),
-(14, '150'),
-(12, 'segona meitat segle II'),
-(13, '151'),
-(14, '200'),
-(12, 'tercer quart segle II'),
-(13, '151'),
-(14, '175'),
-(12, 'últim quart segle II'),
-(13, '176'),
-(14, '200'),
-(12, 'segle III'),
-(13, '201'),
-(14, '300'),
-(12, 'primera meitat segle III'),
-(13, '201'),
-(14, '250'),
-(12, 'primer quart segle III'),
-(13, '201'),
-(14, '225'),
-(12, 'segon quart segle III'),
-(13, '226'),
-(14, '250'),
-(12, 'segona meitat segle III'),
-(13, '251'),
-(14, '300'),
-(12, 'tercer quart segle III'),
-(13, '251'),
-(14, '275'),
-(12, 'últim quart segle III'),
-(13, '276'),
-(14, '300'),
-(12, 'segle IV'),
-(13, '301'),
-(14, '400'),
-(12, 'primera meitat segle IV'),
-(13, '301'),
-(14, '350'),
-(12, 'primer quart segle IV'),
-(13, '301'),
-(14, '325'),
-(12, 'segon quart segle IV'),
-(13, '326'),
-(14, '350'),
-(12, 'segona meitat segle IV'),
-(13, '351'),
-(14, '400'),
-(12, 'tercer quart segle IV'),
-(13, '351'),
-(14, '375'),
-(12, 'últim quart segle IV'),
-(13, '376'),
-(14, '400'),
-(12, 'segle V'),
-(13, '401'),
-(14, '500'),
-(12, 'primera meitat segle V'),
-(13, '401'),
-(14, '450'),
-(12, 'primer quart segle V'),
-(13, '401'),
-(14, '425'),
-(12, 'segon quart segle V'),
-(13, '426'),
-(14, '450'),
-(12, 'segona meitat segle V'),
-(13, '451'),
-(14, '500'),
-(12, 'tercer quart segle V'),
-(13, '451'),
-(14, '475'),
-(12, 'últim quart segle V'),
-(13, '476'),
-(14, '500'),
-(12, 'segle VI'),
-(13, '501'),
-(14, '600'),
-(12, 'primera meitat segle VI'),
-(13, '501'),
-(14, '550'),
-(12, 'primer quart segle VI'),
-(13, '501'),
-(14, '525'),
-(12, 'segon quart segle VI'),
-(13, '526'),
-(14, '550'),
-(12, 'segona meitat segle VI'),
-(13, '551'),
-(14, '600'),
-(12, 'tercer quart segle VI'),
-(13, '551'),
-(14, '575'),
-(12, 'últim quart segle VI'),
-(13, '576'),
-(14, '600'),
-(12, 'segle VII'),
-(13, '601'),
-(14, '700'),
-(12, 'primera meitat segle VII'),
-(13, '601'),
-(14, '650'),
-(12, 'primer quart segle VII'),
-(13, '601'),
-(14, '625'),
-(12, 'segon quart segle VII'),
-(13, '626'),
-(14, '650'),
-(12, 'segona meitat segle VII'),
-(13, '651'),
-(14, '700'),
-(12, 'tercer quart segle VII'),
-(13, '651'),
-(14, '675'),
-(12, 'últim quart segle VII'),
-(13, '676'),
-(14, '700'),
-(12, 'segle VIII'),
-(13, '701'),
-(14, '800'),
-(12, 'primera meitat segle VIII'),
-(13, '701'),
-(14, '750'),
-(12, 'primer quart segle VIII'),
-(13, '701'),
-(14, '725'),
-(12, 'segon quart segle VIII'),
-(13, '726'),
-(14, '750'),
-(12, 'segona meitat segle VIII'),
-(13, '751'),
-(14, '800'),
-(12, 'tercer quart segle VIII'),
-(13, '751'),
-(14, '775'),
-(12, 'últim quart segle VIII'),
-(13, '776'),
-(14, '800'),
-(12, 'segle IX'),
-(13, '801'),
-(14, '900'),
-(12, 'primera meitat segle IX'),
-(13, '801'),
-(14, '850'),
-(12, 'primer quart segle IX'),
-(13, '801'),
-(14, '825'),
-(12, 'segon quart segle IX'),
-(13, '826'),
-(14, '850'),
-(12, 'segona meitat segle IX'),
-(13, '851'),
-(14, '900'),
-(12, 'tercer quart segle IX'),
-(13, '851'),
-(14, '875'),
-(12, 'últim quart segle IX'),
-(13, '876'),
-(14, '900'),
-(12, 'segle X'),
-(13, '901'),
-(14, '1000'),
-(12, 'primera meitat segle X'),
-(13, '901'),
-(14, '950'),
-(12, 'primer quart segle X'),
-(13, '901'),
-(14, '925'),
-(12, 'segon quart segle X'),
-(13, '926'),
-(14, '950'),
-(12, 'segona meitat segle X'),
-(13, '951'),
-(14, '1000'),
-(12, 'tercer quart segle X'),
-(13, '951'),
-(14, '975'),
-(12, 'últim quart segle X'),
-(13, '976'),
-(14, '1000'),
-(12, 'segle XI'),
-(13, '1001'),
-(14, '1100'),
-(12, 'primera meitat segle XI'),
-(13, '1001'),
-(14, '1050'),
-(12, 'primer quart segle XI'),
-(13, '1001'),
-(14, '1025'),
-(12, 'segon quart segle XI'),
-(13, '1026'),
-(14, '1050'),
-(12, 'segona meitat segle XI'),
-(13, '1051'),
-(14, '1100'),
-(12, 'tercer quart segle XI'),
-(13, '1051'),
-(14, '1075'),
-(12, 'últim quart segle XI'),
-(13, '1076'),
-(14, '1100'),
-(12, 'segle XII'),
-(13, '1101'),
-(14, '1200'),
-(12, 'primera meitat segle XII'),
-(13, '1101'),
-(14, '1150'),
-(12, 'primer quart segle XII'),
-(13, '1101'),
-(14, '1125'),
-(12, 'segon quart segle XII'),
-(13, '1126'),
-(14, '1150'),
-(12, 'segona meitat segle XII'),
-(13, '1151'),
-(14, '1200'),
-(12, 'tercer quart segle XII'),
-(13, '1151'),
-(14, '1175'),
-(12, 'últim quart segle XII'),
-(13, '1176'),
-(14, '1200'),
-(12, 'segle XIII'),
-(13, '1201'),
-(14, '1300'),
-(12, 'primera meitat segle XIII'),
-(13, '1201'),
-(14, '1250'),
-(12, 'primer quart segle XIII'),
-(13, '1201'),
-(14, '1225'),
-(12, 'segon quart segle XIII'),
-(13, '1226'),
-(14, '1250'),
-(12, 'segona meitat segle XIII'),
-(13, '1251'),
-(14, '1300'),
-(12, 'tercer quart segle XIII'),
-(13, '1251'),
-(14, '1275'),
-(12, 'últim quart segle XIII'),
-(13, '1276'),
-(14, '1300'),
-(12, 'segle XIV'),
-(13, '1301'),
-(14, '1400'),
-(12, 'primera meitat segle XIV'),
-(13, '1301'),
-(14, '1350'),
-(12, 'primer quart segle XIV'),
-(13, '1301'),
-(14, '1325'),
-(12, 'segon quart segle XIV'),
-(13, '1326'),
-(14, '1350'),
-(12, 'segona meitat segle XIV'),
-(13, '1351'),
-(14, '1400'),
-(12, 'tercer quart segle XIV'),
-(13, '1351'),
-(14, '1375'),
-(12, 'últim quart segle XIV'),
-(13, '1376'),
-(14, '1400'),
-(12, 'segle XV'),
-(13, '1401'),
-(14, '1500'),
-(12, 'primera meitat segle XV'),
-(13, '1401'),
-(14, '1450'),
-(12, 'primer quart segle XV'),
-(13, '1401'),
-(14, '1425'),
-(12, 'segon quart segle XV'),
-(13, '1426'),
-(14, '1450'),
-(12, 'segona meitat segle XV'),
-(13, '1451'),
-(14, '1500'),
-(12, 'tercer quart segle XV'),
-(13, '1451'),
-(14, '1475'),
-(12, 'últim quart segle XV'),
-(13, '1476'),
-(14, '1500'),
-(12, 'segle XVI'),
-(13, '1501'),
-(14, '1600'),
-(12, 'primera meitat segle XVI'),
-(13, '1501'),
-(14, '1550'),
-(12, 'primer quart segle XVI'),
-(13, '1501'),
-(14, '1525'),
-(12, 'segon quart segle XVI'),
-(13, '1526'),
-(14, '1550'),
-(12, 'segona meitat segle XVI'),
-(13, '1551'),
-(14, '1600'),
-(12, 'tercer quart segle XVI'),
-(13, '1551'),
-(14, '1575'),
-(12, 'últim quart segle XVI'),
-(13, '1576'),
-(14, '1600'),
-(12, 'segle XVII'),
-(13, '1601'),
-(14, '1700'),
-(12, 'primera meitat segle XVII'),
-(13, '1601'),
-(14, '1650'),
-(12, 'primer quart segle XVII'),
-(13, '1601'),
-(14, '1625'),
-(12, 'segon quart segle XVII'),
-(13, '1626'),
-(14, '1650'),
-(12, 'segona meitat segle XVII'),
-(13, '1651'),
-(14, '1700'),
-(12, 'tercer quart segle XVII'),
-(13, '1651'),
-(14, '1675'),
-(12, 'últim quart segle XVII'),
-(13, '1676'),
-(14, '1700'),
-(12, 'segle XVIII'),
-(13, '1701'),
-(14, '1800'),
-(12, 'primera meitat segle XVIII'),
-(13, '1701'),
-(14, '1750'),
-(12, 'primer quart segle XVIII'),
-(13, '1701'),
-(14, '1725'),
-(12, 'segon quart segle XVIII'),
-(13, '1726'),
-(14, '1750'),
-(12, 'segona meitat segle XVIII'),
-(13, '1751'),
-(14, '1800'),
-(12, 'tercer quart segle XVIII'),
-(13, '1751'),
-(14, '1775'),
-(12, 'últim quart segle XVIII'),
-(13, '1776'),
-(14, '1800'),
-(12, 'segle XIX'),
-(13, '1801'),
-(14, '1900'),
-(12, 'primera meitat segle XIX'),
-(13, '1801'),
-(14, '1850'),
-(12, 'primer quart segle XIX'),
-(13, '1801'),
-(14, '1825'),
-(12, 'segon quart segle XIX'),
-(13, '1826'),
-(14, '1850'),
-(12, 'segona meitat segle XIX'),
-(13, '1851'),
-(14, '1900'),
-(12, 'tercer quart segle XIX'),
-(13, '1851'),
-(14, '1875'),
-(12, 'últim quart segle XIX'),
-(13, '1876'),
-(14, '1900'),
-(12, 'segle XX'),
-(13, '1901'),
-(14, '2000'),
-(12, 'primera meitat segle XX'),
-(13, '1901'),
-(14, '1950'),
-(12, 'primer quart segle XX'),
-(13, '1901'),
-(14, '1925'),
-(12, 'segon quart segle XX'),
-(13, '1926'),
-(14, '1950'),
-(12, 'segona meitat segle XX'),
-(13, '1951'),
-(14, '2000'),
-(12, 'tercer quart segle XX'),
-(13, '1951'),
-(14, '1975'),
-(12, 'últim quart segle XX'),
-(13, '1976'),
-(14, '2000'),
-(12, 'segle XXI'),
-(13, '2001'),
-(14, '2100'),
-(12, 'primera meitat segle XXI'),
-(13, '2001'),
-(14, '2050'),
-(12, 'primer quart segle XXI'),
-(13, '2001'),
-(14, '2025'),
-(12, 'segon quart segle XXI'),
-(13, '2026'),
-(14, '2050'),
-(12, 'segona meitat segle XXI'),
-(13, '2051'),
-(14, '2100'),
-(12, 'tercer quart segle XXI'),
-(13, '2051'),
-(14, '2075'),
-(12, 'últim quart segle XXI'),
-(13, '2076'),
-(14, '2100');
 
 --
 -- Indexes for dumped tables
@@ -848,10 +584,59 @@ ALTER TABLE `Autors`
   ADD PRIMARY KEY (`AutorID`);
 
 --
+-- Indexes for table `Baja`
+--
+ALTER TABLE `Baja`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `CausaBaja`
+--
+ALTER TABLE `CausaBaja`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Classificacion`
+--
+ALTER TABLE `Classificacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `CodigoGetty`
+--
+ALTER TABLE `CodigoGetty`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Datacion`
+--
+ALTER TABLE `Datacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `EstadoConservacion`
+--
+ALTER TABLE `EstadoConservacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Exposiciones`
 --
 ALTER TABLE `Exposiciones`
-  ADD PRIMARY KEY (`ExposicionID`);
+  ADD PRIMARY KEY (`ExposicionID`),
+  ADD KEY `TipoExposicionID` (`TipoExposicionID`);
+
+--
+-- Indexes for table `FormaIngreso`
+--
+ALTER TABLE `FormaIngreso`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Material`
+--
+ALTER TABLE `Material`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `Museos`
@@ -885,17 +670,23 @@ ALTER TABLE `Objetos`
   ADD KEY `Objetos_ibfk_11` (`FormaIngresoID`);
 
 --
--- Indexes for table `ObjetosPrueba`
---
-ALTER TABLE `ObjetosPrueba`
-  ADD PRIMARY KEY (`ObjetoID`);
-
---
 -- Indexes for table `Restauraciones`
 --
 ALTER TABLE `Restauraciones`
   ADD PRIMARY KEY (`RestauracionID`),
   ADD KEY `Restauraciones_ibfk_1` (`ObjetoID`);
+
+--
+-- Indexes for table `Tecnica`
+--
+ALTER TABLE `Tecnica`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `TiposExposicion`
+--
+ALTER TABLE `TiposExposicion`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `Ubicaciones`
@@ -919,19 +710,6 @@ ALTER TABLE `Usuarios`
   ADD PRIMARY KEY (`UsuarioID`);
 
 --
--- Indexes for table `Vocabularios`
---
-ALTER TABLE `Vocabularios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `padre_id` (`padre_id`);
---
--- Indexes for table `Vocabulario_valores`
---
-ALTER TABLE `Vocabulario_valores`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `vocabulario_id` (`vocabulario_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -942,10 +720,58 @@ ALTER TABLE `Autors`
   MODIFY `AutorID` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `Baja`
+--
+ALTER TABLE `Baja`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `CausaBaja`
+--
+ALTER TABLE `CausaBaja`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `Classificacion`
+--
+ALTER TABLE `Classificacion`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `CodigoGetty`
+--
+ALTER TABLE `CodigoGetty`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Datacion`
+--
+ALTER TABLE `Datacion`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+
+--
+-- AUTO_INCREMENT for table `EstadoConservacion`
+--
+ALTER TABLE `EstadoConservacion`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `Exposiciones`
 --
 ALTER TABLE `Exposiciones`
-  MODIFY `ExposicionID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `ExposicionID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `FormaIngreso`
+--
+ALTER TABLE `FormaIngreso`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `Material`
+--
+ALTER TABLE `Material`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Museos`
@@ -966,16 +792,22 @@ ALTER TABLE `Objetos`
   MODIFY `ObjetoID` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ObjetosPrueba`
---
-ALTER TABLE `ObjetosPrueba`
-  MODIFY `ObjetoID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `Restauraciones`
 --
 ALTER TABLE `Restauraciones`
   MODIFY `RestauracionID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Tecnica`
+--
+ALTER TABLE `Tecnica`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `TiposExposicion`
+--
+ALTER TABLE `TiposExposicion`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Ubicaciones`
@@ -996,20 +828,14 @@ ALTER TABLE `Usuarios`
   MODIFY `UsuarioID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `Vocabularios`
---
-ALTER TABLE `Vocabularios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `Vocabulario_valores`
---
-ALTER TABLE `Vocabulario_valores`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `Exposiciones`
+--
+ALTER TABLE `Exposiciones`
+  ADD CONSTRAINT `Exposiciones_ibfk_1` FOREIGN KEY (`TipoExposicionID`) REFERENCES `TiposExposicion` (`id`);
 
 --
 -- Constraints for table `ObjetoExposicion`
@@ -1022,17 +848,17 @@ ALTER TABLE `ObjetoExposicion`
 -- Constraints for table `Objetos`
 --
 ALTER TABLE `Objetos`
-  ADD CONSTRAINT `Objetos_ibfk_1` FOREIGN KEY (`ClasificacionGenericaID`) REFERENCES `Vocabulario_valores` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_10` FOREIGN KEY (`CausaBajaID`) REFERENCES `Vocabulario_valores` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_11` FOREIGN KEY (`FormaIngresoID`) REFERENCES `Vocabulario_valores` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `Vocabulario_valores` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_3` FOREIGN KEY (`TecnicaID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_1` FOREIGN KEY (`ClasificacionGenericaID`) REFERENCES `Classificacion` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_10` FOREIGN KEY (`CausaBajaID`) REFERENCES `CausaBaja` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_11` FOREIGN KEY (`FormaIngresoID`) REFERENCES `FormaIngreso` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `Material` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_3` FOREIGN KEY (`TecnicaID`) REFERENCES `Tecnica` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_4` FOREIGN KEY (`AutorID`) REFERENCES `Autors` (`AutorID`),
   ADD CONSTRAINT `Objetos_ibfk_5` FOREIGN KEY (`UbicacionActualID`) REFERENCES `Ubicaciones` (`UbicacionID`),
-  ADD CONSTRAINT `Objetos_ibfk_6` FOREIGN KEY (`EstadoConservacionID`) REFERENCES `Vocabulario_valores` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_6` FOREIGN KEY (`EstadoConservacionID`) REFERENCES `EstadoConservacion` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_7` FOREIGN KEY (`MuseoID`) REFERENCES `Museos` (`MuseoID`),
-  ADD CONSTRAINT `Objetos_ibfk_8` FOREIGN KEY (`DatacionID`) REFERENCES `Vocabulario_valores` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_9` FOREIGN KEY (`BajaID`) REFERENCES `Vocabulario_valores` (`id`);
+  ADD CONSTRAINT `Objetos_ibfk_8` FOREIGN KEY (`DatacionID`) REFERENCES `Datacion` (`id`),
+  ADD CONSTRAINT `Objetos_ibfk_9` FOREIGN KEY (`BajaID`) REFERENCES `Baja` (`id`);
 
 --
 -- Constraints for table `Restauraciones`
@@ -1052,15 +878,6 @@ ALTER TABLE `Ubicaciones`
 ALTER TABLE `UbicacionObjeto`
   ADD CONSTRAINT `UbicacionObjeto_ibfk_1` FOREIGN KEY (`UbicacionID`) REFERENCES `Ubicaciones` (`UbicacionID`),
   ADD CONSTRAINT `UbicacionObjeto_ibfk_2` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
-
-ALTER TABLE `Vocabularios`
-  ADD CONSTRAINT `Vocabularios_ibfk_1` FOREIGN KEY (`padre_id`) REFERENCES `Vocabularios` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `Vocabulario_valores`
---
-ALTER TABLE `Vocabulario_valores`
-  ADD CONSTRAINT `Vocabulario_valores_ibfk_1` FOREIGN KEY (`vocabulario_id`) REFERENCES `Vocabularios` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,6 +12,7 @@
             <label for="Nom">Nom</label>
             <input type="text" id="Nom" name="Nom" required>
         </div>
+        <div>
             <label for="Lloc">Lloc</label>
             <input type="text" id="Lloc" name="Lloc" required>
         </div>
@@ -28,9 +29,9 @@
         <div>
             <label for="Tipus">Tipus</label>
             <select name="Tipus" id="Tipus">
-                <option value="admin">Administració</option>
-                <option value="tecnic">Tècnic</option>
-                <option value="convidat">Convidat</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
             </select>
         </div>
         
