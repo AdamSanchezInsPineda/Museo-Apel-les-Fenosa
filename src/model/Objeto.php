@@ -21,13 +21,13 @@
                                                 LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
                                                 LEFT JOIN Datacion d ON o.DatacionID = d.id');
 
-                                                // WHERE o.RegistroNº LIKE %'
-                                                //. $q .'% OR o.Imagen LIKE %'
-                                                //. $q .'% OR o.Nombre LIKE %'
-                                                // . $q .'% OR o.Titulo LIKE %'
-                                                // . $q .'% OR a.Nombre LIKE % '
-                                                // . $q .'% OR u.Nombre LIKE % '
-                                                // . $q .'% OR d.descripcion
+                                                // WHERE o.RegistroNº LIKE %' . :found .'% OR
+                                                // o.Imagen LIKE %' . :found .'% OR 
+                                                // o.Nombre LIKE %' . :found .'% OR
+                                                // o.Titulo LIKE %' . $q .'% OR
+                                                // a.Nombre LIKE %' . $q .'% OR
+                                                // u.Nombre LIKE %' . $q .'% OR
+                                                // d.descripcion LIKE %' . $q . '%
             
             $sql->execute();
             

@@ -39,8 +39,7 @@ class ObjetoController {
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
-        if ($state) {
-            $objeto = new Objeto();              
+        if ($state) {          
             $this->render('objects/createObject');
             exit;
 

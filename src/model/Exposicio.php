@@ -83,39 +83,3 @@
         }
         
     }
-//
-//
-//
-//
-//
-    //     function crearUsuario($nombre, $password, $rol){
-            
-    //         $sql = $this -> db->prepare('INSERT INTO `Usuarios` (`Nombre`, `Contraseña`, `Rol`) VALUES (?, ?, ?)');
-
-    //         $sql->execute([$nombre, $password, $rol]);
-    //     }
-        
-    //     function updateViewUsuario($id) {
-    //         $sql = $this -> db->prepare('SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID = :id');
-
-    //         $sql->bindParam(':id', $id);
-    //         $sql->execute();
-    //         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-    //         return $result;
-    //     }
-
-    //     function updateUsuario($nombre, $contraseña, $rol, $id) {
-            
-    //         $sql = $this -> db->prepare('UPDATE Usuarios SET Nombre = ?, Contraseña = ?, Rol = ? WHERE UsuarioID = ?');
-
-    //         $sql->execute([$nombre, $contraseña, $rol, $id]);
-    //     }
-
-    //     function eliminarUsuario($id) {
-    //         $sql = $this -> db->prepare('DELETE FROM Usuarios WHERE UsuarioID = :id');
-            
-    //         $sql->bindParam(':id', $id);
-
-    //         $sql->execute();
-    //     }
-    // }
