@@ -880,6 +880,10 @@ ALTER TABLE `UbicacionObjeto`
   ADD CONSTRAINT `UbicacionObjeto_ibfk_2` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
 COMMIT;
 
+INSERT INTO `Objetos` (`ObjetoID`, `RegistroNº`, `Imagen`, `Nombre`, `ClasificacionGenericaID`, `ColeccionProcedencia`, `Altura`, `Anchura`, `Profundidad`, `MaterialID`, `TecnicaID`, `AutorID`, `Titulo`, `DatacionID`, `UbicacionActualID`, `FechaRegistro`, `NumeroEjemplares`, `FormaIngresoID`, `FechaIngreso`, `FuenteIngreso`, `BajaID`, `CausaBajaID`, `FechaBaja`, `PersonaAutorizadaBaja`, `EstadoConservacionID`, `LugarEjecucion`, `LugarProcedencia`, `NumeroTiraje`, `OtrosNrosIdentificacion`, `ValoracionEconomica`, `Bibliografia`, `Descripcion`, `HistoriaObjeto`, `MuseoID`) VALUES
+(1, '12345R', '1', 'Prueba', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'blablabla', 3, 1, '2024-10-21 14:50:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
