@@ -19,11 +19,11 @@
 
         <div>
             <label for="Data_Inicial">Data Inicial</label>
-            <input type="text" id="Data_Inicial" name="Data_Inicial" value="<?php echo $exposicio[0]['FechaInicio']?>" required>
+            <input type="datetime-local" id="Data_Inicial" name="Data_Inicial" value="<?php echo $exposicio[0]['FechaInicio']?>" required>
         </div>
         <div>
             <label for="Data_Final">Data Final</label>
-            <input type="text" id="Data_Final" name="Data_Final" value="<?php echo $exposicio[0]['FechaFin']?>" required>
+            <input type="datetime-local" id="Data_Final" name="Data_Final" value="<?php echo $exposicio[0]['FechaFin']?>" required>
         </div>
 
         <div>
