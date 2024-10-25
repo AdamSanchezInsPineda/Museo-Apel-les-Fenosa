@@ -4,13 +4,6 @@ require_once __DIR__."/../Database.php";
 
 class Classificacion extends Database
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->connection();
-    }
-
     function getAllClassificacions()
     {
         $sql = $this->db->prepare('SELECT * FROM Classificacion');

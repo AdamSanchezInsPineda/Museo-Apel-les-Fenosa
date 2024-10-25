@@ -4,13 +4,6 @@ require_once __DIR__."/../Database.php";
 
 class Material extends Database
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->connection();
-    }
-
     function getAllMaterials()
     {
         $sql = $this->db->prepare('SELECT * FROM Material');

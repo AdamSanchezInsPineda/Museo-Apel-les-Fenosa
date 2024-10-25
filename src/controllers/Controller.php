@@ -8,7 +8,6 @@ class Controller {
     public function __construct()
     {
         session_start();
-        $this->checkSession();
         $this->user = new Usuario();
     }
 
@@ -22,9 +21,8 @@ class Controller {
 
     protected function checkReadRole(array $allowedRoles)
     {
-        $role = $this->user->rolUsuario($_SESSION['nom'], $_SESSION['password']);
-        
-        if (!in_array($role, $allowedRoles)) {
+        $this->checkSession();
+        if (!in_array($_SESSION['rol'], $allowedRoles)) {
             header('Location: /registers');
             exit;
         }
@@ -32,9 +30,8 @@ class Controller {
 
     protected function checkWriteRole(array $allowedRoles)
     {
-        $role = $this->user->rolUsuario($_SESSION['nom'], $_SESSION['password']);
-        
-        if (!in_array($role, $allowedRoles)) {
+        $this->checkSession();
+        if (!in_array($_SESSION['rol'], $allowedRoles)) {
             header('Location: /registers');
             exit;
         }
@@ -44,7 +41,6 @@ class Controller {
     {
         extract($data);
         $viewFile = "../src/views/$view.php";
-
         if (file_exists($viewFile)) {
             require $viewFile;
         } else {
