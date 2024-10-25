@@ -4,15 +4,6 @@
 
     class Exposicio extends Database
     {
-        private $db;
-        
-        public function __construct()
-        {
-            $this -> db = $this -> connection();
-        }
-        
-
-
         function mostrarExposicions() {
             $sql = $this -> db->prepare('
             SELECT 

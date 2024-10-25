@@ -1,153 +1,83 @@
 <?php
 
-require_once '../src/model/Usuario.php';
 require_once '../src/model/Vocabulario.php';
+require_once 'Controller.php';
 
-class VocabularioController {
+class VocabularioController extends Controller {
+    private $vocabularis;
 
-    function index(){
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
-        $user = new Usuario();
-
-        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'admin':
-                $this->render("vocabularios/indexVocabulario");
-                break;
-            case 'tecnic':
-                $this->render("vocabularios/indexVocabulario");
-                break;
-            case 'convidat':
-                header('Location: /registers');
-                break;
-        }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->vocabularis = new Vocabulario();
     }
 
-    function indexLlistas(){
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
-        $user = new Usuario();
-
-        $vocabularis = new Vocabulario();
-
-        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'admin':
-                $this->render("vocabularios/campsLlista", ["vocabularis" => $vocabularis->getAllVocabularios()]);
-                break;
-            case 'tecnic':
-                $this->render("vocabularios/campsLlista", ["vocabularis" => $vocabularis->getAllVocabularios()]);
-                break;
-            case 'convidat':
-                header('Location: /registers');
-                break;
-        }
+    public function indexVocabulario()
+    {
+        $this->checkReadRole(['admin']); // Permiso de lectura para admins
+        $vocabularisList = [
+            "Autors" => "autor",
+            "Baixes" => "baja",
+            "Causa de la baixa" => "causaBaja",
+            "Classificació genèrica" => "classificacion",
+            "Codi Getty" => "codigoGetty",
+            "Datació" => "datacion",
+            "Estat Conservació" => "estadoConservacion",
+            "Forma d'Ingrés" => "formaIngreso",
+            "Materials" => "material",
+            "Tècnica" => "tecnica",
+            "Tipus Exposició" => "tiposExposicion"
+        ];
+        
+        $this->render("vocabularios/indexVocabulario", ["vocabularis" => $vocabularisList]);
     }
 
-    function newLlista(){
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
-        $user = new Usuario();
-
-        $vocabularis = new Vocabulario();
-
-        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'admin':
-                $this->render("vocabularios/createCampLlista");
-                break;
-            case 'tecnic':
-                $this->render("vocabularios/createCampLlista");
-                break;
-            case 'convidat':
-                header('Location: /registers');
-                break;
-        }
+    public function showVocabulario($path)
+    {
+        $this->checkReadRole(['admin']); // Permiso de lectura
+        $data = $this->vocabularis->getAllFromModel($path);
+        $this->render("vocabularios/campsLlista", ["vocabularis" => $data, "path" => $path]);
     }
 
-    function showLlista($id){
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
-        $user = new Usuario();
-
-        $vocabulari = new Vocabulario();
-
-        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'admin':
-                $this->render("vocabularios/CampsLlista", ["vocabulari" => $vocabulari.getVocabulario($id)]);
-                break;
-            case 'tecnic':
-                $this->render("vocabularios/showCampsLlista", ["vocabulari" => $vocabulari.getVocabulario($id)]);
-                break;
-            case 'convidat':
-                header('Location: /registers');
-                break;
-        }
+    public function newVocabulario($path)
+    {
+        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->render("vocabularios/createCampLlista", ["path" => $path]);
     }
 
-    function createLlista(){
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
-        $user = new Usuario();
-
-        $vocabularis = new Vocabulario();
-
-        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'admin':
-                header("Location: ");
-                break;
-            case 'tecnic':
-                $this->render("vocabularios/createCampLlista");
-                break;
-            case 'convidat':
-                header('Location: /registers');
-                break;
-        }
+    public function createVocabulario($path)
+    {
+        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->vocabularis->addFromModel($path, $_POST);
+        header("Location: /vocabularis/{$path}");
+        exit;
     }
 
-    function indexAutors(){
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
-        $user = new Usuario();
-
-        $autors = new Autor();
-
-        switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-            case 'admin':
-                $this->render("vocabularios/indexVocabulario");
-                break;
-            case 'tecnic':
-                $this->render("vocabularios/indexVocabulario");
-                break;
-            case 'convidat':
-                header('Location: /registers');
-                break;
-        }
+    public function editVocabulario($path, $id)
+    {
+        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->render("/vocabularios/editCampLlista", [
+            "vocabulari" => $this->vocabularis->getFromModel($path, $id),
+            "path" => $path,
+            "id" => $id,
+            "tipo" => ["Autor" => "autor", "Material" => "material", "Tècnica" => "tecnica"]
+        ]);
     }
 
-    private function render($view, $data = []) {
-        extract($data);
-        $viewFile = "../src/views/$view.php";
-        if (file_exists($viewFile)) {
-            require $viewFile;
-        } else {
-            echo "View $view not found.";
-        }
+    public function updateVocabulario($path, $id)
+    {
+        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $_POST["id"] = $id;
+        $this->vocabularis->updateFromModel($path, $_POST);
+        header("Location: /vocabularis/{$path}");
+        exit;
+    }
+
+    public function deleteVocabulario($path, $id)
+    {
+        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->vocabularis->destroyFromModel($path, $id);
+        header("Location: /vocabularis/{$path}");
+        exit;
     }
 }

@@ -4,13 +4,6 @@
 
     class Usuario extends Database
     {
-        private $db;
-        
-        public function __construct()
-        {
-            $this -> db = $this -> connection();
-        }
-        
         function comprovarUsuario($nom,$usuario) {
             
             $sql = $this -> db->prepare('SELECT * FROM Usuarios WHERE Nombre = :nombre AND Contraseña = :password');

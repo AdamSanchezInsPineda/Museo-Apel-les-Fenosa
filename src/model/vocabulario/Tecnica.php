@@ -1,6 +1,6 @@
 <?php
 
-require_once "../src/model/Database.php";
+require_once __DIR__."/../Database.php";
 
 class Tecnica extends Database
 {

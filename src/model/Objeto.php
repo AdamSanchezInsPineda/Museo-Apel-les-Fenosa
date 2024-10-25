@@ -4,12 +4,6 @@
     
     class Objeto extends Database
     {
-        private $db;
-        
-        public function __construct()
-        {
-            $this -> db = $this -> connection();
-        }
         function getAllObjetos() {
             
             $sql = $this -> db->prepare('SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo,
