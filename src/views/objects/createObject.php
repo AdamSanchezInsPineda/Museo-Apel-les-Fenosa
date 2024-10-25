@@ -116,13 +116,13 @@
             <tr>
                 <td>
                     <label for="any_inicial">Any Inicial:</label>
-                    <input type="text" id="any_inicial" name="any_inicial" required>
+                    <input type="text" id="any_inicial" name="any_inicial">
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="any_final">Any Final:</label>
-                    <input type="text" id="any_final" name="any_final" required>
+                    <input type="text" id="any_final" name="any_final">
                 </td>
             </tr>
         </table>
@@ -154,7 +154,7 @@
             <tr>
                 <td>
                     <label for="PersonaAutorizadaBaja">Persona Autorizada Baja:</label>
-                    <input type="text" id="PersonaAutorizadaBaja" name="PersonaAutorizadaBaja" required>
+                    <input type="text" id="PersonaAutorizadaBaja" name="PersonaAutorizadaBaja">
                 </td>
             </tr>
         </table>
@@ -195,12 +195,6 @@
 
         <table>
             <h2>Ingrés</h2>
-            <tr>
-                <td>
-                    <label for="FechaRegistro">Data Registre:</label>
-                    <input type="datetime-local" id="FechaRegistro" name="FechaRegistro">
-                </td>
-            </tr>
             <tr>
                 <td>
                     <label for="FormaIngreso">Forma d'Ingrés:</label>
@@ -272,7 +266,7 @@
             <tr>
                 <td>
                     <label for="Col·lecció">Col·lecció de Procedencia:</label>
-                    <input type="text" id="Col·lecció" name="Col·lecció" required>
+                    <input type="text" id="Col·lecció" name="Col·lecció">
                 </td>
             </tr>
             <tr>
