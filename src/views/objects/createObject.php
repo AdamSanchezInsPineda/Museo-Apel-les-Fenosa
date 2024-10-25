@@ -109,6 +109,14 @@
             </tr>
             <tr>
                 <td>
+                    <label for="Material">Material:</label>
+                    <select name="Material" id="Material">
+                        <!-- Select de valor de Material -->
+                    </select>
+                </td>
+            </tr></tr>
+            <tr>
+                <td>
                     <label for="descripcion">Datació:</label>
                     <input type="text" id="descripcion" name="descripcion" required>
                 </td>
@@ -123,6 +131,14 @@
                 <td>
                     <label for="any_final">Any Final:</label>
                     <input type="text" id="any_final" name="any_final">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Tecnica">Tècnica:</label>
+                    <select name="Tecnica" id="Tecnica">
+                        <!-- Select de valor de Tecnica -->
+                    </select>
                 </td>
             </tr>
         </table>
@@ -332,6 +348,7 @@
                 </td>
             </tr>
         </table>
+        <input type="submit" value="Guardar" class="submit">
     </form>
     <?php
     include "resources/components/footer.php";

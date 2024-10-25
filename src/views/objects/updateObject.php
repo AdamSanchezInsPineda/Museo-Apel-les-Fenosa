@@ -40,7 +40,7 @@
             <tr>
                 <td>
                     <label for="Museos">Museu:</label>
-                    <select name="Museos" id="Museos" value="<?php echo $objeto[0]['m.Nombre']?>" required>
+                    <select name="Museos" id="Museos" value="<?php echo $objeto[0]['mu.Nombre']?>" required>
                         <!-- Select de Nombre de Museos -->
                     </select>
                     <!-- <input type="text" id="Museu" name="Museu" required> -->
@@ -109,6 +109,14 @@
             </tr>
             <tr>
                 <td>
+                    <label for="Material">Material:</label>
+                    <select name="Material" id="Material" value="<?php echo $objeto[0]['m.valor']?>">
+                        <!-- Select de valor de Material -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label for="descripcion">Datació:</label>
                     <input type="text" id="descripcion" name="descripcion" value="<?php echo $objeto[0]['d.descripcion']?>" required>
                 </td>
@@ -123,6 +131,14 @@
                 <td>
                     <label for="any_final">Any Final:</label>
                     <input type="text" id="any_final" name="any_final" value="<?php echo $objeto[0]['d.any_final']?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Tecnica">Tècnica:</label>
+                    <select name="Tecnica" id="Tecnica" value="<?php echo $objeto[0]['t.valor']?>">
+                        <!-- Select de valor de Tecnica -->
+                    </select>
                 </td>
             </tr>
         </table>
@@ -218,7 +234,7 @@
             <tr>
                 <td>
                     <label for="EstadoConservacion">Comentari Restauració:</label>
-                    <select name="EstadoConservacion" id="EstadoConservacion" value="<?php echo $objeto[0]['ec.EstadoConservacion']?>">
+                    <select name="EstadoConservacion" id="EstadoConservacion" value="<?php echo $objeto[0]['ec.valor']?>">
                         <!-- Select de valor de EstadoConservacion -->
                     </select>                  
                 </td>
@@ -315,6 +331,12 @@
             </tr>
             <tr>
                 <td>
+                    <label for="FechaRegistro">Data de Registre:</label>
+                    <p><?php echo $objeto[0]['o.FechaRegistro']?></p>                 
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label for="Bibliografia">Bibliografia:</label>
                     <input type="text" id="Bibliografia" name="Bibliografia" value="<?php echo $objeto[0]['o.Bibliografia']?>">
                 </td>
@@ -332,6 +354,7 @@
                 </td>
             </tr>
         </table>
+        <input type="submit" value="Guardar" class="submit">
     </form>
     <?php
     include "resources/components/footer.php";
