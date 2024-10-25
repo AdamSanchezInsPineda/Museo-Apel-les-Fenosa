@@ -1,8 +1,8 @@
 <?php
 spl_autoload_register(function ($class) {
     $baseDirs = [
-        __DIR__ . "/src/model/",
-        __DIR__ . "/src/model/vocabulario/",
+        __DIR__ . "/src/models/",
+        __DIR__ . "/src/models/vocabulario/",
         __DIR__ . "/src/controllers/",
         __DIR__ . "/src/"
     ];

@@ -1,7 +1,5 @@
 <?php
 
-require_once "../src/model/Database.php";
-
 class Vocabulario extends Database
 {
     public function getAllFromModel($modelName)

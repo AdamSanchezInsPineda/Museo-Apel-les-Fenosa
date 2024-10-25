@@ -1,38 +1,36 @@
 <?php
 
-require_once __DIR__."/../Database.php";
-
-class Baja extends Database
+class Tecnica extends Database
 {
-    function getAllBajas()
+    function getAllTecnicas()
     {
-        $sql = $this->db->prepare('SELECT * FROM Baja');
+        $sql = $this->db->prepare('SELECT * FROM Tecnica');
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function getBaja($id)
+    function getTecnica($id)
     {
-        $sql = $this->db->prepare('SELECT * FROM Baja WHERE id = :id');
+        $sql = $this->db->prepare('SELECT * FROM Tecnica WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function addBaja($params)
+    function addTecnica($params)
     {
-        $sql = $this->db->prepare('INSERT INTO Baja (valor) VALUES (:valor)');
+        $sql = $this->db->prepare('INSERT INTO Tecnica (valor) VALUES (:valor)');
         
         $sql->bindParam(':valor', $params['valor']);
         
         $sql->execute();
     }
 
-    function updateBaja($params)
+    function updateTecnica($params)
     {
-        $sql = $this->db->prepare('UPDATE Baja SET valor = :valor WHERE id = :id');
+        $sql = $this->db->prepare('UPDATE Tecnica SET valor = :valor WHERE id = :id');
         
         $sql->bindParam(':valor', $params['valor']);
         $sql->bindParam(':id', $params['id'], PDO::PARAM_INT);
@@ -40,9 +38,9 @@ class Baja extends Database
         $sql->execute();
     }
 
-    function destroyBaja($id)
+    function destroyTecnica($id)
     {
-        $sql = $this->db->prepare('DELETE FROM Baja WHERE id = :id');
+        $sql = $this->db->prepare('DELETE FROM Tecnica WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
     }

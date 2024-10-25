@@ -1,38 +1,36 @@
 <?php
 
-require_once __DIR__."/../Database.php";
-
-class CausaBaja extends Database
+class Material extends Database
 {
-    function getAllCausaBajas()
+    function getAllMaterials()
     {
-        $sql = $this->db->prepare('SELECT * FROM CausaBaja');
+        $sql = $this->db->prepare('SELECT * FROM Material');
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function getCausaBaja($id)
+    function getMaterial($id)
     {
-        $sql = $this->db->prepare('SELECT * FROM CausaBaja WHERE id = :id');
+        $sql = $this->db->prepare('SELECT * FROM Material WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function addCausaBaja($params)
+    function addMaterial($params)
     {
-        $sql = $this->db->prepare('INSERT INTO CausaBaja (valor) VALUES (:valor)');
+        $sql = $this->db->prepare('INSERT INTO Material (valor) VALUES (:valor)');
         
         $sql->bindParam(':valor', $params['valor']);
         
         $sql->execute();
     }
 
-    function updateCausaBaja($params)
+    function updateMaterial($params)
     {
-        $sql = $this->db->prepare('UPDATE CausaBaja SET valor = :valor WHERE id = :id');
+        $sql = $this->db->prepare('UPDATE Material SET valor = :valor WHERE id = :id');
         
         $sql->bindParam(':valor', $params['valor']);
         $sql->bindParam(':id', $params['id'], PDO::PARAM_INT);
@@ -40,9 +38,9 @@ class CausaBaja extends Database
         $sql->execute();
     }
 
-    function destroyCausaBaja($id)
+    function destroyMaterial($id)
     {
-        $sql = $this->db->prepare('DELETE FROM CausaBaja WHERE id = :id');
+        $sql = $this->db->prepare('DELETE FROM Material WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
     }

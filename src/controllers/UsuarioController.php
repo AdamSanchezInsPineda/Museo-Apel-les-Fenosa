@@ -1,7 +1,5 @@
 <?php
 
-require_once '../src/model/Usuario.php';
-
 class UsuarioController extends Controller {
 
     public function index() {

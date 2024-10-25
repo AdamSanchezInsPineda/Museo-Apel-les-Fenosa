@@ -1,7 +1,5 @@
 <?php
 
-require_once '../src/model/Usuario.php';
-
 class Controller {
     protected $user;
 

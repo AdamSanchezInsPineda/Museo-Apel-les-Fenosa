@@ -1,8 +1,5 @@
 <?php
 
-require_once '../src/model/Vocabulario.php';
-require_once 'Controller.php';
-
 class VocabularioController extends Controller {
     private $vocabularis;
 

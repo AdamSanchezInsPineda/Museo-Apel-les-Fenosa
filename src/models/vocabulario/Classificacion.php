@@ -1,38 +1,36 @@
 <?php
 
-require_once __DIR__."/../Database.php";
-
-class Material extends Database
+class Classificacion extends Database
 {
-    function getAllMaterials()
+    function getAllClassificacions()
     {
-        $sql = $this->db->prepare('SELECT * FROM Material');
+        $sql = $this->db->prepare('SELECT * FROM Classificacion');
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function getMaterial($id)
+    function getClassificacion($id)
     {
-        $sql = $this->db->prepare('SELECT * FROM Material WHERE id = :id');
+        $sql = $this->db->prepare('SELECT * FROM Classificacion WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    function addMaterial($params)
+    function addClassificacion($params)
     {
-        $sql = $this->db->prepare('INSERT INTO Material (valor) VALUES (:valor)');
+        $sql = $this->db->prepare('INSERT INTO Classificacion (valor) VALUES (:valor)');
         
         $sql->bindParam(':valor', $params['valor']);
         
         $sql->execute();
     }
 
-    function updateMaterial($params)
+    function updateClassificacion($params)
     {
-        $sql = $this->db->prepare('UPDATE Material SET valor = :valor WHERE id = :id');
+        $sql = $this->db->prepare('UPDATE Classificacion SET valor = :valor WHERE id = :id');
         
         $sql->bindParam(':valor', $params['valor']);
         $sql->bindParam(':id', $params['id'], PDO::PARAM_INT);
@@ -40,9 +38,9 @@ class Material extends Database
         $sql->execute();
     }
 
-    function destroyMaterial($id)
+    function destroyClassificacion($id)
     {
-        $sql = $this->db->prepare('DELETE FROM Material WHERE id = :id');
+        $sql = $this->db->prepare('DELETE FROM Classificacion WHERE id = :id');
         $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();
     }

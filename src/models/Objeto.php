@@ -1,6 +1,4 @@
 <?php
-
-    require_once "../src/model/Database.php";
     
     class Objeto extends Database
     {
