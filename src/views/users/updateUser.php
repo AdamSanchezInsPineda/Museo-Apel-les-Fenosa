@@ -1,10 +1,10 @@
 <?php 
     include "resources/components/header.php";
-?>
+?> 
 <body class = "createUser">
-    <!--Contenido variable de la pagina-->   
+    <!--Contenido variable de la pagina-->  
     <div>
-        <h1>Modificar un usuari<?php echo $usuario[0]['Nombre']?></h1>
+        <h1>Modificar un usuari</h1>
     </div>
     <form action="/users/<?php echo $usuario[0]['UsuarioID'] ?>/update" method="post">
         
@@ -32,10 +32,12 @@
                     echo "<option value='admin'>Administració</option>";
                     echo "<option value='tecnic' selected>Tècnic</option>";
                     echo "<option value='convidat'>Convidat</option>";
+                    break;
                 case "convidat":
                     echo "<option value='admin'>Administració</option>";
                     echo "<option value='tecnic'>Tècnic</option>";
                     echo "<option value='convidat' selected>Convidat</option>";
+                    break;
             }
                 
             ?>
@@ -44,8 +46,7 @@
         
         <input type="submit" value="Modificar" class="submit">
     </form>
-</body>
-    
 <?php
     include "resources/components/footer.php";
 ?>
+</body>

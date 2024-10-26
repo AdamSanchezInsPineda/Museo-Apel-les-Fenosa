@@ -1,185 +1,91 @@
 <?php
-    require_once '../src/model/Usuario.php';
-    
-    class UsuarioController {
 
-        public function index() {
-            $error = "";
-            $this->render("login", ["error"=> $error]);
-        }
+class UsuarioController extends Controller {
 
-        public function login() {
-            $user = new Usuario();
-            
-            session_start();
-            
-            $_SESSION['nom'] = $_POST["nom"];
-            $_SESSION['password'] = $_POST["password"];
+    public function index() {
+        $this->render("login", ["error" => ""]);
+    }
 
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+    public function login() {
+        $_SESSION['nom'] = $_POST["nom"];
+        $_SESSION['password'] = $_POST["password"];
 
-            if ($state) {
-                $rol = $user->rolUsuario($_SESSION['nom'] , $_SESSION['password']);
-                $_SESSION['rol'] = $rol;
-                header('Location: /registers');
-            } 
-            else {
-                session_unset();
-                session_destroy();
-                $error = "* Nom d'usuari o contrasenya incorrecta";
-                $this->render("login", ["error"=> $error]);
-            }
-            exit;
-        }
-
-        public function logout(){
-            session_start();
+        if ($this->user->comprovarUsuario($_SESSION['nom'], $_SESSION['password'])) {
+            $_SESSION['rol'] = $this->user->rolUsuario($_SESSION['nom'], $_SESSION['password']);
+            header('Location: /registers');
+        } else {
             session_unset();
             session_destroy();
-            header('Location: /');
+            $this->render("login", ["error" => "* Nom d'usuari o contrasenya incorrecta"]);
         }
+        exit;
+    }
 
-        public function table(){
-            session_start();
-            $user = new Usuario();
-            if (!isset($_SESSION['nom'])){
-                $state = false;
-            }
-            else{
-                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            }
-            if ($state) {             
-                $this->render('users/users', ['usuarios' => $user->mostrarUsuarios()]);
-            } 
-            else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);
-            }
-            exit;
-        }
+    public function logout() {
+        session_unset();
+        session_destroy();
+        header('Location: /');
+    }
 
-        public function createView() {
-            session_start();
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            if ($state) {     
-                $this->render('users/createUser');
-            } 
-            else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);
-            }
-            exit;
-        }
-
-        public function create() {
-            session_start();
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            if ($state) {     
-                if ($_SESSION['rol'] == "admin"){
-                    $user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
-                    header('Location: /users');
-                }
-                else{
-                    //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registres');
-                }
-
-            } 
-            else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);
-            }
-            exit;
-        }
-
-        public function updateView($id) {
-            session_start();
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            if ($state) {     
-                if ($_SESSION['rol'] == "admin"){
-                    $this->render('users/updateUser', ['usuario' => $user->updateViewUsuario($id)]);
-                }
-                else{
-                    //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registres');
-                }                
-            } 
-            else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);
-            }
-            exit;
-        }
-        
-
-        public function update($id) {
-            session_start();
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            if ($state) {     
-                if ($_SESSION['rol'] == "Administració"){
-                    $user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
-                    header('Location: /users');
-                }
-                else{
-                    //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /registres');
-                }
-
-            } 
-            else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);
-            }
-            exit;
-        }
-
-        public function delete($id) {
-            session_start();
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-    
-                if ($state) {         
-                    if ($_SESSION['rol'] == "admin"){
-                        $user->eliminarUsuario($id);
-                        header('Location: /users');
-                    }
-                    else{
-                        //Warning de que no tiene permisos para ejecutar esta orden
-                        header('Location: /registres');
-                    }
-
-                } else {
-                    session_unset();
-                    session_destroy();
-                    $error = " La sessió no s'ha iniciat ";
-                    $this->render("login", ["error"=> $error]);  
-                }
-                exit;
-        }
-
-        private function render($view, $data = []) {
-            extract($data);
-            $viewFile = "../src/views/$view.php";
-            
-            if (file_exists($viewFile)) {
-                require $viewFile;
-
-            } else {
-                echo "View $view not found.";
-            }
+    public function table() {
+        $this->checkReadRole(['admin', 'tecnic', 'convidat']);
+        if ($_SESSION['rol'] !== "convidat") {
+            $this->render('users/users');
+        } else {
+            header('Location: /registers');
         }
     }
+
+    public function searchDef($found = "") {
+        $this->checkReadRole(['admin', 'tecnic', 'convidat']);
+        exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
+    }
+
+    public function search($found) {
+        $this->checkReadRole(['admin', 'tecnic', 'convidat']);
+        exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
+    }
+
+    public function createView() {
+        $this->checkWriteRole(['admin']);
+        $this->render('users/createUser');
+    }
+
+    public function create() {
+        $this->checkWriteRole(['admin']);
+        $this->user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
+        header('Location: /users');
+        exit;
+    }
+
+    public function updateView($id) {
+        $this->checkWriteRole(['admin']);
+        if ($id != 1) {
+            $this->render('users/updateUser', ['usuario' => $this->user->updateViewUsuario($id)]);
+        } else {
+            header('Location: /users');
+        }
+    }
+
+    public function update($id) {
+        $this->checkWriteRole(['admin']);
+        if ($id != 1) {
+            $this->user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
+            header('Location: /users');
+        } else {
+            header('Location: /users');
+        }
+        exit;
+    }
+
+    public function delete($id) {
+        $this->checkWriteRole(['admin']);
+        if ($id != 1) {
+            $this->user->eliminarUsuario($id);
+            header('Location: /users');
+        } else {
+            header('Location: /users');
+        }
+        exit;
+    }
+}

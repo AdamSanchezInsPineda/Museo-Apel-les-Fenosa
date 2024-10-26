@@ -1,0 +1,6 @@
+@import "vars";
+@import "mixins";
+
+.campsLlista{
+    @include tableStyle;
+}

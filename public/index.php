@@ -1,9 +1,8 @@
 <?php
 
-require_once '../src/Router.php';
-require_once '../src/controllers/UsuarioController.php';
-require_once '../src/controllers/ObjetoController.php';
-require_once '../src/controllers/VocabularioController.php';
+
+require_once __DIR__.'/../Autoload.php';
+
 
 $router = new Router();
 
@@ -16,7 +15,9 @@ $router->get('/logout', 'UsuarioController@logout');
 //registers
 $router->get('/registers', 'ObjetoController@table');
 
-$router->post('/registers/add', 'ObjetoController@create');
+$router->get('/registers/add', 'ObjetoController@createView');
+
+$router->post('/registers/create', 'ObjetoController@create');
 
 $router->get('/registers/{obra}', 'ObjetoController@new');
 
@@ -26,6 +27,10 @@ $router->get('/registers/{obra}/delete', 'ObjetoController@delete');
 
 //Users
 $router->get('/users', 'UsuarioController@table');
+
+$router->get('/users/search', 'UsuarioController@searchDef');
+
+$router->get('/users/search/{found}', 'UsuarioController@search');
 
 $router->get('/users/add', 'UsuarioController@createView');
 
@@ -38,6 +43,46 @@ $router->post('/users/{user}/update', 'UsuarioController@update');
 $router->get('/users/{user}/delete', 'UsuarioController@delete');
 
 //Vocabularios
-$router->get('/vocabulary', 'VocabularioController@index');
+$router->get('/vocabularis', 'VocabularioController@indexVocabulario');
+
+$router->get('/vocabularis/{vocabulario}', 'VocabularioController@showVocabulario');
+
+$router->get('/vocabularis/{vocabulario}/add', 'VocabularioController@newVocabulario');
+
+$router->post('/vocabularis/{vocabulario}/create', 'VocabularioController@createVocabulario');
+
+$router->get('/vocabularis/{vocabulario}/{valor}', 'VocabularioController@editVocabulario');
+
+$router->post('/vocabularis/{vocabulario}/{valor}/update', 'VocabularioController@updateVocabulario');
+
+$router->get('/vocabularis/{vocabulario}/{valor}/delete', 'VocabularioController@deleteVocabulario');
+
+//Exposicions
+
+$router->get('/exposicions',  'ExposicionsController@index');
+
+$router->get('/exposicions/add', 'ExposicionsController@newExposicio');
+
+$router->post('/exposicions/create', 'ExposicionsController@createExposicio');
+
+$router->get('/exposicions/{exposicio}', 'ExposicionsController@editExposicio');
+
+$router->post('/exposicions/{exposicio}/update', 'ExposicionsController@updateExposicio');
+
+$router->get('/exposicions/{exposicio}/delete', 'ExposicionsController@deleteExposicio');
+
+$router->get('/exposicions/{exposicio}/bens', 'ExposicionsController@bensExposicio');
+
+$router->get( '/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAddExposicio');
+
+$router->post( '/exposicions/{exposicio}/bens/create', 'ExposicionsController@bensCreateExposicio');
+
+$router->get('/exposicions/{exposicio}/bens/{objeto}/delete', 'ExposicionsController@bensDeleteExposicio');
+
+
+
+
+
+
 
 $router->dispatch();

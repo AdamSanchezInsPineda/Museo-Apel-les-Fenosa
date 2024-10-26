@@ -56,4 +56,17 @@
 }
 .users td {
   padding: 0 50px;
+}
+.users header + div > div {
+  min-width: 30%;
+}
+.users th {
+  width: 40%;
+}
+.users th + th {
+  width: 30%;
+}
+.users td + td + td {
+  display: flex;
+  align-items: center;
 }/*# sourceMappingURL=users.css.map */

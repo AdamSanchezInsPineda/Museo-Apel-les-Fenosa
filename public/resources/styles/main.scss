@@ -1,17 +1,25 @@
 //Individual styles
 @import "scss/header.scss";
 @import "scss/login.scss";
+@import "scss/popup.scss";
+@import "scss/addBensExposicions.scss";
+@import "scss/bensExposicions.scss";
 
 //Tables
 @import "scss/objects.scss";
 @import "scss/users.scss";
+@import "scss/campsLlista.scss";
+@import "scss/exposicions.scss";
 
 //New
-
+@import "scss/createCampsLlista.scss";
+@import "scss/createExposicions.scss";
 
 //Create
 @import "scss/createObject.scss";
 @import "scss/createUser.scss";
+@import "scss/indexVocabulary.scss";
+
 
 //Update
 
@@ -28,4 +36,6 @@
     box-sizing: border-box;
 }
 
-
+html {
+    height: 100%;
+}

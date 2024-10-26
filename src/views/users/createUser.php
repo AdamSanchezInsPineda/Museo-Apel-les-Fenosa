@@ -22,15 +22,14 @@
             <label for="Rol">Rol</label>
             <select name="Rol" id="Rol">
                 <option value="admin">Administració</option>
-                <option value="Tècnic">Tècnic</option>
-                <option value="Convidat">Convidat</option>
+                <option value="tecnic">Tècnic</option>
+                <option value="convidat">Convidat</option>
             </select>
         </div>
         
         <input type="submit" value="Afegir" class="submit">
     </form>
-</body>
-    
-<?php
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>

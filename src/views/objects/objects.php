@@ -3,7 +3,6 @@
 ?>
 <body class = "objects">
     <!--Contenido variable de la pagina-->   
-    
     <div>
         <div>
             <div>
@@ -33,13 +32,14 @@
                                     echo "<td>{$dato}</td>";
                                 }
                             }
+                            
                             echo "<td>";
-                            echo "<a href='/registers/{$registro['Registro']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
-                            if ($_SESSION['rol'] != "Convidat"){
-                                echo "<a href='/registers/{$registro['Registro']}/update'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
+                            echo "<a href='/registers/{$registro['RegistroNº']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
+                            if ($_SESSION['rol'] != "convidat"){
+                                echo "<a href='/registers/{$registro['RegistroNº']}/update'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                             }
                             if ($_SESSION['rol'] == "admin") {
-                                echo "<a href='/registers/{$registro['Registro']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
+                                echo "<a href='/registers/{$registro['RegistroNº']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
                             }
 
                             echo "</td>";
@@ -51,8 +51,7 @@
     </div>
     <!--Scripts-->
     <script src="resources/js/imagePreview.js"></script>
-</body>
-
-<?php
+    <?php
     include "resources/components/footer.php";
-?>
+    ?>
+</body>
