@@ -17,17 +17,17 @@
                 <td rowspan = 4>
                     <input type="file" name="imagen" src="resources/images/lupa.png" alt="Submit" height="100px">
                     <!--
-                    if (is_uploaded_file ($_FILES['imagen']['tmp_name']))
-                    {
-                    $nombreDirectorio = "img/";
-                    $idUnico = time();
-                    $nombreFichero = $idUnico . "-" .
-                    $_FILES['imagen']['name'];
-                    move_uploaded_file ($_FILES['imagen']['tmp_name'],
-                    $nombreDirectorio . $nombreFichero);
-                    }
-                    else
-                    print ("No se ha podido subir el fichero\n");
+                        if (is_uploaded_file ($_FILES['imagen']['tmp_name']))
+                        {
+                        $nombreDirectorio = "img/";
+                        $idUnico = time();
+                        $nombreFichero = $idUnico . "-" .
+                        $_FILES['imagen']['name'];
+                        move_uploaded_file ($_FILES['imagen']['tmp_name'],
+                        $nombreDirectorio . $nombreFichero);
+                        }
+                        else
+                        print ("No se ha podido subir el fichero\n");
                     ?>-->
                 </td>
             </tr>
