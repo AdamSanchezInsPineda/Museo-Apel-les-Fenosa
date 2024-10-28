@@ -9,7 +9,7 @@
                                                     u.Nombre as Ubicacion,
                                                     d.descripcion as Datacion 
                                                 FROM Objetos o
-                                                LEFT JOIN Autors a ON o.AutorID = a.AutorID
+                                                LEFT JOIN Autors a ON o.AutorID = a.id
                                                 LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
                                                 LEFT JOIN Datacion d ON o.DatacionID = d.id');
 
