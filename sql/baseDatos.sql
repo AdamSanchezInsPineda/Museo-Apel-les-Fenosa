@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Autors` (
-  `AutorID` int NOT NULL,
+  `id` int NOT NULL,
   `Nombre` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -215,7 +215,7 @@ CREATE TABLE `Usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `Autors`
-  ADD PRIMARY KEY (`AutorID`);
+  ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `Baja`
   ADD PRIMARY KEY (`id`);
@@ -348,7 +348,7 @@ ALTER TABLE `Usuarios`
 -- AUTO_INCREMENT for table `Autors`
 --
 ALTER TABLE `Autors`
-  MODIFY `AutorID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Baja`
@@ -471,7 +471,7 @@ ALTER TABLE `Objetos`
   ADD CONSTRAINT `Objetos_ibfk_11` FOREIGN KEY (`FormaIngresoID`) REFERENCES `FormaIngreso` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `Material` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_3` FOREIGN KEY (`TecnicaID`) REFERENCES `Tecnica` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_4` FOREIGN KEY (`AutorID`) REFERENCES `Autors` (`AutorID`),
+  ADD CONSTRAINT `Objetos_ibfk_4` FOREIGN KEY (`AutorID`) REFERENCES `Autors` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_5` FOREIGN KEY (`UbicacionActualID`) REFERENCES `Ubicaciones` (`UbicacionID`),
   ADD CONSTRAINT `Objetos_ibfk_6` FOREIGN KEY (`EstadoConservacionID`) REFERENCES `EstadoConservacion` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_7` FOREIGN KEY (`MuseoID`) REFERENCES `Museos` (`MuseoID`),
@@ -489,7 +489,7 @@ ALTER TABLE `UbicacionObjeto`
   ADD CONSTRAINT `UbicacionObjeto_ibfk_2` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
 COMMIT;
 
-INSERT INTO `Autors` (`AutorID`, `Nombre`) VALUES (1, 'Jose Francisco Franco');
+INSERT INTO `Autors` (`id`, `Nombre`) VALUES (1, 'Jose Francisco Franco');
 INSERT INTO `Baja` (`id`, `valor`) VALUES (1, 'No'), (2, 'Sí');
 INSERT INTO `CausaBaja` (`id`, `valor`) VALUES (1, 'Confiscació'), (2, 'Destrucció'), (3, 'Estat de conservació molt deficient'), (4, 'Manteniment i restauració onerós'), (5, 'Pèrdua'), (6, 'Robatori'), (7, 'Successió interadministrativa'), (8, 'Valor patrimonial insuficient');
 INSERT INTO `Classificacion` (`id`, `valor`) VALUES (1, 'Mayor edat');

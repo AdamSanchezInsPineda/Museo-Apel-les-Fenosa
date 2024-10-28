@@ -4,7 +4,7 @@ class Datacion extends Database
 {
     function getAllDatacions()
     {
-        $sql = $this->db->prepare('SELECT * FROM Datacion');
+        $sql = $this->db->prepare('SELECT * FROM Datacion ORDER BY any_inicial');
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;

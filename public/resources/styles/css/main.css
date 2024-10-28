@@ -14,8 +14,7 @@ header img {
   width: 115px;
 }
 header nav {
-  margin-left: 15%;
-  width: 30%;
+  width: 50%;
   display: flex;
   justify-content: space-between;
 }
