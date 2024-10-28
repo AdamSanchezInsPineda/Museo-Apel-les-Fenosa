@@ -233,7 +233,7 @@
             </tr>
             <tr>
                 <td>
-                    <label for="EstadoConservacion">Comentari Restauració:</label>
+                    <label for="EstadoConservacion">Estat de Conservació:</label>
                     <select name="EstadoConservacion" id="EstadoConservacion" value="<?php echo $objeto[0]['ec.valor']?>">
                         <!-- Select de valor de EstadoConservacion -->
                     </select>                  

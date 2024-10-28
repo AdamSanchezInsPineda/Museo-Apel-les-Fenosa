@@ -75,9 +75,9 @@ class ObjetoController {
         }
     }
 
-    public function update($nRegistro) {
+    public function update($id) {
         session_start();
-        
+        $objeto = new Objeto();
         if (!isset($_SESSION['nom'])){
             $state = false;
         }
@@ -87,7 +87,7 @@ class ObjetoController {
         }
 
         if ($state) {         
-            $this->render('objects/updateObject', [$nRegistro]);
+            $this->render('objects/updateObject', ['objeto' => $objeto->fitxesMostrar($id)]);
             exit;
 
         } else {
