@@ -61,8 +61,6 @@
                     <input type="text" id="Títol" name="Títol" required>
                 </td>
             </tr>
-        </table>
-        <table>
             <h2>Ubicacions</h2>
             <tr>
                 <!-- Ubicacio -->
@@ -85,9 +83,6 @@
                     <input type="text" id="ComentarioUbicacion" name="ComentarioUbicacion">
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Propietats</h2>
             <tr>
                 <td>
@@ -141,8 +136,6 @@
                     </select>
                 </td>
             </tr>
-        </table>
-        <table>
             <h2>Baixa</h2>
             <tr>
                 <td>
@@ -173,9 +166,6 @@
                     <input type="text" id="PersonaAutorizadaBaja" name="PersonaAutorizadaBaja">
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Restauració</h2>
             <tr>
                 <td>
@@ -207,9 +197,6 @@
                     <input type="text" id="ComentarioRestauracion" name="ComentarioRestauracion">
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Ingrés</h2>
             <tr>
                 <td>
@@ -239,9 +226,6 @@
                     </select>                  
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Exposicions</h2>
             <tr>
                 <td>
@@ -275,9 +259,6 @@
                     </select>                  
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Altres Dades</h2>
             <tr>
                 <td>
