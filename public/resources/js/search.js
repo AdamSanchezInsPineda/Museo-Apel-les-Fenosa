@@ -8,12 +8,12 @@ document.getElementById('search').addEventListener('input', function() {
 });
     
 async function cont($found = "") {
+    try {
+        const response = await fetch($found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + $found);
+        const data = await response.json();
 
-    fetch($found == "" ? `/users/search` : `/users/search/` + $found )
-    .then((res) => res.json())
-    .then(response => {
         let output = "";
-        response[0].forEach(function(usuario) {
+        data[0].forEach(function(usuario) {
             output += "<tr>";
             
             Object.entries(usuario).forEach(([key, value]) => {
@@ -21,7 +21,7 @@ async function cont($found = "") {
                     output += "<td>" + value + "</td>";     
                 }
             });
-            if (response[1] === 'admin') {  
+            if (data[1] === 'admin') {  
                 
                 output += "<td>";
                 output += "<a href='/users/" + usuario['UsuarioID'] + "'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
@@ -32,10 +32,10 @@ async function cont($found = "") {
             output += "</tr>";
         });
 
-        
         document.querySelector('.tbody').innerHTML = output;
 
         pop();
-    })
-    .catch(error => console.log(error));
+    } catch (error) {
+        console.log(error);
+    }
 }
