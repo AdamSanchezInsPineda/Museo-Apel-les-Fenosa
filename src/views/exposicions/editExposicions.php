@@ -40,10 +40,12 @@
                     echo "<option value='1'>1</option>";
                     echo "<option value='2' selected>2</option>";
                     echo "<option value='3'>3</option>";
+                    break;
                 case 3:
                     echo "<option value='1'>1</option>";
                     echo "<option value='2'>2</option>";
                     echo "<option value='3' selected>3</option>";
+                    break;
             }
                 
             ?>

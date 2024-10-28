@@ -14,16 +14,7 @@
 
 
         function mostrarExposicions() {
-            $sql = $this -> db->prepare('
-            SELECT 
-                ExposicionID, 
-                Nombre, 
-                DATE_FORMAT(FechaInicio, "%Y-%m-%d %H:%i") AS FechaInicio, 
-                DATE_FORMAT(FechaFin, "%Y-%m-%d %H:%i") AS FechaFin, 
-                TipoExposicionID, 
-                LugarExposicion 
-            FROM Exposiciones
-        ');
+            $sql = $this -> db->prepare('SELECT ExposicionID, Nombre, DATE_FORMAT(FechaInicio, "%Y-%m-%d %H:%i") AS FechaInicio, DATE_FORMAT(FechaFin, "%Y-%m-%d %H:%i") AS FechaFin, TipoExposicionID, LugarExposicion FROM Exposiciones');
 
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);

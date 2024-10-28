@@ -3,22 +3,33 @@ require_once '../src/model/Usuario.php';
 require_once '../src/model/Exposicio.php';
 require_once '../src/model/Objeto.php';
 
-
-
 class ExposicionsController {
     function index(){
+        
         session_start();
+        $user = new Usuario();        
         if (!isset($_SESSION['nom'])){
+            
             $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
         }
-
-        $user = new Usuario();
-
-        $exposicio = new Exposicio();
-
-        $this->render("exposicions/exposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
-
-    
+        else{
+            
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            if ($state) {
+                
+                $exposicio = new Exposicio();
+                $this->render("exposicions/exposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
+            } 
+            else {
+                
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);  
+            }
+        }
+        
+        exit;
     }
 
     public function deleteExposicio($id) {
@@ -191,31 +202,27 @@ class ExposicionsController {
 
     public function bensExposicio($id){
         session_start();
-        if (!isset($_SESSION['nom'])){
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-
+        $user = new Usuario();
         $exposicio = new Exposicio();
-        $bens = $exposicio->verBens($id);
-        // switch ($user->rolUsuario($_SESSION['nom'], $_SESSION['password'])) {
-        //     case 'admin':
-        //         $this->render("exposicions/bensExposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
-        //         break;
-        //     case 'tecnic':
-        //         $this->render("exposicions/bensExposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
-        //         break;
-        //     case 'convidat':
-        //         header('Location: /registers');
-        //         break;
-        // }
-
-        $this->render("exposicions/bensExposicions", ["exposicions" => $bens,
-        "exposicionID" => $id]);
-
-
+        if (!isset($_SESSION['nom'])){
+            $state = false;
+        }
+        else{
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+        }
+        if ($state) {
+            $this->render("exposicions/bensExposicions", ["exposicions" => [$exposicio->verBens($id), $id]]);
+        }
+        else {
+            session_unset();
+            session_destroy();
+            $error = " La sessió no s'ha iniciat ";
+            $this->render("login", ["error"=> $error]);
+        }
+        exit;
     }
 
-    public function bensAddExposicio(){
+    public function bensAddExposicio($id){
         session_start();
         $user = new Usuario();
         $objeto = new Objeto();
@@ -228,7 +235,7 @@ class ExposicionsController {
         }
         if ($state) {
             if ($_SESSION['rol'] != "convidat"){
-                $this->render("exposicions/addBensExposicions", ["objetos" => $objeto->afegirBensObj()]);
+                $this->render("exposicions/addBensExposicions", ["objetos" => [$objeto->afegirBensObj(), $id]]);
             }
             else{
                 //Warning de que no tiene permisos para ejecutar esta orden
