@@ -1,16 +1,7 @@
 <?php
 
-require_once "../src/model/Database.php";
-
 class TiposExposicion extends Database
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->connection();
-    }
-
     function getAllTiposExposicions()
     {
         $sql = $this->db->prepare('SELECT * FROM TiposExposicion');

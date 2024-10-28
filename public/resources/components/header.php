@@ -14,7 +14,7 @@
         switch ($_SESSION['rol']){
             case "admin":
                 echo "<a href='/users'>Usuaris</a>";
-                echo "<a href='/vocabulary'>Vocabulari</a>";
+                echo "<a href='/vocabularis'>Vocabulari</a>";
                 echo "<a href=''>Ubicacions</a>";
                 echo "<a href='/exposicions'>Exposicions</a>";
                 echo "<a href=''>Copies de seguretat</a>";

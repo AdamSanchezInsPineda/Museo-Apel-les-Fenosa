@@ -1,18 +1,7 @@
 <?php
 
-    require_once "../src/model/Database.php";
-
     class Exposicio extends Database
     {
-        private $db;
-        
-        public function __construct()
-        {
-            $this -> db = $this -> connection();
-        }
-        
-
-
         function mostrarExposicions() {
             $sql = $this -> db->prepare('SELECT ExposicionID, Nombre, DATE_FORMAT(FechaInicio, "%Y-%m-%d %H:%i") AS FechaInicio, DATE_FORMAT(FechaFin, "%Y-%m-%d %H:%i") AS FechaFin, TipoExposicionID, LugarExposicion FROM Exposiciones');
 
