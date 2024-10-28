@@ -1,9 +1,6 @@
 <?php
 
-require_once __DIR__.'/../src/Router.php';
-require_once __DIR__.'/../src/controllers/UsuarioController.php';
-require_once __DIR__.'/../src/controllers/ObjetoController.php';
-require_once __DIR__.'/../src/controllers/ExposicionsController.php';
+
 require_once __DIR__.'/../Autoload.php';
 
 
@@ -46,33 +43,19 @@ $router->post('/users/{user}/update', 'UsuarioController@update');
 $router->get('/users/{user}/delete', 'UsuarioController@delete');
 
 //Vocabularios
-$router->get('/vocabulary', controller: 'VocabularioController@index');
+$router->get('/vocabularis', 'VocabularioController@indexVocabulario');
 
-$router->get('/vocabulary/autors', 'VocabularioController@indexAutors');
+$router->get('/vocabularis/{vocabulario}', 'VocabularioController@showVocabulario');
 
-$router->get('/vocabulary/autors/add', 'VocabularioController@newAutor');
+$router->get('/vocabularis/{vocabulario}/add', 'VocabularioController@newVocabulario');
 
-$router->post('/vocabulary/autors/create', 'VocabularioController@createAutor');
+$router->post('/vocabularis/{vocabulario}/create', 'VocabularioController@createVocabulario');
 
-$router->get('/vocabulary/autors/{autor}', 'VocabularioController@editAutor');
+$router->get('/vocabularis/{vocabulario}/{valor}', 'VocabularioController@editVocabulario');
 
-$router->post('/vocabulary/autors/{autor}/update', 'VocabularioController@updateAutor');
+$router->post('/vocabularis/{vocabulario}/{valor}/update', 'VocabularioController@updateVocabulario');
 
-$router->get('/vocabulary/autors/{autor}/delete', 'VocabularioController@deleteAutor');
-
-$router->get('/vocabulary/llistas', 'VocabularioController@indexLlistas');
-
-$router->get('/vocabulary/llista/add', 'VocabularioController@newLlista');
-
-$router->post('/vocabulary/llista/create', 'VocabularioController@createLlista');
-
-$router->post('/vocabulary/llista/{llista}/valors', 'VocabularioController@showLlista');
-
-$router->get('/vocabulary/llista/{llista}', 'VocabularioController@editLlista');
-
-$router->post('/vocabulary/llista/{llista}/update', 'VocabularioController@updateLlista');
-
-$router->get('/vocabulary/llista/{llista}/delete', 'VocabularioController@deleteLlista');
+$router->get('/vocabularis/{vocabulario}/{valor}/delete', 'VocabularioController@deleteVocabulario');
 
 //Exposicions
 

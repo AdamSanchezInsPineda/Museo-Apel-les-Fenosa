@@ -50,7 +50,6 @@
         </div>
     </div>
     <!--Scripts-->
-    <script src="resources/js/delete.js"></script>
     <?php
     include "resources/components/footer.php";
     ?>

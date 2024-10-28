@@ -1,16 +1,7 @@
 <?php
 
-require_once "../src/model/Database.php";
-
 class CodigoGetty extends Database
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->connection();
-    }
-
     function getAllCodigoGettys()
     {
         $sql = $this->db->prepare('SELECT * FROM CodigoGetty');

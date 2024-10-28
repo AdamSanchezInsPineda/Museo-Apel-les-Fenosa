@@ -1,16 +1,7 @@
 <?php
 
-require_once "../src/model/Database.php";
-
 class Datacion extends Database
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->connection();
-    }
-
     function getAllDatacions()
     {
         $sql = $this->db->prepare('SELECT * FROM Datacion');

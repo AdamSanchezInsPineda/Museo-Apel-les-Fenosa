@@ -1,8 +1,5 @@
 <?php
 
-require_once '../src/model/Objeto.php';
-require_once '../src/model/Usuario.php';
-
 class ObjetoController {
     public function table() {
         session_start();

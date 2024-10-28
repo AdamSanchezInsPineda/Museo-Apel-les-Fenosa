@@ -7,12 +7,11 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="/exposicions/<?php echo $exposicionID ?>/bens/add">Afegir bens patrimonials<img src='/resources/images/plus.png' alt='Afegir exposició'></a>
+                <a href="/exposicions/<?php echo $exposicions[1] ?>/bens/add">Afegir bens patrimonials<img src='/resources/images/plus.png' alt='Afegir exposició'></a>
             </div>
-            <?php if (!empty($exposicions)): ?>
+            <?php if (!empty($exposicions[0])): ?>
             <table>
                 <?php
-                print_r($exposicions);
                     if ($_SESSION['rol'] == "admin")
                         $columns = ["Nº","Objecte","Treure"];                  
 
@@ -26,7 +25,7 @@
 
                     echo"</tr>";
                     
-                    foreach ($exposicions as $exposicio) {
+                    foreach ($exposicions[0] as $exposicio) {
                         echo "<tr>";
                             foreach ($exposicio as $key => $dato){
                                 if ($key != "ExposicionID" && $key != "ObjetoExposicionID" ){

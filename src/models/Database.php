@@ -2,7 +2,7 @@
 
 class Database
 {
-    private $db;
+    protected $db;
     function connection(){
         $config = parse_ini_file(__DIR__ . '/config/config.ini');
         $font = 'mysql:host=' . $config['host'] . ';dbname=' . $config['db'];
@@ -16,5 +16,10 @@ class Database
             echo 'Connection failed: ' . $e->getMessage();
         }
         return $this->db;
+    }
+
+    public function __construct()
+    {
+        $this->db = $this->connection();
     }
 }

@@ -1,16 +1,7 @@
 <?php
 
-require_once "../src/model/Database.php";
-
 class Tecnica extends Database
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->connection();
-    }
-
     function getAllTecnicas()
     {
         $sql = $this->db->prepare('SELECT * FROM Tecnica');
