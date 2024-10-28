@@ -17,17 +17,17 @@
                 <td rowspan = 4>
                     <input type="file" name="imagen" src="resources/images/lupa.png" alt="Submit" height="100px">
                     <!--
-                    if (is_uploaded_file ($_FILES['imagen']['tmp_name']))
-                    {
-                    $nombreDirectorio = "img/";
-                    $idUnico = time();
-                    $nombreFichero = $idUnico . "-" .
-                    $_FILES['imagen']['name'];
-                    move_uploaded_file ($_FILES['imagen']['tmp_name'],
-                    $nombreDirectorio . $nombreFichero);
-                    }
-                    else
-                    print ("No se ha podido subir el fichero\n");
+                        if (is_uploaded_file ($_FILES['imagen']['tmp_name']))
+                        {
+                        $nombreDirectorio = "img/";
+                        $idUnico = time();
+                        $nombreFichero = $idUnico . "-" .
+                        $_FILES['imagen']['name'];
+                        move_uploaded_file ($_FILES['imagen']['tmp_name'],
+                        $nombreDirectorio . $nombreFichero);
+                        }
+                        else
+                        print ("No se ha podido subir el fichero\n");
                     ?>-->
                 </td>
             </tr>
@@ -61,8 +61,6 @@
                     <input type="text" id="Títol" name="Títol" required>
                 </td>
             </tr>
-        </table>
-        <table>
             <h2>Ubicacions</h2>
             <tr>
                 <!-- Ubicacio -->
@@ -85,9 +83,6 @@
                     <input type="text" id="ComentarioUbicacion" name="ComentarioUbicacion">
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Propietats</h2>
             <tr>
                 <td>
@@ -141,8 +136,6 @@
                     </select>
                 </td>
             </tr>
-        </table>
-        <table>
             <h2>Baixa</h2>
             <tr>
                 <td>
@@ -173,9 +166,6 @@
                     <input type="text" id="PersonaAutorizadaBaja" name="PersonaAutorizadaBaja">
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Restauració</h2>
             <tr>
                 <td>
@@ -207,9 +197,6 @@
                     <input type="text" id="ComentarioRestauracion" name="ComentarioRestauracion">
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Ingrés</h2>
             <tr>
                 <td>
@@ -239,9 +226,6 @@
                     </select>                  
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Exposicions</h2>
             <tr>
                 <td>
@@ -275,9 +259,6 @@
                     </select>                  
                 </td>
             </tr>
-        </table>
-
-        <table>
             <h2>Altres Dades</h2>
             <tr>
                 <td>

@@ -25,7 +25,7 @@ class ObjetoController {
         }
     }
 
-    public function create() {
+    public function createView() {
         session_start();
         
         if (!isset($_SESSION['nom'])){

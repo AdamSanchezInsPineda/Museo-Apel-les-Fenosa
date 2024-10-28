@@ -46,8 +46,8 @@
     </div>
     
     <!--Scripts-->
-    <script src="resources/js/imagePreview.js"></script>
-    <script src="resources/js/delete.js"></script>
+    <script src="/resources/js/imagePreview.js"></script>
+    <script src="/resources/js/delete.js"></script>
     <?php
         include "resources/components/footer.php";
     ?>
