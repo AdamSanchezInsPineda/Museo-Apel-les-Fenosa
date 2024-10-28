@@ -1,7 +1,4 @@
 <?php
-require_once '../src/model/Usuario.php';
-require_once '../src/model/Exposicio.php';
-require_once '../src/model/Objeto.php';
 
 
 
