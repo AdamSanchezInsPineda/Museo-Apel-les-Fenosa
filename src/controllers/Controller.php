@@ -17,16 +17,7 @@ class Controller {
         }
     }
 
-    protected function checkReadRole(array $allowedRoles)
-    {
-        $this->checkSession();
-        if (!in_array($_SESSION['rol'], $allowedRoles)) {
-            header('Location: /registers');
-            exit;
-        }
-    }
-
-    protected function checkWriteRole(array $allowedRoles)
+    protected function checkRole(array $allowedRoles)
     {
         $this->checkSession();
         if (!in_array($_SESSION['rol'], $allowedRoles)) {

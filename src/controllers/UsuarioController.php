@@ -28,7 +28,7 @@ class UsuarioController extends Controller {
     }
 
     public function table() {
-        $this->checkReadRole(['admin', 'tecnic', 'convidat']);
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
         if ($_SESSION['rol'] !== "convidat") {
             $this->render('users/users');
         } else {
@@ -37,29 +37,29 @@ class UsuarioController extends Controller {
     }
 
     public function searchDef($found = "") {
-        $this->checkReadRole(['admin', 'tecnic', 'convidat']);
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
         exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
     }
 
     public function search($found) {
-        $this->checkReadRole(['admin', 'tecnic', 'convidat']);
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
         exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
     }
 
     public function createView() {
-        $this->checkWriteRole(['admin']);
+        $this->checkRole(['admin']);
         $this->render('users/createUser');
     }
 
     public function create() {
-        $this->checkWriteRole(['admin']);
+        $this->checkRole(['admin']);
         $this->user->crearUsuario($_POST['Nom'], $_POST['Contraseña'], $_POST['Rol']);
         header('Location: /users');
         exit;
     }
 
     public function updateView($id) {
-        $this->checkWriteRole(['admin']);
+        $this->checkRole(['admin']);
         if ($id != 1) {
             $this->render('users/updateUser', ['usuario' => $this->user->updateViewUsuario($id)]);
         } else {
@@ -68,7 +68,7 @@ class UsuarioController extends Controller {
     }
 
     public function update($id) {
-        $this->checkWriteRole(['admin']);
+        $this->checkRole(['admin']);
         if ($id != 1) {
             $this->user->updateUsuario($_POST['Nom'],$_POST['Contraseña'], $_POST['Rol'], $id);
             header('Location: /users');
@@ -79,7 +79,7 @@ class UsuarioController extends Controller {
     }
 
     public function delete($id) {
-        $this->checkWriteRole(['admin']);
+        $this->checkRole(['admin']);
         if ($id != 1) {
             $this->user->eliminarUsuario($id);
             header('Location: /users');

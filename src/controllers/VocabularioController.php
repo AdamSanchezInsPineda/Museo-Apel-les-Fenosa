@@ -11,7 +11,7 @@ class VocabularioController extends Controller {
 
     public function indexVocabulario()
     {
-        $this->checkReadRole(['admin']); // Permiso de lectura para admins
+        $this->checkRole(['admin']); // Permiso de lectura para admins
         $vocabularisList = [
             "Autors" => "autor",
             "Baixes" => "baja",
@@ -29,22 +29,32 @@ class VocabularioController extends Controller {
         $this->render("vocabularios/indexVocabulario", ["vocabularis" => $vocabularisList]);
     }
 
+    /*public function searchDef($found = "") {
+        $this->checkRole(['admin']);
+        exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
+    }
+
+    public function search($found) {
+        $this->checkRole(['admin']);
+        exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
+    }*/
+
     public function showVocabulario($path)
     {
-        $this->checkReadRole(['admin']); // Permiso de lectura
+        $this->checkRole(['admin']); // Permiso de lectura
         $data = $this->vocabularis->getAllFromModel($path);
         $this->render("vocabularios/campsLlista", ["vocabularis" => $data, "path" => $path]);
     }
 
     public function newVocabulario($path)
     {
-        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->checkRole(['admin']); // Permiso de escritura
         $this->render("vocabularios/createCampLlista", ["path" => $path]);
     }
 
     public function createVocabulario($path)
     {
-        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->checkRole(['admin']); // Permiso de escritura
         $this->vocabularis->addFromModel($path, $_POST);
         header("Location: /vocabularis/{$path}");
         exit;
@@ -52,7 +62,7 @@ class VocabularioController extends Controller {
 
     public function editVocabulario($path, $id)
     {
-        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->checkRole(['admin']); // Permiso de escritura
         $this->render("/vocabularios/editCampLlista", [
             "vocabulari" => $this->vocabularis->getFromModel($path, $id),
             "path" => $path,
@@ -63,7 +73,7 @@ class VocabularioController extends Controller {
 
     public function updateVocabulario($path, $id)
     {
-        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->checkRole(['admin']); // Permiso de escritura
         $_POST["id"] = $id;
         $this->vocabularis->updateFromModel($path, $_POST);
         header("Location: /vocabularis/{$path}");
@@ -72,7 +82,7 @@ class VocabularioController extends Controller {
 
     public function deleteVocabulario($path, $id)
     {
-        $this->checkWriteRole(['admin']); // Permiso de escritura
+        $this->checkRole(['admin']); // Permiso de escritura
         $this->vocabularis->destroyFromModel($path, $id);
         header("Location: /vocabularis/{$path}");
         exit;
