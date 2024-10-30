@@ -6,6 +6,9 @@
     <div>
         <h1>Afegir un registre</h1>
     </div>
+    <div>
+        <button><a href="#"> Cambiar a fitxa bàsica</a></button>
+    </div>
     <form action="post">
         <table>
             <tr>
@@ -308,6 +311,14 @@
                     <select name="Classificacion" id="Classificacion">
                         <!-- Select de valor de Classificacion -->
                     </select>                  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Usuario">Usuari que crea l'objecte:</label>
+                    <select id="Usuario" name="Usuario">
+                        <!-- Select de Nombre de Usuario -->
+                    </select> 
                 </td>
             </tr>
             <tr>
