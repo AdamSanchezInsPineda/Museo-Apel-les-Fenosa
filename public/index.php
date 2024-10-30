@@ -77,12 +77,6 @@ $router->get( '/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAd
 
 $router->post( '/exposicions/{exposicio}/bens/create', 'ExposicionsController@bensCreateExposicio');
 
-$router->get('/exposicions/{exposicio}/bens/{objeto}/delete', 'ExposicionsController@bensDeleteExposicio');
-
-
-
-
-
-
+$router->get('/exposicions/{exposicio}/bens/{objetoExposicion}/delete', 'ExposicionsController@bensDeleteExposicio');
 
 $router->dispatch();

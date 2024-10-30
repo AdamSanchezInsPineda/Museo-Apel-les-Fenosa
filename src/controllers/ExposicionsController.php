@@ -250,38 +250,40 @@ class ExposicionsController {
     }
     
 
-    public function bensCreateExposicio($exposicionId) {
+    public function bensCreateExposicio($id) {
         session_start();
         $user = new Usuario();
-        $exposicio = new Exposicio();
     
-        if (!isset($_SESSION['nom']) || !$user->comprovarUsuario($_SESSION['nom'], $_SESSION['password'])) {
+        if (!isset($_SESSION['nom'])){
+            $state = false;
+        }
+        else{
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+        }
+        if ($state) {
+            if ($_SESSION['rol'] != "convidat"){
+                $exposicio = new Exposicio();
+                $objetosSeleccionados = $_POST['afegir'];
+                foreach ($objetosSeleccionados as $objetoId) {
+                    $exposicio->insertObjetoExposicion($id, $objetoId);
+                }
+                header(`/exposicions`);
+            }
+            else{
+                //Warning de que no tiene permisos para ejecutar esta orden
+                header('Location: /registers');
+            }   
+        }
+        else {
             session_unset();
             session_destroy();
-            $this->render("login", ["error" => "La sessió no s'ha iniciat"]);
-            exit;
+            $error = " La sessió no s'ha iniciat ";
+            $this->render("login", ["error"=> $error]);
         }
-    
-        if ($_SESSION['rol'] == "convidat") {
-            header('Location: /registers');
-            exit;
-        }
-    
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $objetosSeleccionados = $_POST['objetos'] ?? [];
-            
-            foreach ($objetosSeleccionados as $objetoId) {
-                // Aquí insertas en la tabla ObjetoExposicion
-                $this->$exposicio->insertObjetoExposicion($objetoId, $exposicionId);
-            }
-            
-            // Redirigir o mostrar un mensaje de éxito
-            $this->render("exposicions/bensExposicions", ["exposicions" => $exposicionId]);
-        }
+        exit;
     }
 
-    public function bensDeleteExposicio($id) {
+    public function bensDeleteExposicio($id, $objetoExposicion) {
         session_start();
         $user = new Usuario();
         $exposicio = new Exposicio();
@@ -293,29 +295,24 @@ class ExposicionsController {
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
         
-            if ($state) {
-                if ($id != 1){         
-                    if ($_SESSION['rol'] == "admin"){
-                        $exposicio->eliminarObjetoExposicion($id);
-                        header('Location: /exposicions');
-                    }
-                    else{
-                        //Warning de que no tiene permisos para ejecutar esta orden
-                        header('Location: /registers');
-                    }
-                }
-                else{
-                    //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /users');
-                }
-
-            } else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);  
+        if ($state) {      
+            if ($_SESSION['rol'] == "admin"){
+                $exposicio->eliminarObjetoExposicion($objetoExposicion);
+                header(`Location: /exposicions`);
             }
-            exit;
+            else{
+                //Warning de que no tiene permisos para ejecutar esta orden
+                header('Location: /registers');
+            }
+
+        } 
+        else {
+            session_unset();
+            session_destroy();
+            $error = " La sessió no s'ha iniciat ";
+            $this->render("login", ["error"=> $error]);  
+        }
+        exit;
     }
 
 
