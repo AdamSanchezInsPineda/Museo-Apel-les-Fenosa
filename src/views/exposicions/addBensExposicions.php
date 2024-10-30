@@ -3,12 +3,11 @@
 ?> 
 <body class = "addBensExposicions">  
     <div>
-    <form method="POST" action="/exposicions/<?php echo $objetos[1] ?>/bens/create">
+    <form method="POST" action="/exposicions/<?php echo $objetos[1]; ?>/bens/create">
 
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
-                <a href="/exposicions/<?php echo $objetos[1]; ?>/bens">Fer un nou registre<img src="/resources/images/plus.png" alt="Afegir registre"></a>
             </div>
             <table>
                 <?php
@@ -22,26 +21,28 @@
                     foreach ($objetos[0] as $objeto) {
                         echo "<tr>";
                         foreach ($objeto as $key => $dato){
-                            if ($key == "Imagen") {
-                                echo "<td><img src='/resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}' class='button1'></td>";
-                                echo "<div class='img-preview'>";
-                                    echo "<button class='button2'>Salir</button>";
-                                    echo "<img src='/resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}'>";
-                                echo "</div>";
-
-                            }
-                            else{
-                                echo "<td>{$dato}</td>";
-                            }
+                            if ($key != "ObjetoID"){
+                                if ($key == "Imagen") {
+                                    echo "<td><img src='/resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}' class='button1'></td>";
+                                    echo "<div class='img-preview'>";
+                                        echo "<button class='button2'>Salir</button>";
+                                        echo "<img src='/resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}'>";
+                                    echo "</div>";
+    
+                                }
+                                else{
+                                    echo "<td>{$dato}</td>";
+                                } 
+                            }                             
                         }
-                        echo "<td><input type='checkbox' name='afegir[]' value='{$dato}'></td>";
+                        echo "<td><input type='checkbox' name='afegir[]' value='{$objeto["ObjetoID"]}'></td>";
                         echo"</tr>";
                     }
                     
                 ?>
             </table>
         </div>
-        <button type="submit" class="submit"><a href="/exposicions/<?php echo $objetos[1]; ?>/bens">Añadir objetos seleccionados</a></button>
+        <button type="submit" class="submit">Añadir objetos seleccionados</button>
     </form>
     </div>
     

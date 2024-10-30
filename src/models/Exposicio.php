@@ -55,9 +55,6 @@
             
         }
 
-
-
-
         function eliminarObjetoExposicion($id) {
             $sql = $this -> db->prepare('DELETE FROM ObjetoExposicion WHERE ObjetoExposicionID = :id');
             
@@ -68,7 +65,7 @@
 
         function insertObjetoExposicion($exposicionID, $objetoID) {
             $sql = $this->db->prepare('INSERT INTO ObjetoExposicion (ExposicionID, ObjetoID) VALUES (?, ?)');
-            return $sql->execute([$exposicionID, $objetoID]);
+            $sql->execute([$exposicionID, $objetoID]);
         }
         
     }
