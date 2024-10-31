@@ -6,9 +6,6 @@
     <div>
         <h1>Afegir un registre</h1>
     </div>
-    <div>
-        <button><a href="#"> Cambiar a fitxa bàsica</a></button>
-    </div>
     <form action="post">
         <table>
             <tr>

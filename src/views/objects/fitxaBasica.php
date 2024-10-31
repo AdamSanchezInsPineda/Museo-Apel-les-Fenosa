@@ -6,6 +6,9 @@
     <div>
         <h1>Fitxa bàsica de XXXXXXX</h1>
     </div>
+    <div>
+        <button><a href="#"> Cambiar a fitxa completa</a></button>
+    </div>
         <table>
             <tr>
                 <td colspan = "2">
@@ -14,8 +17,7 @@
             </tr>
             <tr>
                 <td>
-                    <label for="RegistroNº">Nº de Registre:</label>
-                    <input type="text" id="RegistroNº" name="RegistroNº" value="<?php echo $objetos[0]['o.RegistroNº']?> "required>
+                    <p>Nº de Registre: <?php echo $objetos[0]['o.RegistroNº']?></p> 
                 </td>
                 <td rowspan="3">
                     <input type="file" name="imagen" src="resources/images/lupa.png" alt="Submit" height="100px">
@@ -36,21 +38,15 @@
             </tr>
             <tr>
                 <td>
-                    <label for="Nom">Nom:</label>
-                    <input type="text" id="Nom" name="Nom" value="<?php echo $objetos[0]['o.Nombre']?>"required>
+                    <p>Nom: <?php echo $objetos[0]['o.Nombre']?></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="Autors">Autor:</label>
-                    <select name="Autors" id="Autors" value="<?php echo $objetos[0]['AutorNombre']?> " required>
-                        <!-- Select de Nombre de Autors -->
-                    </select>
-                    <!-- <input type="text" id="Autor" name="Autor" required> -->
+                   <p>Autor: <?php echo $objetos[0]['AutorNombre']?></p> 
                 </td>
                 <td>
-                    <label for="Títol">Títol:</label>
-                    <input type="text" id="Títol" name="Títol" value="<?php echo $objetos[0]['o.Titulo']?> " required>
+                    <p>Títol: <?php echo $objetos[0]['o.Titulo']?></p>
                 </td>
             </tr>
             <tr>
@@ -60,30 +56,23 @@
             </tr>
             <tr>
                 <td>
-                    <label for="descripcion">Datació:</label>
-                    <input type="text" id="descripcion" name="descripcion" value="<?php echo $objetos[0]['DatacionDescripcion']?>"required>
+                    <p>Datació: <?php echo $objetos[0]['DatacionDescripcion']?></p>
                 </td>
                 <td>
-                    <label for="Altura">Altura:</label>
-                    <input type="text" id="Altura" name="Altura" value="<?php echo $objetos[0]['o.Altura']?>" required>
+                    <p>Altura: <?php echo $objetos[0]['o.Altura']?></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="Anchura">Amplada:</label>
-                    <input type="text" id="Anchura" name="Anchura" value="<?php echo $objetos[0]['o.Anchura']?>" required>
+                    <p>Amplada: <?php echo $objetos[0]['o.Anchura']?></p>
                 </td>
                 <td>
-                    <label for="Profundidad">Profunditat:</label>
-                    <input type="text" id="Profundidad" name="Profundidad" value="<?php echo $objetos[0]['o.Profundidad']?>"required>
+                    <p>Profunditat: <?php echo $objetos[0]['o.Profundidad']?></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="Material">Material:</label>
-                    <select name="Material" id="Material" value="<?php echo $objetos[0]['MaterialNombre']?>">
-                        <!-- Select de valor de Material -->
-                    </select>
+                    <p>Material: <?php echo $objetos[0]['MaterialNombre']?></p>
                 </td>
             </tr>
             <tr>
@@ -93,26 +82,18 @@
             </tr>
             <tr>
                 <td>
-                    <label for="FormaIngreso">Forma d'Ingrés:</label>
-                    <select name="FormaIngreso" id="FormaIngreso" value="<?php echo $objetos[0]['FormaIngresoValor']?>">
-                        <!-- Select de valor de FormaIngreso -->
-                    </select>                
+                    <p>Forma d'Ingrés: <?php echo $objetos[0]['FormaIngresoValor']?></p>
                 </td>
                 <td>
-                    <label for="FuenteIngreso">Font d'Ingrés:</label>
-                    <input type="text" id="FuenteIngreso" name="FuenteIngreso" value="<?php echo $objetos[0]['o.FuenteIngreso']?>">
+                    <p>Font d'Ingrés: <?php echo $objetos[0]['o.FuenteIngreso']?></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="FechaIngreso">Data d'Ingrés:</label>
-                    <input type="text" id="FechaIngreso" name="FechaIngreso" value="<?php echo $objetos[0]['o.FechaIngreso']?>">
+                    <p>Data d'Ingrés: <?php echo $objetos[0]['o.FechaIngreso']?></p>
                 </td>
                 <td>
-                    <label for="EstadoConservacion">Estat de conservació:</label>
-                    <select name="EstadoConservacion" id="EstadoConservacion" value="<?php echo $objetos[0]['EstadoConservacionNombre']?>">
-                        <!-- Select de valor de EstadoConservacion -->
-                    </select>                  
+                    <p>Estat de conservació: <?php echo $objetos[0]['EstadoConservacionNombre']?></p>                 
                 </td>
             </tr>
             <tr>
@@ -122,30 +103,23 @@
             </tr>
             <tr>
                 <td>
-                    <label for="ValoracionEconomica">Valoració Económica:</label>
-                    <input type="text" id="ValoracionEconomica" name="ValoracionEconomica" value="<?php echo $objetos[0]['o.ValoracionEconomica']?>">
+                    <p>Valoració Económica: <?php echo $objetos[0]['o.ValoracionEconomica']?></p>
                 </td>
                 <td>
-                    <label for="LugarProcedencia">Lloc de Procedencia:</label>
-                    <input type="text" id="LugarProcedencia" name="LugarProcedencia" value="<?php echo $objetos[0]['o.LugarProcedencia']?>">
+                    <p>Lloc de Procedencia: <?php echo $objetos[0]['o.LugarProcedencia']?></p>
                 </td>               
             </tr>
             <tr>
                 <td>
-                    <label for="Classificacion">Classificació Genérica:</label>
-                    <select name="Classificacion" id="Classificacion" value="<?php echo $objetos[0]['ClasificacionGenerica']?>">
-                        <!-- Select de valor de Classificacion -->
-                    </select>                  
+                    <p>Classificació Genérica: <?php echo $objetos[0]['ClasificacionGenerica']?></p>
                 </td>
                 <td>
-                    <label for="FechaRegistro">Data de Registre:</label>
-                    <input type="text" id="FechaRegistro" name="FechaRegistro" value="<?php echo $objetos[0]['o.FechaRegistro']?>">
+                    <p>Data de Registre: <?php echo $objetos[0]['o.FechaRegistro']?></p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="Usuario">Usuari que crea l'objecte:</label>
-                    <p><?php echo $objetos[0]['UsuarioNombre']?></p> 
+                    <p>Usuari que crea l'objecte: <?php echo $objetos[0]['UsuarioNombre']?></p> 
                 </td>
             </tr>
         </table>

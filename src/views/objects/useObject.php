@@ -161,11 +161,11 @@
             <tr>
                 <td>
                     <label for="FechaBaja">Data Baixa:</label>
-                    <input type="datetime-local" id="FechaBaja" name="FechaBaja" value="<?php echo $objetos[0]['']?>">
+                    <input type="datetime-local" id="FechaBaja" name="FechaBaja" value="<?php echo $objetos[0]['o.FechaBaja']?>">
                 </td>
                 <td>
                     <label for="PersonaAutorizadaBaja">Persona Autorizada Baja:</label>
-                    <input type="text" id="PersonaAutorizadaBaja" name="PersonaAutorizadaBaja" value="<?php echo $objetos[0]['o.FechaBaja']?>">
+                    <input type="text" id="PersonaAutorizadaBaja" name="PersonaAutorizadaBaja" value="<?php echo $objetos[0]['o.PersonaAutorizadaBaja']?>">
                 </td>
             </tr>
             <tr>
@@ -312,8 +312,10 @@
             </tr>
             <tr>
                 <td>
-                    <label for="Usuario">Usuari que crea l'objecte:</label>
-                    <p><?php echo $objetos[0]['UsuarioNombre']?></p> 
+                    <p>Usuari que crea l'objecte: <?php echo $objetos[0]['UsuarioNombre']?></p> 
+                </td>
+                <td>
+                    <p>Data de Registre: <?php echo $objetos[0]['o.FechaRegistro']?></p>
                 </td>
             </tr>
             <tr>
