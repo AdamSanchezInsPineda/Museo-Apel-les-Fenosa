@@ -232,7 +232,7 @@ class ExposicionsController {
         }
         if ($state) {
             if ($_SESSION['rol'] != "convidat"){
-                $this->render("exposicions/addBensExposicions", ["objetos" => [$objeto->afegirBensObj(), $id]]);
+                $this->render("exposicions/addBensExposicions", ["objetos" => [$objeto->afegirBensObj($id), $id]]);
             }
             else{
                 //Warning de que no tiene permisos para ejecutar esta orden
@@ -267,7 +267,7 @@ class ExposicionsController {
                 foreach ($objetosSeleccionados as $objetoId) {
                     $exposicio->insertObjetoExposicion($id, $objetoId);
                 }
-                header(`/exposicions`);
+                header("Location: /exposicions/{$id}/bens");
             }
             else{
                 //Warning de que no tiene permisos para ejecutar esta orden
@@ -298,7 +298,7 @@ class ExposicionsController {
         if ($state) {      
             if ($_SESSION['rol'] == "admin"){
                 $exposicio->eliminarObjetoExposicion($objetoExposicion);
-                header(`Location: /exposicions`);
+                header("Location: /exposicions/{$id}/bens");
             }
             else{
                 //Warning de que no tiene permisos para ejecutar esta orden

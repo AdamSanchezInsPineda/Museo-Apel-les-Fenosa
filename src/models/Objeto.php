@@ -27,16 +27,23 @@
 
             return $result;
         }
-        function afegirBensObj() {
+        function afegirBensObj($id) {
             
-            $sql = $this -> db->prepare('SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID LEFT JOIN Datacion d ON o.DatacionID = d.id');
-                // WHERE o.RegistroNº LIKE %'
-                //. $q .'% OR o.Imagen LIKE %'
-                //. $q .'% OR o.Nombre LIKE %'
-                // . $q .'% OR o.Titulo LIKE %'
-                // . $q .'% OR a.Nombre LIKE % '
-                // . $q .'% OR u.Nombre LIKE % '
-                // . $q .'% OR d.descripcion            
+            $sql = $this -> db->prepare('SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion 
+                                         FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id 
+                                         LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
+                                         LEFT JOIN Datacion d ON o.DatacionID = d.id 
+                                         WHERE o.ObjetoID not in (SELECT o2.ObjetoID FROM Objetos o2 INNER JOIN ObjetoExposicion oe WHERE oe.ExposicionID = :id)');
+                                         // WHERE o.RegistroNº LIKE %'
+                                         //. $q .'% OR o.Imagen LIKE %'
+                                         //. $q .'% OR o.Nombre LIKE %'
+                                         // . $q .'% OR o.Titulo LIKE %'
+                                         // . $q .'% OR a.Nombre LIKE % '
+                                         // . $q .'% OR u.Nombre LIKE % '
+                                         // . $q .'% OR d.descripcion    
+            
+            $sql->bindParam(':id', $id);
+
             $sql->execute();
             
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
