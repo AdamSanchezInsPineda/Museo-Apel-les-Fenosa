@@ -37,6 +37,8 @@
     </style>
 </head>
 <body>
+    <?php require "resources/components/header.php" ?>
+
     <div id="tree-container"></div>
 
     <script>

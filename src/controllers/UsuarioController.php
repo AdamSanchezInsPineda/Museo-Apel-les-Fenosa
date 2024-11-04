@@ -28,12 +28,8 @@ class UsuarioController extends Controller {
     }
 
     public function table() {
-        $this->checkRole(['admin', 'tecnic', 'convidat']);
-        if ($_SESSION['rol'] !== "convidat") {
-            $this->render('users/users');
-        } else {
-            header('Location: /registers');
-        }
+        $this->checkRole(['admin', 'tecnic']);
+        $this->render('users/users');
     }
 
     public function searchDef($found = "") {

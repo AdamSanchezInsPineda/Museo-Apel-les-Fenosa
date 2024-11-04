@@ -79,4 +79,6 @@ $router->post( '/exposicions/{exposicio}/bens/create', 'ExposicionsController@be
 
 $router->get('/exposicions/{exposicio}/bens/{objetoExposicion}/delete', 'ExposicionsController@bensDeleteExposicio');
 
+$router->get('/ubicacions', "UbicacionsController@index");
+
 $router->dispatch();

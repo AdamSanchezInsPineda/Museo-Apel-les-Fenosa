@@ -10,7 +10,7 @@
                                                     d.descripcion as Datacion 
                                                 FROM Objetos o
                                                 LEFT JOIN Autors a ON o.AutorID = a.id
-                                                LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
+                                                LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id 
                                                 LEFT JOIN Datacion d ON o.DatacionID = d.id');
 
                                                 // WHERE o.RegistroNº LIKE %' . :found .'% OR
@@ -31,7 +31,7 @@
             
             $sql = $this -> db->prepare('SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion 
                                          FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id 
-                                         LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID 
+                                         LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id 
                                          LEFT JOIN Datacion d ON o.DatacionID = d.id 
                                          WHERE o.ObjetoID not in (SELECT o2.ObjetoID FROM Objetos o2 INNER JOIN ObjetoExposicion oe WHERE oe.ExposicionID = :id)');
                                          // WHERE o.RegistroNº LIKE %'
@@ -109,7 +109,7 @@
         INNER JOIN Classificacion c ON o.ClasificacionGenericaID = c.id
         INNER JOIN Material m ON o.MaterialID = m.id
         INNER JOIN Tecnica t ON o.TecnicaID = t.id
-        INNER JOIN Ubicaciones u ON o.UbicacionActualID = u.UbicacionID
+        INNER JOIN Ubicaciones u ON o.UbicacionActualID = u.id
         INNER JOIN UbicacionObjeto uo ON  o.UbicacionActualID = uo.UbicacionID
         INNER JOIN EstadoConservacion ec ON o.EstadoConservacionID = ec.id
         INNER JOIN Museos mu ON o.MuseoID = mu.MuseoID
