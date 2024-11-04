@@ -101,6 +101,8 @@
             e.FechaFin as FechaFinExposicion,
             e.LugarExposicion,
             te.valor as TipoExposicionNombre,
+            u.Nombre as UsuarioNombre,
+            o.Activo
 
         FROM Objetos o
         INNER JOIN Autors a ON o.AutorID = a.AutorID
@@ -119,6 +121,7 @@
         INNER JOIN ObjetoExposicion oe ON  o.ObjetoID = oe.ObjetoID
         INNER JOIN Exposiciones e ON  o. = e.ExposicionID = oe.ExposicionID
         INNER JOIN TipoExposicion te  ON e.TipoExposicionID = te.id
+        INNER JOIN Usuarios u ON  o.UsuarioID = u.UsuarioID
 
         WHERE o.ObjetoID = :id');
 

@@ -312,6 +312,14 @@
             </tr>
             <tr>
                 <td>
+                    <label for="Usuario">Usuari que crea l'objecte:</label>
+                    <select id="Usuario" name="Usuario">
+                        <!-- Select de Nombre de Usuario -->
+                    </select> 
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label for="Bibliografia">Bibliografia:</label>
                     <input type="text" id="Bibliografia" name="Bibliografia">
                 </td>
