@@ -552,7 +552,7 @@ INSERT INTO `TiposExposicion` (`id`, `valor`) VALUES
 --
 
 CREATE TABLE `Ubicaciones` (
-  `UbicacionID` int NOT NULL,
+  `id` int NOT NULL,
   `Nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `UbicacionPadre` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -561,7 +561,7 @@ CREATE TABLE `Ubicaciones` (
 -- Dumping data for table `Ubicaciones`
 --
 
-INSERT INTO `Ubicaciones` (`UbicacionID`, `Nombre`, `UbicacionPadre`) VALUES
+INSERT INTO `Ubicaciones` (`id`, `Nombre`, `UbicacionPadre`) VALUES
 (1, 'Sotano', NULL);
 
 -- --------------------------------------------------------
@@ -719,7 +719,7 @@ ALTER TABLE `TiposExposicion`
 -- Indexes for table `Ubicaciones`
 --
 ALTER TABLE `Ubicaciones`
-  ADD PRIMARY KEY (`UbicacionID`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `UbicacionPadre` (`UbicacionPadre`);
 
 --
@@ -840,7 +840,7 @@ ALTER TABLE `TiposExposicion`
 -- AUTO_INCREMENT for table `Ubicaciones`
 --
 ALTER TABLE `Ubicaciones`
-  MODIFY `UbicacionID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `UbicacionObjeto`
@@ -882,7 +882,7 @@ ALTER TABLE `Objetos`
   ADD CONSTRAINT `Objetos_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `Material` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_3` FOREIGN KEY (`TecnicaID`) REFERENCES `Tecnica` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_4` FOREIGN KEY (`AutorID`) REFERENCES `Autors` (`id`),
-  ADD CONSTRAINT `Objetos_ibfk_5` FOREIGN KEY (`UbicacionActualID`) REFERENCES `Ubicaciones` (`UbicacionID`),
+  ADD CONSTRAINT `Objetos_ibfk_5` FOREIGN KEY (`UbicacionActualID`) REFERENCES `Ubicaciones` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_6` FOREIGN KEY (`EstadoConservacionID`) REFERENCES `EstadoConservacion` (`id`),
   ADD CONSTRAINT `Objetos_ibfk_7` FOREIGN KEY (`MuseoID`) REFERENCES `Museos` (`MuseoID`),
   ADD CONSTRAINT `Objetos_ibfk_8` FOREIGN KEY (`DatacionID`) REFERENCES `Datacion` (`id`),
@@ -898,13 +898,13 @@ ALTER TABLE `Restauraciones`
 -- Constraints for table `Ubicaciones`
 --
 ALTER TABLE `Ubicaciones`
-  ADD CONSTRAINT `Ubicaciones_ibfk_1` FOREIGN KEY (`UbicacionPadre`) REFERENCES `Ubicaciones` (`UbicacionID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `Ubicaciones_ibfk_1` FOREIGN KEY (`UbicacionPadre`) REFERENCES `Ubicaciones` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `UbicacionObjeto`
 --
 ALTER TABLE `UbicacionObjeto`
-  ADD CONSTRAINT `UbicacionObjeto_ibfk_1` FOREIGN KEY (`UbicacionID`) REFERENCES `Ubicaciones` (`UbicacionID`),
+  ADD CONSTRAINT `UbicacionObjeto_ibfk_1` FOREIGN KEY (`UbicacionID`) REFERENCES `Ubicaciones` (`id`),
   ADD CONSTRAINT `UbicacionObjeto_ibfk_2` FOREIGN KEY (`ObjetoID`) REFERENCES `Objetos` (`ObjetoID`);
 COMMIT;
 
