@@ -9,9 +9,9 @@
     <form action="post">
         <table>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Informació Bàsica</h2>
-                </td>     
+                </th>     
             </tr>
             <tr>
                 <td>
@@ -64,9 +64,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Ubicacions</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>
@@ -90,9 +90,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Propietats</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>
@@ -139,9 +139,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Baixa</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>
@@ -169,9 +169,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Restauració</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>
@@ -200,9 +200,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Ingrés</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>
@@ -229,9 +229,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Exposicions</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>
@@ -264,9 +264,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan = "2">
+                <th colspan = "2">
                     <h2>Altres Dades</h2>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td>

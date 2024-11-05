@@ -51,6 +51,10 @@
             return $result;
         }
 
+        function fitxesCreate(){
+            
+        }
+
         function fitxesMostrar($id){
             $sql = $this -> db->prepare('SELECT 
             o.RegistroNº,
@@ -132,5 +136,11 @@
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
             return $result;
+        }
+        function fitxesUpdate($id){
+
+        }
+        function fitxesDelete(){
+
         }
     }
