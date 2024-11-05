@@ -81,4 +81,6 @@ $router->get('/exposicions/{exposicio}/bens/{objetoExposicion}/delete', 'Exposic
 
 $router->get('/ubicacions', "UbicacionsController@index");
 
+$router->get('/ubicacions/json', "UbicacionsController@getUbicaciones");
+
 $router->dispatch();
