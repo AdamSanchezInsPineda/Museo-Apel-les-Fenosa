@@ -52,7 +52,48 @@
         }
 
         function fitxesCreate(){
-            
+            $sql = "INSERT INTO Objetos (RegistroNº, UsuarioID, Imagen, Nombre, ClasificacionGenericaID, ColeccionProcedencia, Altura, Anchura, Profundidad, MaterialID, TecnicaID, AutorID, Titulo, DatacionID, UbicacionActualID, FechaRegistro, NumeroEjemplares, FormaIngresoID, FechaIngreso, FuenteIngreso, BajaID, CausaBajaID, FechaBaja, PersonaAutorizadaBaja, EstadoConservacionID, LugarEjecucion, LugarProcedencia, NumeroTiraje, OtrosNrosIdentificacion, ValoracionEconomica, Bibliografia, Descripcion, HistoriaObjeto, MuseoID, Activo) 
+            VALUES (:registroN, :usuarioID, :imagen, :nombre, :clasificacionGenericaID, :coleccionProcedencia, :altura, :anchura, :profundidad, :materialID, :tecnicaID, :autorID, :titulo, :datacionID, :ubicacionActualID, :fechaRegistro, :numeroEjemplares, :formaIngresoID, :fechaIngreso, :fuenteIngreso, :bajaID, :causaBajaID, :fechaBaja, :personaAutorizadaBaja, :estadoConservacionID, :lugarEjecucion, :lugarProcedencia, :numeroTiraje, :otrosNrosIdentificacion, :valoracionEconomica, :bibliografia, :descripcion, :historiaObjeto, :museoID, :activo)";
+
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindParam(':registroN', $registroN);
+            $stmt->bindParam(':usuarioID', $usuarioID);
+            $stmt->bindParam(':imagen', $imagen);
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':clasificacionGenericaID', $clasificacionGenericaID);
+            $stmt->bindParam(':coleccionProcedencia', $coleccionProcedencia);
+            $stmt->bindParam(':altura', $altura);
+            $stmt->bindParam(':anchura', $anchura);
+            $stmt->bindParam(':profundidad', $profundidad);
+            $stmt->bindParam(':materialID', $materialID);
+            $stmt->bindParam(':tecnicaID', $tecnicaID);
+            $stmt->bindParam(':autorID', $autorID);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':datacionID', $datacionID);
+            $stmt->bindParam(':ubicacionActualID', $ubicacionActualID);
+            $stmt->bindParam(':fechaRegistro', $fechaRegistro);
+            $stmt->bindParam(':numeroEjemplares', $numeroEjemplares);
+            $stmt->bindParam(':formaIngresoID', $formaIngresoID);
+            $stmt->bindParam(':fechaIngreso', $fechaIngreso);
+            $stmt->bindParam(':fuenteIngreso', $fuenteIngreso);
+            $stmt->bindParam(':bajaID', $bajaID);
+            $stmt->bindParam(':causaBajaID', $causaBajaID);
+            $stmt->bindParam(':fechaBaja', $fechaBaja);
+            $stmt->bindParam(':personaAutorizadaBaja', $personaAutorizadaBaja);
+            $stmt->bindParam(':estadoConservacionID', $estadoConservacionID);
+            $stmt->bindParam(':lugarEjecucion', $lugarEjecucion);
+            $stmt->bindParam(':lugarProcedencia', $lugarProcedencia);
+            $stmt->bindParam(':numeroTiraje', $numeroTiraje);
+            $stmt->bindParam(':otrosNrosIdentificacion', $otrosNrosIdentificacion);
+            $stmt->bindParam(':valoracionEconomica', $valoracionEconomica);
+            $stmt->bindParam(':bibliografia', $bibliografia);
+            $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->bindParam(':historiaObjeto', $historiaObjeto);
+            $stmt->bindParam(':museoID', $museoID);
+            $stmt->bindParam(':activo', $activo);
+
+            $stmt->execute();
         }
 
         function fitxesMostrar($id){
@@ -138,9 +179,97 @@
             return $result;
         }
         function fitxesUpdate($id){
+            $sql = "UPDATE Objetos SET 
+        RegistroNº = :registroN,
+        UsuarioID = :usuarioID,
+        Imagen = :imagen,
+        Nombre = :nombre,
+        ClasificacionGenericaID = :clasificacionGenericaID,
+        ColeccionProcedencia = :coleccionProcedencia,
+        Altura = :altura,
+        Anchura = :anchura,
+        Profundidad = :profundidad,
+        MaterialID = :materialID,
+        TecnicaID = :tecnicaID,
+        AutorID = :autorID,
+        Titulo = :titulo,
+        DatacionID = :datacionID,
+        UbicacionActualID = :ubicacionActualID,
+        FechaRegistro = :fechaRegistro,
+        NumeroEjemplares = :numeroEjemplares,
+        FormaIngresoID = :formaIngresoID,
+        FechaIngreso = :fechaIngreso,
+        FuenteIngreso = :fuenteIngreso,
+        BajaID = :bajaID,
+        CausaBajaID = :causaBajaID,
+        FechaBaja = :fechaBaja,
+        PersonaAutorizadaBaja = :personaAutorizadaBaja,
+        EstadoConservacionID = :estadoConservacionID,
+        LugarEjecucion = :lugarEjecucion,
+        LugarProcedencia = :lugarProcedencia,
+        NumeroTiraje = :numeroTiraje,
+        OtrosNrosIdentificacion = :otrosNrosIdentificacion,
+        ValoracionEconomica = :valoracionEconomica,
+        Bibliografia = :bibliografia,
+        Descripcion = :descripcion,
+        HistoriaObjeto = :historiaObjeto,
+        MuseoID = :museoID,
+        Activo = :activo
+        WHERE ObjetoID = :objetoID";
 
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(':objetoID', $objetoID);
+        $stmt->bindParam(':registroN', $registroN);
+        $stmt->bindParam(':usuarioID', $usuarioID);
+        $stmt->bindParam(':imagen', $imagen);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':clasificacionGenericaID', $clasificacionGenericaID);
+        $stmt->bindParam(':coleccionProcedencia', $coleccionProcedencia);
+        $stmt->bindParam(':altura', $altura);
+        $stmt->bindParam(':anchura', $anchura);
+        $stmt->bindParam(':profundidad', $profundidad);
+        $stmt->bindParam(':materialID', $materialID);
+        $stmt->bindParam(':tecnicaID', $tecnicaID);
+        $stmt->bindParam(':autorID', $autorID);
+        $stmt->bindParam(':titulo', $titulo);
+        $stmt->bindParam(':datacionID', $datacionID);
+        $stmt->bindParam(':ubicacionActualID', $ubicacionActualID);
+        $stmt->bindParam(':fechaRegistro', $fechaRegistro);
+        $stmt->bindParam(':numeroEjemplares', $numeroEjemplares);
+        $stmt->bindParam(':formaIngresoID', $formaIngresoID);
+        $stmt->bindParam(':fechaIngreso', $fechaIngreso);
+        $stmt->bindParam(':fuenteIngreso', $fuenteIngreso);
+        $stmt->bindParam(':bajaID', $bajaID);
+        $stmt->bindParam(':causaBajaID', $causaBajaID);
+        $stmt->bindParam(':fechaBaja', $fechaBaja);
+        $stmt->bindParam(':personaAutorizadaBaja', $personaAutorizadaBaja);
+        $stmt->bindParam(':estadoConservacionID', $estadoConservacionID);
+        $stmt->bindParam(':lugarEjecucion', $lugarEjecucion);
+        $stmt->bindParam(':lugarProcedencia', $lugarProcedencia);
+        $stmt->bindParam(':numeroTiraje', $numeroTiraje);
+        $stmt->bindParam(':otrosNrosIdentificacion', $otrosNrosIdentificacion);
+        $stmt->bindParam(':valoracionEconomica', $valoracionEconomica);
+        $stmt->bindParam(':bibliografia', $bibliografia);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':historiaObjeto', $historiaObjeto);
+        $stmt->bindParam(':museoID', $museoID);
+        $stmt->bindParam(':activo', $activo);
+
+        $stmt->execute();
         }
         function fitxesDelete(){
+            $sql = "DELETE FROM Objetos WHERE ObjetoID = :objetoID";
 
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindParam(':objetoID', $objetoID, PDO::PARAM_INT);
+
+            try {
+                $stmt->execute();
+                echo "Objeto eliminado con éxito";
+            } catch(PDOException $e) {
+                echo "Error al eliminar el objeto: " . $e->getMessage();
+            }
         }
     }
