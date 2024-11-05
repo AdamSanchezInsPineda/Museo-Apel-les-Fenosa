@@ -1,7 +1,7 @@
 <?php
     include "resources/components/header.php";
 ?> 
-<body class = "addBensExposicions">  
+<body class = "objects">  
     <div>
     <form method="POST" action="/exposicions/<?php echo $objetos[1]; ?>/bens/create">
 
