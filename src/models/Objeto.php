@@ -51,50 +51,14 @@
             return $result;
         }
 
-        function fitxesCreate(){
-            $sql = "INSERT INTO Objetos (RegistroNº, UsuarioID, Imagen, Nombre, ClasificacionGenericaID, ColeccionProcedencia, Altura, Anchura, Profundidad, MaterialID, TecnicaID, AutorID, Titulo, DatacionID, UbicacionActualID, FechaRegistro, NumeroEjemplares, FormaIngresoID, FechaIngreso, FuenteIngreso, BajaID, CausaBajaID, FechaBaja, PersonaAutorizadaBaja, EstadoConservacionID, LugarEjecucion, LugarProcedencia, NumeroTiraje, OtrosNrosIdentificacion, ValoracionEconomica, Bibliografia, Descripcion, HistoriaObjeto, MuseoID, Activo) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        function fitxesCreate($registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $fechaRegistro, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo){
+            
             // Preparar la declaración
-            $stmt = $db->prepare($sql);
+            $sql = $this-> db ->prepare('INSERT INTO Objetos (RegistroNº, UsuarioID, Imagen, Nombre, ClasificacionGenericaID, ColeccionProcedencia, Altura, Anchura, Profundidad, MaterialID, TecnicaID, AutorID, Titulo, DatacionID, UbicacionActualID, FechaRegistro, NumeroEjemplares, FormaIngresoID, FechaIngreso, FuenteIngreso, BajaID, CausaBajaID, FechaBaja, PersonaAutorizadaBaja, EstadoConservacionID, LugarEjecucion, LugarProcedencia, NumeroTiraje, OtrosNrosIdentificacion, ValoracionEconomica, Bibliografia, Descripcion, HistoriaObjeto, MuseoID, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 
             // Ejecutar la consulta pasando las variables en el mismo orden
-            $stmt->execute([
-                $registroN,
-                $usuarioID,
-                $imagen,
-                $nombre,
-                $clasificacionGenericaID,
-                $coleccionProcedencia,
-                $altura,
-                $anchura,
-                $profundidad,
-                $materialID,
-                $tecnicaID,
-                $autorID,
-                $titulo,
-                $datacionID,
-                $ubicacionActualID,
-                $fechaRegistro,
-                $numeroEjemplares,
-                $formaIngresoID,
-                $fechaIngreso,
-                $fuenteIngreso,
-                $bajaID,
-                $causaBajaID,
-                $fechaBaja,
-                $personaAutorizadaBaja,
-                $estadoConservacionID,
-                $lugarEjecucion,
-                $lugarProcedencia,
-                $numeroTiraje,
-                $otrosNrosIdentificacion,
-                $valoracionEconomica,
-                $bibliografia,
-                $descripcion,
-                $historiaObjeto,
-                $museoID,
-                $activo
+            $sql->execute([
+                $registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $fechaRegistro, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo
             ]);
         }
 
