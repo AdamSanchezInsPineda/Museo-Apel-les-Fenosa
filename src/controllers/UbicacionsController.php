@@ -5,7 +5,7 @@ class UbicacionsController extends Controller {
 
     public function __construct(){
         parent::__construct();
-        $ubicacion = new Ubicacion();
+        $this->ubicacion = new Ubicacion();
     }
 
     public function index() {

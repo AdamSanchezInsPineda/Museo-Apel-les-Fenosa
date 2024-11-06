@@ -3,8 +3,7 @@
 ?> 
 <body class = "objects">  
     <div>
-    <form method="POST" action="/exposicions/<?php echo $objetos[1]; ?>/bens/create">
-
+    <form method="POST" action="/exposicions/<?php echo $objetos[1]; ?>/bens/create"id="addObjectsForm" onsubmit="return validateForm()">
         <div>
             <div>
                 <input type="text" placeholder="Cercar">
@@ -42,13 +41,31 @@
                 ?>
             </table>
         </div>
-        <button type="submit" class="submit">Añadir objetos seleccionados</button>
+        <button type="submit" class="submit">Afegir objectes seleccionats</button>
+        <div id="errorMessage" style="color: red; display: none; margin: 10px 0;">
+            Seleccioneu almenys un objecte abans de continuar.
+        </div>
     </form>
     </div>
+    
     
     <!--Scripts-->
     <script src="/resources/js/imagePreview.js"></script>
     <script src="/resources/js/delete.js"></script>
+    <script>
+        function validateForm() {
+            const checkboxes = document.querySelectorAll('input[name="afegir[]"]:checked');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (checkboxes.length === 0) {
+                errorMessage.style.display = 'block';
+                return false;
+            }
+            
+            errorMessage.style.display = 'none';
+            return true;
+        }
+    </script>
     <?php
         include "resources/components/footer.php";
     ?>

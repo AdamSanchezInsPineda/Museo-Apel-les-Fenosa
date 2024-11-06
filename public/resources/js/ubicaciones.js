@@ -5,8 +5,8 @@ function buildLocationTree(locations) {
 
     // Primero crear un lookup object para acceso rápido
     locations.forEach(location => {
-        lookup[location.UbicacionID] = {
-            id: location.UbicacionID,
+        lookup[location.id] = {
+            id: location.id,
             name: location.Nombre,
             children: [],
             parent: location.UbicacionPadre
@@ -17,12 +17,12 @@ function buildLocationTree(locations) {
     locations.forEach(location => {
         if (location.UbicacionPadre === null) {
             // Es un nodo raíz
-            tree.push(lookup[location.UbicacionID]);
+            tree.push(lookup[location.id]);
         } else {
             // Es un nodo hijo
             const parent = lookup[location.UbicacionPadre];
             if (parent) {
-                parent.children.push(lookup[location.UbicacionID]);
+                parent.children.push(lookup[location.id]);
             }
         }
     });
@@ -74,7 +74,7 @@ function renderTree(node, container, level = 0) {
 }
 
 // Uso:
-fetch('/api/ubicaciones') // Endpoint que devuelve las ubicaciones
+fetch('/ubicacions/json') // Endpoint que devuelve las ubicaciones
     .then(response => response.json())
     .then(locations => {
         const tree = buildLocationTree(locations);
