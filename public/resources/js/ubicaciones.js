@@ -32,45 +32,52 @@ function buildLocationTree(locations) {
 
 // Función para renderizar el árbol
 function renderTree(node, container, level = 0) {
-    const ul = document.createElement('ul');
-    
+    // Crear <ul> solo si estamos en un nivel mayor a 0
+    const parentElement = level === 0 ? container : document.createElement('ul');
+
     node.forEach(item => {
+        // Crear <li> para cada nodo
         const li = document.createElement('li');
-        
-        // Añadir sangría según el nivel
-        li.style.marginLeft = `${level * 20}px`;
-        
-        // Crear el contenido del ítem
-        const content = document.createElement('div');
+
+        // Contenido del nodo
+        const content = document.createElement('span');
         content.textContent = item.name;
-        
-        // Si tiene hijos, añadir un toggle
+
+        // Manejo de nodos con hijos
         if (item.children.length > 0) {
+            // Botón de desplegable para expandir/colapsar
             const toggle = document.createElement('span');
             toggle.textContent = '▼';
             toggle.style.cursor = 'pointer';
             toggle.style.marginRight = '5px';
             
+            // Evento para colapsar y expandir el ul
             toggle.onclick = function() {
                 const childList = li.querySelector('ul');
                 childList.style.display = childList.style.display === 'none' ? 'block' : 'none';
                 toggle.textContent = childList.style.display === 'none' ? '▶' : '▼';
             };
             
+            // Añadir el toggle antes del nombre
             content.prepend(toggle);
         }
-        
+
+        // Añadir el contenido actual al li
         li.appendChild(content);
-        
-        // Renderizar hijos recursivamente
+
+        // Si el nodo tiene hijos, generar el sub-árbol recursivamente
         if (item.children.length > 0) {
             renderTree(item.children, li, level + 1);
         }
-        
-        ul.appendChild(li);
+
+        // Añadir el li al elemento padre correspondiente
+        parentElement.appendChild(li);
     });
-    
-    container.appendChild(ul);
+
+    // Añadir el ul generado al contenedor principal solo en niveles mayores a 0
+    if (level > 0) {
+        container.appendChild(parentElement);
+    }
 }
 
 // Uso:
