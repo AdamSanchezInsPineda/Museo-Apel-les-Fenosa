@@ -33,7 +33,7 @@
                                          FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id 
                                          LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id 
                                          LEFT JOIN Datacion d ON o.DatacionID = d.id 
-                                         WHERE o.ObjetoID not in (SELECT o2.ObjetoID FROM Objetos o2 INNER JOIN ObjetoExposicion oe WHERE oe.ExposicionID = :id)');
+                                         WHERE o.ObjetoID not in (SELECT oe.ObjetoID FROM ObjetoExposicion oe WHERE oe.ExposicionID = :id)');
                                          // WHERE o.RegistroNº LIKE %'
                                          //. $q .'% OR o.Imagen LIKE %'
                                          //. $q .'% OR o.Nombre LIKE %'
