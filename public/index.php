@@ -21,7 +21,9 @@ $router->post('/registers/create', 'ObjetoController@create');
 
 $router->get('/registers/{obra}', 'ObjetoController@new');
 
-$router->get('/registers/{obra}/update', 'ObjetoController@update');
+$router->get('/registers/{obra}/updateView', 'ObjetoController@updateView');
+
+$router->post('/registers/{obra}/update', 'ObjetoController@update');
 
 $router->get('/registers/{obra}/delete', 'ObjetoController@delete');
 

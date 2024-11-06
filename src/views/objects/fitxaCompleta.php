@@ -4,7 +4,7 @@
 <body class = "verFicha">
     <!--Contenido variable de la pagina-->
     <div>
-        <h1>Fitxa completa de XXXXXXX</h1>
+        <h1>Fitxa completa de  </h1>
     </div>
     <div>
         <button><a href="#"> Cambiar a fitxa bàsica</a></button>

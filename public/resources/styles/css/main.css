@@ -634,7 +634,8 @@ header div img {
 .createObject form {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .createObject form table td {
   text-align: right;

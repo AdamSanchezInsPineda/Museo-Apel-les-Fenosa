@@ -60,7 +60,31 @@ class ObjetoController {
         }
 
         if ($state) {         
-            $this->render('objects/newObject', [$nRegistro]);
+            $this->render('objects/fitxaCompleta', [$nRegistro]);
+            exit;
+
+        } else {
+            session_unset();
+            session_destroy();
+            $error = " La sessió no s'ha iniciat ";
+            $this->render("login", ["error"=> $error]);
+            exit;
+        }
+    }
+
+    public function updateView($id) {
+        session_start();
+        if (!isset($_SESSION['nom'])){
+            $state = false;
+        }
+        else{
+            $user = new Usuario();
+            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+        }
+
+        if ($state) {
+            $objeto = new Objeto();
+            $this->render('objects/updateObject', ['cont' => [$id, $objeto->fitxesMostrar($id)]]);
             exit;
 
         } else {
