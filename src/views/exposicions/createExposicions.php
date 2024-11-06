@@ -29,9 +29,11 @@
         <div>
             <label for="Tipus">Tipus</label>
             <select name="Tipus" id="Tipus">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <?php foreach ($tiposExposicion as $tipo): ?>
+                    <option value="<?php echo htmlspecialchars($tipo['valor']); ?>">
+                        <?php echo htmlspecialchars($tipo['valor']); ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>
         

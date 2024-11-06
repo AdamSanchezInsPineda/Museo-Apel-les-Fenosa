@@ -3,7 +3,9 @@
     class Exposicio extends Database
     {
         function mostrarExposicions() {
-            $sql = $this -> db->prepare('SELECT ExposicionID, Nombre, DATE_FORMAT(FechaInicio, "%Y-%m-%d %H:%i") AS FechaInicio, DATE_FORMAT(FechaFin, "%Y-%m-%d %H:%i") AS FechaFin, TipoExposicionID, LugarExposicion FROM Exposiciones');
+            $sql = $this -> db->prepare('SELECT e.ExposicionID, e.Nombre, e.FechaInicio, e.FechaFin, te.valor as TipoExposicion, e.LugarExposicion 
+                                FROM Exposiciones e
+                                INNER JOIN TiposExposicion te ON e.TipoExposicionID = te.id ORDER BY e.Nombre ASC');
 
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -11,15 +13,23 @@
   
         }  
 
-        function crearExposicion($nombre, $fechaInicio, $fechaFin,  $tipoExposicionID, $lugarExposicion) {
+        function crearExposicion($nombre, $fechaInicio, $fechaFin,  $tipoExposicion, $lugarExposicion) {
             
-            $sql = $this -> db->prepare('INSERT INTO `Exposiciones` (`Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`,`LugarExposicion`) VALUES (?, ?, ?, ?, ?)');
+            $sql = $this -> db->prepare('INSERT INTO Exposiciones (Nombre, FechaInicio, FechaFin, TipoExposicionID, LugarExposicion) 
+                                VALUES (?, ?, ?, (SELECT id FROM TiposExposicion WHERE valor = ?), ?)');
 
-            $sql->execute([$nombre, $fechaInicio,  $fechaFin, $tipoExposicionID, $lugarExposicion]);
+            $sql->execute([$nombre, $fechaInicio,  $fechaFin, $tipoExposicion, $lugarExposicion]);
+        }
+
+        public function getTiposExposicion() {
+            $sql = $this->db->query('SELECT id, valor FROM TiposExposicion');
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function updateViewExposicion($id) {
-            $sql = $this -> db->prepare('SELECT ExposicionID, Nombre, FechaInicio, FechaFin, TipoExposicionID, LugarExposicion FROM Exposiciones WHERE ExposicionID = :id');
+            $sql = $this -> db->prepare('SELECT e.ExposicionID, e.Nombre, e.FechaInicio, e.FechaFin, te.valor as TipoExposicion, e.LugarExposicion 
+                                FROM Exposiciones e
+                                INNER JOIN TiposExposicion te ON e.TipoExposicionID = te.id WHERE ExposicionID = :id');
 
             $sql->bindParam(':id', $id);
             $sql->execute();
