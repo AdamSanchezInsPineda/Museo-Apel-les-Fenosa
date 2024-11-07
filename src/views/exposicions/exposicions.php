@@ -1,9 +1,11 @@
 <?php
     include "resources/components/header.php";
 ?> 
-<body class = "exposicions">    
+<body class = "exposicions">   
     <div>
         <div>
+            <h1>Exposicions</h1>
+
             <div>
                 <input type="text" placeholder="Cercar">
                 <?php

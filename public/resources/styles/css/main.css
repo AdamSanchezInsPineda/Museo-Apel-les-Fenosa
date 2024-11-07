@@ -145,7 +145,7 @@ header div img {
   justify-content: center;
 }
 .objects td > a > img {
-  height: 35px;
+  height: 100px;
   width: 35px;
 }
 .objects header + div > div {
@@ -223,7 +223,7 @@ header div img {
   justify-content: center;
 }
 .users td > a > img {
-  height: 35px;
+  height: 100px;
   width: 35px;
 }
 .users header + div > div {
@@ -296,7 +296,7 @@ header div img {
   justify-content: center;
 }
 .campsLlista td > a > img {
-  height: 35px;
+  height: 100px;
   width: 35px;
 }
 .campsLlista header + div > div {
@@ -353,7 +353,7 @@ header div img {
   justify-content: center;
 }
 .exposicions td > a > img {
-  height: 35px;
+  height: 100px;
   width: 35px;
 }
 .exposicions header + div > div {
@@ -419,6 +419,16 @@ header div img {
   display: flex;
   align-items: center;
 }
+.exposicions h1 {
+  text-align: center;
+}
+.exposicions td:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: #D8D9DA;
+}
 
 .addBensExposicions header + div {
   margin-top: 5%;
@@ -426,7 +436,7 @@ header div img {
   justify-content: center;
 }
 .addBensExposicions td > a > img {
-  height: 35px;
+  height: 100px;
   width: 35px;
 }
 .addBensExposicions header + div > div {
@@ -497,6 +507,25 @@ header div img {
   max-width: 95vw;
   max-height: 95vh;
 }
+.addBensExposicions div {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.addBensExposicions div div input {
+  height: 35px;
+  margin-bottom: 10px;
+}
+.addBensExposicions div form div button {
+  width: 80px;
+  height: 30px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
 
 .bensExposicions header + div {
   margin-top: 5%;
@@ -504,7 +533,7 @@ header div img {
   justify-content: center;
 }
 .bensExposicions td > a > img {
-  height: 35px;
+  height: 100px;
   width: 35px;
 }
 .bensExposicions header + div > div {
@@ -553,6 +582,9 @@ header div img {
   background-repeat: no-repeat;
   background-position: 0.5rem center;
   padding-left: 35px;
+}
+.bensExposicions p {
+  margin-top: 10px;
 }
 
 .createCampsLlista header + div {

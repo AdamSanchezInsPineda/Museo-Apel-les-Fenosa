@@ -4,7 +4,7 @@
 <body class = "createExposicions">
     <!--Contenido variable de la pagina-->  
     <div>
-        <h1>Modificar una exposicio</h1>
+        <h1>Modificar una exposició</h1>
     </div>
     <form action="/exposicions/<?php echo $exposicion[0]['ExposicionID'] ?>/update" method="post">
         

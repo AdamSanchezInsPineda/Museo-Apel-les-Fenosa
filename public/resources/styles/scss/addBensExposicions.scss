@@ -4,4 +4,29 @@
 .addBensExposicions{
     @include tableStyle;
     @include imagenPreview;
+    div{
+        margin-left: 5%;
+        margin-right: 5%;
+        div{
+            input{
+                height: 35px;
+                margin-bottom: 10px;
+            }
+        }
+        form{
+            div{
+                button{
+                    width: 80px;
+                    height: 30px;
+                    background-color: $color1;
+                    border-radius: 10px;
+                    border-color: rgb(39, 40, 41, 0.4);
+                    padding: 0;
+                    margin-left: 50%;
+                    transform: translateX(-50%);
+                    margin-top: 10px;
+                }   
+            }
+        }
+    }
 }

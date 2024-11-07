@@ -74,4 +74,23 @@
 .addBensExposicions .img-preview.active img {
   max-width: 95vw;
   max-height: 95vh;
+}
+.addBensExposicions div {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.addBensExposicions div div input {
+  height: 35px;
+  margin-bottom: 10px;
+}
+.addBensExposicions div form div button {
+  width: 80px;
+  height: 30px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+  padding: 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
 }/*# sourceMappingURL=addBensExposicions.css.map */

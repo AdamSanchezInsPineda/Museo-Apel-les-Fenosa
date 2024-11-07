@@ -3,4 +3,7 @@
 
 .bensExposicions{
     @include tableStyle;
+    p{
+        margin-top: 10px;
+    }
 }

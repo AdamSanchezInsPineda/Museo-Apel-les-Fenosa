@@ -6,6 +6,9 @@
 }
 .createObject form {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .createObject form table td {
   text-align: right;

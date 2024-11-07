@@ -1,10 +1,10 @@
 <?php
     include "resources/components/header.php";
-    
 ?> 
 <body class = "bensExposicions">    
     <div>
         <div>
+            <h2>Afegir Bens a la exposició seleccionada</h2>
             <div>
                 <input type="text" placeholder="Cercar">
                 <a href="/exposicions/<?php echo $exposicions[1] ?>/bens/add">Afegir bens patrimonials<img src='/resources/images/plus.png' alt='Afegir exposició'></a>

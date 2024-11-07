@@ -4,7 +4,7 @@
 <body class = "createExposicions">
     <!--Contenido variable de la pagina-->   
     <div>
-        <h1>Crear una nova exposicio</h1>
+        <h1>Crear una nova exposició</h1>
     </div>
     <form action="/exposicions/create" method="post">
         
