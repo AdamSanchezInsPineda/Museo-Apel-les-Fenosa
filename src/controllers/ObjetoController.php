@@ -49,7 +49,7 @@ class ObjetoController {
         }
     }
 
-    public function new($nRegistro) {
+    public function new($registroN) {
         session_start();
         if (!isset($_SESSION['nom'])){
             $state = false;
@@ -60,7 +60,8 @@ class ObjetoController {
         }
 
         if ($state) {         
-            $this->render('objects/fitxaCompleta', [$nRegistro]);
+            $objeto = new Objeto();
+            $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
             exit;
 
         } else {
@@ -72,7 +73,7 @@ class ObjetoController {
         }
     }
 
-    public function updateView($id) {
+    public function updateView($registroN) {
         session_start();
         if (!isset($_SESSION['nom'])){
             $state = false;
@@ -84,7 +85,7 @@ class ObjetoController {
 
         if ($state) {
             $objeto = new Objeto();
-            $this->render('objects/updateObject', ['cont' => [$id, $objeto->fitxesMostrar($id)]]);
+            $this->render('objects/updateObject', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
             exit;
 
         } else {
@@ -96,7 +97,7 @@ class ObjetoController {
         }
     }
 
-    public function update($id) {
+    public function update($registroN) {
         session_start();
         $objeto = new Objeto();
         if (!isset($_SESSION['nom'])){
@@ -108,7 +109,7 @@ class ObjetoController {
         }
 
         if ($state) {         
-            $this->render('objects/updateObject', ['objeto' => $objeto->fitxesMostrar($id)]);
+            $this->render('objects/updateObject', ['objeto' => $objeto->fitxesMostrar($registroN)]);
             exit;
 
         } else {
@@ -120,7 +121,7 @@ class ObjetoController {
         }
     }
 
-    public function delete($nRegistro) {
+    public function delete($registroN) {
         session_start();
         
         if (!isset($_SESSION['nom'])){
@@ -131,17 +132,23 @@ class ObjetoController {
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
-        if ($state) {         
-            $this->render('objects/deleteObject', [$nRegistro]);
-            exit;
-
+        if ($state) {     
+            $objeto = new Objeto();
+            if ($_SESSION['rol'] == "admin")
+                $objeto -> fitxesDelete($registroN);
+            
+            elseif ($_SESSION['rol'] == "tecnic")
+                $objeto -> fitxesDisable($registroN);
+            
+            header("/registers");
+                
         } else {
             session_unset();
             session_destroy();
             $error = " La sessió no s'ha iniciat ";
             $this->render("login", ["error"=> $error]);
-            exit;
         }
+        exit;
     }
 
 

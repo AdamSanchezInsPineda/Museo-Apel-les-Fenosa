@@ -37,8 +37,6 @@
                             echo "<a href='/registers/{$registro['RegistroNº']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
                             if ($_SESSION['rol'] != "convidat"){
                                 echo "<a href='/registers/{$registro['RegistroNº']}/updateView'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                            }
-                            if ($_SESSION['rol'] == "admin") {
                                 echo "<a href='/registers/{$registro['RegistroNº']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
                             }
 
