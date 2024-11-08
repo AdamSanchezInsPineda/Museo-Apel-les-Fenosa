@@ -4,7 +4,7 @@
 <body class = "createExposicions">
     <!--Contenido variable de la pagina-->   
     <div>
-        <h1>Crear una nova exposicio</h1>
+        <h1>Crear una nova exposició</h1>
     </div>
     <form action="/exposicions/create" method="post">
         
@@ -29,9 +29,11 @@
         <div>
             <label for="Tipus">Tipus</label>
             <select name="Tipus" id="Tipus">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <?php foreach ($tiposExposicion as $tipo): ?>
+                    <option value="<?php echo htmlspecialchars($tipo['valor']); ?>">
+                        <?php echo htmlspecialchars($tipo['valor']); ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </div>
         

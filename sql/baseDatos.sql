@@ -27,7 +27,17 @@ CREATE TABLE `Autors` (
 --
 
 INSERT INTO `Autors` (`id`, `Nombre`) VALUES
-(1, 'Jose Francisco Franco');
+(1, 'Jose Francisco Franco'),
+(2, 'Pablo Picasso'),
+(3, 'Vincent van Gogh'),
+(4, 'Frida Kahlo'),
+(5, 'Leonardo da Vinci'),
+(6, 'Claude Monet'),
+(7, 'Georgia O\Keeffe'),
+(8, 'Salvador Dalí'),
+(9, 'Andy Warhol'),
+(10, 'Jackson Pollock'),
+(11, 'Henri Matisse');
 
 -- --------------------------------------------------------
 
@@ -89,7 +99,16 @@ CREATE TABLE `Classificacion` (
 --
 
 INSERT INTO `Classificacion` (`id`, `valor`) VALUES
-(1, 'Mayor edat');
+(1, 'Mayor edat'),
+(2, 'Pintura'),
+(3, 'Escultura'),
+(4, 'Fotografia'),
+(5, 'Arts decoratives'),
+(6, 'Art tèxtil'),
+(7, 'Ceràmica'),
+(8, 'Mobiliari'),
+(9, 'Numismàtica'),
+(10, 'Documents històrics');
 
 -- --------------------------------------------------------
 
@@ -103,6 +122,18 @@ CREATE TABLE `CodigoGetty` (
   `valor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+INSERT INTO CodigoGetty (id, tipo, valor) VALUES
+(1, 'autor', 'AAT300025103 - Picasso, Pablo'),
+(2, 'material', 'AAT300014078 - Oli'),
+(3, 'tecnica', 'AAT300054216 - Pintura a l''oli'),
+(4, 'autor', 'AAT300018133 - Van Gogh, Vincent'),
+(5, 'material', 'AAT300010439 - Marbre'),
+(6, 'tecnica', 'AAT300053789 - Escultura'),
+(7, 'autor', 'AAT300018002 - Da Vinci, Leonardo'),
+(8, 'material', 'AAT300014109 - Aquarel·la'),
+(9, 'tecnica', 'AAT300054328 - Gravat'),
+(10, 'autor', 'AAT300018519 - Dalí, Salvador');
 -- --------------------------------------------------------
 
 --
@@ -333,9 +364,17 @@ CREATE TABLE `Exposiciones` (
 -- Dumping data for table `Exposiciones`
 --
 
-INSERT INTO `Exposiciones` (`ExposicionID`, `Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`, `LugarExposicion`, `Activo`) VALUES
-(2, 'Exposición de arte contemporáneo', '2024-10-01 00:00:00', '2024-10-31 00:00:00', 1, 'Museo de Arte Contemporáneo', NULL);
-
+INSERT INTO `Exposiciones` (`ExposicionID`, `Nombre`, `FechaInicio`, `FechaFin`, `TipoExposicionID`, `LugarExposicion`) VALUES
+(1, 'Picasso: Obra Completa', '2024-03-01 10:00:00', '2024-06-30 20:00:00', 6, 'Sala Principal - Museu d''Art Modern'),
+(2, 'Exposición de arte contemporáneo', '2024-10-01 00:00:00', '2024-10-31 00:00:00', 1, 'Museo de Arte Contemporáneo'),
+(3, 'Retrospectiva Dalí', '2024-05-01 10:00:00', '2024-09-30 18:00:00', 5, 'Sala Salvador Dalí'),
+(4, 'Impressionisme i Llum', '2024-06-01 09:30:00', '2024-10-31 20:00:00', 2, 'Palau de les Arts'),
+(5, 'Art Digital Interactiu', '2024-07-15 10:00:00', '2024-11-15 19:00:00', 9, 'Espai Digital'),
+(6, 'Escultures del Segle XX', '2024-08-01 09:00:00', '2024-12-31 18:00:00', 1, 'Jardins del Museu'),
+(7, 'Fotografia Contemporània', '2024-09-15 10:00:00', '2025-01-15 20:00:00', 7, 'Sala d''Exposicions Temporals'),
+(8, '25 Anys d''Art Local', '2024-10-01 09:30:00', '2025-02-28 19:00:00', 10, 'Centre Cultural Municipal'),
+(9, 'Art en Moviment', '2024-11-15 10:00:00', '2025-03-15 18:00:00', 3, 'Diverses Localitzacions'),
+(10, 'Exposició Virtual d''Art Modern', '2024-12-01 00:00:00', '2025-04-30 23:59:59', 4, 'Plataforma Virtual del Museu');
 -- --------------------------------------------------------
 
 --
@@ -390,7 +429,18 @@ CREATE TABLE `Material` (
 --
 
 INSERT INTO `Material` (`id`, `valor`) VALUES
-(1, 'Madera');
+(1, 'Madera'),
+(2, 'Bronze'),
+(3, 'Marbre'),
+(4, 'Vidre'),
+(5, 'Ceràmica'),
+(6, 'Tela'),
+(7, 'Pedra'),
+(8, 'Metall'),
+(9, 'Paper'),
+(10, 'Plàstic'),
+(11, 'Or');
+
 
 -- --------------------------------------------------------
 
@@ -409,7 +459,18 @@ CREATE TABLE `Museos` (
 --
 
 INSERT INTO `Museos` (`MuseoID`, `Nombre`, `Fotografia`) VALUES
-(1, 'Apel.les Fenosa', '1');
+(1, 'Apel.les Fenosa', '1'),
+(2, 'Museu Nacional d''Art de Catalunya', '2'),
+(3, 'Museu Dalí de Figueres', '3'),
+(4, 'Museu de la Ciència i de la Tècnica de Catalunya', '4'),
+(5, 'Museu d''Història de Girona', '5'),
+(6, 'Museu de Lleida', '6'),
+(7, 'Museu d''Art Modern de Tarragona', '7'),
+(8, 'Museu Picasso', '8'),
+(9, 'Museu Marítim de Barcelona', '9'),
+(10, 'Museu de la Música de Barcelona', '10');
+
+
 
 -- --------------------------------------------------------
 
@@ -480,8 +541,16 @@ CREATE TABLE `Objetos` (
 --
 
 INSERT INTO `Objetos` (`ObjetoID`, `RegistroNº`, `UsuarioID`, `Imagen`, `Nombre`, `ClasificacionGenericaID`, `ColeccionProcedencia`, `Altura`, `Anchura`, `Profundidad`, `MaterialID`, `TecnicaID`, `AutorID`, `Titulo`, `DatacionID`, `UbicacionActualID`, `FechaRegistro`, `NumeroEjemplares`, `FormaIngresoID`, `FechaIngreso`, `FuenteIngreso`, `BajaID`, `CausaBajaID`, `FechaBaja`, `PersonaAutorizadaBaja`, `EstadoConservacionID`, `LugarEjecucion`, `LugarProcedencia`, `NumeroTiraje`, `OtrosNrosIdentificacion`, `ValoracionEconomica`, `Bibliografia`, `Descripcion`, `HistoriaObjeto`, `MuseoID`, `Activo`) VALUES
-(1, '123456', 1, '123456', 'Violin', 1, 'Pellentesque ipsum.', 150.00, 160.00, 50.00, 1, 1, 1, 'Pellentesque vestibulum velit ipsum.', 4, 1, '2024-10-25 08:58:39', 1, 6, '2024-10-25 08:58:39', 'Aenean erat felis, pretium quis tincidunt ut, aliquam vel eros. ', 1, NULL, '2024-10-25 08:58:39', 'Alguien quizas', 4, 'Vivamus porta arcu', 'Aenean erat felis, pretium quis tincidunt ut, aliquam vel eros. ', '1', NULL, 10000000.00, 'Aenean a sem id sem faucibus viverra vel at magna. In placerat sapien sed ex varius, in lacinia velit eleifend. Fusce dui ligula, pretium in erat ac, cursus mattis purus. Morbi condimentum vehicula risus. Donec scelerisque nec libero eget elementum. Phasellus et elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate convallis congue. Vestibulum mattis, elit vitae interdum condimentum, ligula neque egestas massa, quis viverra odio nibh ac lorem. Aenean placerat nulla eros, ut tempus purus dapibus ac. Maecenas sagittis sagittis nunc sed volutpat. Sed vel eros at sapien pulvinar mattis ut ut magna. Integer scelerisque sed felis convallis accumsan. Ut et eros finibus, euismod elit et, placerat risus.\r\n\r\n', 'Aenean a sem id sem faucibus viverra vel at magna. In placerat sapien sed ex varius, in lacinia velit eleifend. Fusce dui ligula, pretium in erat ac, cursus mattis purus. Morbi condimentum vehicula risus. Donec scelerisque nec libero eget elementum. Phasellus et elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate convallis congue. Vestibulum mattis, elit vitae interdum condimentum, ligula neque egestas massa, quis viverra odio nibh ac lorem. Aenean placerat nulla eros, ut tempus purus dapibus ac. Maecenas sagittis sagittis nunc sed volutpat. Sed vel eros at sapien pulvinar mattis ut ut magna. Integer scelerisque sed felis convallis accumsan. Ut et eros finibus, euismod elit et, placerat risus.\r\n\r\n', 'Aenean a sem id sem faucibus viverra vel at magna. In placerat sapien sed ex varius, in lacinia velit eleifend. Fusce dui ligula, pretium in erat ac, cursus mattis purus. Morbi condimentum vehicula risus. Donec scelerisque nec libero eget elementum. Phasellus et elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate convallis congue. Vestibulum mattis, elit vitae interdum condimentum, ligula neque egestas massa, quis viverra odio nibh ac lorem. Aenean placerat nulla eros, ut tempus purus dapibus ac. Maecenas sagittis sagittis nunc sed volutpat. Sed vel eros at sapien pulvinar mattis ut ut magna. Integer scelerisque sed felis convallis accumsan. Ut et eros finibus, euismod elit et, placerat risus.\r\n\r\n', 1, 0);
-
+(1, '123456', 1, '123456', 'Violin', 1, 'Pellentesque ipsum.', 150.00, 160.00, 50.00, 1, 1, 1, 'Pellentesque vestibulum velit ipsum.', 4, 1, '2024-10-25 08:58:39', 1, 6, '2024-10-25 08:58:39', 'Aenean erat felis, pretium quis tincidunt ut, aliquam vel eros. ', 1, NULL, '2024-10-25 08:58:39', 'Alguien quizas', 4, 'Vivamus porta arcu', 'Aenean erat felis, pretium quis tincidunt ut, aliquam vel eros. ', '1', NULL, 10000000.00, 'Aenean a sem id sem faucibus viverra vel at magna. In placerat sapien sed ex varius, in lacinia velit eleifend. Fusce dui ligula, pretium in erat ac, cursus mattis purus. Morbi condimentum vehicula risus. Donec scelerisque nec libero eget elementum. Phasellus et elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate convallis congue. Vestibulum mattis, elit vitae interdum condimentum, ligula neque egestas massa, quis viverra odio nibh ac lorem. Aenean placerat nulla eros, ut tempus purus dapibus ac. Maecenas sagittis sagittis nunc sed volutpat. Sed vel eros at sapien pulvinar mattis ut ut magna. Integer scelerisque sed felis convallis accumsan. Ut et eros finibus, euismod elit et, placerat risus.\r\n\r\n', 'Aenean a sem id sem faucibus viverra vel at magna. In placerat sapien sed ex varius, in lacinia velit eleifend. Fusce dui ligula, pretium in erat ac, cursus mattis purus. Morbi condimentum vehicula risus. Donec scelerisque nec libero eget elementum. Phasellus et elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate convallis congue. Vestibulum mattis, elit vitae interdum condimentum, ligula neque egestas massa, quis viverra odio nibh ac lorem. Aenean placerat nulla eros, ut tempus purus dapibus ac. Maecenas sagittis sagittis nunc sed volutpat. Sed vel eros at sapien pulvinar mattis ut ut magna. Integer scelerisque sed felis convallis accumsan. Ut et eros finibus, euismod elit et, placerat risus.\r\n\r\n', 'Aenean a sem id sem faucibus viverra vel at magna. In placerat sapien sed ex varius, in lacinia velit eleifend. Fusce dui ligula, pretium in erat ac, cursus mattis purus. Morbi condimentum vehicula risus. Donec scelerisque nec libero eget elementum. Phasellus et elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vulputate convallis congue. Vestibulum mattis, elit vitae interdum condimentum, ligula neque egestas massa, quis viverra odio nibh ac lorem. Aenean placerat nulla eros, ut tempus purus dapibus ac. Maecenas sagittis sagittis nunc sed volutpat. Sed vel eros at sapien pulvinar mattis ut ut magna. Integer scelerisque sed felis convallis accumsan. Ut et eros finibus, euismod elit et, placerat risus.\r\n\r\n', 1, 0),
+(2, '000002', 1, 'persistencia.jpg', 'La persistència de la memòria', 2, 'Col·lecció Dalí', 24.1, 33.0, 0, 6, 8, 8, 'La persistència de la memòria', 164, 2, '2023-02-20', 1, 7, '2023-02-20', 'Donació Fundació Dalí', 1, NULL, NULL, NULL, 3, 'Figueres', 'Catalunya', NULL, 'FD-1931-02', 10000.00, 'Catàleg Raonat de Pintures de Salvador Dalí', 'Famosa obra surrealista amb rellotges tous', 'Creat el 1931, representa la distorsió del temps', 3, 1),
+(3, '000003', 1, 'girasols.jpg', 'Els Gira-sols', 2, 'Col·lecció Van Gogh', 92.1, 73.0, 0, 6, 8, 3, 'Els Gira-sols', 161, 3, '2023-03-10', 1, 3, '2023-03-10', 'Adquisició internacional', 1, NULL, NULL, NULL, 3, 'Arles', 'França', NULL, 'VG-1888-03', 80000.00, 'Van Gogh: La Vida i l''Obra', 'Sèrie de pintures de gira-sols', 'Part de la famosa sèrie pintada a Arles', 2, 1),
+(4, '000004', 1, 'pensador.jpg', 'El Pensador', 3, 'Col·lecció Rodin', 180.0, 98.0, 145.0, 2, 6, 1, 'El Pensador', 161, 4, '2023-04-05', 1, 3, '2023-04-05', 'Compra subhasta', 1, NULL, NULL, NULL, 3, 'París', 'França', '3/25', 'RD-1902-04', 40000.00, 'Rodin: Escultura Moderna', 'Figura masculina en bronze asseguda en reflexió', 'Originalment part de Les Portes de l''Infern', 4, 1),
+(5, '000005', 1, 'fridaself.jpg', 'Autoretrat amb Collaret d''Espines', 2, 'Col·lecció Kahlo', 63.5, 49.5, 0, 6, 8, 4, 'Autoretrat amb Collaret d''Espines', 164, 5, '2023-05-15', 1, 7, '2023-05-15', 'Donació privada', 1, NULL, NULL, NULL, 3, 'Ciutat de Mèxic', 'Mèxic', NULL, 'FK-1940-05', 30000.00, 'Frida Kahlo: Vida i Art', 'Autoretrat amb elements simbòlics', 'Pintat durant el seu període més productiu', 5, 1),
+(6, '000006', 1, 'monalisa.jpg', 'La Gioconda', 2, 'Col·lecció Reial', 77.0, 53.0, 0, 6, 8, 5, 'La Gioconda', 134, 6, '2023-06-20', 1, 3, '2023-06-20', 'Adquisició històrica', 1, NULL, NULL, NULL, 3, 'Florència', 'Itàlia', NULL, 'LV-1503-06', 85000.00, 'Leonardo: Mestre del Renaixement', 'Retrat femení amb somriure enigmàtic', 'Obra mestra del Renaixement italià', 6, 1),
+(7, '000007', 1, 'nenufars.jpg', 'Nenúfars', 2, 'Col·lecció Impressionista', 200.0, 425.0, 0, 6, 8, 6, 'Nenúfars', 162, 7, '2023-07-25', 1, 3, '2023-07-25', 'Compra galeria', 1, NULL, NULL, NULL, 3, 'Giverny', 'França', NULL, 'CM-1920-07', 70000.00, 'Monet i l''Impressionisme', 'Gran panell de nenúfars sobre l''aigua', 'Part de la sèrie pintada al seu jardí de Giverny', 7, 1),
+(8, '000008', 1, 'flor.jpg', 'Flor de Georgia', 2, 'Col·lecció O''Keeffe', 91.4, 76.2, 0, 6, 8, 7, 'Flor de Georgia', 164, 8, '2023-08-30', 1, 7, '2023-08-30', 'Donació museu', 1, NULL, NULL, NULL, 3, 'Nou Mèxic', 'Estats Units', NULL, 'GO-1932-08', 25000.00, 'O''Keeffe: Pionera Modernista', 'Representació ampliada d''una flor', 'Exemple característic del seu estil botànic', 8, 1),
+(9, '000009', 1, 'marilyn.jpg', 'Marilyn Díptic', 2, 'Col·lecció Pop Art', 205.4, 144.8, 0, 6, 9, 9, 'Marilyn Díptic', 167, 9, '2023-09-10', 1, 3, '2023-09-10', 'Compra col·leccionista', 1, NULL, NULL, NULL, 3, 'Nova York', 'Estats Units', NULL, 'AW-1962-09', 20000.00, 'Andy Warhol: El Pop Art', 'Obra icònica que representa la cultura de masses', 'Creada en 1962, simbolitza la fama i la comercialització', 9, 1),
+(10, '000010', 1, 'starrynight.jpg', 'La Nit Estelada', 2, 'Col·lecció Van Gogh', 73.7, 92.1, 0, 6, 8, 3, 'La Nit Estelada', 161, 10, '2023-10-05', 1, 3, '2023-10-05', 'Adquisició internacional', 1, NULL, NULL, NULL, 3, 'Saint-Rémy-de-Provence', 'França', NULL, 'VG-1889-10', 10000.00, 'Van Gogh: La Vida i l''Obra', 'Pintura emblemàtica del postimpressionisme', 'Pintada durant la seva estada en un sanatori', 3, 1);
 -- --------------------------------------------------------
 
 --
@@ -514,7 +583,16 @@ CREATE TABLE `Tecnica` (
 --
 
 INSERT INTO `Tecnica` (`id`, `valor`) VALUES
-(1, 'Oleo');
+(1, 'Oleo'),
+(2, 'Acuarela'),
+(3, 'Dibujo'),
+(4, 'Grabado'),
+(5, 'Lacado'),
+(6, 'Pintura'),
+(7, 'Tintas'),
+(8, 'Pintura al óleo'),
+(9, 'Pintura al acuarela'),
+(10, 'Pintura al óleo y acuarela');
 
 -- --------------------------------------------------------
 
@@ -533,7 +611,15 @@ CREATE TABLE `TiposExposicion` (
 
 INSERT INTO `TiposExposicion` (`id`, `valor`) VALUES
 (1, 'Aliena'),
-(2, 'Pròpia');
+(2, 'Pròpia'),
+(3, 'Itinerant'),
+(4, 'Virtual'),
+(5, 'Retrospectiva'),
+(6, 'Monogràfica'),
+(7, 'Col·lectiva'),
+(8, 'Antològica'),
+(9, 'Interactiva'),
+(10, 'Commemorativa');
 
 -- --------------------------------------------------------
 
@@ -552,7 +638,16 @@ CREATE TABLE `Ubicaciones` (
 --
 
 INSERT INTO `Ubicaciones` (`id`, `Nombre`, `UbicacionPadre`) VALUES
-(1, 'Sotano', NULL);
+(1, 'Sotano', NULL),
+(2, 'Piso 1', 1),
+(3, 'Piso 2', 2),
+(4, 'Piso 3', 1),
+(5, 'Piso 4', 1),
+(6, 'Piso 5', 1),
+(7, 'Piso 6', 3),
+(8, 'Piso 7', 3),
+(9, 'Piso 8', 8),
+(10, 'Piso 9', 8);
 
 -- --------------------------------------------------------
 

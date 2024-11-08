@@ -69,4 +69,7 @@
 .exposicions td + td + td + td + td + td {
   display: flex;
   align-items: center;
+}
+.exposicions h1 {
+  text-align: center;
 }/*# sourceMappingURL=exposicions.css.map */

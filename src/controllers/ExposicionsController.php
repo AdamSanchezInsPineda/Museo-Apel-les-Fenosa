@@ -41,20 +41,14 @@ class ExposicionsController {
             $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
         
-            if ($state) {
-                if ($id != 1){         
-                    if ($_SESSION['rol'] == "admin"){
-                        $exposicio->eliminarExposicion($id);
-                        header('Location: /exposicions');
-                    }
-                    else{
-                        //Warning de que no tiene permisos para ejecutar esta orden
-                        header('Location: /registers');
-                    }
+            if ($state) {       
+                if ($_SESSION['rol'] == "admin"){
+                    $exposicio->eliminarExposicion($id);
+                    header('Location: /exposicions');
                 }
                 else{
                     //Warning de que no tiene permisos para ejecutar esta orden
-                    header('Location: /users');
+                    header('Location: /registers');
                 }
 
             } else {
@@ -78,7 +72,8 @@ class ExposicionsController {
         }
         if ($state) {
             if ($_SESSION['rol'] != "convidat"){
-                $this->render('exposicions/createExposicions');
+                $tiposExposicion = $exposicio->getTiposExposicion();
+                $this->render('exposicions/createExposicions', ['tiposExposicion' => $tiposExposicion]);
             }
             else{
                 //Warning de que no tiene permisos para ejecutar esta orden
@@ -139,9 +134,18 @@ class ExposicionsController {
         if ($state) {   
             if ($id){  
                 if ($_SESSION['rol'] == "admin"){
-                    $this->render('exposicions/editExposicions', ['exposicio' => $exposicio->updateViewExposicion($id)]);
-                }
-                else{
+                    $exposicionData = $exposicio->updateViewExposicion($id);
+                
+                    $tiposExposicion = $exposicio->getTiposExposicion();
+                    if (!$exposicionData) {
+                        header('Location: /exposicions');
+                        exit;
+                    }
+                    $this->render('exposicions/editExposicions', [
+                        'exposicion' => $exposicionData,
+                        'tiposExposicion' => $tiposExposicion
+                    ]);                
+                }else{
                     //Warning de que no tiene permisos para ejecutar esta orden
                     header('Location: /registers');
                 }
@@ -174,7 +178,7 @@ class ExposicionsController {
         if ($state) {     
             if ($id != 1){
                 if ($_SESSION['rol'] == "admin"){
-                    $exposicio->updateExposicion($_POST['Nom'],$_POST['Data_Inicial'], $_POST['Data_Final'],  $_POST['Tipus'], $_POST['Lloc'], $id);
+                    $exposicio->updateExposicion($_POST['Nom'],$_POST['Data_Inicial'], $_POST['Data_Final'],  $_POST['Tipus'], $_POST['LugarExposicion'], $id);
                     header('Location: /exposicions');
                 }
                 else{
