@@ -140,7 +140,7 @@ class ObjetoController {
             elseif ($_SESSION['rol'] == "tecnic")
                 $objeto -> fitxesDisable($registroN);
             
-            header("/registers");
+            header("/registers");   
                 
         } else {
             session_unset();

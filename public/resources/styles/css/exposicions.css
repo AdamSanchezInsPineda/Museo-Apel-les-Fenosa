@@ -72,4 +72,11 @@
 }
 .exposicions h1 {
   text-align: center;
+}
+.exposicions td:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: #D8D9DA;
 }/*# sourceMappingURL=exposicions.css.map */
