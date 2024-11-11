@@ -8,5 +8,5 @@
         
     </ul>
 
-    <script src="resources/js/tree.js"></script>
+    <script type="module" src="resources/js/ubicaciones.js"></script>
 </body>
