@@ -6,13 +6,15 @@
     <main>
         <!--Contenido variable de la pagina-->
         <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
-        <button><a href="#"> Cambiar a fitxa bàsica</a></button>
+        <button>Cambiar a fitxa bàsica</button>
                         
         <div>
-            <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 
+            <div>
+                <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 
 
-            <img src="/resources/images/obras/<?php echo $cont[1][0]['Imagen']?>.jpg" alt="imatge obra">
-                 
+                <img src="/resources/images/obras/<?php echo $cont[1][0]['Imagen']?>.jpg" alt="imatge obra">
+            </div>
+             
             <div>
                 <p>Nom: <?php echo $cont[1][0]['Nombre']?></p>
                 <p>Museu: <?php echo $cont[1][0]['MuseoNombre']?></p>

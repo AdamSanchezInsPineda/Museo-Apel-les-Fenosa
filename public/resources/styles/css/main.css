@@ -145,29 +145,147 @@ header div img {
   flex-direction: column;
   align-items: center;
 }
-.verFichaCompleta main div {
+.verFichaCompleta main h1 {
+  margin-top: 50px;
+}
+.verFichaCompleta main button {
+  margin: 25px 0 50px 0;
+  padding: 0 15px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+}
+.verFichaCompleta main button + div {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
 }
-.verFichaCompleta main div + div {
+.verFichaCompleta main button + div img {
+  height: 350px;
+}
+.verFichaCompleta main button + div :first-child p {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.verFichaCompleta main button + div div + div {
+  margin-left: 2.5%;
+}
+.verFichaCompleta main button + div + div {
   width: 60%;
+  margin-top: 25px;
 }
-.verFichaCompleta main div + div div {
+.verFichaCompleta main button + div + div div {
+  margin-bottom: 10px;
   border-bottom: 1px solid #000000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
 }
-.verFichaCompleta main div + div div span::after {
+.verFichaCompleta main button + div + div div span::after {
   content: "➡";
 }
-.verFichaCompleta main div + div div .drop::after {
+.verFichaCompleta main button + div + div div .drop::after {
   content: "⬇";
 }
-.verFichaCompleta main div + div section {
-  margin-left: 2.5%;
+.verFichaCompleta main button + div + div section {
+  grid-template-columns: 50% 50%;
+  display: grid;
+  justify-items: end;
+  background-color: #D8D9DA;
+  padding: 2.5%;
 }
-.verFichaCompleta main div + div .hide {
+.verFichaCompleta main button + div + div section p:first-child {
+  margin-top: 10px;
+}
+.verFichaCompleta main button + div + div section p:last-child {
+  margin-bottom: 15px;
+}
+.verFichaCompleta main button + div + div .hide {
+  display: none;
+}
+
+.updateObject main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.updateObject main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.updateObject main form button {
+  margin: 25px 0 50px 0;
+  padding: 0 15px;
+  background-color: #FFF6E0;
+  border-radius: 10px;
+  border-color: rgba(39, 40, 41, 0.4);
+}
+.updateObject main form h1 {
+  margin-top: 50px;
+}
+.updateObject main form h1 + div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  margin-top: 20px;
+}
+.updateObject main form h1 + div > :first-child p {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.updateObject main form h1 + div div + div {
+  margin-left: 2.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.updateObject main form h1 + div div + div label {
+  display: block;
+  margin-bottom: 5px;
+}
+.updateObject main form h1 + div + div {
+  width: 60%;
+  margin-top: 25px;
+}
+.updateObject main form h1 + div + div div {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.updateObject main form h1 + div + div div span::after {
+  content: "➡";
+}
+.updateObject main form h1 + div + div div .drop::after {
+  content: "⬇";
+}
+.updateObject main form h1 + div + div section {
+  grid-template-columns: 50% 50%;
+  display: grid;
+  justify-items: end;
+  background-color: #D8D9DA;
+  padding: 2.5%;
+  padding-right: 15%;
+}
+.updateObject main form h1 + div + div section label {
+  margin: 10px 0;
+}
+.updateObject main form h1 + div + div section > :first-child {
+  margin-top: 10px;
+}
+.updateObject main form h1 + div + div section > :last-child {
+  margin-bottom: 15px;
+  grid-column: 1/3;
+  width: 100%;
+}
+.updateObject main form h1 + div + div .hide {
   display: none;
 }
 
@@ -462,6 +580,27 @@ header div img {
   background-color: #D8D9DA;
 }
 
+.addBensExposicions td > img {
+  height: 40px;
+  width: 40px;
+}
+.addBensExposicions .img-preview {
+  display: none;
+}
+.addBensExposicions .img-preview.active {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: absolute;
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.712);
+}
+.addBensExposicions .img-preview.active img {
+  max-width: 95vw;
+  max-height: 95vh;
+}
 .addBensExposicions header + div {
   margin-top: 5%;
   display: flex;
@@ -518,31 +657,6 @@ header div img {
   background-position: 0.5rem center;
   padding-left: 35px;
 }
-.addBensExposicions td > img {
-  height: 40px;
-  width: 40px;
-}
-.addBensExposicions .img-preview {
-  display: none;
-}
-.addBensExposicions .img-preview.active {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  position: absolute;
-  place-content: center;
-  background-color: rgba(0, 0, 0, 0.712);
-}
-.addBensExposicions .img-preview.active img {
-  max-width: 95vw;
-  max-height: 95vh;
-}
-.addBensExposicions div {
-  margin-left: 5%;
-  margin-right: 5%;
-}
 .addBensExposicions div div input {
   height: 35px;
   margin-bottom: 10px;
@@ -554,8 +668,6 @@ header div img {
   border-radius: 10px;
   border-color: rgba(39, 40, 41, 0.4);
   padding: 0;
-  margin-left: 50%;
-  transform: translateX(-50%);
   margin-top: 10px;
 }
 
