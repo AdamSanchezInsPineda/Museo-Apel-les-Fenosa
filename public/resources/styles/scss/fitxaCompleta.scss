@@ -1,0 +1,34 @@
+@import "vars";
+@import "mixins";
+
+.verFichaCompleta{
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        div{
+        }
+        div + div{
+            width: 60%;
+            div{
+                border-bottom: 1px solid $colorNegro;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                span::after{
+                    content: "➡";
+                }
+                .drop::after{
+                    content: "⬇";
+                }
+            }
+            section{
+                margin-left: 2.5%;
+            }
+            .hide{
+                display: none;
+            }
+        }
+    }
+}
