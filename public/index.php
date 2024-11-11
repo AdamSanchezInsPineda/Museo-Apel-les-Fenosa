@@ -93,6 +93,6 @@ $router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
 
 $router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
 
-$router->get('/registers//informepdf', "InformeController@index");
+$router->get('/registers/{obra}/informepdf', "InformeController@index");
 
 $router->dispatch();

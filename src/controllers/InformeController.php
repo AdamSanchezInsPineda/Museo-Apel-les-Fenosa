@@ -2,7 +2,7 @@
 
     class InformeController{
 
-        public function index(/*$registroN*/){
+        public function index($registroN){
             session_start();
             if (!isset($_SESSION['nom'])){
                 $state = false;
@@ -12,8 +12,8 @@
                 $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
             }
             if($state){
-                //$objeto = new Objeto();
-                $this->render('objects/informepdf'/*, ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]*/);
+                $objeto = new Objeto();
+                $this->render('objects/informepdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
                 exit;
 
             } else {
