@@ -5,7 +5,7 @@
     <div>
         <div>
             <h1>Exposicions</h1>
-
+            <a href="/registers//informepdf">pdf prueba</a>
             <div>
                 <input type="text" placeholder="Cercar">
                 <?php
