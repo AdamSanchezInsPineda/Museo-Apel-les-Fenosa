@@ -70,7 +70,7 @@
             <div class="toggle-hide"><h2>Ingrés</h2><span></span></div>
 
             <section class="hide">
-                <p>Forma d'Ingrés: <?php echo $cont[1][0]['FormaIngresoValor']?>
+                <p>Forma d'Ingrés: <?php echo $cont[1][0]['FormaIngresoValor']?></p>
                 <p>Font d'Ingrés: <?php echo $cont[1][0]['FuenteIngreso']?></p>
                 <p>Data d'Ingrés: <?php echo $cont[1][0]['FechaIngreso']?></p>
                 <p>Estat de conservació: <?php echo $cont[1][0]['EstadoConservacionNombre']?></p>
