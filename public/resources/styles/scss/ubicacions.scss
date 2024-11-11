@@ -6,6 +6,12 @@
         --spacing: 1.5rem;
         --radius: 10px;
 
+        a {
+          color: #369;
+          text-decoration:underline;
+          cursor: pointer;
+        }
+
         li {
           display: block;
           position: relative;
