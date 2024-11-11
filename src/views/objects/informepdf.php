@@ -4,24 +4,28 @@ require('../vendor/autoload.php');
 
 use Spipu\Html2Pdf\Html2Pdf;
 $html2pdf = new Html2Pdf();
-$content = "<body class = 'verFicha'>
-    <!--Contenido variable de la pagina-->
-    <div>
-        <h1>Fitxa completa de  </h1>
-    </div>  
-    <table>
-        <tr>
-            <td colspan = '2'>
-                <h2>Informació Bàsica</h2>
-            </td>     
-        </tr>
-        <tr>
-            <td>
-                <p>Nº de Registre: {cont[0][1]['RegistroNº']}</p> 
-            </td>
-        </tr>
-        </table>
-        </body>";
+$content = "
+<html>
+    <body class = 'verFichaCompleta'>
+        <div>
+            <!--Contenido variable de la pagina-->
+            <h1>Fitxa completa de </h1>                        
+            <div>
+                <p>Nº de Registre: ".$cont[1][0]['RegistroNº']."</p> 
+                //imagen
+                    
+                <div>
+                    <p>Nom: ".$cont[1][0]['Nombre']."</p>
+                    <p>Museu: ".$cont[1][0]['MuseoNombre']."</p>
+                    <p>Autor: ".$cont[1][0]['AutorNombre']."</p> 
+                    <p>Títol: ".$cont[1][0]['Titulo']."</p>
+                </div>
+            </div>
+            
+            
+        </div>
+    </body>
+</html>";
 
 
 $html2pdf ->writeHTML($content);

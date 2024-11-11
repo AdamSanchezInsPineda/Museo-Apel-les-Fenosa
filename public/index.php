@@ -85,6 +85,6 @@ $router->get('/ubicacions', "UbicacionsController@index");
 
 $router->get('/ubicacions/json', "UbicacionsController@getUbicaciones");
 
-$router->get('/registers//informepdf', "InformeController@index");
+$router->get('/registers/{obra}/informepdf', "InformeController@index");
 
 $router->dispatch();
