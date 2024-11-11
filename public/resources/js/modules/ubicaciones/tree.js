@@ -30,27 +30,38 @@ export function renderTree(node, container) {
     node.forEach(item => {
         const li = document.createElement('li');
 
-        const a = document.createElement('button');
-        a.textContent = "Añadir";
-        a.addEventListener("click", newUbicacion);
+        const a = document.createElement('a');
+        a.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            newUbicacion(item.id);
+        });
         
         if (item.children && item.children.length > 0) {
             const details = document.createElement('details');
             const summary = document.createElement('summary');
-            summary.textContent = item.name;
-            details.appendChild(summary);
+            a.textContent = item.name;
             summary.appendChild(a);
+            details.appendChild(summary);
 
             renderTree(item.children, details);
 
             li.appendChild(details);
         } else {
-            const span = document.createElement('span');
-            span.textContent = item.name;
-            li.appendChild(span);
+            a.textContent = item.name;
             li.appendChild(a);
         }
 
         container.appendChild(li);
+    });
+}
+
+export function fetchTree() {
+    fetch('/ubicacions/json')
+    .then(response => response.json())
+    .then(locations => {
+        const tree = buildLocationTree(locations);
+        const container = document.getElementById('tree-container');
+        renderTree(tree, container);
     });
 }

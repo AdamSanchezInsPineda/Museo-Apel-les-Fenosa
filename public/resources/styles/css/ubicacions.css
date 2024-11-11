@@ -2,6 +2,11 @@
   --spacing: 1.5rem;
   --radius: 10px;
 }
+.ubicacions .tree a {
+  color: #369;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .ubicacions .tree li {
   display: block;
   position: relative;

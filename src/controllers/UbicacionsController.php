@@ -19,4 +19,10 @@ class UbicacionsController extends Controller {
         header('Content-Type: application/json');
         echo json_encode($ubicaciones);
     }
+
+    public function new($id) {
+        header("Content-Type: text/html");
+
+        include "../src/views/ubicaciones/new.php";
+    }
 }
