@@ -1,17 +1,18 @@
+<?php require "resources/components/header.php" ?>
 
 <body class="ubicacions">
-    <?php require "resources/components/header.php" ?>
+    <div class="main">
+        <div id="tree">
+            <p>Ubicacions</p>
 
-    <div id="tree">
-        <p>Ubicacions</p>
+            <ul id="tree-container" class="tree" >
+                
+            </ul>
+        </div>
 
-        <ul id="tree-container" class="tree" >
-            
-        </ul>
-    </div>
+        <div id="action">
 
-    <div id="new">
-
+        </div>
     </div>
 
     <script type="module" src="resources/js/ubicaciones.js"></script>

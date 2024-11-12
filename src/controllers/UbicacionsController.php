@@ -25,4 +25,20 @@ class UbicacionsController extends Controller {
 
         include "../src/views/ubicaciones/new.php";
     }
+
+    public function show($id) {
+        header("Content-Type: text/html");
+
+        include "../src/views/ubicaciones/show.php";
+    }
+
+    public function destroy($id) {
+        try {
+            $this->ubicacion->destroyUbicacion($id);
+            http_response_code(200);
+        } catch (Exception $e) {
+            echo $e;
+            http_response_code(500);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import {newUbicacion} from "/resources/js/modules/ubicaciones/new.js"
+import {showUbicacion} from "/resources/js/modules/ubicaciones/show.js"
 
 export function buildLocationTree(locations) {
     const tree = [];
@@ -34,7 +34,7 @@ export function renderTree(node, container) {
         a.addEventListener("click", (event) => {
             event.preventDefault();
 
-            newUbicacion(item.id);
+            showUbicacion(item);
         });
         
         if (item.children && item.children.length > 0) {
@@ -56,12 +56,16 @@ export function renderTree(node, container) {
     });
 }
 
-export function fetchTree() {
-    fetch('/ubicacions/json')
-    .then(response => response.json())
-    .then(locations => {
+export async function fetchTree() {
+    try {
+        const response = await fetch('/ubicacions/json');
+        const locations = await response.json();
+        
         const tree = buildLocationTree(locations);
         const container = document.getElementById('tree-container');
+        container.innerHTML = "";
         renderTree(tree, container);
-    });
+    } catch (error) {
+        console.error('Error al cargar el árbol de ubicaciones:', error);
+    }
 }

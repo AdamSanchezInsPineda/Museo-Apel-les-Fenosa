@@ -93,6 +93,8 @@ $router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
 
 $router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
 
+$router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
+
 $router->get('/registers/{obra}/informepdf', "InformeController@index");
 
 $router->dispatch();
