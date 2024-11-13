@@ -52,7 +52,7 @@
             section{
                 grid-template-columns: 50% 50%;
                 display: grid;
-                justify-items: end;
+                justify-items: start;
                 background-color: $color2;
                 padding: 2.5%;
                 p:first-child{
