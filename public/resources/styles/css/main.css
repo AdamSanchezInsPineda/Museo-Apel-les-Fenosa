@@ -282,6 +282,8 @@ header div img {
 }
 .updateObject main form h1 + div + div section > :last-child {
   margin-bottom: 15px;
+}
+.updateObject main form h1 + div + div > :last-child > :last-child {
   grid-column: 1/3;
   width: 100%;
 }
