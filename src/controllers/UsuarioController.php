@@ -19,7 +19,6 @@ class UsuarioController extends Controller {
     public function login() {
         $_SESSION['nom'] = $_POST["nom"];
         $_SESSION['password'] = $_POST["password"];
-        echo json_encode($_SESSION);
 
         if ($this->user->comprovarUsuario($_SESSION['nom'], $_SESSION['password'])) {
             $_SESSION['rol'] = $this->user->rolUsuario($_SESSION['nom'], $_SESSION['password']);
