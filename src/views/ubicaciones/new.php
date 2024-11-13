@@ -1,5 +1,4 @@
-<body class="new-ubicacions">
-
+<div class="new">
     <h1>Nueva Ubicacion</h1>
 
     <form action="/ubicacions/{id}/new" method="post">
@@ -10,5 +9,4 @@
 
         <button type="submit">Envia</button>
     </form>
-
-</body>
+</div>

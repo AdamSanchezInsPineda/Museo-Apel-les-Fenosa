@@ -1,95 +1,124 @@
 @import "vars";
 @import "mixins";
 
+@mixin container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px gray;
+  border-radius: 15px;
+  padding: 20px;
+}
+
 .ubicacions {
 
-    .main {
+  .main {
+    width: 80%;
+    margin: 100px auto 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+  }
+
+  .tree {
+    --spacing: 1.5rem;
+    --radius: 10px;
+    a {
+      color: #369;
+      text-decoration:underline;
+      cursor: pointer;
+    }
+    li {
+      display: block;
+      position: relative;
+      padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
+    }
+    
+    ul {
+      margin-left: calc(var(--radius) - var(--spacing));
+      padding-left: 0;
+    }
+    
+    ul li {
+      border-left: 2px solid #369;
+    }
+    
+    ul li:last-child {
+      border-color: transparent;
+    }
+    
+    ul li::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(var(--spacing) / -2);
+      left: -2px;
+      width: calc(var(--spacing) + 2px);
+      height: calc(var(--spacing) + 1px);
+      border: solid #369;
+      border-width: 0 0 2px 2px;
+    }
+    
+    summary {
+      display: block;
+      cursor: pointer;
+    }
+    
+    summary::marker,
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    summary:focus {
+      outline: none;
+    }
+    
+    summary:focus-visible {
+      outline: 1px dotted #000;
+    }
+    
+    li::after,
+    summary::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(var(--spacing) / 2 - var(--radius));
+      left: calc(var(--spacing) - var(--radius) - 1px);
+      width: calc(2 * var(--radius));
+      height: calc(2 * var(--radius));
+      border-radius: 50%;
+      background: #ddd;
+    }
+    
+    summary::before {
+      z-index: 1;
+      background: #369 url('../../images/expand-collapse.svg') 0 0;
+    }
+    
+    details[open] > summary::before {
+      background-position: calc(-2 * var(--radius)) 0;
+    }
+  }
+
+  .show {
+
+    @include container;
+
+    div {
+      display: flex;
+      flex-direction: column;
       width: 80%;
-      margin: 100px auto 0 auto;
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 100%;
+      gap: 5px;
     }
+  }
 
-    .tree {
-        --spacing: 1.5rem;
-        --radius: 10px;
+  .new {
+    @include container;
+  }
 
-        a {
-          color: #369;
-          text-decoration:underline;
-          cursor: pointer;
-        }
+  .edit {
+    @include container;
+  }
 
-        li {
-          display: block;
-          position: relative;
-          padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
-        }
-        
-        ul {
-          margin-left: calc(var(--radius) - var(--spacing));
-          padding-left: 0;
-        }
-        
-        ul li {
-          border-left: 2px solid #369;
-        }
-        
-        ul li:last-child {
-          border-color: transparent;
-        }
-        
-        ul li::before {
-          content: '';
-          display: block;
-          position: absolute;
-          top: calc(var(--spacing) / -2);
-          left: -2px;
-          width: calc(var(--spacing) + 2px);
-          height: calc(var(--spacing) + 1px);
-          border: solid #369;
-          border-width: 0 0 2px 2px;
-        }
-        
-        summary {
-          display: block;
-          cursor: pointer;
-        }
-        
-        summary::marker,
-        summary::-webkit-details-marker {
-          display: none;
-        }
-        
-        summary:focus {
-          outline: none;
-        }
-        
-        summary:focus-visible {
-          outline: 1px dotted #000;
-        }
-        
-        li::after,
-        summary::before {
-          content: '';
-          display: block;
-          position: absolute;
-          top: calc(var(--spacing) / 2 - var(--radius));
-          left: calc(var(--spacing) - var(--radius) - 1px);
-          width: calc(2 * var(--radius));
-          height: calc(2 * var(--radius));
-          border-radius: 50%;
-          background: #ddd;
-        }
-        
-        summary::before {
-          z-index: 1;
-          background: #369 url('../../images/expand-collapse.svg') 0 0;
-        }
-        
-        details[open] > summary::before {
-          background-position: calc(-2 * var(--radius)) 0;
-        }
-    }
 }

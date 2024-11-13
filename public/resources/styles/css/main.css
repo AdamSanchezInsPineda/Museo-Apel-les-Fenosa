@@ -806,6 +806,39 @@ header div img {
 .ubicacions .tree details[open] > summary::before {
   background-position: calc(-2 * var(--radius)) 0;
 }
+.ubicacions .show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px gray;
+  border-radius: 15px;
+  padding: 20px;
+}
+.ubicacions .show div {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 5px;
+}
+.ubicacions .new {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px gray;
+  border-radius: 15px;
+  padding: 20px;
+}
+.ubicacions .edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px gray;
+  border-radius: 15px;
+  padding: 20px;
+}
 
 .createCampsLlista header + div {
   margin: 2.5% auto;
