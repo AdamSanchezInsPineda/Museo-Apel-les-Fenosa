@@ -28,6 +28,9 @@ $content = "<html>
                 .long-text {
                     grid-column: span 2;
                 }
+                td{
+                    width: 25%;    
+                }
             </style>
         </head>
         <body>";
@@ -40,7 +43,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Nom: ".$cont[0][$i]['Nombre']."</td>
                 <td>Museu: ".$cont[0][$i]['MuseoNombre']."</td>
                 <td rowspan=8>
-                    <img src='".$imagen.$cont[0][$i]['Imagen']."' alt='imatge obra' style='width: auto; height: auto; max-width: 200px; max-height:200px;'>
+                    <img src='".$imagen.$cont[0][$i]['Imagen'].".jpg' alt='imatge obra' style='width: auto; height: auto; max-width: 200px; max-height:200px;'>
                 </td>
             </tr>
             <tr>
@@ -89,7 +92,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Nom Restaurador: ".$cont[0][$i]['NombreRestaurador']."</td>
             </tr>
             <tr>
-                <td>Comentari Restauració: ".$cont[0][$i]['ComentarioRestauracion']."</td>
+                <td class='long-text'>Comentari Restauració: ".$cont[0][$i]['ComentarioRestauracion']."</td>
             </tr>
             <tr>
                 <th>Ingrés</th>
@@ -132,13 +135,13 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Data de Registre: ".$cont[0][$i]['FechaRegistro']."</td>
             </tr>
             <tr> 
-                <td>Bibliografia: ".$cont[0][$i]['Bibliografia']."</td> 
+                <td colspan='4' class='long-text'>Bibliografia: ".$cont[0][$i]['Bibliografia']."</td> 
             </tr>
             <tr> 
-                <td>Descripció: ".$cont[0][$i]['Descripcion']."</td>
+                <td colspan='4' class='long-text'>Descripció: ".$cont[0][$i]['Descripcion']."</td>
             </tr>
             <tr>    
-                <td class='long-text'>Història de l'objecte: ".$cont[0][$i]['HistoriaObjeto']."</td>
+                <td colspan='4' class='long-text'>Història de l'objecte: ".$cont[0][$i]['HistoriaObjeto']."</td>
             </tr>
         </table>";
                 if($i<count($cont[0])-1){

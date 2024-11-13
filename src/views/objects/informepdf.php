@@ -27,6 +27,9 @@ $content = "
             h1, h2 {
                 color: #333;
             }
+            td{
+                width: 50%;        
+            }
             .long-text {
                 grid-column: span 2; 
             }
@@ -38,7 +41,7 @@ $content = "
             <table>
                 <tr>
                     <td>Nº de Registre: ".$cont[1][0]['RegistroNº']."</td>
-                    <td rowspan=6><img src='".$imagen.$cont[1][0]['Imagen']."' alt='imatge obra'style='width: auto; height: auto; max-width: 200px; max-height: 200px;'></td>
+                    <td rowspan=6><img src='".$imagen.$cont[1][0]['Imagen'].".jpg' alt='imatge obra'style='width: auto; height: auto; max-width: 200px; max-height: 200px;'></td>
                 </tr>
                 <tr>
                     <td>Nom: ".$cont[1][0]['Nombre']."</td>
@@ -151,13 +154,13 @@ $content = "
                     <td>Data de Registre: ".$cont[1][0]['FechaRegistro']."</td>
                 </tr>
                 <tr> 
-                    <td>Bibliografia: ".$cont[1][0]['Bibliografia']."</td> 
+                    <td colspan='2' class='long-text'>Bibliografia: ".$cont[1][0]['Bibliografia']."</td> 
                 </tr>
                 <tr> 
-                    <td>Descripció: ".$cont[1][0]['Descripcion']."</td>
+                    <td colspan='2' class='long-text'>Descripció: ".$cont[1][0]['Descripcion']."</td>
                 </tr>
                 <tr>    
-                    <td class='long-text'>Història de l'objecte: ".$cont[1][0]['HistoriaObjeto']."</td>
+                    <td colspan='2' class='long-text'>Història de l'objecte: ".$cont[1][0]['HistoriaObjeto']."</td>
                 </tr>
             </table>
         </div>
