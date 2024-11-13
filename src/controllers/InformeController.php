@@ -25,6 +25,52 @@
             }
         }
 
+        public function basic($registroN){
+            session_start();
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $user = new Usuario();
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
+            if($state){
+                $objeto = new Objeto();
+                $this->render('objects/informeBasicpdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+        }
+
+        public function llibre(){
+            session_start();
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $user = new Usuario();
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
+            if($state){
+                $objeto = new Objeto();
+                $this->render('objects/llibreRegistre', ['cont' => [$objeto->generarLlibre()]]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
+        }
+
         private function render($view, $data = []) {
             extract($data);
             $viewFile = "../src/views/$view.php";

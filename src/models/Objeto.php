@@ -178,5 +178,82 @@
             
             $sql->execute();
         }
+
+        function generarLlibre(){
+            $sql = $this -> db->prepare('SELECT 
+                o.RegistroNº,
+                o.Imagen,
+                o.Nombre,
+                o.Titulo,
+                o.ColeccionProcedencia,
+                o.Altura,
+                o.Anchura,
+                o.Profundidad,
+                o.NumeroEjemplares,
+                o.FechaRegistro,
+                o.FechaIngreso,
+                o.FuenteIngreso,
+                o.FechaBaja,
+                o.PersonaAutorizadaBaja,
+                o.LugarEjecucion,
+                o.LugarProcedencia,
+                o.NumeroTiraje,
+                o.OtrosNrosIdentificacion,
+                o.ValoracionEconomica,
+                o.Bibliografia,
+                o.Descripcion,
+                o.HistoriaObjeto,
+                a.Nombre as AutorNombre,
+                c.valor as ClasificacionGenerica,
+                m.valor as MaterialNombre,
+                t.valor as TecnicaNombre,
+                u.Nombre as UbicacionNombre,
+                uo.FechaInicioUbicacion,
+                uo.FechaFinUbicacion,
+                uo.ComentarioUbicacion,
+                ec.valor as EstadoConservacionNombre,
+                mu.Nombre as MuseoNombre,
+                d.descripcion as DatacionDescripcion,
+                d.any_inicial,
+                d.any_final,
+                b.valor as BajaValor,
+                cb.valor as CausaBajaValor,
+                fi.valor as FormaIngresoValor,
+                r.FechaInicio as FechaInicioRestauracion,
+                r.FechaFin as FechaFinRestauracion,
+                us.Nombre as UsuarioNombre,
+                r.CodigoRestauracion,
+                r.NombreRestaurador,
+                r.ComentarioRestauracion,
+                e.Nombre as ExposicionNombre,
+                e.FechaInicio as FechaInicioExposicion,
+                e.FechaFin as FechaFinExposicion,
+                e.LugarExposicion,
+                te.valor as TipoExposicionNombre,
+                o.Activo
+                FROM Objetos o
+                LEFT JOIN Autors a ON o.AutorID = a.id
+                LEFT JOIN Classificacion c ON o.ClasificacionGenericaID = c.id
+                LEFT JOIN Material m ON o.MaterialID = m.id
+                LEFT JOIN Tecnica t ON o.TecnicaID = t.id
+                LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id
+                LEFT JOIN UbicacionObjeto uo ON  o.UbicacionActualID = uo.UbicacionID
+                LEFT JOIN EstadoConservacion ec ON o.EstadoConservacionID = ec.id
+                LEFT JOIN Museos mu ON o.MuseoID = mu.MuseoID
+                LEFT JOIN Datacion d ON o.DatacionID = d.id
+                LEFT JOIN Baja b ON o.BajaID = b.id
+                LEFT JOIN CausaBaja cb ON o.CausaBajaID = cb.id
+                LEFT JOIN FormaIngreso fi ON o.FormaIngresoID = fi.id
+                LEFT JOIN Restauraciones r ON r.ObjetoID = o.ObjetoID
+                LEFT JOIN Usuarios us ON us.UsuarioID = o.UsuarioID
+                LEFT JOIN ObjetoExposicion oe ON  o.ObjetoID = oe.ObjetoID
+                LEFT JOIN Exposiciones e ON oe.ExposicionID = e.ExposicionID
+                LEFT JOIN TiposExposicion te  ON e.TipoExposicionID = te.id
+                WHERE o.Activo = true');
+        
+            $sql->execute();
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
         
     }
