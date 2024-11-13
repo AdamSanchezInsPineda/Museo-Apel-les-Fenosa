@@ -8,6 +8,8 @@ $router = new Router();
 
 $router->get('/', 'UsuarioController@index');
 
+$router->get("/getrol", "UsuarioController@getRol");
+
 $router->post('/login', 'UsuarioController@login');
 
 $router->get('/logout', 'UsuarioController@logout');

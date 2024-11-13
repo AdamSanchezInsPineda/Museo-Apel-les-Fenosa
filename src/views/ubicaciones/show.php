@@ -1,4 +1,4 @@
-<body class="new-ubicacions">
+<div class="show">
 
     <h1></h1>
 
@@ -10,4 +10,4 @@
         <button>Borrar Ubicació</button>
     </div>
 
-</body>
+</div>
