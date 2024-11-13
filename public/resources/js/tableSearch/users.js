@@ -1,0 +1,2 @@
+var output = "<a href='/users/" + usuario['UsuarioID'] + "'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
+output += "<a href='/users/" + usuario['UsuarioID'] + "/delete' class='links' data-usuario='" + usuario['Nombre'] + "'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";

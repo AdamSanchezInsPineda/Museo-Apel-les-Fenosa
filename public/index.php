@@ -8,6 +8,8 @@ $router = new Router();
 
 $router->get('/', 'UsuarioController@index');
 
+$router->get("/getrol", "UsuarioController@getRol");
+
 $router->post('/login', 'UsuarioController@login');
 
 $router->get('/logout', 'UsuarioController@logout');
@@ -98,6 +100,8 @@ $router->get('/ubicacions/new', 'UbicacionsController@new');
 $router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
 
 $router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
+
+$router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
 
 
 

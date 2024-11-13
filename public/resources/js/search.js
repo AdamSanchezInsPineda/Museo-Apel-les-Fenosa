@@ -1,5 +1,30 @@
 import { pop } from '/resources/js/confirm.js';
 
+async function obtenerRol() {
+    try{
+    const response = await fetch('/getrol');  
+    const data = await response.json();
+        if (data.rol) {
+            const rol = data.rol;
+            
+            /*if (rol === 'admin') {
+                console.log("El usuario es un administrador");
+                // Mostrar contenido específico para admins
+            } else if (rol === 'usuario') {
+                console.log("El usuario es un usuario regular");
+                // Mostrar contenido específico para usuarios
+            } else {
+                console.log("Rol no reconocido");
+            }*/
+           console.log(rol);
+        } else {
+            console.log("No se pudo obtener el rol o el usuario no está autenticado");
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 cont();
 
 document.getElementById('search').addEventListener('input', function() {

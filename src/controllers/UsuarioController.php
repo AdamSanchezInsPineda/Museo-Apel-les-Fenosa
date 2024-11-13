@@ -6,9 +6,20 @@ class UsuarioController extends Controller {
         $this->render("login", ["error" => ""]);
     }
 
+    public function getRol() {
+        header("Content-Type: application/json");
+        if (isset($_SESSION["rol"])){
+            echo json_encode(["rol" => $_SESSION["rol"]]);
+        } else {
+            echo json_encode(["error" => "Sesión no iniciada"]);
+        }
+        exit;
+    }
+
     public function login() {
         $_SESSION['nom'] = $_POST["nom"];
         $_SESSION['password'] = $_POST["password"];
+        echo json_encode($_SESSION);
 
         if ($this->user->comprovarUsuario($_SESSION['nom'], $_SESSION['password'])) {
             $_SESSION['rol'] = $this->user->rolUsuario($_SESSION['nom'], $_SESSION['password']);
@@ -34,12 +45,14 @@ class UsuarioController extends Controller {
 
     public function searchDef($found = "") {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
-        exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
+        header('Content-Type: application/json');
+        exit(json_encode($this->user->mostrarUsuarios($found)));
     }
 
     public function search($found) {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
-        exit(json_encode([$this->user->mostrarUsuarios($found), $_SESSION['rol']]));
+        header('Content-Type: application/json');
+        exit(json_encode($this->user->mostrarUsuarios($found)));
     }
 
     public function createView() {

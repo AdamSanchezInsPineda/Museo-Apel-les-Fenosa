@@ -1,6 +1,6 @@
-export async function newUbicacion(item) {
+export async function editUbicacion(id) {
     try {
-        const response = await fetch(`/ubicacions/${item.id}/new`);
+        const response = await fetch(`/ubicacions/${id}/new`);
         const html = await response.text();
         
         const contenedor = document.getElementById('action');
