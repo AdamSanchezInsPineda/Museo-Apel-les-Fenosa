@@ -92,7 +92,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Nom Restaurador: ".$cont[0][$i]['NombreRestaurador']."</td>
             </tr>
             <tr>
-                <td class='long-text'>Comentari Restauració: ".$cont[0][$i]['ComentarioRestauracion']."</td>
+                <td colspan='4'class='long-text'>Comentari Restauració: ".$cont[0][$i]['ComentarioRestauracion']."</td>
             </tr>
             <tr>
                 <th>Ingrés</th>

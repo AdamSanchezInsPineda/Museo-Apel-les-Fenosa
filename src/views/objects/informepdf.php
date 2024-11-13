@@ -103,7 +103,7 @@ $content = "
                     <td>Nom Restaurador: ".$cont[1][0]['NombreRestaurador']."</td>
                 </tr>
                 <tr>
-                    <td>Comentari Restauració: ".$cont[1][0]['ComentarioRestauracion']."</td>
+                    <td colspan='2' class='long-text>Comentari Restauració: ".$cont[1][0]['ComentarioRestauracion']."</td>
                 </tr>
                 <tr>
                     <th>Ingrés</th>
