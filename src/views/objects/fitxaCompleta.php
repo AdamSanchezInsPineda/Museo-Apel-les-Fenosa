@@ -7,6 +7,7 @@
         <!--Contenido variable de la pagina-->
         <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
         <button>Cambiar a fitxa bàsica</button>
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf">pdf prueba</a></button>
                         
         <div>
             <div>
@@ -69,7 +70,7 @@
             <div class="toggle-hide"><h2>Ingrés</h2><span></span></div>
 
             <section class="hide">
-                <p>Forma d'Ingrés: <?php echo $cont[1][0]['FormaIngresoValor']?>
+                <p>Forma d'Ingrés: <?php echo $cont[1][0]['FormaIngresoValor']?></p>
                 <p>Font d'Ingrés: <?php echo $cont[1][0]['FuenteIngreso']?></p>
                 <p>Data d'Ingrés: <?php echo $cont[1][0]['FechaIngreso']?></p>
                 <p>Estat de conservació: <?php echo $cont[1][0]['EstadoConservacionNombre']?></p>

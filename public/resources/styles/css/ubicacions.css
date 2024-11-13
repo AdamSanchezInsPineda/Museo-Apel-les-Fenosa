@@ -1,6 +1,18 @@
+.ubicacions .main {
+  width: 80%;
+  margin: 100px auto 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+}
 .ubicacions .tree {
   --spacing: 1.5rem;
   --radius: 10px;
+}
+.ubicacions .tree a {
+  color: #369;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .ubicacions .tree li {
   display: block;

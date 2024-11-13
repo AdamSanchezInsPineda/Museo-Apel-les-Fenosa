@@ -105,6 +105,7 @@
                 fi.valor as FormaIngresoValor,
                 r.FechaInicio as FechaInicioRestauracion,
                 r.FechaFin as FechaFinRestauracion,
+                us.Nombre as UsuarioNombre,
                 r.CodigoRestauracion,
                 r.NombreRestaurador,
                 r.ComentarioRestauracion,
@@ -128,6 +129,7 @@
                 LEFT JOIN CausaBaja cb ON o.CausaBajaID = cb.id
                 LEFT JOIN FormaIngreso fi ON o.FormaIngresoID = fi.id
                 LEFT JOIN Restauraciones r ON r.ObjetoID = o.ObjetoID
+                LEFT JOIN Usuarios us ON us.UsuarioID = o.UsuarioID
                 LEFT JOIN ObjetoExposicion oe ON  o.ObjetoID = oe.ObjetoID
                 LEFT JOIN Exposiciones e ON oe.ExposicionID = e.ExposicionID
                 LEFT JOIN TiposExposicion te  ON e.TipoExposicionID = te.id

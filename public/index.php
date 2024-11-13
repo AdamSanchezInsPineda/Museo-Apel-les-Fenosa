@@ -81,10 +81,20 @@ $router->post( '/exposicions/{exposicio}/bens/create', 'ExposicionsController@be
 
 $router->get('/exposicions/{exposicio}/bens/{objetoExposicion}/delete', 'ExposicionsController@bensDeleteExposicio');
 
-$router->get('/ubicacions', "UbicacionsController@index");
+// Ubicacions
 
-$router->get('/ubicacions/json', "UbicacionsController@getUbicaciones");
+$router->get('/ubicacions', 'UbicacionsController@index');
 
-$router->get('/registers//informepdf', "InformeController@index");
+$router->get('/ubicacions/json', 'UbicacionsController@getUbicaciones');
+
+$router->get('/ubicacions/new', 'UbicacionsController@new');
+
+$router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
+
+$router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
+
+$router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
+
+$router->get('/registers/{obra}/informepdf', "InformeController@index");
 
 $router->dispatch();
