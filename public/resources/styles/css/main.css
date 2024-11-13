@@ -192,7 +192,7 @@ header div img {
 .verFichaCompleta main button + div + div section {
   grid-template-columns: 50% 50%;
   display: grid;
-  justify-items: end;
+  justify-items: start;
   background-color: #D8D9DA;
   padding: 2.5%;
 }
