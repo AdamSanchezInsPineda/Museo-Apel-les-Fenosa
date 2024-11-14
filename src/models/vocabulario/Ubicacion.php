@@ -25,6 +25,7 @@ class Ubicacion extends Database
         
         $sql->bindParam(':nombre', $params['Nombre']);
         $sql->bindParam(':ubicacion', $params['Ubicacion']);
+        $sql->bindParam()
         
         $sql->execute();
     }

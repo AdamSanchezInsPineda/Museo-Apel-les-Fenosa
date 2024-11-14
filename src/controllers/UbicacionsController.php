@@ -32,6 +32,12 @@ class UbicacionsController extends Controller {
         include "../src/views/ubicaciones/show.php";
     }
 
+    public function edit($id) {
+        header("Content-Type: text/html");
+
+        include "../src/views/ubicaciones/edit.php";
+    }
+
     public function destroy($id) {
         try {
             $this->ubicacion->destroyUbicacion($id);
