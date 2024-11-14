@@ -13,20 +13,22 @@ $content = "<html>
                     line-height: 1.6;
                 }
                 table {
-                    width: 100%;
-                    border-collapse: collapse;
+                    width: 400mm;
+                    margin: 5mm 5mm;
                 }
                 th, td {
                     padding: 10px;
                     text-align: left;
-                    word-wrap: break-word;
-                    max-width: 150px;
+                }
+                th{
+                    border-bottom: 1px;
+                    font-size: 15px;
                 }
                 h1, h2 {
                     color: #333;
                 }
                 .long-text {
-                    grid-column: span 2;
+                    grid-column: span 4;
                 }
                 td{
                     width: 25%;    
@@ -42,8 +44,8 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Nº de Registre: ".$cont[0][$i]['RegistroNº']."</td>
                 <td>Nom: ".$cont[0][$i]['Nombre']."</td>
                 <td>Museu: ".$cont[0][$i]['MuseoNombre']."</td>
-                <td rowspan=8>
-                    <img src='".$imagen.$cont[0][$i]['Imagen'].".jpg' alt='imatge obra' style='width: auto; height: auto; max-width: 200px; max-height:200px;'>
+                <td rowspan=8 style='text-align: center;'>
+                    <img src='".$imagen.$cont[0][$i]['Imagen'].".jpg' alt='imatge obra' style='max-width: 200px; max-height: 200px;'>
                 </td>
             </tr>
             <tr>
@@ -51,13 +53,13 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Títol: ".$cont[0][$i]['Titulo']."</td>
             </tr>
             <tr>
-                <th>Ubicació</th>
+                <th colspan='3'>Ubicació</th>
             </tr>
             <tr>
                 <td>Ubicacion a añadir</td>
             </tr>
             <tr>
-                <th>Propietats</th>
+                <th colspan='3'>Propietats</th>
             </tr>
             <tr>
                 <td>Altura: ".$cont[0][$i]['Altura']."</td>
@@ -74,7 +76,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Tècnica: ".$cont[0][$i]['TecnicaNombre']."</td>
             </tr>
             <tr>
-                <th>Baixa</th>
+                <th colspan='4'>Baixa</th>
             </tr>
             <tr>
                 <td>Baixa: ".$cont[0][$i]['BajaValor']."</td>
@@ -83,7 +85,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Persona Autorizada Baja: ".$cont[0][$i]['PersonaAutorizadaBaja']."</td>
             </tr>
             <tr>
-                <th>Restauració</th>
+                <th colspan='4'>Restauració</th>
             </tr>
             <tr>
                 <td>Data Inici Restauració: ".$cont[0][$i]['FechaInicioRestauracion']."</td>
@@ -95,7 +97,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td colspan='4'class='long-text'>Comentari Restauració: ".$cont[0][$i]['ComentarioRestauracion']."</td>
             </tr>
             <tr>
-                <th>Ingrés</th>
+                <th colspan='4'>Ingrés</th>
             </tr>
             <tr>  
                 <td>Forma d'Ingrés: ".$cont[0][$i]['FormaIngresoValor']."</td>
@@ -104,7 +106,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Estat de conservació: ".$cont[0][$i]['EstadoConservacionNombre']."</td>
             </tr>
             <tr>
-                <th>Exposicions</th>
+                <th colspan='4'>Exposicions</th>
             </tr>
             <tr>
                 <td>Nom: ".$cont[0][$i]['ExposicionNombre']."</td>
@@ -116,7 +118,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Tipus: ".$cont[0][$i]['TipoExposicionNombre']."</td>
             </tr>
             <tr>
-                <th>Altres Dades</th>
+                <th colspan='4'>Altres Dades</th>
             </tr>
             <tr>
                 <td>Col·lecció de Procedencia: ".$cont[0][$i]['ColeccionProcedencia']."</td>
