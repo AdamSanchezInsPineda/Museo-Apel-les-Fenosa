@@ -48,7 +48,7 @@ $content = "
                 <table>
                     <tr>
                         <td>Nº de Registre: ".$cont[1][0]['RegistroNº']."</td>
-                        <td rowspan=6><img src='".$imagen.$cont[1][0]['Imagen'].".jpg' alt='imatge obra'style='width: auto; height: auto; max-width: 200px; max-height: 200px;'></td>
+                        <td rowspan=6 style='text-align: center;'><img src='".$imagen.$cont[1][0]['Imagen'].".jpg' alt='imatge obra'style='max-width: 200px; max-height: 200px;'></td>
                     </tr>
                     <tr>
                         <td>Nom: ".$cont[1][0]['Nombre']."</td>

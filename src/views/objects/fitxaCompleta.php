@@ -7,7 +7,7 @@
         <!--Contenido variable de la pagina-->
         <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
         <button>Cambiar a fitxa bàsica</button>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf">pdf prueba</a></button>
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">pdf prueba</a></button>
                         
         <div>
             <div>
