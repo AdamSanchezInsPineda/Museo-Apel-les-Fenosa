@@ -9,7 +9,8 @@ class ObjetoController extends Controller{
         parent::__construct();
         $this->objeto = new Objeto();
     }
-    public function table() {
+    
+    /*public function table() {
         session_start();
         
         if (!isset($_SESSION['nom'])){
@@ -29,18 +30,18 @@ class ObjetoController extends Controller{
             $this->render("login", ["error"=> $error]);
             exit;
         }
-    }
+    }*/
 
     public function searchDef($found = "") {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
-        exit(json_encode($this -> objeto-> ));
+        exit(json_encode($this -> objeto-> getObjetos($found)));
     }
 
     public function search($found) {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
-        exit(json_encode($this -> objeto-> ($found)));
+        exit(json_encode($this -> objeto-> getObjetos($found)));
     }
 
     public function createView() {

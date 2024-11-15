@@ -2,8 +2,9 @@
     
     class Objeto extends Database
     {
-        function getAllObjetos() {
+        function getObjetos($found) {
             
+
             $sql = $this -> db->prepare('SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo,
                                                     a.Nombre as Autor,
                                                     u.Nombre as Ubicacion,
