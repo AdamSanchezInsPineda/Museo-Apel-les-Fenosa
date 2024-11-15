@@ -1,6 +1,5 @@
 {
     "require": {
-        "setasign/fpdf": "^1.8",
         "spipu/html2pdf": "^5.2.3"
     }
 }

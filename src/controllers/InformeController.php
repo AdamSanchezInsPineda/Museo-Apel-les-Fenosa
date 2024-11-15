@@ -36,7 +36,7 @@
             }
             if($state){
                 $objeto = new Objeto();
-                $this->render('objects/informeBasicpdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+                $this->render('objects/informeBasicapdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
                 exit;
 
             } else {
