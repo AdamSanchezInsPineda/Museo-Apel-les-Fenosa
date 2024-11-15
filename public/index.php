@@ -25,13 +25,22 @@ $router->get('/registers/add', 'ObjetoController@createView');
 
 $router->post('/registers/create', 'ObjetoController@create');
 
-$router->get('/registers/{obra}', 'ObjetoController@new');
+$router->get('/registers/llibreRegistre', "InformeController@llibre");
+
+$router->get('/registers/{obra}/informepdf', "InformeController@index");
+
+$router->get('/registers/{obra}/informeBasicpdf', "InformeController@basic");
+
+$router->get('/registers/{obra}/prestecdoc', "InformeController@prestec");
+
 
 $router->get('/registers/{obra}/updateView', 'ObjetoController@updateView');
 
 $router->post('/registers/{obra}/update', 'ObjetoController@update');
 
 $router->get('/registers/{obra}/delete', 'ObjetoController@delete');
+
+$router->get('/registers/{obra}', 'ObjetoController@new');
 
 //Users
 $router->get('/users', 'UsuarioController@table');
@@ -101,6 +110,6 @@ $router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
 
 $router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
 
-$router->get('/registers/{obra}/informepdf', "InformeController@index");
+
 
 $router->dispatch();

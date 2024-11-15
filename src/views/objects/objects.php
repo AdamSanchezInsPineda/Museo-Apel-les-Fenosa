@@ -24,6 +24,9 @@
 
                 </tbody>
             </table>
+            <div>
+                <button><a href="/registers/llibreRegistre" target="_blank">Generar Llibre de Registre</a></button>
+            </div>
         </div>
     </div>
     <!--Scripts-->

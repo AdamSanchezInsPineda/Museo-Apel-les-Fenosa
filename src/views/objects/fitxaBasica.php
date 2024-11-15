@@ -8,6 +8,7 @@
     </div>
     <div>
         <button><a href="#"> Cambiar a fitxa completa</a></button>
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informeBasicpdf">pdf prueba</a></button>
     </div>
         <table>
             <tr>
