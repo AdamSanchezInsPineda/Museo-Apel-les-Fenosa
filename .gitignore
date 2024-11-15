@@ -1,2 +1,3 @@
 *.ini
-css/*
+*.css
+*.css.map
