@@ -97,11 +97,17 @@ $router->get('/ubicacions/json', 'UbicacionsController@getUbicaciones');
 
 $router->get('/ubicacions/new', 'UbicacionsController@new');
 
+$router->post('/ubicacions/new', 'UbicacionsController@create');
+
 $router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
 
-$router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
+$router->post('/ubicacions/{ubicacio}/edit', 'UbicacionsController@edit');
 
 $router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
+
+$router->post('/ubicacions/{ubicacio}', 'UbicacionsController@update');
+
+$router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
 
 
 

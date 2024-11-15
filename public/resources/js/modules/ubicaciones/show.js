@@ -26,3 +26,8 @@ export async function showUbicacion(item) {
         console.error('Error al cargar la ubicación:', error);
     }
 }
+
+export function hideUbicacion(){
+    const contenedor = document.getElementById('action');
+    contenedor.innerHTML = "";
+}

@@ -27,6 +27,7 @@ class Ubicacion extends Database
         $sql->bindParam(':ubicacion', $params['Ubicacion']);
         
         $sql->execute();
+        return $this->db->lastInsertId();
     }
 
     function updateUbicacion($params)

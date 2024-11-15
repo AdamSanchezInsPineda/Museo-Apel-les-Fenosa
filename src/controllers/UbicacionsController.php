@@ -26,6 +26,19 @@ class UbicacionsController extends Controller {
         include "../src/views/ubicaciones/new.php";
     }
 
+    public function create() {
+        try {
+            $id = $this->ubicacion->addUbicacion($_POST);
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode(['id' => $id]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            header('Content-Type: application/json');
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
     public function show($id) {
         header("Content-Type: text/html");
 

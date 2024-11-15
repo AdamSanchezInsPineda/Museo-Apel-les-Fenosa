@@ -1,4 +1,5 @@
 import {fetchTree} from "/resources/js/modules/ubicaciones/tree.js"
+import {hideUbicacion} from "/resources/js/modules/ubicaciones/show.js"
 
 export async function destroyUbicacion(item) {
     try {
@@ -10,7 +11,8 @@ export async function destroyUbicacion(item) {
 
         console.log('Ubicación eliminada con éxito');
 
-        fetchTree();
+        fetchTree(item.parent);
+        hideUbicacion();
 
     } catch (error) {
         console.error('Error al cargar la nueva ubicación:', error);
