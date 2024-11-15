@@ -105,7 +105,7 @@
                 <p>Història de l'objecte: <?php echo $cont[1][0]['HistoriaObjeto']?></p>
             </section>
 
-            <button><a href="#">Formulari de préstec</a></button>
+            <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/prestecdoc">Formulari de préstec</a></button>
 
         </div>
     </main>
