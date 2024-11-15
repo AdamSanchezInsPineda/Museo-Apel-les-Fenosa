@@ -18,3 +18,9 @@ export async function destroyUbicacion(item) {
         console.error('Error al cargar la nueva ubicación:', error);
     }
 }
+/*
+    Array(Array(condicio and condicion and condicion and condicio and condicion)
+        or Array(condicio and condicion and condicion and condicio and condicion)
+        or Array(condicio and condicion and condicion and condicio and condicion)
+        or Array(condicio and condicion and condicion and condicio and condicion))
+*/
