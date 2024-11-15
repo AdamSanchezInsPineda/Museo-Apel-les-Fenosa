@@ -28,7 +28,7 @@
             return $result[0]['Rol'];
         }
 
-        function mostrarUsuarios($found) {
+        function getUsuarios($found) {
             try {
                 $where= ($found == "") ? "" : " AND (Nombre LIKE '%' :found '%' OR Rol LIKE '%' :found '%')";
                 $sql = $this->db->prepare("SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID != 1 $where");
