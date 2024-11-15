@@ -17,6 +17,10 @@ $router->get('/logout', 'UsuarioController@logout');
 //registers
 $router->get('/registers', 'ObjetoController@table');
 
+$router->get('/registers/search', 'ObjetoController@searchDef');
+
+$router->get('/registers/search/{found}', 'ObjetoController@search');
+
 $router->get('/registers/add', 'ObjetoController@createView');
 
 $router->post('/registers/create', 'ObjetoController@create');
