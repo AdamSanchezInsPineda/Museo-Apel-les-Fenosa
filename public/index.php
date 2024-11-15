@@ -27,6 +27,9 @@ $router->get('/registers/{obra}/informepdf', "InformeController@index");
 
 $router->get('/registers/{obra}/informeBasicpdf', "InformeController@basic");
 
+$router->get('/registers/{obra}/prestecdoc', "InformeController@prestec");
+
+
 $router->get('/registers/{obra}/updateView', 'ObjetoController@updateView');
 
 $router->post('/registers/{obra}/update', 'ObjetoController@update');
