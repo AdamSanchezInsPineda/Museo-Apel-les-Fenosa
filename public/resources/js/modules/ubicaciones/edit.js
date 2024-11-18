@@ -9,6 +9,12 @@ export async function editUbicacion(item) {
         const contenedor = document.getElementById('action');
         contenedor.innerHTML = html;
 
+        const title = document.querySelector("h1");
+        title.textContent += " " + item.name;
+
+        const field = document.querySelector("input");
+        field.setAttribute("value", item.name);
+
         const form = document.querySelector("form");
         form.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -23,7 +29,8 @@ async function updateUbicacion(item) {
     const form = document.querySelector("form");
     const formData = new FormData(form);
 
-    formData.append("Ubicacion", item.id);
+    formData.append("id", item.id);
+    item.name = formData.get("Nombre");
 
     try{
         const response = await fetch(`/ubicacions/${item.id}`, {
@@ -35,13 +42,8 @@ async function updateUbicacion(item) {
             throw new Error(`Response status: ${response.status}`);
         }
 
-        const newItem = {
-            id: newId,
-            name: formData.get("Nombre")
-        };
-
-        fetchTree(newId);
-        showUbicacion(newItem);
+        fetchTree(item.id);
+        showUbicacion(item);
         
     } catch(error){
         console.error(error.message);

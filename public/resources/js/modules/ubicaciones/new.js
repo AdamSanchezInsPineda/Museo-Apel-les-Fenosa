@@ -1,9 +1,9 @@
 import { fetchTree } from "/resources/js/modules/ubicaciones/tree.js";
 import { showUbicacion } from "/resources/js/modules/ubicaciones/show.js";
 
-export async function newUbicacion(item) {
+export async function newUbicacion(item = null) {
     try {
-        const response = await fetch(`/ubicacions/${item.id}/new`);
+        const response = await fetch(`/ubicacions/new`);
         const html = await response.text();
         
         const contenedor = document.getElementById('action');
@@ -23,13 +23,18 @@ async function createUbicacion(item = null) {
     const form = document.querySelector("form");
     const formData = new FormData(form);
 
-    formData.append("Ubicacion", item.id);
-
+    if (item){
+        formData.append("Ubicacion", item.id);
+    }
     try{
         const response = await fetch("/ubicacions/new", {
             method: "POST",
             body: formData
         });
+
+
+        console.log("Response status:", response.status);
+        console.log("Response headers:", response.headers);
 
         if (!response.ok){
             throw new Error(`Response status: ${response.status}`);

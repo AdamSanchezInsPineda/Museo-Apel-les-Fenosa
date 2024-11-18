@@ -3,7 +3,10 @@
 <body class="ubicacions">
     <div class="main">
         <div id="tree">
-            <p>Ubicacions</p>
+            <div>
+                <p>Ubicacions</p>
+                <button>Crear nova ubicació</button>
+            </div>
 
             <ul id="tree-container" class="tree" >
                 
