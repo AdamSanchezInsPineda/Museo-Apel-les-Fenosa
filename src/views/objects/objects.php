@@ -11,7 +11,7 @@
             </div>
             <table>
                 <?php
-                    $columns = ["Nº","Imatge","Objecte","Títol","Autor","Ubicació","Datació","Accions"];
+                    $columns = ["Nº", "Imatge", "Objecte", "Títol", "Autor", "Ubicació", "Datació", "Accions"];
                     echo "<tr>";
 
                     foreach ($columns as $column) {
