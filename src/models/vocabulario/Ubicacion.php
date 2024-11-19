@@ -23,10 +23,12 @@ class Ubicacion extends Database
     {
         $sql = $this->db->prepare('INSERT INTO Ubicaciones (Nombre, UbicacionPadre) VALUES (:nombre, :ubicacion)');
         
-        $sql->bindParam(':nombre', $params['Nombre']);
-        $sql->bindParam(':ubicacion', $params['Ubicacion']);
+        $sql->bindValue(':nombre', $params['Nombre']);
+
+        $sql->bindValue(':ubicacion', $params['Ubicacion'] ?? null);
         
         $sql->execute();
+        return $this->db->lastInsertId();
     }
 
     function updateUbicacion($params)
@@ -34,7 +36,6 @@ class Ubicacion extends Database
         $sql = $this->db->prepare('UPDATE Ubicaciones SET Nombre = :nombre WHERE id = :id');
         
         $sql->bindParam(':nombre', $params['Nombre']);
-        $sql->bindParam(':ubicacion', $params['Ubicacion']);
         $sql->bindParam(':id', $params['id'], PDO::PARAM_INT);
         
         $sql->execute();

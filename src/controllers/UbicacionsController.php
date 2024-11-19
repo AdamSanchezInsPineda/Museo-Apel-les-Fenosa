@@ -20,16 +20,48 @@ class UbicacionsController extends Controller {
         echo json_encode($ubicaciones);
     }
 
-    public function new($id) {
+    public function new() {
         header("Content-Type: text/html");
 
         include "../src/views/ubicaciones/new.php";
+    }
+
+    public function create() {
+        try {
+            $id = $this->ubicacion->addUbicacion($_POST);
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode(['id' => $id]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            header('Content-Type: application/json');
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 
     public function show($id) {
         header("Content-Type: text/html");
 
         include "../src/views/ubicaciones/show.php";
+    }
+
+    public function edit($id) {
+        header("Content-Type: text/html");
+
+        include "../src/views/ubicaciones/edit.php";
+    }
+
+    public function update() {
+        try {
+            $id = $this->ubicacion->updateUbicacion($_POST);
+            http_response_code(200);
+            header('Content-Type: application/json');
+            echo json_encode(['id' => $id]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            header('Content-Type: application/json');
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
 
     public function destroy($id) {

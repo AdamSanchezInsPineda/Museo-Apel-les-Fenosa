@@ -1,19 +1,25 @@
 <?php
 
-class ObjetoController {
+class ObjetoController extends Controller{
+
+    protected $objeto;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->objeto = new Objeto();
+    }
+    
     public function table() {
-        session_start();
         
         if (!isset($_SESSION['nom'])){
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user ->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
-        if ($state) {
-            $objeto = new Objeto();              
-            $this->render('objects/objects', ['registros' => $objeto->getAllObjetos()]);
+        if ($state) {        
+            $this->render('objects/objects');
             exit;
 
         } else {
@@ -25,6 +31,18 @@ class ObjetoController {
         }
     }
 
+    public function searchDef($found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this -> objeto-> getObjetos($found)));
+    }
+
+    public function search($found) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this -> objeto-> getObjetos($found)));
+    }
+
     public function createView() {
         session_start();
         
@@ -32,8 +50,7 @@ class ObjetoController {
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
         if ($state) {          
@@ -55,13 +72,11 @@ class ObjetoController {
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
         if ($state) {         
-            $objeto = new Objeto();
-            $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+            $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
             exit;
 
         } else {
@@ -79,13 +94,11 @@ class ObjetoController {
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
         if ($state) {
-            $objeto = new Objeto();
-            $this->render('objects/updateObject', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+            $this->render('objects/updateObject', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
             exit;
 
         } else {
@@ -99,17 +112,15 @@ class ObjetoController {
 
     public function update($registroN) {
         session_start();
-        $objeto = new Objeto();
         if (!isset($_SESSION['nom'])){
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
         if ($state) {         
-            $this->render('objects/updateObject', ['objeto' => $objeto->fitxesMostrar($registroN)]);
+            $this->render('objects/updateObject', ['objeto' => $this -> objeto->fitxesMostrar($registroN)]);
             exit;
 
         } else {
@@ -128,17 +139,15 @@ class ObjetoController {
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
 
         if ($state) {     
-            $objeto = new Objeto();
             if ($_SESSION['rol'] == "admin")
-                $objeto -> fitxesDelete($registroN);
+                $this -> objeto -> fitxesDelete($registroN);
             
             elseif ($_SESSION['rol'] == "tecnic")
-                $objeto -> fitxesDisable($registroN);
+                $this -> objeto -> fitxesDisable($registroN);
             
             header("/registers");   
                 
@@ -159,13 +168,11 @@ class ObjetoController {
             $state = false;
         }
         else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            $state = $this -> user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
         }
     
-        if ($state) {         
-            $objeto = new Objeto();
-            $detallesObjeto = $objeto->fitxesMostrar($id);
+        if ($state) {
+            $detallesObjeto = $this -> objeto->fitxesMostrar($id);
             
             if ($detallesObjeto) {
                 $this->render('objects/ficha', ['objeto' => $detallesObjeto]);
@@ -181,16 +188,6 @@ class ObjetoController {
             $error = " La sessió no s'ha iniciat ";
             $this->render("login", ["error"=> $error]);
             exit;
-        }
-    }
-
-    private function render($view, $data = []) {
-        extract($data);
-        $viewFile = "../src/views/$view.php";
-        if (file_exists($viewFile)) {
-            require $viewFile;
-        } else {
-            echo "View $view not found.";
         }
     }
 }

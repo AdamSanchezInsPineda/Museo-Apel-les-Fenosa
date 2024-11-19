@@ -45,13 +45,13 @@ class UsuarioController extends Controller {
     public function searchDef($found = "") {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
-        exit(json_encode($this->user->mostrarUsuarios($found)));
+        exit(json_encode($this->user->getUsuarios($found)));
     }
 
     public function search($found) {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
-        exit(json_encode($this->user->mostrarUsuarios($found)));
+        exit(json_encode($this->user->getUsuarios($found)));
     }
 
     public function createView() {

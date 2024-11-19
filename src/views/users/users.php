@@ -32,7 +32,6 @@
     <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
     <script type="module" src="/resources/js/tableSearch/search.js"></script>
-    <script src="/resources/js/tableSearch/users.js"></script>
 
     <?php
     include "resources/components/footer.php";

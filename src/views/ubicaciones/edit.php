@@ -1,5 +1,5 @@
-<div class="new">
-    <h1>Nueva Ubicacion</h1>
+<div class="edit">
+    <h1>Editar</h1>
 
     <form action="" method="post">
         <div>
@@ -7,6 +7,6 @@
             <input type="text" name="Nombre" id="nom">
         </div>
 
-        <button type="submit">Crea</button>
+        <button type="submit">Actualitza</button>
     </form>
 </div>
