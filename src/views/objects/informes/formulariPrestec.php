@@ -12,29 +12,17 @@ $documento = new PhpWord();
 $documento->setDefaultFontName('Calibri');
 $documento->setDefaultFontSize(8);
 
-// Nueva sección
-$seccion1 = $documento->addSection([
-    'marginLeft' => 0,
-    'marginRight' => 0,
-    'marginTop' => 0,
-    'marginBottom' => 0,
-    'breakType' => 'none' // Esto evita el salto de página
-]);
 
-$seccion1->addImage('resources/images/logoMuseu.png', [
+
+
+$seccion = $documento->addSection();
+$seccion->addImage('resources/images/logoMuseu.png', [
     'width' => 100, // Ajusta el ancho de la imagen
     'height' => 80, // Ajusta la altura de la imagen
-    'marginLeft' => 0, // Margen izquierdo
+    'marginLeft' => 2000, // Margen izquierdo
     'marginTop' => 0, // Margen superior
     'wrappingStyle' => 'behind', // Estilo de envoltura
-    'positioning' => 'absolute' // Posición de la imagen
-]);
-$seccion = $documento->addSection([
-    'marginLeft' => 1000, // Ajusta el margen izquierdo (en twips)
-    'marginRight' => 1000, // Ajusta el margen derecho (en twips)
-    'marginTop' => 1000, // Ajusta el margen superior (en twips)
-    'marginBottom' => 1000,
-
+    'wrapDistanceLeft' => 0, // Distancia de envoltura izquierda
 ]);
 
 $tituloFontStyle = new Font();
