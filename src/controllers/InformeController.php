@@ -13,7 +13,7 @@
             }
             if($state){
                 $objeto = new Objeto();
-                $this->render('objects/informepdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+                $this->render('objects/informes/informepdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
                 exit;
 
             } else {
@@ -36,7 +36,7 @@
             }
             if($state){
                 $objeto = new Objeto();
-                $this->render('objects/informeBasicapdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+                $this->render('objects/informes/informeBasicapdf', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
                 exit;
 
             } else {
@@ -59,7 +59,7 @@
             }
             if($state){
                 $objeto = new Objeto();
-                $this->render('objects/llibreRegistre', ['cont' => [$objeto->generarLlibre()]]);
+                $this->render('objects/informes/llibreRegistre', ['cont' => [$objeto->generarLlibre()]]);
                 exit;
 
             } else {
@@ -81,7 +81,7 @@
                 }
                 if($state){
                     $objeto = new Objeto();
-                    $this->render('objects/formulariPrestec', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+                    $this->render('objects/informes/formulariPrestec', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
                     exit;
     
                 } else {

@@ -110,9 +110,7 @@ $router->get('/ubicacions/new', 'UbicacionsController@new');
 
 $router->post('/ubicacions/new', 'UbicacionsController@create');
 
-$router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
-
-$router->post('/ubicacions/{ubicacio}/edit', 'UbicacionsController@edit');
+$router->get('/ubicacions/{ubicacio}/edit', 'UbicacionsController@edit');
 
 $router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
 

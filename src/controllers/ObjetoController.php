@@ -11,7 +11,6 @@ class ObjetoController extends Controller{
     }
     
     public function table() {
-        session_start();
         
         if (!isset($_SESSION['nom'])){
             $state = false;
