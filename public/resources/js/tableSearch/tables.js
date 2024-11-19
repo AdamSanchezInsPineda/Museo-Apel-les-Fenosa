@@ -7,7 +7,7 @@ export async function content(data) {
             output += "<tr>";
             
             Object.entries(values).forEach(([key, value]) => {
-                if (key !== "UsuarioID" && key !== "Imagen") {  
+                if (key !== "UsuarioID" && key !== "Imagen" && key !== "ExposicionID") {  
                     output += "<td>" + value + "</td>";     
                 }
                 else if (key == "Imagen") {
@@ -22,8 +22,20 @@ export async function content(data) {
             });
             
             output += "<td>";
-            
-            const ActionOutput = await userActions(values['UsuarioID']);
+            let idAcciones;
+            switch(window.location.pathname){
+                case "/users":
+                    idAcciones = values['UsuarioID'];
+                break;
+                case "/registers":
+                    idAcciones = values['RegistroNº'];
+                break;
+                case "/exposicions":
+                    idAcciones = values['ExposicionID'];
+
+                    
+            }
+            const ActionOutput = await userActions(idAcciones);
             output += ActionOutput ? ActionOutput : '';
             
             output += "</td>";

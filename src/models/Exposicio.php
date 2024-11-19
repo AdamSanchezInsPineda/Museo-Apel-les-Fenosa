@@ -2,10 +2,45 @@
 
     class Exposicio extends Database
     {
+        /*try {
+            $where= ($found == "") ? "" : " AND (Nombre LIKE '%' :found '%' OR Rol LIKE '%' :found '%')";
+            $sql = $this->db->prepare("SELECT UsuarioID, Nombre, Rol FROM Usuarios WHERE UsuarioID != 1 $where");
+    
+            if ($found != "") {
+                $sql->bindParam(':found', $found);
+            }
+    
+            $sql->execute();
+            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+            
+        } catch (PDOException $e) {
+            return "An error occurred: " . $e->getMessage();
+        }*/
+
+        function getExposiciones($found){
+            try {
+                $where= ($found == "") ? "" : " WHERE (e.Nombre LIKE '%' :found '%' OR e.FechaInicio LIKE '%' :found '%' OR e.FechaFin LIKE '%' :found '%' OR te.valor LIKE '%' :found '%' OR e.LugarExposicion LIKE '%' :found '%')";
+                $sql = $this->db->prepare("SELECT e.ExposicionID, e.Nombre, e.FechaInicio, e.FechaFin, te.valor as TipoExposicion, e.LugarExposicion FROM Exposiciones e INNER JOIN TiposExposicion te ON e.TipoExposicionID = te.id $where ORDER BY e.Nombre ASC");
+        
+                if ($found != "") {
+                    $sql->bindParam(':found', $found);
+                }
+                
+                
+
+                $sql->execute();
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
+                
+            } catch (PDOException $e) {
+                return "An error occurred: " . $e->getMessage();
+            }
+        }
         function mostrarExposicions() {
             $sql = $this -> db->prepare('SELECT e.ExposicionID, e.Nombre, e.FechaInicio, e.FechaFin, te.valor as TipoExposicion, e.LugarExposicion 
-                                FROM Exposiciones e
-                                INNER JOIN TiposExposicion te ON e.TipoExposicionID = te.id ORDER BY e.Nombre ASC');
+                                        FROM Exposiciones e
+                                        INNER JOIN TiposExposicion te ON e.TipoExposicionID = te.id ORDER BY e.Nombre ASC');
 
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);

@@ -1,32 +1,30 @@
 <?php
 
-class ExposicionsController {
+class ExposicionsController extends Controller{
+
+    protected $exposicio;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->exposicio = new Exposicio();
+    }
     function index(){
-        
-        session_start();
-        $user = new Usuario();        
-        if (!isset($_SESSION['nom'])){
-            
-            $this->render("login", ["error" => " La sessió no s'ha iniciat "]);
-        }
-        else{
-            
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-            if ($state) {
-                
-                $exposicio = new Exposicio();
-                $this->render("exposicions/exposicions", ["exposicions" => $exposicio->mostrarExposicions()]);
-            } 
-            else {
-                
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);  
-            }
-        }
-        
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render("exposicions/exposicions");
         exit;
+    }
+
+    public function searchDef($found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->exposicio->getExposiciones($found)));
+    }
+
+    public function search($found) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->exposicio->getExposiciones($found)));
     }
 
     public function deleteExposicio($id) {
@@ -317,18 +315,5 @@ class ExposicionsController {
             $this->render("login", ["error"=> $error]);  
         }
         exit;
-    }
-
-
-    private function render($view, $data = []) {
-        extract($data);
-        $viewFile = "../src/views/$view.php";
-        
-        if (file_exists($viewFile)) {
-            require $viewFile;
-
-        } else {
-            echo "View $view not found.";
-        }
     }
 }

@@ -78,6 +78,10 @@ $router->get('/vocabularis/{vocabulario}/{valor}/delete', 'VocabularioController
 
 $router->get('/exposicions',  'ExposicionsController@index');
 
+$router->get('/exposicions/search', 'ExposicionsController@searchDef');
+
+$router->get('/exposicions/search/{found}', 'ExposicionsController@search');
+
 $router->get('/exposicions/add', 'ExposicionsController@newExposicio');
 
 $router->post('/exposicions/create', 'ExposicionsController@createExposicio');

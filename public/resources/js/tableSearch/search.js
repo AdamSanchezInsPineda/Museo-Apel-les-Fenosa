@@ -1,9 +1,12 @@
 import {content} from "/resources/js/tableSearch/tables.js"
 cont();
+let found = "";
 
 setInterval(() => {
-    const found = document.getElementById('search').value;
-    cont(found);
+    if (found !== document.getElementById('search').value){
+        found = document.getElementById('search').value;
+        cont(found);
+    } 
 }, 1000);
     
 async function cont($found = "") {
@@ -11,7 +14,6 @@ async function cont($found = "") {
         const response = await fetch($found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + $found);
         const data = await response.json();
 
-        
         await content(data).then(function(output){
             document.querySelector('.tbody').innerHTML = output;
         });
