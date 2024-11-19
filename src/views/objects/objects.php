@@ -9,21 +9,25 @@
                 <input type="text" placeholder="Cercar" id="search"> 
                 <a href="/registers/add">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
-            <table>
-                <?php
-                    $columns = ["Nº", "Imatge", "Objecte", "Títol", "Autor", "Ubicació", "Datació", "Accions"];
-                    echo "<tr>";
+            <div class="scroll">
+                <table>
+                    <thead>
+                    <?php
+                        $columns = ["Nº", "Imatge", "Objecte", "Títol", "Autor", "Ubicació", "Datació", "Accions"];
+                        echo "<tr>";
 
-                    foreach ($columns as $column) {
-                        echo "<th>{$column}</th>";
-                    }
+                        foreach ($columns as $column) {
+                            echo "<th>{$column}</th>";
+                        }
 
-                    echo "</tr>";
-                ?>
-                <tbody class="tbody">
+                        echo "</tr>";
+                    ?>
+                    </thead>
+                    <tbody class="tbody">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             <div>
                 <button><a href="/registers/llibreRegistre" target="_blank">Generar Llibre de Registre</a></button>
             </div>
