@@ -19,7 +19,7 @@ $seccion = $documento->addSection();
 $seccion->addImage('resources/images/logoMuseu.png', [
     'width' => 100, // Ajusta el ancho de la imagen
     'height' => 80, // Ajusta la altura de la imagen
-    'marginLeft' => 2000, // Margen izquierdo
+    'marginLeft' => -1000, // Margen izquierdo
     'marginTop' => 0, // Margen superior
     'wrappingStyle' => 'behind', // Estilo de envoltura
     'wrapDistanceLeft' => 0, // Distancia de envoltura izquierda
@@ -88,8 +88,8 @@ $seccion->addTextBreak(2);
 
 // Configurar los encabezados para la descarga del archivo
 header('Content-Description: File Transfer');
-header('Content-Type: application/vnd.oasis.opendocument.text'); // Cambiar a ODT
-header('Content-Disposition: attachment; filename="Documento01.odt"'); // Cambiar a .odt
+header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); // Cambiar a DOCX
+header('Content-Disposition: attachment; filename="Documento01.docx"');
 header('Expires: 0');
 header('Cache-Control: must-revalidate');
 header('Pragma: public');
