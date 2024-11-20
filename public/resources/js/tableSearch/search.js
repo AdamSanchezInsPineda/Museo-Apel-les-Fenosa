@@ -9,10 +9,12 @@ setInterval(() => {
     } 
 }, 1000);
     
-async function cont($found = "") {
+async function cont(found = "") {
     try {
-        const response = await fetch($found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + $found);
+        console.log(found);
+        const response = await fetch(found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + encodeURIComponent(found));
         const data = await response.json();
+        console.log(data);
 
         await content(data).then(function(output){
             document.querySelector('.tbody').innerHTML = output;
