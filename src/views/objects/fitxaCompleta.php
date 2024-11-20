@@ -30,6 +30,7 @@
             <div class="toggle-hide"><h2>Ubicacions</h2><span></span></div>
 
             <section class="hide">
+                <p>Ubicació: <?php echo $cont[1][0]['UbicacionNombre']?></p>
                 <p>Data Inici Ubicació: <?php echo $cont[1][0]['FechaInicioUbicacion']?></p>
                 <p>Data Final Ubicació: <?php echo $cont[1][0]['FechaFinUbicacion']?></p>
                 <p>Comentari Ubicació: <?php echo $cont[1][0]['ComentarioUbicacion']?></p>

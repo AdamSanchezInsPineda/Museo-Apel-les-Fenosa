@@ -56,7 +56,7 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <th colspan='3'>Ubicació</th>
             </tr>
             <tr>
-                <td>Ubicacion a añadir</td>
+                <td>Ubicació: ".$cont[0][$i]['UbicacionNombre']."</td>
             </tr>
             <tr>
                 <th colspan='3'>Propietats</th>

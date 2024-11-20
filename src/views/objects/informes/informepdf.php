@@ -66,7 +66,7 @@ $content = "
                         <th colspan='2'>Ubicació</th>
                     </tr>
                     <tr>
-                        <td>Ubicacion por añadir</td>
+                        <td>Ubicació: ".$cont[1][0]['UbicacionNombre']."</td>
                     </tr>
                     <tr>
                         <th colspan='2'>Propietats</th>

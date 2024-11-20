@@ -43,21 +43,23 @@ $content = "
     </head>
     <body>
         <div>
-            <h1>Fitxa bàsica de ".$cont[1][0]['RegistroNº']."</h1>                        
-            <div>
+            <h1 style=' margin-top: 70px;'>Fitxa bàsica de ".$cont[1][0]['RegistroNº']."</h1>  
+            <div style='text-align: right; margin-right: 50px;'>
+                <img src='".$imagen.$cont[1][0]['Imagen'].".jpg' alt='imatge obra'style='max-width: 200px; max-height: 200px;'>                      
+            </div>
+            <div style=' margin-top: -150px;'>
                 <table>
                     <tr>
-                        <td>Nº de Registre: ".$cont[1][0]['RegistroNº']."</td>
-                        <td rowspan=3 style='text-align: center;'><img src='".$imagen.$cont[1][0]['Imagen'].".jpg' alt='imatge obra'style='max-width: 200px; max-height: 200px;'></td>
+                        <td colspan='2'>Nº de Registre: ".$cont[1][0]['RegistroNº']."</td>
                     </tr>
                     <tr>
-                        <td>Nom: ".$cont[1][0]['Nombre']."</td>
+                        <td colspan='2'>Nom: ".$cont[1][0]['Nombre']."</td>
                     </tr>
                     <tr>
-                        <td>Autor: ".$cont[1][0]['AutorNombre']."</td>
+                        <td colspan='2'>Autor: ".$cont[1][0]['AutorNombre']."</td>
                     </tr>
                     <tr>
-                        <td>Títol: ".$cont[1][0]['Titulo']."</td>
+                        <td colspan='2'>Títol: ".$cont[1][0]['Titulo']."</td>
                     </tr>
                     <tr>
                         <th colspan='2'>Propietats</th>
