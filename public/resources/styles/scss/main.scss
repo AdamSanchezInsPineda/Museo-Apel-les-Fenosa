@@ -1,0 +1,48 @@
+//Individual styles
+@use "header.scss";
+@use "login.scss";
+@use "popup.scss";
+
+//Fitxas
+@use "fitxaCompleta.scss";
+@use "updateObject.scss";
+//Tables
+@use "objects.scss";
+@use "users.scss";
+@use "campsLlista.scss";
+@use "exposicions.scss";
+@use "addBensExposicions.scss";
+@use "bensExposicions.scss";
+@use "ubicacions.scss";
+
+//New
+@use "createCampsLlista.scss";
+@use "createExposicions.scss";
+
+//Create
+@use "createObject.scss";
+@use "createUser.scss";
+@use "indexVocabulary.scss";
+@use "createAutor.scss";
+
+
+//Update
+
+
+//Delete
+
+
+//General styles
+@use "vars.scss" as v;
+*{
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: v.$fontfamily;
+}
+
+html {
+    height: 100%;
+}

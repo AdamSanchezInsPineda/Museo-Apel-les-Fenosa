@@ -1,5 +1,5 @@
-@import "vars";
-@import "mixins";
+@use "vars" as v;
+@use "mixins" as mx;
 
 .verFichaCompleta{
     main{
@@ -12,17 +12,21 @@
         button{
             margin: 25px 0 50px 0;
             padding: 0 15px;
-            background-color: $color1;
+            background-color: v.$color1;
             border-radius: 10px;
             border-color: rgb(39, 40, 41, 0.4);
         }
         button + div{
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             display: flex;
             align-items: center;
             justify-content: space-evenly;
-            width: 50%;
+            width: fit-content;
+            height: 400px;
+            padding: 15px;
             img{
-                height: 350px;
+                height: 300px;
             }
             :first-child p {
                 margin-bottom: 15px;
@@ -37,7 +41,7 @@
             margin-top: 25px;
             div{
                 margin-bottom: 10px;
-                border-bottom: 1px solid $colorNegro;
+                border-bottom: 1px solid v.$colorNegro;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -50,11 +54,15 @@
                 }
             }
             section{
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
                 grid-template-columns: 50% 50%;
                 display: grid;
                 justify-items: start;
-                background-color: $color2;
-                padding: 2.5%;
+                background-color: v.$color2;
+                padding: 0 20px;
+                border-radius: 0 0 15px 15px;
                 p:first-child{
                     margin-top: 10px;
                 }
@@ -62,8 +70,8 @@
                     margin-bottom: 15px;
                 }
             }
-            .hide{
-                display: none;
+            .show{
+                max-height: 200px;
             }
         }
     }
