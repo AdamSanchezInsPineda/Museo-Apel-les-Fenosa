@@ -33,12 +33,14 @@
 
 
 //General styles
+@use "vars.scss" as v;
 *{
     margin: 0px;
     padding: 0px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: v.$fontfamily;
 }
 
 html {

@@ -29,7 +29,7 @@
                     
             <div class="toggle-hide"><h2>Ubicacions</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Ubicació: <?php echo $cont[1][0]['UbicacionNombre']?></p>
                 <p>Data Inici Ubicació: <?php echo $cont[1][0]['FechaInicioUbicacion']?></p>
                 <p>Data Final Ubicació: <?php echo $cont[1][0]['FechaFinUbicacion']?></p>
@@ -39,7 +39,7 @@
 
             <div class="toggle-hide"><h2>Propietats</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Altura: <?php echo $cont[1][0]['Altura']?></p>
                 <p>Datació: <?php echo $cont[1][0]['DatacionDescripcion']?></p>
                 <p>Amplada: <?php echo $cont[1][0]['Anchura']?></p>
@@ -52,7 +52,7 @@
 
             <div class="toggle-hide"><h2>Baixa</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Baixa: <?php echo $cont[1][0]['BajaValor']?></p>
                 <p>Causa Baixa: <?php echo $cont[1][0]['CausaBajaValor']?></p>
                 <p>Data Baixa: <?php echo $cont[1][0]['FechaBaja']?></p>
@@ -61,7 +61,7 @@
 
             <div class="toggle-hide"><h2>Restauració</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Data Inici Restauració: <?php echo $cont[1][0]['FechaInicioRestauracion']?></p>
                 <p>Data Final Restauració: <?php echo $cont[1][0]['FechaFinRestauracion']?></p>
                 <p>Codi Restauració: <?php echo $cont[1][0]['CodigoRestauracion']?></p>
@@ -71,7 +71,7 @@
 
             <div class="toggle-hide"><h2>Ingrés</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Forma d'Ingrés: <?php echo $cont[1][0]['FormaIngresoValor']?></p>
                 <p>Font d'Ingrés: <?php echo $cont[1][0]['FuenteIngreso']?></p>
                 <p>Data d'Ingrés: <?php echo $cont[1][0]['FechaIngreso']?></p>
@@ -80,7 +80,7 @@
                         
             <div class="toggle-hide"><h2>Exposicions</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Nom: <?php echo $cont[1][0]['ExposicionNombre']?></p>
                 <p>Lloc: <?php echo $cont[1][0]['LugarExposicion']?></p>
                 <p>Data Inicial: <?php echo $cont[1][0]['FechaInicioExposicion']?></p>
@@ -90,7 +90,7 @@
                         
             <div class="toggle-hide"><h2>Altres Dades</h2><span></span></div>
 
-            <section class="hide">
+            <section>
                 <p>Col·lecció de Procedencia: <?php echo $cont[1][0]['ColeccionProcedencia']?></p>
                 <p>Lloc d'Execució: <?php echo $cont[1][0]['LugarEjecucion']?></p>
                 <p>Nº de Tiratge: <?php echo $cont[1][0]['NumeroTiraje']?></p>
@@ -117,7 +117,7 @@
         $(document).ready(function() {
             $(".toggle-hide").on("click", function() {
                 $(this).find("span").toggleClass("drop");
-                $(this).next("section").toggleClass("hide");
+                $(this).next("section").toggleClass("show");
             });
         });
 
