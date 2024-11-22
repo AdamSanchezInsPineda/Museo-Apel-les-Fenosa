@@ -70,27 +70,27 @@
                 exit;
             }
         }
-            public function prestec($registroN){
-                session_start();
-                if (!isset($_SESSION['nom'])){
-                    $state = false;
-                }
-                else{
-                    $user = new Usuario();
-                    $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-                }
-                if($state){
-                    $objeto = new Objeto();
-                    $this->render('objects/informes/formulariPrestec', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
-                    exit;
-    
-                } else {
-                    session_unset();
-                    session_destroy();
-                    $error = " La sessió no s'ha iniciat ";
-                    $this->render("login", ["error"=> $error]);
-                    exit;
-                }
+        public function prestec($registroN){
+            session_start();
+            if (!isset($_SESSION['nom'])){
+                $state = false;
+            }
+            else{
+                $user = new Usuario();
+                $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
+            }
+            if($state){
+                $objeto = new Objeto();
+                $this->render('objects/informes/formulariPrestec', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
+                exit;
+
+            } else {
+                session_unset();
+                session_destroy();
+                $error = " La sessió no s'ha iniciat ";
+                $this->render("login", ["error"=> $error]);
+                exit;
+            }
         }
 
         private function render($view, $data = []) {

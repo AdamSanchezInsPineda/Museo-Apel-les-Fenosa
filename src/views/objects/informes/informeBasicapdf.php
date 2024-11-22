@@ -43,11 +43,11 @@ $content = "
     </head>
     <body>
         <div>
-            <h1 style=' margin-top: 70px;'>Fitxa bàsica de ".$cont[1][0]['RegistroNº']."</h1>  
-            <div style='text-align: right; margin-right: 50px;'>
+            <h1>Fitxa bàsica de ".$cont[1][0]['RegistroNº']."</h1>  
+            <div style='text-align: right; margin-right:100px;'>
                 <img src='".$imagen.$cont[1][0]['Imagen'].".jpg' alt='imatge obra'style='max-width: 200px; max-height: 200px;'>                      
             </div>
-            <div style=' margin-top: -150px;'>
+            <div style='margin-top:-160px;'>
                 <table>
                     <tr>
                         <td colspan='2'>Nº de Registre: ".$cont[1][0]['RegistroNº']."</td>
