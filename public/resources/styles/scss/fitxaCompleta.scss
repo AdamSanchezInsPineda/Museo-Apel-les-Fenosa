@@ -1,5 +1,5 @@
-@import "vars";
-@import "mixins";
+@use "vars" as v;
+@use "mixins" as mx;
 
 .verFichaCompleta{
     main{
@@ -12,7 +12,7 @@
         button{
             margin: 25px 0 50px 0;
             padding: 0 15px;
-            background-color: $color1;
+            background-color: v.$color1;
             border-radius: 10px;
             border-color: rgb(39, 40, 41, 0.4);
         }
@@ -37,7 +37,7 @@
             margin-top: 25px;
             div{
                 margin-bottom: 10px;
-                border-bottom: 1px solid $colorNegro;
+                border-bottom: 1px solid v.$colorNegro;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -53,7 +53,7 @@
                 grid-template-columns: 50% 50%;
                 display: grid;
                 justify-items: start;
-                background-color: $color2;
+                background-color: v.$color2;
                 padding: 2.5%;
                 p:first-child{
                     margin-top: 10px;
