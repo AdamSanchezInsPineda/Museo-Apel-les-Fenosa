@@ -11,11 +11,10 @@ setInterval(() => {
     
 async function cont(found = "") {
     try {
-        console.log(found);
-        const response = await fetch(found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + encodeURIComponent(found));
+       
+        const response = await fetch(found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + found.normalize("NFD").replace(/[\u0300-\u036f]|-/g, "").replace(/ /g, "_"));
         const data = await response.json();
-        console.log(data);
-
+        
         await content(data).then(function(output){
             document.querySelector('.tbody').innerHTML = output;
         });

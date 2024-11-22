@@ -1,5 +1,9 @@
 <?php
-
+/*
+$log = fopen("logPhp.txt", 'a');
+        fwrite($log, $found);
+        fclose($log);
+*/
 class Controller {
     protected $user;
 

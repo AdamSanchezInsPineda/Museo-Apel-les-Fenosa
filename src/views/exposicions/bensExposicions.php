@@ -25,23 +25,27 @@
 
                     echo"</tr>";
                     
-                    foreach ($exposicions[0] as $exposicio) {
-                        echo "<tr>";
-                            foreach ($exposicio as $key => $dato){
-                                if ($key != "ExposicionID" && $key != "ObjetoExposicionID" ){
-                                    echo "<td>{$dato}</td>";
-                                }
-                            }
-                            if ($_SESSION['rol'] == "admin"){
-                                echo "<td>";
-                                if(isset($exposicio['ObjetoExposicionID'])){
-                                    echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicio['ObjetoExposicionID']}/delete'><img src='/resources/images/accions/delete.png' alt='Borrar'></a>";
-                                }
-                                echo "</td>";
-                            }
-                        echo"</tr>";
-                    }
+                    
+                    // foreach ($exposicions[0] as $exposicio) {
+                    //     echo "<tr>";
+                    //         foreach ($exposicio as $key => $dato){
+                    //             if ($key != "ExposicionID" && $key != "ObjetoExposicionID" ){
+                    //                 echo "<td>{$dato}</td>";
+                    //             }
+                    //         }
+                    //         if ($_SESSION['rol'] == "admin"){
+                    //             echo "<td>";
+                    //             if(isset($exposicio['ObjetoExposicionID'])){
+                    //                 echo "<a href='/exposicions/{$exposicio['ExposicionID']}/bens/{$exposicio['ObjetoExposicionID']}/delete'><img src='/resources/images/accions/delete.png' alt='Borrar'></a>";
+                    //             }
+                    //             echo "</td>";
+                    //         }
+                    //     echo"</tr>";
+                    // }
                 ?>
+                <tbody class="tbody">
+                    
+                </tbody>
             </table>
             <?php else: ?>
                 <p>No hi ha bens associats a aquesta exposició.</p>
