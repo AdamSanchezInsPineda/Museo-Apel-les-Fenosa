@@ -4,9 +4,6 @@
 <body class = "campsLlista">
     <div>
         <div>
-            <div>
-                <input type="text" placeholder="Cercar">
-            </div>
             <table>
                 <?php
                     if ($_SESSION['rol'] == "admin" |  $_SESSION['rol'] == "tecnic") 

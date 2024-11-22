@@ -200,25 +200,22 @@ class ExposicionsController extends Controller{
     }
 
     public function bensExposicio($id){
-        session_start();
-        $user = new Usuario();
-        $exposicio = new Exposicio();
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-        if ($state) {
-            $this->render("exposicions/bensExposicions", ["exposicions" => [$exposicio->verBens($id), $id]]);
-        }
-        else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-        }
+        
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render("exposicions/bensExposicions");
         exit;
+    }
+
+    public function bensExposiciosearchDef($id, $found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->exposicio->verBens($id, $found)));
+    }
+
+    public function bensExposiciosearch($id, $found) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->exposicio->verBens($id, $found)));
     }
 
     public function bensAddExposicio($id){

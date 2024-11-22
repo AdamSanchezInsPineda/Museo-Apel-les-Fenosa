@@ -87,17 +87,23 @@
             $sql->execute();
         }
 
-        function verBens($id){
-            $sql = $this -> db->prepare('
-                SELECT oe.ObjetoExposicionID, oe.ExposicionID, o.RegistroNº, o.Nombre 
-                FROM ObjetoExposicion oe 
-                JOIN Objetos o ON oe.ObjetoID = o.ObjetoID 
-                WHERE oe.ExposicionID = :id');
-            $sql->bindParam(':id', $id);
-            $sql->execute();
-            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-            
+        function verBens($id, $found){
+            try {
+                $where= ($found == "") ? "" : " WHERE (oe.ObjetoExposicionID LIKE '%' :found '%' OR oe.ExposicionID LIKE '%' :found '%' OR o.RegistroNº LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%')";
+                $sql = $this -> db->prepare("SELECT oe.ObjetoExposicionID, oe.ExposicionID, o.RegistroNº, o.Nombre FROM ObjetoExposicion oe JOIN Objetos o ON oe.ObjetoID = o.ObjetoID WHERE oe.ExposicionID = :id $where");
+        
+                $sql->bindParam(':id', $id);
+                if ($found != "") {
+                    $sql->bindParam(':found', $found);
+                }
+
+                $sql->execute();
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
+                
+            } catch (PDOException $e) {
+                return "An error occurred: " . $e->getMessage();
+            }            
         }
 
         function eliminarObjetoExposicion($id) {
