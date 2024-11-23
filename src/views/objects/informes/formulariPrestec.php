@@ -12,18 +12,17 @@ $documento = new PhpWord();
 $documento->setDefaultFontName('Calibri');
 $documento->setDefaultFontSize(8);
 
-
-
-
 $seccion = $documento->addSection();
-$seccion->addImage('resources/images/logoMuseu.png', [
+$header = $seccion->addHeader();
+$textRun = $header->addTextRun();
+$textRun->addImage('resources/images/logoMuseu.png', [
     'width' => 100, // Ajusta el ancho de la imagen
     'height' => 80, // Ajusta la altura de la imagen
-    'marginLeft' => -1000, // Margen izquierdo
+    'marginLeft' => 0, // Margen izquierdo
     'marginTop' => 0, // Margen superior
-    'wrappingStyle' => 'behind', // Estilo de envoltura
-    'wrapDistanceLeft' => 0, // Distancia de envoltura izquierda
+    'wrappingStyle' => 'inline', // Estilo de envoltura
 ]);
+
 
 $tituloFontStyle = new Font();
 $tituloFontStyle->setBold(true);
@@ -120,34 +119,44 @@ $seccion->addText("Inventory number");
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
-$textRun->addText("Nom de l'objecte i autor: ",$datosFontstyle);
-$textRun->addText($cont[1][0]['Nombre'].", ". $cont[1][0]['AutorNombre'], $variableFontStyle);
-$seccion->addText("Nombre del objeto y autor");
-$seccion->addText("Object name:");
+$textRun->addText("Nom de l'objecte i Títol: ",$datosFontstyle);
+$textRun->addText($cont[1][0]['Nombre'].", ".$cont[1][0]['Titulo'],$variableFontStyle);
+$seccion->addText("Nombre del objeto y Título");
+$seccion->addText("Object name and title ");
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
-$textRun->addText("Dimensions màx. (Alçada/Amplada/Fondària/Diàmetre): ", $datosFontstyle);
+$textRun->addText("Autor: ",$datosFontstyle);
+$textRun->addText($cont[1][0]['AutorNombre'], $variableFontStyle);
+$seccion->addText("Autor");
+$seccion->addText("Author");
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Dimensions màx. (Alçada/Amplada/Fondària): ", $datosFontstyle);
 $textRun->addText($cont[1][0]['Altura'].", ".$cont[1][0]['Anchura'].", ".$cont[1][0]['Profundidad'],$variableFontStyle);
-$seccion->addText("Dimensiones (Altura / Ancho / Fondo / Diámetro)");
-$seccion->addText("Dimensions (Height / Width / Depth / Diameter)");
+$seccion->addText("Dimensiones (Altura / Ancho / Fondo)");
+$seccion->addText("Dimensions (Height / Width / Depth)");
+$seccion->addTextBreak();
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Materials: ", $datosFontstyle);
-$textRun->addText($cont[1][0]['MaterialNombre'], $variableFontStyle);
-$seccion->addText("Materials");
-$seccion->addText("Materials");
+$textRun->addText($cont[1][0]['MaterialNombre']."                     ", $variableFontStyle);
+$textRun->addText("Datació: ", $datosFontstyle);
+$textRun->addText($cont[1][0]['DatacionDescripcion'], $variableFontStyle);
+$seccion->addText("Materiales                                   Datación");
+$seccion->addText("Materials                                    Dating");
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Datació: ", $datosFontstyle);
 $textRun->addText($cont[1][0]['DatacionDescripcion'], $variableFontStyle);
 $seccion->addText("Datación");
-$seccion->addText("Dating:");
+$seccion->addText("Dating");
 $seccion->addTextBreak();
-$textRun = $seccion->addTextRun();
 
+$textRun = $seccion->addTextRun();
 $textRun->addText("Necessitat d’embalatge especial: ", $datosFontstyle);
 $checkboxStyle = array('size' => 12); 
 $textRun->addText(" ☐", $checkboxStyle);
@@ -158,6 +167,128 @@ $seccion->addText('_____________________________________________________________
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
+$textRun->addText("Forma en què el prestador vol figurar en el catàleg: ");
+$textRun->addText("Museu Apel·les Fenosa", $variableFontStyle);
+$seccion->addText("Forma en que el prestador quiere figurar en el catálogo");
+$seccion->addText("Form in wich the lender wishes to feature in the catalague");
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("El prestador admet que es fotografïi per a ", $datosFontstyle);
+$textRun->addText("/ El prestador admite que se fotografie para / The lender allows be photographed for the catalogue:");
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Publicacions de l’exposició              Sí");
+$textRun->addText(" ☐", $checkboxStyle);
+$textRun->addText("      No");
+$textRun->addText(" ☐", $checkboxStyle);
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Mitjans de comunicació                   Sí");
+$textRun->addText(" ☐", $checkboxStyle);
+$textRun->addText("      No");
+$textRun->addText(" ☐", $checkboxStyle);
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Arxius                                              Sí");
+$textRun->addText(" ☐", $checkboxStyle);
+$textRun->addText("      No");
+$textRun->addText(" ☐", $checkboxStyle);
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Finalitats privades                           Sí");
+$textRun->addText(" ☐", $checkboxStyle);
+$textRun->addText("      No");
+$textRun->addText(" ☐", $checkboxStyle);
+$seccion->addTextBreak();
+$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Valoració per a l'assegurança: ",$datosFontstyle);
+$textRun->addText($cont[1][0]['ValoracionEconomica'],$variableFontStyle);
+$seccion->addText("Valoración para el seguro");
+$seccion->addText("Insurance value");
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+
+$textRun->addText("Adreça on s'ha de ", $datosFontstyle);
+$textRun->addText("recollir", array('underline' => 'single'));
+$textRun->addText(" l'objecte: ", $datosFontstyle);
+$textRun = $seccion->addTextRun();
+$textRun->addText("Dirección donde debe ", $datosFontstyle);
+$textRun->addText("recogerse", array('underline' => 'single')); 
+$textRun->addText(" el objeto");
+$textRun = $seccion->addTextRun();
+$textRun->addText("Address from which object is to be ", $datosFontstyle);
+$textRun->addText("picked up", array('underline' => 'single'));
+$seccion->addTextBreak();
+
+$seccion->addText("Telèfon: ", $datosFontstyle);
+$seccion->addText("Teléfono ");
+$seccion->addText("Telephone");
+$seccion->addTextBreak();
+
+$textRun = $seccion->addTextRun();
+$textRun->addText("Adreça on s'ha de ", $datosFontstyle);
+$textRun->addText("retornar", array('underline' => 'single'));
+$textRun->addText(" l'objecte: ", $datosFontstyle);
+$textRun = $seccion->addTextRun();
+$textRun->addText("Dirección donde debe ", $datosFontstyle);
+$textRun->addText("devolverse", array('underline' => 'single'));
+$textRun->addText(" el objeto ", $datosFontstyle);
+$textRun = $seccion->addTextRun();
+$textRun->addText("Address from which object is to be ", $datosFontstyle);
+$textRun->addText("returned", array('underline' => 'single'));
+$seccion->addTextBreak();
+
+$seccion->addText("Telèfon: ", $datosFontstyle);
+$seccion->addText("Teléfono ");
+$seccion->addText("Telephone");
+$seccion->addTextBreak();
+$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addText("Data i firma del prestador del préstec                          Data i firma del prestatari del préstec ",$datosFontstyle);
+$seccion->addText("Fecha y firma del prestador del préstamo                              Fecha y firma del prestatario del préstamo ");
+$seccion->addText("Date and signature of lender                                                  Date and signature of borrewer");
+
+$footer = $seccion->addFooter();
+$fontStyle = [
+    'size' => 10, 
+    'italic' => true, 
+    'color' => '808080'
+];
+$fontStyleAzul = ['size' => 10, 
+    'italic' => true, 
+    'bold' => true, 
+    'color' => '0000FF'];
+$fontStyleNegrita = [
+    'size' => 10, 
+    'italic' => true, 
+    'bold' => true, 
+    'color' => '808080' // Asegúrate de que el color sea el que deseas
+];
+
+// Agregar texto al pie de página con el estilo definido
+$footer->addText("Fundació Privada Apel·les Fenosa", $fontStyleNegrita); // Cursiva y negrita
+$footer->addText("Carrer Major, 25", $fontStyle); // Solo cursiva
+$footer->addText("43700 El Vendrell, Tel.:+34 977 15 41 92", $fontStyle); // Solo cursiva
+$footer->addText("info@museuapellesfenosa.cat", array_merge($fontStyle, $fontStyleAzul)); // Cursiva y azul
 
 header('Content-Description: File Transfer');
 header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); // Cambiar a DOCX

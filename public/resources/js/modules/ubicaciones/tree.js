@@ -66,10 +66,26 @@ export function renderTreeNew(node, container, id, parentsToOpen = []) {
             showUbicacion(item);
         });
 
+        if (item.id === id){
+            li.classList.add("new-element");
+
+            setTimeout(() => {
+                li.classList.add("highlight");
+            }, 10);
+        
+            setTimeout(() => {
+                li.classList.remove("highlight");
+            }, 300);
+
+            setTimeout(() => {
+                li.classList.remove("fade");
+            }, 300);
+        }
+
         if (item.children && item.children.length > 0) {
             const details = document.createElement('details');
-
-            if (parentsToOpen.includes(item.id)) {
+            
+            if (parentsToOpen.includes(item.id) && item.id !== id) {
                 details.open = true;
             }
 

@@ -1,5 +1,5 @@
 <div class="new">
-    <h1>Nueva Ubicacion</h1>
+    <h1>Nova Ubicacio</h1>
 
     <form action="" method="post">
         <div>
