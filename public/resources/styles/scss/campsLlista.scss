@@ -1,6 +1,6 @@
-@import "vars";
-@import "mixins";
+@use "vars" as v;
+@use "mixins" as mx;
 
 .campsLlista{
-    @include tableStyle;
+    @include mx.tableStyle;
 }

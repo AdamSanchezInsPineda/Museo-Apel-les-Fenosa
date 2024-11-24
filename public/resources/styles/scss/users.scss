@@ -1,8 +1,8 @@
-@import "vars";
-@import "mixins";
+@use "vars" as v;
+@use "mixins" as mx;
 
 .users{
-    @include tableStyle;
+    @include mx.tableStyle;
     td{
         padding: 0 50px;
     }

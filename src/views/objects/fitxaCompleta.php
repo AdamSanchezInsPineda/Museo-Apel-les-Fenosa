@@ -7,7 +7,8 @@
         <!--Contenido variable de la pagina-->
         <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
         <button>Cambiar a fitxa bàsica</button>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">pdf prueba</a></button>
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">PDF fitxa completa</a></button>
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informeBasicpdf" target="_blank">PDF fitxa bàsica</a></button>
                         
         <div>
             <div>
@@ -26,18 +27,19 @@
         
         <div>
                     
-            <div class="toggle-hide"><h2>Ubicacions</h2><span></span></div>
+            <div class="toggle-hide"><h2>Ubicacions</h2></div>
 
-            <section class="hide">
+            <section>
+                <p>Ubicació: <?php echo $cont[1][0]['UbicacionNombre']?></p>
                 <p>Data Inici Ubicació: <?php echo $cont[1][0]['FechaInicioUbicacion']?></p>
                 <p>Data Final Ubicació: <?php echo $cont[1][0]['FechaFinUbicacion']?></p>
                 <p>Comentari Ubicació: <?php echo $cont[1][0]['ComentarioUbicacion']?></p>
 
             </section>
 
-            <div class="toggle-hide"><h2>Propietats</h2><span></span></div>
+            <div class="toggle-hide"><h2>Propietats</h2></div>
 
-            <section class="hide">
+            <section>
                 <p>Altura: <?php echo $cont[1][0]['Altura']?></p>
                 <p>Datació: <?php echo $cont[1][0]['DatacionDescripcion']?></p>
                 <p>Amplada: <?php echo $cont[1][0]['Anchura']?></p>
@@ -48,18 +50,18 @@
                 <p>Tècnica: <?php echo $cont[1][0]['TecnicaNombre']?></p>
             </section>
 
-            <div class="toggle-hide"><h2>Baixa</h2><span></span></div>
+            <div class="toggle-hide"><h2>Baixa</h2></div>
 
-            <section class="hide">
+            <section>
                 <p>Baixa: <?php echo $cont[1][0]['BajaValor']?></p>
                 <p>Causa Baixa: <?php echo $cont[1][0]['CausaBajaValor']?></p>
                 <p>Data Baixa: <?php echo $cont[1][0]['FechaBaja']?></p>
                 <p>Persona Autorizada Baja: <?php echo $cont[1][0]['PersonaAutorizadaBaja']?></p>
             </section>
 
-            <div class="toggle-hide"><h2>Restauració</h2><span></span></div>
+            <div class="toggle-hide"><h2>Restauració</h2></div>
 
-            <section class="hide">
+            <section>
                 <p>Data Inici Restauració: <?php echo $cont[1][0]['FechaInicioRestauracion']?></p>
                 <p>Data Final Restauració: <?php echo $cont[1][0]['FechaFinRestauracion']?></p>
                 <p>Codi Restauració: <?php echo $cont[1][0]['CodigoRestauracion']?></p>
@@ -67,18 +69,18 @@
                 <p>Comentari Restauració: <?php echo $cont[1][0]['ComentarioRestauracion']?></p>
             </section>
 
-            <div class="toggle-hide"><h2>Ingrés</h2><span></span></div>
+            <div class="toggle-hide"><h2>Ingrés</h2></div>
 
-            <section class="hide">
+            <section>
                 <p>Forma d'Ingrés: <?php echo $cont[1][0]['FormaIngresoValor']?></p>
                 <p>Font d'Ingrés: <?php echo $cont[1][0]['FuenteIngreso']?></p>
                 <p>Data d'Ingrés: <?php echo $cont[1][0]['FechaIngreso']?></p>
                 <p>Estat de conservació: <?php echo $cont[1][0]['EstadoConservacionNombre']?></p>
             </section>
                         
-            <div class="toggle-hide"><h2>Exposicions</h2><span></span></div>
+            <div class="toggle-hide"><h2>Exposicions</h2></div>
 
-            <section class="hide">
+            <section>
                 <p>Nom: <?php echo $cont[1][0]['ExposicionNombre']?></p>
                 <p>Lloc: <?php echo $cont[1][0]['LugarExposicion']?></p>
                 <p>Data Inicial: <?php echo $cont[1][0]['FechaInicioExposicion']?></p>
@@ -86,9 +88,9 @@
                 <p>Tipus: <?php echo $cont[1][0]['TipoExposicionNombre']?></p>
             </section> 
                         
-            <div class="toggle-hide"><h2>Altres Dades</h2><span></span></div>
+            <div class="toggle-hide"><h2>Altres Dades</h2></div>
 
-            <section class="hide">
+            <section>
                 <p>Col·lecció de Procedencia: <?php echo $cont[1][0]['ColeccionProcedencia']?></p>
                 <p>Lloc d'Execució: <?php echo $cont[1][0]['LugarEjecucion']?></p>
                 <p>Nº de Tiratge: <?php echo $cont[1][0]['NumeroTiraje']?></p>
@@ -104,19 +106,24 @@
                 <p>Història de l'objecte: <?php echo $cont[1][0]['HistoriaObjeto']?></p>
             </section>
 
+            <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/prestecdoc">Formulari de préstec</a></button>
+
         </div>
     </main>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggles = document.querySelectorAll(".toggle-hide");
 
-        $(document).ready(function() {
-            $(".toggle-hide").on("click", function() {
-                $(this).find("span").toggleClass("drop");
-                $(this).next("section").toggleClass("hide");
+            toggles.forEach(toggle => {
+                toggle.addEventListener("click", function () {
+                    toggle.classList.toggle("rotate");
+                    const nextSection = this.nextElementSibling;
+                    if (nextSection && nextSection.tagName === "SECTION") {
+                        nextSection.classList.toggle("show");
+                    }
+                });
             });
         });
-
     </script>
     <?php
     include "resources/components/footer.php";

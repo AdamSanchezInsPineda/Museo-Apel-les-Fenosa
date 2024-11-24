@@ -6,50 +6,37 @@
     <div>
         <div>
             <div>
-                <input type="text" placeholder="Cercar">
+                <input type="text" placeholder="Cercar" id="search"> 
+               
                 <a href="/registers/add">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
-                <a href="/registers/llibreRegistre" target="_blank">Generar Llibre de Registre</a>
             </div>
-            <table>
-                <?php
-                    $columns = ["Nº","Imatge","Objecte","Títol","Autor","Datació","Ubicació","Accions"];
-                    echo "<tr>";
-
-                    foreach ($columns as $column) {
-                        echo "<th>{$column}</th>";
-                    }
-
-                    echo "</tr>";
-                    foreach ($registros as $registro) {
+            <div class="scroll">
+                <table>
+                    <thead>
+                    <?php
+                        $columns = ["Nº", "Imatge", "Objecte", "Títol", "Autor", "Ubicació", "Datació", "Accions"];
                         echo "<tr>";
-                        foreach ($registro as $key => $dato) {
-                            if ($key == "Imagen") {
-                                echo "<td>";
-                                echo "<img src='resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}' class='button1'>";
-                                echo "<div class='img-preview'>";
-                                echo "<button class='button2'>Salir</button>";
-                                echo "<img src='resources/images/obras/{$dato}.jpg' alt='Foto de {$dato}'>";
-                                echo "</div>";
-                                echo "</td>";
-                            } else {
-                                echo "<td>{$dato}</td>";
-                            }
+
+                        foreach ($columns as $column) {
+                            echo "<th>{$column}</th>";
                         }
 
-                        echo "<td>";
-                        echo "<a href='/registers/{$registro['RegistroNº']}'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
-                        if ($_SESSION['rol'] != "convidat") {
-                            echo "<a href='/registers/{$registro['RegistroNº']}/updateView'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                            echo "<a href='/registers/{$registro['RegistroNº']}/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
-                        }
-                        echo "</td>";
                         echo "</tr>";
-                    }
-                ?>
-            </table>
+                    ?>
+                    </thead>
+                    <tbody class="tbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button><a href="/registers/llibreRegistre" target="_blank">Generar Llibre de Registre</a></button>
+            </div>
         </div>
     </div>
     <!--Scripts-->
+    <script type="module" src="/resources/js/tableSearch/search.js"></script>
+    <script type="module" src="/resources/js/tableSearch/advancedSearch.js"></script>
     <script src="resources/js/imagePreview.js"></script>
     <?php
     include "resources/components/footer.php";

@@ -1,9 +1,9 @@
-@import "vars";
+@use "vars" as v;
 
 @mixin h1-gray-btn {
-    background-color: $color2;
-    color: $colorNegro;
-    font-family: $fontfamily;
+    background-color: v.$color2;
+    color: v.$colorNegro;
+    font-family: v.$fontfamily;
     text-decoration: none;
     padding: 10px 20px;
     width: 300px;
@@ -11,8 +11,8 @@
     border-radius: 5px;
 
     &:hover {
-        background-color: $color3;
-        color: $colorBlanco;
+        background-color: v.$color3;
+        color: v.$colorBlanco;
     }
     transition-duration: 0.2s;
 }

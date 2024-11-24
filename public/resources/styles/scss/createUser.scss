@@ -1,4 +1,4 @@
-@import "vars";
+@use "vars" as v;
 
 .createUser{
     header + div{
@@ -27,7 +27,7 @@
     }
     .submit{
         width: 100px;
-        background-color: $color1;
+        background-color: v.$color1;
         border-radius: 10px;
         border-color: rgb(39, 40, 41, 0.4);
         padding: 0;

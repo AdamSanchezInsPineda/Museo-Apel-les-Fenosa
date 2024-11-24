@@ -11,7 +11,7 @@ export async function showUbicacion(item) {
         contenedor.innerHTML = html;
         const h1 = document.querySelector('h1');
         h1.textContent = item.name;
-        const btns = document.querySelectorAll('button');
+        const btns = contenedor.querySelectorAll('button');
         btns.forEach((btn, i) => {
             if (i === 0) {
                 btn.addEventListener('click', () => newUbicacion(item));
@@ -25,4 +25,9 @@ export async function showUbicacion(item) {
     } catch (error) {
         console.error('Error al cargar la ubicación:', error);
     }
+}
+
+export function hideUbicacion(){
+    const contenedor = document.getElementById('action');
+    contenedor.innerHTML = "";
 }

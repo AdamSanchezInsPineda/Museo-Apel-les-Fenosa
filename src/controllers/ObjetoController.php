@@ -1,196 +1,67 @@
 <?php
 
-class ObjetoController {
-    public function table() {
-        session_start();
-        
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-        if ($state) {
-            $objeto = new Objeto();              
-            $this->render('objects/objects', ['registros' => $objeto->getAllObjetos()]);
-            exit;
+class ObjetoController extends Controller{
 
-        } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-            exit;
-        }
+    protected $objeto;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->objeto = new Objeto();
+    }
+    
+    public function table() {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/objects');
+    }
+
+    public function searchDef($found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this -> objeto-> getObjetos($found)));
+    }
+
+    public function search($found) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this -> objeto-> getObjetos($found)));
     }
 
     public function createView() {
-        session_start();
-        
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-
-        if ($state) {          
-            $this->render('objects/createObject');
-            exit;
-
-        } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-            exit;
-        }
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/createObject');
     }
 
     public function new($registroN) {
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-
-        if ($state) {         
-            $objeto = new Objeto();
-            $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
-            exit;
-
-        } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-            exit;
-        }
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
     }
 
     public function updateView($registroN) {
-        session_start();
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-
-        if ($state) {
-            $objeto = new Objeto();
-            $this->render('objects/updateObject', ['cont' => [$registroN, $objeto->fitxesMostrar($registroN)]]);
-            exit;
-
-        } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-            exit;
-        }
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/updateObject', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
     }
 
     public function update($registroN) {
-        session_start();
-        $objeto = new Objeto();
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-
-        if ($state) {         
-            $this->render('objects/updateObject', ['objeto' => $objeto->fitxesMostrar($registroN)]);
-            exit;
-
-        } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-            exit;
-        }
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/updateObject', ['objeto' => $this -> objeto->fitxesMostrar($registroN)]);
     }
 
     public function delete($registroN) {
-        session_start();
-        
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-
-        if ($state) {     
-            $objeto = new Objeto();
-            if ($_SESSION['rol'] == "admin")
-                $objeto -> fitxesDelete($registroN);
-            
-            elseif ($_SESSION['rol'] == "tecnic")
-                $objeto -> fitxesDisable($registroN);
-            
-            header("/registers");   
-                
-        } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-        }
-        exit;
+        $this->checkRole(['admin', 'tecnic']);
+        $this->objeto->fitxesDisable($registroN);
+        header("/registers");   
     }
 
 
     public function ficha($id) {
-        session_start();
-        
-        if (!isset($_SESSION['nom'])){
-            $state = false;
-        }
-        else{
-            $user = new Usuario();
-            $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-        }
-    
-        if ($state) {         
-            $objeto = new Objeto();
-            $detallesObjeto = $objeto->fitxesMostrar($id);
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $detallesObjeto = $this -> objeto->fitxesMostrar($id);
             
-            if ($detallesObjeto) {
-                $this->render('objects/ficha', ['objeto' => $detallesObjeto]);
-            } else {
-                // Si no se encuentra el objeto, redirigir a la lista de objetos
-                header('Location: /registers');
-            }
-            exit;
-    
+        if ($detallesObjeto) {
+            $this->render('objects/ficha', ['objeto' => $detallesObjeto]);
         } else {
-            session_unset();
-            session_destroy();
-            $error = " La sessió no s'ha iniciat ";
-            $this->render("login", ["error"=> $error]);
-            exit;
-        }
-    }
-
-    private function render($view, $data = []) {
-        extract($data);
-        $viewFile = "../src/views/$view.php";
-        if (file_exists($viewFile)) {
-            require $viewFile;
-        } else {
-            echo "View $view not found.";
+            header('Location: /registers');
         }
     }
 }

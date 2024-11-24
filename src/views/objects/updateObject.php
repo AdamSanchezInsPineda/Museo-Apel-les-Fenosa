@@ -154,16 +154,24 @@
         </form>
     </main>
     
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggles = document.querySelectorAll(".toggle-hide");
 
-        $(document).ready(function() {
-            $(".toggle-hide").on("click", function() {
-                $(this).find("span").toggleClass("drop");
-                $(this).next("section").toggleClass("hide");
+            toggles.forEach(toggle => {
+                toggle.addEventListener("click", function () {
+                    const span = this.querySelector("span");
+                    if (span) {
+                        span.classList.toggle("drop");
+                    }
+
+                    const nextSection = this.nextElementSibling;
+                    if (nextSection && nextSection.tagName === "SECTION") {
+                        nextSection.classList.toggle("show");
+                    }
+                });
             });
         });
-
     </script>
     <?php
     include "resources/components/footer.php";

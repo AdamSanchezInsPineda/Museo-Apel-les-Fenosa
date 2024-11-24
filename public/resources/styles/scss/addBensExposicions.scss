@@ -1,8 +1,8 @@
-@import "vars";
-@import "mixins";
+@use "vars" as v;
+@use "mixins" as mx;
 
 .addBensExposicions{
-    @include imagenPreview;
+    @include mx.imagenPreview;
     header + div{
         margin-top: 5%;
         display: flex;
@@ -30,15 +30,15 @@
             padding: 0 20px;
         }
         th{
-            background-color: $color3;
-            color: $colorBlanco;
+            background-color: v.$color3;
+            color: v.$colorBlanco;
         }
         td{
-            background-color: $color2;
+            background-color: v.$color2;
         }
         input + a{
             text-decoration: none;
-            color: $color4;
+            color: v.$color4;
             font-size: 20px;
             display: flex;
             align-items: center;
@@ -49,8 +49,8 @@
             margin-left: 0;
         }
         input{
-            background: $color2;
-            border: 1px $color4 solid;
+            background: v.$color2;
+            border: 1px v.$color4 solid;
             font-size: 18px;
             background-image: url(/resources/images/lupa.png);
             background-size: 20px 20px;
@@ -70,7 +70,7 @@
                 button{
                     width: 80px;
                     height: 30px;
-                    background-color: $color1;
+                    background-color: v.$color1;
                     border-radius: 10px;
                     border-color: rgb(39, 40, 41, 0.4);
                     padding: 0;

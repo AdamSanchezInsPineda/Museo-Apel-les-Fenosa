@@ -17,6 +17,10 @@ $router->get('/logout', 'UsuarioController@logout');
 //registers
 $router->get('/registers', 'ObjetoController@table');
 
+$router->get('/registers/search', 'ObjetoController@searchDef');
+
+$router->get('/registers/search/{found}', 'ObjetoController@search');
+
 $router->get('/registers/add', 'ObjetoController@createView');
 
 $router->post('/registers/create', 'ObjetoController@create');
@@ -26,6 +30,9 @@ $router->get('/registers/llibreRegistre', "InformeController@llibre");
 $router->get('/registers/{obra}/informepdf', "InformeController@index");
 
 $router->get('/registers/{obra}/informeBasicpdf', "InformeController@basic");
+
+$router->get('/registers/{obra}/prestecdoc', "InformeController@prestec");
+
 
 $router->get('/registers/{obra}/updateView', 'ObjetoController@updateView');
 
@@ -71,6 +78,10 @@ $router->get('/vocabularis/{vocabulario}/{valor}/delete', 'VocabularioController
 
 $router->get('/exposicions',  'ExposicionsController@index');
 
+$router->get('/exposicions/search', 'ExposicionsController@searchDef');
+
+$router->get('/exposicions/search/{found}', 'ExposicionsController@search');
+
 $router->get('/exposicions/add', 'ExposicionsController@newExposicio');
 
 $router->post('/exposicions/create', 'ExposicionsController@createExposicio');
@@ -97,11 +108,15 @@ $router->get('/ubicacions/json', 'UbicacionsController@getUbicaciones');
 
 $router->get('/ubicacions/new', 'UbicacionsController@new');
 
-$router->get('/ubicacions/{ubicacio}/new', 'UbicacionsController@new');
+$router->post('/ubicacions/new', 'UbicacionsController@create');
 
-$router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
+$router->get('/ubicacions/{ubicacio}/edit', 'UbicacionsController@edit');
 
 $router->post('/ubicacions/{ubicacio}/delete', 'UbicacionsController@destroy');
+
+$router->post('/ubicacions/{ubicacio}', 'UbicacionsController@update');
+
+$router->get('/ubicacions/{ubicacio}', 'UbicacionsController@show');
 
 
 
