@@ -16,7 +16,7 @@
             </div>
             <table>
                 <?php
-                    $columns = ["Nom","Data Inici","Data Final", "Tipos", "Lloc", "Veure"];                  
+                    $columns = ["Nom","Data Inici","Data Final", "Tipos", "Lloc", "Accions"];                  
 
                     echo"<tr>";
 

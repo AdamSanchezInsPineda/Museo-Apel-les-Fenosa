@@ -4,7 +4,7 @@
 <body class="createCAmpsLlista">
     <!--Contenido variable de la pagina-->   
     <div>
-        <h1>Crear un nou valor</h1>
+        <h1>Crear un nou valor de <?php echo $path?></h1>
     </div>
     <form action="/vocabularis/<?php echo $path ?>/create" method="post">
         <?php
