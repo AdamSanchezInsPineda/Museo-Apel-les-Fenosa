@@ -16,8 +16,8 @@ $seccion = $documento->addSection();
 $header = $seccion->addHeader();
 $textRun = $header->addTextRun();
 $textRun->addImage('resources/images/logoMuseu.png', [
-    'width' => 100, // Ajusta el ancho de la imagen
-    'height' => 80, // Ajusta la altura de la imagen
+    'width' => 75, // Ajusta el ancho de la imagen
+    'height' => 60, // Ajusta la altura de la imagen
     'marginLeft' => 0, // Margen izquierdo
     'marginTop' => 0, // Margen superior
     'wrappingStyle' => 'inline', // Estilo de envoltura
@@ -72,10 +72,10 @@ foreach ($terminos as $index => $fila) {
     // Agregar una línea de subrayado para la entrada
     if($index != count($terminos) - 1){ // Cambiar la condición aquí
         $seccion->addText('____________________________________________________________________________');
+        $seccion->addTextBreak(); // Salto de línea adicional
     }else{
         $seccion->addText('__________________ - ___________________________');
     }
-    $seccion->addTextBreak(); // Salto de línea adicional
 }
 
 $seccion->addText('___________________________________________________________________________', $tituloFontStyle);
@@ -109,32 +109,31 @@ $seccion->addTextBreak();
 
 $datosFontstyle = new Font();
 $datosFontstyle->setBold(true);
-$variableFontStyle = array('size' => 12);
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Número de registre: ",$datosFontstyle);
-$textRun-> addText($cont[1][0]['RegistroNº'], $variableFontStyle);
+$textRun-> addText($cont[1][0]['RegistroNº'], $datosFontstyle);
 $seccion->addText("Número de inventario");
 $seccion->addText("Inventory number");
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Nom de l'objecte i Títol: ",$datosFontstyle);
-$textRun->addText($cont[1][0]['Nombre'].", ".$cont[1][0]['Titulo'],$variableFontStyle);
+$textRun->addText($cont[1][0]['Nombre'].", ".$cont[1][0]['Titulo'],$datosFontstyle);
 $seccion->addText("Nombre del objeto y Título");
 $seccion->addText("Object name and title ");
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Autor: ",$datosFontstyle);
-$textRun->addText($cont[1][0]['AutorNombre'], $variableFontStyle);
+$textRun->addText($cont[1][0]['AutorNombre'], $datosFontstyle);
 $seccion->addText("Autor");
 $seccion->addText("Author");
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Dimensions màx. (Alçada/Amplada/Fondària): ", $datosFontstyle);
-$textRun->addText($cont[1][0]['Altura'].", ".$cont[1][0]['Anchura'].", ".$cont[1][0]['Profundidad'],$variableFontStyle);
+$textRun->addText($cont[1][0]['Altura'].", ".$cont[1][0]['Anchura'].", ".$cont[1][0]['Profundidad'],$datosFontstyle);
 $seccion->addText("Dimensiones (Altura / Ancho / Fondo)");
 $seccion->addText("Dimensions (Height / Width / Depth)");
 $seccion->addTextBreak();
@@ -142,18 +141,18 @@ $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Materials: ", $datosFontstyle);
-$textRun->addText($cont[1][0]['MaterialNombre']."                     ", $variableFontStyle);
-$textRun->addText("Datació: ", $datosFontstyle);
-$textRun->addText($cont[1][0]['DatacionDescripcion'], $variableFontStyle);
-$seccion->addText("Materiales                                   Datación");
-$seccion->addText("Materials                                    Dating");
-$seccion->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$materialNombre = $cont[1][0]['MaterialNombre'];
+$longitudMaterialNombre = strlen($materialNombre);
+$numeroEspaciosBase = 27;
+$espaciosAdicionales = max(0, $numeroEspaciosBase - $longitudMaterialNombre);
+$textRun->addText($materialNombre . str_repeat(' ', $espaciosAdicionales), $datosFontstyle);
+
 $textRun->addText("Datació: ", $datosFontstyle);
-$textRun->addText($cont[1][0]['DatacionDescripcion'], $variableFontStyle);
-$seccion->addText("Datación");
-$seccion->addText("Dating");
+$textRun->addText($cont[1][0]['DatacionDescripcion'], $datosFontstyle);
+$seccion->addText("Materiales                                   Datación");
+$seccion->addText("Materials                                     Dating");
+$seccion->addTextBreak();
 $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
@@ -168,7 +167,7 @@ $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Forma en què el prestador vol figurar en el catàleg: ");
-$textRun->addText("Museu Apel·les Fenosa", $variableFontStyle);
+$textRun->addText("Museu Apel·les Fenosa", $datosFontstyle);
 $seccion->addText("Forma en que el prestador quiere figurar en el catálogo");
 $seccion->addText("Form in wich the lender wishes to feature in the catalague");
 $seccion->addTextBreak();
@@ -210,7 +209,7 @@ $seccion->addTextBreak();
 
 $textRun = $seccion->addTextRun();
 $textRun->addText("Valoració per a l'assegurança: ",$datosFontstyle);
-$textRun->addText($cont[1][0]['ValoracionEconomica'],$variableFontStyle);
+$textRun->addText($cont[1][0]['ValoracionEconomica'],$datosFontstyle);
 $seccion->addText("Valoración para el seguro");
 $seccion->addText("Insurance value");
 $seccion->addTextBreak();
@@ -252,6 +251,13 @@ $seccion->addText("Teléfono ");
 $seccion->addText("Telephone");
 $seccion->addTextBreak();
 $seccion->addText('___________________________________________________________________________', $tituloFontStyle);
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
+$seccion->addTextBreak();
 $seccion->addTextBreak();
 $seccion->addTextBreak();
 $seccion->addTextBreak();
