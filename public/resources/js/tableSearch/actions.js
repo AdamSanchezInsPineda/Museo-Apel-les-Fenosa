@@ -26,6 +26,8 @@ export async function userActions(id){
                 output += "<a href='/exposicions/"  + id + "'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                 output += "<a href='/exposicions/"  + id + "/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>"; 
             }
+        break;
+        case "/exposicions/8/bens":
     }
     return(output);
 }

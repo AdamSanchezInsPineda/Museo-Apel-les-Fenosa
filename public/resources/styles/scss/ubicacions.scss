@@ -6,12 +6,26 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid 1px gray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 15px;
-  padding: 20px;
+  padding: 30px;
+  width: 100%;
 }
 
 .ubicacions {
+
+  button{
+    padding: 3px;
+    background-color: v.$color1;
+    border-radius: 7px;
+    border: solid 1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover {
+      background-color: v.$color1palHover;
+    }
+  }
 
   .main {
     width: 80%;
@@ -106,26 +120,60 @@
     details[open] > summary::before {
       background-position: calc(-2 * var(--radius)) 0;
     }
-  }
 
-  .show {
+    .new-element{
+      transition: background-color 0.3s ease-out;
+    }
 
-    @include container;
+    .highlight {
+      background-color: #369;
+    }
 
-    div {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
-      gap: 5px;
+    .fade {
+      background-color: transparent;
     }
   }
 
-  .new {
-    @include container;
-  }
+  #action {
+    width: 50%;
+    justify-self: center;
 
-  .edit {
-    @include container;
+    .show {
+
+      @include container;
+  
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap: 5px;
+      }
+    }
+  
+    .new , .edit {
+      @include container;
+
+      form {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        div{
+          display: flex;
+          flex-direction: column;
+
+          input{
+            border: solid 1px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+          }
+        }
+
+        button{
+          margin-top: 5px;
+          align-self: center;
+          width: 100%;
+        }
+      }
+    }
   }
 
 }

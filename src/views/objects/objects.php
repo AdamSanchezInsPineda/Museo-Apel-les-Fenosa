@@ -7,6 +7,7 @@
         <div>
             <div>
                 <input type="text" placeholder="Cercar" id="search"> 
+               
                 <a href="/registers/add">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
             <div class="scroll">
@@ -35,6 +36,7 @@
     </div>
     <!--Scripts-->
     <script type="module" src="/resources/js/tableSearch/search.js"></script>
+    <script type="module" src="/resources/js/tableSearch/advancedSearch.js"></script>
     <script src="resources/js/imagePreview.js"></script>
     <?php
     include "resources/components/footer.php";
