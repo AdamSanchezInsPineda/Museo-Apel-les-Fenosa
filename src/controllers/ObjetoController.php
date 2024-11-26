@@ -64,4 +64,9 @@ class ObjetoController extends Controller{
             header('Location: /registers');
         }
     }
+
+    public function basica($registroN){
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/fitxaBasica', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
+    }
 }

@@ -42,6 +42,9 @@ $router->get('/registers/{obra}/delete', 'ObjetoController@delete');
 
 $router->get('/registers/{obra}', 'ObjetoController@new');
 
+$router->get('/registers/{obra}/fitxaBasica', 'ObjetoController@basica');
+
+
 //Users
 $router->get('/users', 'UsuarioController@table');
 
