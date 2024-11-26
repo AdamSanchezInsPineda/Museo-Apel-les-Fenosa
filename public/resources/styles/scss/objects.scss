@@ -22,13 +22,4 @@
         align-items: center;
         display: flex;
     }
-    .scroll{
-        max-height: 600px;
-        overflow-y: scroll;
-
-        thead {
-            position: sticky;
-            top: 0px;
-        }
-    }
 }
