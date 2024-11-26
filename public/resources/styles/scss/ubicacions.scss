@@ -135,7 +135,7 @@
   }
 
   #action {
-    width: 50%;
+    width: 55%;
     justify-self: center;
 
     .show {
@@ -143,6 +143,13 @@
       @include container;
   
       div {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap: 5px;
+      }
+
+      div + div {
         display: flex;
         flex-direction: column;
         width: 80%;
