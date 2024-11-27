@@ -160,11 +160,7 @@
 
             toggles.forEach(toggle => {
                 toggle.addEventListener("click", function () {
-                    const span = this.querySelector("span");
-                    if (span) {
-                        span.classList.toggle("drop");
-                    }
-
+                    toggle.classList.toggle("rotate");
                     const nextSection = this.nextElementSibling;
                     if (nextSection && nextSection.tagName === "SECTION") {
                         nextSection.classList.toggle("show");
