@@ -27,6 +27,14 @@ class ObjetoController extends Controller{
         exit(json_encode($this -> objeto-> getObjetos($found)));
     }
 
+    public function advancedSearch() {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        
+        $criteria = json_decode(file_get_contents('php://input'), true)['criteria'];
+        exit(json_encode($this->objeto->advancedSearch($criteria)));
+    }
+
     public function createView() {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         $this->render('objects/createObject');

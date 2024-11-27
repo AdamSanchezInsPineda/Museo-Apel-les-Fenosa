@@ -21,6 +21,8 @@ $router->get('/registers/search', 'ObjetoController@searchDef');
 
 $router->get('/registers/search/{found}', 'ObjetoController@search');
 
+$router ->post('/registers/advancedSearch', 'ObjetoController@advancedeSearch');
+
 $router->get('/registers/add', 'ObjetoController@createView');
 
 $router->post('/registers/create', 'ObjetoController@create');
@@ -32,7 +34,6 @@ $router->get('/registers/{obra}/informepdf', "InformeController@index");
 $router->get('/registers/{obra}/informeBasicpdf', "InformeController@basic");
 
 $router->get('/registers/{obra}/prestecdoc', "InformeController@prestec");
-
 
 $router->get('/registers/{obra}/updateView', 'ObjetoController@updateView');
 

@@ -19,6 +19,52 @@
                 return "An error occurred: " . $e->getMessage();
             }
         }
+
+        function advancedSearch($criteria) {
+            try {
+                $whereClauses = [];
+                $params = [];
+        
+                foreach ($criteria as $field => $conditions) {
+                    if (!empty($conditions)) {
+                        $fieldConditions = [];
+                        foreach ($conditions as $condition) {
+                            $fieldConditions[] = "$field LIKE :$field" . count($params);
+                            $params[":$field" . count($params)] = "%" . $condition . "%";
+                        }
+                        $whereClauses[] = "(" . implode(" AND ", $fieldConditions) . ")";
+                    }
+                }
+        
+                $where = implode(" OR ", $whereClauses);
+        
+                $sql = $this->db->prepare("SELECT 
+                        o.RegistroNº,
+                        o.Imagen,
+                        o.Nombre,
+                        o.Titulo,
+                        a.Nombre as autor,
+                        u.Nombre as ubicacion,
+                        d.descripcion
+                        FROM Objetos o
+                        LEFT JOIN Autors a ON o.AutorID = a.id
+                        LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id
+                        LEFT JOIN Datacion d ON o.DatacionID = d.id
+                        WHERE o.Activo = true" . (!empty($where) ? " AND ($where)" : ""));
+        
+                foreach ($params as $param => $value) {
+                    $sql->bindParam($param, $value);
+                }
+        
+                $sql->execute();
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
+        
+            } catch (PDOException $e) {
+                return "An error occurred: " . $e->getMessage();
+            }
+        }
+
         function afegirBensObj($id) {
             
             $sql = $this -> db->prepare('SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion 

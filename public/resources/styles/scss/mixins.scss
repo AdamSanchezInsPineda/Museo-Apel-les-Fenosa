@@ -13,7 +13,7 @@
     header + div > div{
         width: fit-content;
     }
-    div > div > div{
+    > div > div > div:first-of-type{
         display: flex;
         justify-content: space-between;
         margin-bottom: 0.5%;
@@ -23,18 +23,20 @@
         min-width: 500px;
         
     }
-    th, td{
+    td, th{
         height: 50px;
         text-align: center;
-        font-size: 20px;
         padding: 0 20px;
+
     }
     th{
         background-color: v.$color3;
         color: v.$colorBlanco;
+        font-size: 20px;
     }
     td{
         background-color: v.$color2;
+        font-size: 16px;
     }
     input + a{
         text-decoration: none;
@@ -48,7 +50,7 @@
         height: 35px;
         margin-left: 0;
     }
-    input{
+    > div > div > div > input{
         background: v.$color2;
         border: 1px v.$color4 solid;
         font-size: 18px;

@@ -1,37 +1,62 @@
-import {content} from "/resources/js/tableSearch/tables.js"
-cont();
-let found = "";
+var modal = document.getElementById("buscadorAvanzado");
 
-setInterval(() => {
-    if (found !== document.getElementById('search').value){
-        found = document.getElementById('search').value;
-        cont(found);
-    } 
-}, 1000);
+document.getElementById("mostrarBuscador").onclick = function() {
+  modal.style.display = "block";
+}
+
+document.getElementsByClassName("close")[0].onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.getElementById('addFilter').addEventListener('click', function() {
+    const campo = document.getElementById('campo').value;
+
+    if (campo) {
+        document.getElementById('filters-container').innerHTML +=     `<tr class="filter">
+                                                                        <td><span>${campo}: </span></td>
+                                                                        <td><input type="text" name="${campo}" placeholder="Condición"></td>
+                                                                        <td><button type="button" class="removeFilter">Eliminar</button></td>
+                                                                      </tr>`;
+        
+        for (let filterClose of document.getElementsByClassName('removeFilter')){
+          filterClose.addEventListener('click', function() {
+            filterClose.closest(".filter").remove();
+          })
+        };
+    }; 
+});
+
+document.getElementById('advancedSearch').addEventListener('submit', async function(event) {
+    console.log("holas")
+    event.preventDefault();
     
-async function cont(found = "") {
-    try {
-       
-        const response = await fetch(found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + found.normalize("NFD").replace(/[\u0300-\u036f]|-/g, "").replace(/ /g, "_"));
-        const data = await response.json();
-        
-        await content(data).then(function(output){
-            document.querySelector('.tbody').innerHTML = output;
-        });
-        
+    const filters = Array.from(document.querySelectorAll('.filter'));
+    const criteria = {};
 
-    } catch (error) {
-        console.log(error);
-    }
-}
+    filters.forEach(filter => {
+        const fieldName = filter.querySelector('input').name;
+        const fieldValue = filter.querySelector('input').value;
 
-export async function obtenerRol() {
-    try{
-    const response = await fetch('/getrol');
+        if (!criteria[fieldName]) {
+            criteria[fieldName] = [];
+        }
+        criteria[fieldName].push(fieldValue);
+    });
+
+    const response = await fetch('/registers/advancedSearch', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ criteria })
+    });
+
     const data = await response.json();
-    return(data.rol);
-    } catch (error) {
-        console.log(error);
-        return false;
-    }
-}
+    console.log(data); // Manejar los resultados de la búsqueda
+});
