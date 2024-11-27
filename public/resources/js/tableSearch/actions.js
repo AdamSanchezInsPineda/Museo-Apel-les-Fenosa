@@ -21,7 +21,7 @@ export async function userActions(id){
             }
         break;
         case "/exposicions":
-            output += "<a href='/exposicions/"  + id + "/bens'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
+            output += "<a href='/exposicions/"  + id + "/bens'><img src='resources/images/accions/papel.png' alt='Ver Objeto de la exposición'></a>";
             if (rol && rol == "admin"){
                 output += "<a href='/exposicions/"  + id + "'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
                 output += "<a href='/exposicions/"  + id + "/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>"; 

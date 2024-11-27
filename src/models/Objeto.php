@@ -5,7 +5,7 @@
         function getObjetos($found) {
             try {
                 $where = ($found == "") ? "" : " AND (o.RegistroNº LIKE '%' :found '%' OR o.Imagen LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%' OR o.Titulo LIKE '%' :found '%' OR a.Nombre LIKE '%' :found '%' OR u.Nombre LIKE '%' :found'%' OR d.descripcion LIKE '%' :found '%')";
-                $sql = $this -> db->prepare("SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as autor, u.Nombre as ubicacion, d.descripcion FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id LEFT JOIN Datacion d ON o.DatacionID = d.id WHERE o.Activo = true $where");
+                $sql = $this -> db->prepare("SELECT o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as autor, u.Nombre as ubicacion, d.descripcion FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id LEFT JOIN UbicacionObjeto uo ON uo.ObjetoID = o.ObjetoID LEFT JOIN Ubicaciones u ON uo.UbicacionID = u.id LEFT JOIN Datacion d ON o.DatacionID = d.id WHERE o.Activo = true $where");
         
                 if ($found != "") {
                     $sql->bindParam(':found', $found);
@@ -157,8 +157,8 @@
                 LEFT JOIN Classificacion c ON o.ClasificacionGenericaID = c.id
                 LEFT JOIN Material m ON o.MaterialID = m.id
                 LEFT JOIN Tecnica t ON o.TecnicaID = t.id
-                LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id
-                LEFT JOIN UbicacionObjeto uo ON  o.UbicacionActualID = uo.UbicacionID
+                LEFT JOIN UbicacionObjeto uo ON o.ObjetoID = uo.ObjetoID
+                LEFT JOIN Ubicaciones u ON uo.UbicacionID = u.id
                 LEFT JOIN EstadoConservacion ec ON o.EstadoConservacionID = ec.id
                 LEFT JOIN Museos mu ON o.MuseoID = mu.MuseoID
                 LEFT JOIN Datacion d ON o.DatacionID = d.id
@@ -170,7 +170,7 @@
                 LEFT JOIN ObjetoExposicion oe ON  o.ObjetoID = oe.ObjetoID
                 LEFT JOIN Exposiciones e ON oe.ExposicionID = e.ExposicionID
                 LEFT JOIN TiposExposicion te  ON e.TipoExposicionID = te.id
-                WHERE o.RegistroNº = :registroN');
+                WHERE o.RegistroNº = :registroN AND uo.FechaFinUbicacion IS NULL');
         
             $sql->bindParam(':registroN', $registroN, PDO::PARAM_INT);
             $sql->execute();

@@ -6,10 +6,8 @@
     <main>
         <!--Contenido variable de la pagina-->
         <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
-        <button>Cambiar a fitxa bàsica</button>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">PDF fitxa completa</a></button>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informeBasicpdf" target="_blank">PDF fitxa bàsica</a></button>
-                        
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/fitxaBasica">Cambiar a fitxa bàsica</a></button>
+        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">PDF fitxa completa</a></button>                        
         <div>
             <div>
                 <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 

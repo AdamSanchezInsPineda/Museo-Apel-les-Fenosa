@@ -58,7 +58,7 @@
 
             </div>
 
-            <div class="scroll">
+            <section class="scroll">
                 <table>
                     <thead>
                     <?php
@@ -76,7 +76,7 @@
 
                     </tbody>
                 </table>
-            </div>
+            </section>
             <div>
                 <button><a href="/registers/llibreRegistre" target="_blank">Generar Llibre de Registre</a></button>
             </div>

@@ -14,22 +14,26 @@
                 ?>
                 
             </div>
-            <table>
-                <?php
-                    $columns = ["Nom","Data Inici","Data Final", "Tipos", "Lloc", "Veure"];                  
+            <section class="scroll">
+                <table>
+                    <thead>
+                        <?php
+                            $columns = ["Nom","Data Inici","Data Final", "Tipos", "Lloc", "Accions"];                  
 
-                    echo"<tr>";
+                            echo"<tr>";
 
-                    foreach ($columns as $column)
-                        echo "<th>{$column}</th>";
+                            foreach ($columns as $column)
+                                echo "<th>{$column}</th>";
 
-                    echo"</tr>";
-                ?>
-                <tbody class="tbody">
+                            echo"</tr>";
+                        ?>
+                    </thead>
+                    <tbody class="tbody">
 
-                </tbody>
-                
-            </table>
+                    </tbody>
+                    
+                </table>
+            </section>
         </div>
     </div>
     <!--Scripts-->
