@@ -12,17 +12,77 @@ $documento = new PhpWord();
 $documento->setDefaultFontName('Calibri');
 $documento->setDefaultFontSize(8);
 
-$seccion = $documento->addSection();
-$header = $seccion->addHeader();
-$textRun = $header->addTextRun();
-$textRun->addImage('resources/images/logoMuseu.png', [
-    'width' => 75, // Ajusta el ancho de la imagen
-    'height' => 60, // Ajusta la altura de la imagen
-    'marginLeft' => 0, // Margen izquierdo
-    'marginTop' => 0, // Margen superior
-    'wrappingStyle' => 'inline', // Estilo de envoltura
+$seccion = $documento->addSection([
+    'marginLeft' => 0,
+    'marginRight' => 0,
+
 ]);
 
+$table = $seccion->addTable(
+);
+$row = $table->addRow();
+
+$cellImage = $row->addCell(2000); // Ancho de la celda para la imagen
+for ($i=0;$i<2;$i++){
+    $cellImage->addImage('resources/images/logoMuseu.png', [
+        'width' => 75,
+        'height' => 60,
+        'marginLeft' => 0,
+        'marginTop' => 0,
+        'wrappingStyle' => 'inline',
+    ]);
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addImage('resources/images/textoExemple.png', [
+        'width' => 75,
+        'height' => 200,
+        'marginLeft' => 0,
+        'marginTop' => 0,
+        'wrappingStyle' => 'inline',
+    ]);
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+    $cellImage->addTextBreak();
+}
+$cellContent = $row->addCell(9000); 
 
 $tituloFontStyle = new Font();
 $tituloFontStyle->setBold(true);
@@ -35,12 +95,14 @@ $titulo2FontStyle->setSize(12);
 $titulo3FontStyle = new Font();
 $titulo3FontStyle->setSize(12);
 
-// Agregar el título con el estilo específico
-$seccion->addText("FORMULARI DE PRÉSTEC PER RETORNAR AL CENTRE", $tituloFontStyle);
-$seccion->addText("FORMULARIO DE PRÉSTAMO PARA DEVOLVER AL CENTRO", $titulo2FontStyle);
-$seccion->addText("FORMULARY OF LOAN TO RETURN TO CENTRE", $titulo3FontStyle);
-$seccion->addTextBreak();
-$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
+$contentSection = $cellContent->addTextRun(); // Usamos TextRun para agregar múltiples elementos
+$contentSection->addText("FORMULARI DE PRÉSTEC PER RETORNAR AL CENTRE", $tituloFontStyle);
+$contentSection->addTextBreak();
+$contentSection->addText("FORMULARIO DE PRÉSTAMO PARA DEVOLVER AL CENTRO", $titulo2FontStyle);
+$contentSection->addTextBreak();
+$contentSection->addText("FORMULARY OF LOAN TO RETURN TO CENTRE", $titulo3FontStyle);
+$contentSection->addTextBreak();
+$contentSection->addText('________________________________________________________________', $tituloFontStyle);
 
 
 $terminos = [
@@ -54,7 +116,7 @@ $terminos = [
 
 foreach ($terminos as $index => $fila) {
     // Crear un nuevo texto en ejecución para evitar saltos de línea
-    $textRun = $seccion->addTextRun();
+    $textRun = $cellContent->addTextRun();
 
     // Agregar el término en catalán en negrita
     $fontStyle = new Font();
@@ -67,21 +129,21 @@ foreach ($terminos as $index => $fila) {
     }
     
     // Agregar un salto de línea después de cada fila
-    $seccion->addTextBreak();
+    $cellContent->addTextBreak();
     
     // Agregar una línea de subrayado para la entrada
     if($index != count($terminos) - 1){ // Cambiar la condición aquí
-        $seccion->addText('____________________________________________________________________________');
-        $seccion->addTextBreak(); // Salto de línea adicional
+        $cellContent->addText('____________________________________________________________________________');
+        $cellContent->addTextBreak(); // Salto de línea adicional
     }else{
-        $seccion->addText('__________________ - ___________________________');
+        $cellContent->addText('__________________ - ___________________________');
     }
 }
 
-$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
+$cellContent->addText('________________________________________________________________', $tituloFontStyle);
 
 // Espacio
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 $terminos2 = [
     'Museu Apel·les Fenosa. Fundació Privada Apel·les Fenosa',
     ' Carrer Major, 25, 43700 El Vendrell, Tarragona ',
@@ -91,189 +153,189 @@ $terminos2 = [
 $fontStyleResponse = new Font();
 $fontStyleResponse->setBold(true);
 $fontStyleResponse->setSize(10);
-$seccion->addText("Nom del prestador: ".$terminos2[0], $fontStyleResponse);
-$seccion->addText("Nombre del prestador / Name of lender");
-$seccion->addTextBreak();
-$seccion->addText("Adreça: ".$terminos2[1], $fontStyleResponse);
-$seccion->addText("Dirección / Address");
-$seccion->addTextBreak();
-$seccion->addText("Telèfon: +34 977 15 41 92".$terminos2[2], $fontStyleResponse);
-$seccion->addText("Teléfono / Telephone");
-$seccion->addTextBreak();
-$seccion->addText("Correu electrònic: ".$terminos2[3], $fontStyleResponse);
-$seccion->addText("Correo electrónico / Electronic mail");
-$seccion->addTextBreak();
-$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
-$seccion->addTextBreak();
+$cellContent->addText("Nom del prestador: ".$terminos2[0], $fontStyleResponse);
+$cellContent->addText("Nombre del prestador / Name of lender");
+$cellContent->addTextBreak();
+$cellContent->addText("Adreça: ".$terminos2[1], $fontStyleResponse);
+$cellContent->addText("Dirección / Address");
+$cellContent->addTextBreak();
+$cellContent->addText("Telèfon: +34 977 15 41 92".$terminos2[2], $fontStyleResponse);
+$cellContent->addText("Teléfono / Telephone");
+$cellContent->addTextBreak();
+$cellContent->addText("Correu electrònic: ".$terminos2[3], $fontStyleResponse);
+$cellContent->addText("Correo electrónico / Electronic mail");
+$cellContent->addTextBreak();
+$cellContent->addText('________________________________________________________________', $tituloFontStyle);
+$cellContent->addTextBreak();
 
 
 $datosFontstyle = new Font();
 $datosFontstyle->setBold(true);
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Número de registre: ",$datosFontstyle);
 $textRun-> addText($cont[1][0]['RegistroNº'], $datosFontstyle);
-$seccion->addText("Número de inventario");
-$seccion->addText("Inventory number");
-$seccion->addTextBreak();
+$cellContent->addText("Número de inventario");
+$cellContent->addText("Inventory number");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Nom de l'objecte i Títol: ",$datosFontstyle);
 $textRun->addText($cont[1][0]['Nombre'].", ".$cont[1][0]['Titulo'],$datosFontstyle);
-$seccion->addText("Nombre del objeto y Título");
-$seccion->addText("Object name and title ");
-$seccion->addTextBreak();
+$cellContent->addText("Nombre del objeto y Título");
+$cellContent->addText("Object name and title ");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Autor: ",$datosFontstyle);
 $textRun->addText($cont[1][0]['AutorNombre'], $datosFontstyle);
-$seccion->addText("Autor");
-$seccion->addText("Author");
-$seccion->addTextBreak();
+$cellContent->addText("Autor");
+$cellContent->addText("Author");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Dimensions màx. (Alçada/Amplada/Fondària): ", $datosFontstyle);
 $textRun->addText($cont[1][0]['Altura'].", ".$cont[1][0]['Anchura'].", ".$cont[1][0]['Profundidad'],$datosFontstyle);
-$seccion->addText("Dimensiones (Altura / Ancho / Fondo)");
-$seccion->addText("Dimensions (Height / Width / Depth)");
-$seccion->addTextBreak();
-$seccion->addTextBreak();
+$cellContent->addText("Dimensiones (Altura / Ancho / Fondo)");
+$cellContent->addText("Dimensions (Height / Width / Depth)");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Materials: ", $datosFontstyle);
 
 $materialNombre = $cont[1][0]['MaterialNombre'];
 $longitudMaterialNombre = strlen($materialNombre);
-$numeroEspaciosBase = 27;
+$numeroEspaciosBase = 25;
 $espaciosAdicionales = max(0, $numeroEspaciosBase - $longitudMaterialNombre);
 $textRun->addText($materialNombre . str_repeat(' ', $espaciosAdicionales), $datosFontstyle);
 
 $textRun->addText("Datació: ", $datosFontstyle);
 $textRun->addText($cont[1][0]['DatacionDescripcion'], $datosFontstyle);
-$seccion->addText("Materiales                                   Datación");
-$seccion->addText("Materials                                     Dating");
-$seccion->addTextBreak();
-$seccion->addTextBreak();
+$cellContent->addText("Materiales                                   Datación");
+$cellContent->addText("Materials                                     Dating");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Necessitat d’embalatge especial: ", $datosFontstyle);
 $checkboxStyle = array('size' => 12); 
 $textRun->addText(" ☐", $checkboxStyle);
-$seccion->addText("Necesidad de embalado especial");
-$seccion->addText("Need of packed special");
-$seccion->addTextBreak();
-$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
-$seccion->addTextBreak();
+$cellContent->addText("Necesidad de embalado especial");
+$cellContent->addText("Need of packed special");
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$cellContent->addText('________________________________________________________________', $tituloFontStyle);
+$cellContent->addTextBreak();
+
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Forma en què el prestador vol figurar en el catàleg: ");
 $textRun->addText("Museu Apel·les Fenosa", $datosFontstyle);
-$seccion->addText("Forma en que el prestador quiere figurar en el catálogo");
-$seccion->addText("Form in wich the lender wishes to feature in the catalague");
-$seccion->addTextBreak();
+$cellContent->addText("Forma en que el prestador quiere figurar en el catálogo");
+$cellContent->addText("Form in wich the lender wishes to feature in the catalague");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("El prestador admet que es fotografïi per a ", $datosFontstyle);
 $textRun->addText("/ El prestador admite que se fotografie para / The lender allows be photographed for the catalogue:");
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Publicacions de l’exposició              Sí");
 $textRun->addText(" ☐", $checkboxStyle);
 $textRun->addText("      No");
 $textRun->addText(" ☐", $checkboxStyle);
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Mitjans de comunicació                   Sí");
 $textRun->addText(" ☐", $checkboxStyle);
 $textRun->addText("      No");
 $textRun->addText(" ☐", $checkboxStyle);
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Arxius                                              Sí");
 $textRun->addText(" ☐", $checkboxStyle);
 $textRun->addText("      No");
 $textRun->addText(" ☐", $checkboxStyle);
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Finalitats privades                           Sí");
 $textRun->addText(" ☐", $checkboxStyle);
 $textRun->addText("      No");
 $textRun->addText(" ☐", $checkboxStyle);
-$seccion->addTextBreak();
-$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addText('________________________________________________________________', $tituloFontStyle);
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Valoració per a l'assegurança: ",$datosFontstyle);
 $textRun->addText($cont[1][0]['ValoracionEconomica'],$datosFontstyle);
-$seccion->addText("Valoración para el seguro");
-$seccion->addText("Insurance value");
-$seccion->addTextBreak();
+$cellContent->addText("Valoración para el seguro");
+$cellContent->addText("Insurance value");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 
 $textRun->addText("Adreça on s'ha de ", $datosFontstyle);
 $textRun->addText("recollir", array('underline' => 'single'));
 $textRun->addText(" l'objecte: ", $datosFontstyle);
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Dirección donde debe ", $datosFontstyle);
 $textRun->addText("recogerse", array('underline' => 'single')); 
 $textRun->addText(" el objeto");
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Address from which object is to be ", $datosFontstyle);
 $textRun->addText("picked up", array('underline' => 'single'));
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 
-$seccion->addText("Telèfon: ", $datosFontstyle);
-$seccion->addText("Teléfono ");
-$seccion->addText("Telephone");
-$seccion->addTextBreak();
+$cellContent->addText("Telèfon: ", $datosFontstyle);
+$cellContent->addText("Teléfono ");
+$cellContent->addText("Telephone");
+$cellContent->addTextBreak();
 
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Adreça on s'ha de ", $datosFontstyle);
 $textRun->addText("retornar", array('underline' => 'single'));
 $textRun->addText(" l'objecte: ", $datosFontstyle);
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Dirección donde debe ", $datosFontstyle);
 $textRun->addText("devolverse", array('underline' => 'single'));
 $textRun->addText(" el objeto ", $datosFontstyle);
-$textRun = $seccion->addTextRun();
+$textRun = $cellContent->addTextRun();
 $textRun->addText("Address from which object is to be ", $datosFontstyle);
 $textRun->addText("returned", array('underline' => 'single'));
-$seccion->addTextBreak();
+$cellContent->addTextBreak();
 
-$seccion->addText("Telèfon: ", $datosFontstyle);
-$seccion->addText("Teléfono ");
-$seccion->addText("Telephone");
-$seccion->addTextBreak();
-$seccion->addText('___________________________________________________________________________', $tituloFontStyle);
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addTextBreak();
-$seccion->addText("Data i firma del prestador del préstec                          Data i firma del prestatari del préstec ",$datosFontstyle);
-$seccion->addText("Fecha y firma del prestador del préstamo                              Fecha y firma del prestatario del préstamo ");
-$seccion->addText("Date and signature of lender                                                  Date and signature of borrewer");
+$cellContent->addText("Telèfon: ", $datosFontstyle);
+$cellContent->addText("Teléfono ");
+$cellContent->addText("Telephone");
+$cellContent->addTextBreak();
+$cellContent->addText('________________________________________________________________', $tituloFontStyle);
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addTextBreak();
+$cellContent->addText("Data i firma del prestador del préstec                          Data i firma del prestatari del préstec ",$datosFontstyle);
+$cellContent->addText("Fecha y firma del prestador del préstamo                              Fecha y firma del prestatario del préstamo ");
+$cellContent->addText("Date and signature of lender                                                  Date and signature of borrewer");
 
-$footer = $seccion->addFooter();
 $fontStyle = [
     'size' => 10, 
     'italic' => true, 
@@ -290,12 +352,7 @@ $fontStyleNegrita = [
     'color' => '808080' // Asegúrate de que el color sea el que deseas
 ];
 
-// Agregar texto al pie de página con el estilo definido
-$footer->addText("Fundació Privada Apel·les Fenosa", $fontStyleNegrita); // Cursiva y negrita
-$footer->addText("Carrer Major, 25", $fontStyle); // Solo cursiva
-$footer->addText("43700 El Vendrell, Tel.:+34 977 15 41 92", $fontStyle); // Solo cursiva
-$footer->addText("info@museuapellesfenosa.cat", array_merge($fontStyle, $fontStyleAzul)); // Cursiva y azul
-
+// $cellImage->addLink('mailto:info@museuapellesfenosa.cat', '');
 header('Content-Description: File Transfer');
 header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); // Cambiar a DOCX
 header('Content-Disposition: attachment; filename="Documento01.docx"');
