@@ -5,9 +5,7 @@
 <body class = "verFichaCompleta">
     <main>
         <!--Contenido variable de la pagina-->
-        <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/fitxaBasica">Cambiar a fitxa bàsica</a></button>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">PDF fitxa completa</a></button>                        
+        <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>                       
         <div>
             <div>
                 <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 
@@ -103,9 +101,11 @@
                 <p>Descripció: <?php echo $cont[1][0]['Descripcion']?></p>
                 <p>Història de l'objecte: <?php echo $cont[1][0]['HistoriaObjeto']?></p>
             </section>
-
-            <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/prestecdoc">Formulari de préstec</a></button>
-
+            <div>
+                <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/fitxaBasica">Cambiar a fitxa bàsica</a></button>
+                <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informepdf" target="_blank">PDF fitxa completa</a></button>
+                <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/prestecdoc">Formulari de préstec</a></button>
+            </div>
         </div>
     </main>
     <script>

@@ -4,6 +4,7 @@
 <body class = "campsLlista">
     <div>
         <div>
+            <h1>Vocabulari</h1>
             <table>
                 <?php
                     if ($_SESSION['rol'] == "admin" |  $_SESSION['rol'] == "tecnic") 

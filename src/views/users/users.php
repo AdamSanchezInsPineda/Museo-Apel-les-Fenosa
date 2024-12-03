@@ -4,6 +4,7 @@
 <body class = "users">    
     <div>
         <div>
+            <h1>Usuaris</h1>
             <div>
                 <input type="text" placeholder="Cercar" id="search"> 
                 <a href="/users/add">Crear un nou usuari<img src="resources/images/plus.png" alt="Afegir usuari"></a>
