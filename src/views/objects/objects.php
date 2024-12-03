@@ -21,7 +21,7 @@
 
                     <div class="modal-body">
                     <form id="advancedSearch">
-                        <h3>Buscar Objetos</h3>
+                        <h3>Buscar Obres</h3>
                         
                         <table id="filters-container">
 
@@ -37,12 +37,13 @@
                                 <option value="Anchura">Anchura</option>
                                 <option value="Profundidad">Profundidad</option>
                                 <option value="NumeroEjemplares">Número de Ejemplares</option>
+                                <option value="NumeroTiraje">Número Tiraje</option>
                                 <option value="FechaRegistro">Fecha de Registro</option>
+                                <option value="FechaIngreso">Fecha de Ingreso</option>
                                 <option value="FuenteIngreso">Fuente de Ingreso</option>
-                                <option value="LugarEjecucion">Lugar de Ejecución</option>
+                                <option value="Ubicación">Ubicación</option>
+                                <option value="LugarProcedencia">Lugar de Procedencia</option>
                                 <option value="ValoracionEconomica">Valoración Económica</option>
-                                <option value="Descripcion">Descripción</option>
-                                <option value="HistoriaObjeto">Historia del Objeto</option>
                             </select>
                             <button type="button" id="addFilter">Añadir Filtro</button>
                         </div>

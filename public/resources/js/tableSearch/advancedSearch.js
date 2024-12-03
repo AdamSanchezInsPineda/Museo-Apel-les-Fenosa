@@ -26,7 +26,7 @@ document.getElementById('addFilter').addEventListener('click', function() {
         
         for (let filterClose of document.getElementsByClassName('removeFilter')){
           filterClose.addEventListener('click', function() {
-            filterClose.closest(".filter").remove();
+            filterClose.closest("tbody").remove();
           })
         };
     }; 
@@ -58,5 +58,5 @@ document.getElementById('advancedSearch').addEventListener('submit', async funct
     });
 
     const data = await response.json();
-    console.log(data); // Manejar los resultados de la búsqueda
+    console.log(data); 
 });
