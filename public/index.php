@@ -98,7 +98,15 @@ $router->get('/exposicions/{exposicio}/delete', 'ExposicionsController@deleteExp
 
 $router->get('/exposicions/{exposicio}/bens', 'ExposicionsController@bensExposicio');
 
-$router->get( '/exposicions/{exposicio}/bens/add', 'ExposicionsController@bensAddExposicio');
+$router->get('/exposicions/{exposicio}/bens/search', 'ExposicionsController@bensExposicioSearchDef');
+
+$router->get('/exposicions/{exposicio}/bens/search/{found}', 'ExposicionsController@bensExposicioSearch');
+
+$router->get( '/exposicions/{exposicio}/bens/add', 'ObjetoController@bensAddExposicio');
+
+$router->get('/exposicions/{exposicio}/bens/add/search', 'ObjetoController@bensAddExposicioSearchDef');
+
+$router->get('/exposicions/{exposicio}/bens/add/search/{found}', 'ObjetoController@bensAddExposicioSearch');
 
 $router->post( '/exposicions/{exposicio}/bens/create', 'ExposicionsController@bensCreateExposicio');
 

@@ -65,6 +65,7 @@ class ExposicionsController extends Controller{
     }
 
     public function editExposicio($id) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
 
         if ($_SESSION['rol'] == "admin"){
             $exposicionData = $this->exposicio->updateViewExposicion($id);
@@ -87,7 +88,8 @@ class ExposicionsController extends Controller{
 
 
     public function updateExposicio($id) {
-          
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+
         if ($_SESSION['rol'] == "admin"){
             $this->exposicio->updateExposicion($_POST['Nom'],$_POST['Data_Inicial'], $_POST['Data_Final'],  $_POST['Tipus'], $_POST['LugarExposicion'], $id);
             header('Location: /exposicions');
@@ -100,41 +102,29 @@ class ExposicionsController extends Controller{
     }
 
     public function bensExposicio($id){
-        
+
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         $this->render("exposicions/bensExposicions");
         exit;
     }
 
-    public function bensExposiciosearchDef($id, $found = "") {
+    public function bensExposicioSearchDef($id, $found = "") {
+
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
         exit(json_encode($this->exposicio->verBens($id, $found)));
     }
 
-    public function bensExposiciosearch($id, $found) {
+    public function bensExposicioSearch($id, $found) {
+
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
         exit(json_encode($this->exposicio->verBens($id, $found)));
     }
-
-    public function bensAddExposicio($id){
-        $this->checkRole(['admin', 'tecnic', 'convidat']);
-        $objeto = new Objeto();
-
-        if ($_SESSION['rol'] != "convidat"){
-            $this->render("exposicions/addBensExposicions", ["objetos" => [$objeto->afegirBensObj($id), $id]]);
-        }
-        else{
-            header('Location: /registers');
-        }     
-            
-        exit;
-    }
-    
 
     public function bensCreateExposicio($id) {
-        
+    $this->checkRole(['admin', 'tecnic', 'convidat']);
+
         if ($_SESSION['rol'] != "convidat"){
             $objetosSeleccionados = $_POST['afegir'];
             foreach ($objetosSeleccionados as $objetoId) {
@@ -149,6 +139,7 @@ class ExposicionsController extends Controller{
     }
 
     public function bensDeleteExposicio($id, $objetoExposicion) {
+        
         $this->checkRole(['admin', 'tecnic', 'convidat']);
    
         if ($_SESSION['rol'] == "admin"){

@@ -12,7 +12,7 @@ setInterval(() => {
 async function cont(found = "") {
     try {
        
-        const response = await fetch(found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + found.normalize("NFD").replace(/[\u0300-\u036f]|-/g, "").replace(/ /g, "_"));
+        const response = await fetch(found === "" ? window.location.pathname + "/search" : window.location.pathname + "/search/" + found.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "_").replace(/[-']/g, "_"));
         const data = await response.json();
         
         await content(data).then(function(output){

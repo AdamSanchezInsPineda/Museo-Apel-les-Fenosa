@@ -8,9 +8,10 @@
     <div>
         <div>
             <div>
-                <input type="text" placeholder="Cercar">
+                <input type="text" placeholder="Cercar" id="search">
             </div>
-            <form method="POST" action="/exposicions/<?php echo $objetos[1]; ?>/bens/create"id="addObjectsForm" onsubmit="return validateForm()">
+            
+            <form method="POST" action="/exposicions/<?php echo explode("/", $_SERVER['REQUEST_URI'][1]) ?>/bens/create"id="addObjectsForm" onsubmit="return validateForm()">
                 <div>
                     <table>
                         <?php
@@ -21,7 +22,11 @@
                                 echo "<th>{$column}</th>";
 
                             echo"</tr>";
-                            foreach ($objetos[0] as $objeto) {
+                        ?>    
+                        <tbody class="tbody">
+                    
+                        </tbody>
+                            <!--foreach ($objetos[0] as $objeto) {
                                 echo "<tr>";
                                 foreach ($objeto as $key => $dato){
                                     if ($key != "ObjetoID"){
@@ -40,9 +45,9 @@
                                 }
                                 echo "<td><input type='checkbox' name='afegir[]' value='{$objeto["ObjetoID"]}'></td>";
                                 echo"</tr>";
-                            }
+                            }-->
                             
-                        ?>
+                        
                     </table>
                 </div>
                 <div>
@@ -58,7 +63,8 @@
     
     <!--Scripts-->
     <script src="/resources/js/imagePreview.js"></script>
-    <script src="/resources/js/delete.js"></script>
+    <script type="module" src="/resources/js/tableSearch/search.js"></script>
+    <!--<script src="/resources/js/delete.js"></script>-->
     <script src="/resources/js/validateForm"></script>
     <?php
         include "resources/components/footer.php";

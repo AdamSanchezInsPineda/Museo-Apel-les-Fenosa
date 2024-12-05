@@ -65,28 +65,28 @@
             }
         }
 
-        function afegirBensObj($id) {
-            
-            $sql = $this -> db->prepare('SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion 
+        function afegirBensObj($found, $id) {
+            try {
+                $where = ($found == "") ? "" : " AND (o.RegistroNº LIKE '%' :found '%' OR o.Imagen LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%' OR o.Titulo LIKE '%' :found '%' OR a.Nombre LIKE '%' :found '%' OR u.Nombre LIKE '%' :found'%' OR d.descripcion LIKE '%' :found '%')";
+                $sql = $this -> db->prepare("SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion 
                                          FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id 
                                          LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id 
                                          LEFT JOIN Datacion d ON o.DatacionID = d.id 
-                                         WHERE o.ObjetoID not in (SELECT oe.ObjetoID FROM ObjetoExposicion oe WHERE oe.ExposicionID = :id)');
-                                         // WHERE o.RegistroNº LIKE %'
-                                         //. $q .'% OR o.Imagen LIKE %'
-                                         //. $q .'% OR o.Nombre LIKE %'
-                                         // . $q .'% OR o.Titulo LIKE %'
-                                         // . $q .'% OR a.Nombre LIKE % '
-                                         // . $q .'% OR u.Nombre LIKE % '
-                                         // . $q .'% OR d.descripcion    
-            
-            $sql->bindParam(':id', $id);
-
-            $sql->execute();
-            
-            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-            return $result;
+                                         WHERE o.ObjetoID not in (SELECT oe.ObjetoID FROM ObjetoExposicion oe WHERE oe.ExposicionID = :id) $where");
+        
+                $sql->bindParam(':id', $id);    
+                
+                if ($found != "") {
+                    $sql->bindParam(':found', $found);
+                }
+        
+                $sql->execute();
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
+                
+            } catch (PDOException $e) {
+                return "An error occurred: " . $e->getMessage();
+            }
         }
 
         function fitxesCreate($registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $fechaRegistro, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo){

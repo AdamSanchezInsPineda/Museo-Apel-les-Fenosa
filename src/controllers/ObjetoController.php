@@ -77,4 +77,24 @@ class ObjetoController extends Controller{
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         $this->render('objects/fitxaBasica', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
     }
+
+    public function bensAddExposicio($id){
+
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render("exposicions/addBensExposicions");
+        exit;
+    }    
+
+    public function bensAddExposicioSearchDef($id, $found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->objeto->afegirBensObj($id, $found)));
+    }
+
+    public function bensAddExposicioSearch($id, $found) {
+
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->objeto->afegirBensObj($id, $found)));
+    }
 }

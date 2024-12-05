@@ -89,8 +89,8 @@
 
         function verBens($id, $found){
             try {
-                $where= ($found == "") ? "" : " WHERE (oe.ObjetoExposicionID LIKE '%' :found '%' OR oe.ExposicionID LIKE '%' :found '%' OR o.RegistroNº LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%')";
-                $sql = $this -> db->prepare("SELECT oe.ObjetoExposicionID, oe.ExposicionID, o.RegistroNº, o.Nombre FROM ObjetoExposicion oe JOIN Objetos o ON oe.ObjetoID = o.ObjetoID WHERE oe.ExposicionID = :id $where");
+                $where= ($found == "") ? "" : " AND (oe.ObjetoExposicionID LIKE '%' :found '%' OR oe.ExposicionID LIKE '%' :found '%' OR o.RegistroNº LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%')";
+                $sql = $this -> db->prepare("SELECT oe.ObjetoExposicionID, oe.ExposicionID, o.RegistroNº, o.Nombre FROM ObjetoExposicion oe INNER JOIN Objetos o ON oe.ObjetoID = o.ObjetoID WHERE oe.ExposicionID = :id $where");
         
                 $sql->bindParam(':id', $id);
                 if ($found != "") {

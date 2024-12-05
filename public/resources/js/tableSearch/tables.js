@@ -7,7 +7,7 @@ export async function content(data) {
             output += "<tr>";
             
             Object.entries(values).forEach(([key, value]) => {
-                if (key !== "UsuarioID" && key !== "Imagen" && key !== "ExposicionID") {  
+                if (key !== "UsuarioID" && key !== "Imagen" && key !== "ExposicionID" && key !== "ObjetoExposicionID" && key !== "ObjetoID") {  
                     output += "<td>" + value + "</td>";     
                 }
                 else if (key == "Imagen") {
@@ -21,24 +21,32 @@ export async function content(data) {
                 };
             });
             
-            output += "<td>";
+            
             let idAcciones;
-            switch(window.location.pathname){
-                case "/users":
+            switch(window.location.pathname.split("/").slice(-1)[0]){
+                case "users":
                     idAcciones = values['UsuarioID'];
-                break;
-                case "/registers":
-                    idAcciones = values['RegistroNº'];
-                break;
-                case "/exposicions":
-                    idAcciones = values['ExposicionID'];
+                    break;
 
-                    
+                case "registers":
+                    idAcciones = values['RegistroNº'];
+                    break;
+
+                case "exposicions":
+                    idAcciones = values['ExposicionID'];
+                    break;
+
+                case "bens":
+                    idAcciones = values['ObjetoExposicionID'];
+                    break; 
+                
+                case "add":
+                    idAcciones = values['ObjetoID'];
+                    break;
             }
             const ActionOutput = await userActions(idAcciones);
             output += ActionOutput ? ActionOutput : '';
             
-            output += "</td>";
             output += "</tr>";
                   
         };
