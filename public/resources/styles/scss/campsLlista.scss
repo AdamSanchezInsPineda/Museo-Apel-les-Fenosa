@@ -3,4 +3,10 @@
 
 .campsLlista{
     @include mx.tableStyle;
+    h1{
+        text-align: center;
+    }
+    table{
+        width: 100%;
+    }
 }

@@ -3,7 +3,12 @@
 
 .users{
     @include mx.tableStyle;
+    table{
+        width: 750px;
+    }
     td{
+        height: 100%;
+        width: 100%;
         padding: 0 50px;
     }
     header + div > div{
@@ -15,8 +20,11 @@
     th + th{
         width: 30%;
     }
-    td + td + td{
-       display: flex;
-       align-items: center; 
+    h1{
+        text-align: center;
+    }
+    td:last-child {
+        padding: 5px 0;
+        background-color: #D8D9DA;
     }
 }

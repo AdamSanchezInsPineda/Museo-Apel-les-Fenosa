@@ -2,9 +2,12 @@
 
 @mixin tableStyle{
     header + div{
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     justify-content: center;
+    }
+    h1{
+        margin-bottom: 20px;
     }
     td>a>img{
         height: 35px;

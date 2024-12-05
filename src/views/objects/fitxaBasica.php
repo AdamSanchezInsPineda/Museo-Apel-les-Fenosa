@@ -5,10 +5,7 @@
 <body class = "verFichaCompleta">
     <main>
         <!--Contenido variable de la pagina-->
-        <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>">Cambiar a fitxa completa</a></button>
-        <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informeBasicpdf" target="_blank">PDF fitxa bàsica</a></button>
-                        
+        <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>                  
         <div>
             <div>
                 <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 
@@ -56,6 +53,10 @@
                 <p>Usuari que crea l'objecte: <?php echo $cont[1][0]['UsuarioNombre']?></p>
                 <p>Data de Registre: <?php echo $cont[1][0]['FechaRegistro']?></p>
             </section>
+            <div>
+            <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>">Cambiar a fitxa completa</a></button>
+            <button><a href="/registers/<?php echo $cont[1][0]['RegistroNº']?>/informeBasicpdf" target="_blank">PDF fitxa bàsica</a></button>
+            </div>
         </div>
     </main>
     <script>

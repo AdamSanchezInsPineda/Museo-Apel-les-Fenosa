@@ -5,6 +5,12 @@
     @include mx.tableStyle;
     @include mx.imagenPreview;
 
+    h1{
+        text-align: center;
+    }
+    table{
+        width: 1570px;
+    }
     button>a{
         text-decoration: none;
         color: v.$color4;

@@ -5,6 +5,7 @@
     <!--Contenido variable de la pagina-->   
     <div>
         <div>
+            <h1>Registres</h1>
             <button id="mostrarBuscador">Buscador avançat</button>
             <div>
                 <input type="text" placeholder="Cercar" id="search"> 
