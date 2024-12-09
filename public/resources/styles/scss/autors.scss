@@ -1,0 +1,6 @@
+@use "vars" as v;
+@use "mixins" as mx;
+
+.autors{
+    @include mx.tableStyle;
+}

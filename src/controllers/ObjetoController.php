@@ -1,43 +1,100 @@
 <?php
 
-require_once '../src/model/Objeto.php';
-require_once '../src/model/Usuario.php';
+class ObjetoController extends Controller{
 
-class ObjetoController {
+    protected $objeto;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->objeto = new Objeto();
+    }
+    
     public function table() {
-        session_start();
-        $user = new Usuario();
-        $state = $user->comprovarUsuario($_SESSION['nom'] , $_SESSION['password']);
-
-            if ($state) {
-                $objeto = new Objeto();
-                $rol = rolUsuario($_SESSION['nom'], $_SESSION['password']);
-                $objeto->getAllObjetos();
-                $this->render('table', ['registros' => $objeto, 'rol' => $rol]);
-                exit;
-
-            } else {
-                session_unset();
-                session_destroy();
-                $error = " La sessió no s'ha iniciat ";
-                $this->render("login", ["error"=> $error]);
-                exit;
-            }
-        
-        
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/objects');
     }
 
-    public function project($project) {
-        $this->render('project', ['project' => $project]);
+    public function searchDef($found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this -> objeto-> getObjetos($found)));
     }
 
-    private function render($view, $data = []) {
-        extract($data);
-        $viewFile = "../src/views/$view.php";
-        if (file_exists($viewFile)) {
-            require $viewFile;
+    public function search($found) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this -> objeto-> getObjetos($found)));
+    }
+
+    public function advancedSearch() {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        
+        $criteria = json_decode(file_get_contents('php://input'), true)['criteria'];
+        exit(json_encode($this->objeto->advancedSearch($criteria)));
+    }
+
+    public function createView() {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/createObject');
+    }
+
+    public function new($registroN) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
+    }
+
+    public function updateView($registroN) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/updateObject', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
+    }
+
+    public function update($registroN) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/updateObject', ['objeto' => $this -> objeto->fitxesMostrar($registroN)]);
+    }
+
+    public function delete($registroN) {
+        $this->checkRole(['admin', 'tecnic']);
+        $this->objeto->fitxesDisable($registroN);
+        header("/registers");   
+    }
+
+
+    public function ficha($id) {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $detallesObjeto = $this -> objeto->fitxesMostrar($id);
+            
+        if ($detallesObjeto) {
+            $this->render('objects/ficha', ['objeto' => $detallesObjeto]);
         } else {
-            echo "View $view not found.";
+            header('Location: /registers');
         }
+    }
+
+    public function basica($registroN){
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render('objects/fitxaBasica', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
+    }
+
+    public function bensAddExposicio($id){
+
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        $this->render("exposicions/addBensExposicions");
+        exit;
+    }    
+
+    public function bensAddExposicioSearchDef($id, $found = "") {
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->objeto->afegirBensObj($id, $found)));
+    }
+
+    public function bensAddExposicioSearch($id, $found) {
+
+        $this->checkRole(['admin', 'tecnic', 'convidat']);
+        header('Content-Type: application/json');
+        exit(json_encode($this->objeto->afegirBensObj($id, $found)));
     }
 }

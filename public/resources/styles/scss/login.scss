@@ -1,3 +1,4 @@
+@use "vars" as v;
 .login{
 
     background-image: linear-gradient(to right, rgba(97,103,122, 0.80) 50%, rgba(216,217,218, 0.80) 50%), url("../../images/loginBackground.png");
@@ -19,8 +20,8 @@
         margin: 0 auto;
         width: 950px; 
         height:650px; 
-        background-color: #D8D9DA;
-        border: 2px solid #272829;
+        background-color: v.$color2;
+        border: 2px solid v.$color4;
         border-radius: 15px;
         box-shadow: 2px 10px 45px rgba(0,0,0, 0.75);
         display: flex;
@@ -29,7 +30,7 @@
 
     body>div>div:first-child{
         width: 50%;
-        background-color: #61677A;
+        background-color: v.$color3;
         border-top-left-radius: 13px;
         border-bottom-left-radius: 13px;
     }
@@ -66,8 +67,8 @@
         width: 100px;
         height: 35px;
         align-self: center;
-        background-color: #FFF6E0;
-        color: rgb(39, 40, 41);
+        background-color: v.$color1;
+        color: v.$color4;
         font-size: 20px;
     }
 

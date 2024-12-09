@@ -1,0 +1,30 @@
+@use "vars" as v;
+@use "mixins" as mx;
+
+.users{
+    @include mx.tableStyle;
+    table{
+        width: 750px;
+    }
+    td{
+        height: 100%;
+        width: 100%;
+        padding: 0 50px;
+    }
+    header + div > div{
+        min-width: 30%;
+    }
+    th{
+        width: 40%;
+    }
+    th + th{
+        width: 30%;
+    }
+    h1{
+        text-align: center;
+    }
+    td:last-child {
+        padding: 5px 0;
+        background-color: #D8D9DA;
+    }
+}

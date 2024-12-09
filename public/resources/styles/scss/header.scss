@@ -1,11 +1,12 @@
+@use "vars" as v;
 header{
     width: 100%;
     height: 80px;
-    background-color: #61677A;
+    background-color: v.$color3;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 18px;
     img{
         margin-left: 2.5%;
         height: 75px;
@@ -13,23 +14,32 @@ header{
         width: 115px;
     }
     nav{
-        margin-left: 15%;
-        width: 30%;
+        width: 50%;
         display: flex;
         justify-content: space-between;
         a{
             text-decoration: none;
-            color: white;
+            color: v.$colorBlanco;
             font-weight: 700;
         }
         a:hover{
-            color: #D8D9DA;
+            color: v.$color2;
         }
     }
     div{
         display: flex;
-        color: white;
+        color: v.$colorBlanco;
         align-items: center;
+        div{
+            display: block;
+            :first-child{
+                font-size: 20px;
+            }
+            p + p{
+                margin-top: 0;
+                font-size: 10px;
+            }
+        }
         img{
             margin-left: 0;
             height: 30px;

@@ -1,0 +1,112 @@
+@use "vars" as v;
+
+@mixin tableStyle{
+    header + div{
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    }
+    h1{
+        margin-bottom: 20px;
+    }
+    td>a>img{
+        height: 35px;
+        width: 35px;
+    }
+    header + div > div{
+        width: fit-content;
+    }
+    > div > div > div:first-of-type{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5%;
+    }
+    table{
+        display: block;
+        min-width: 500px;
+    }
+    td, th{
+        height: 50px;
+        text-align: center;
+        padding: 0 20px;
+
+    }
+    th{
+        background-color: v.$color3;
+        color: v.$colorBlanco;
+        font-size: 20px;
+    }
+    td{
+        background-color: v.$color2;
+        font-size: 16px;
+        font-size: 16px;
+    }
+    input + a{
+        text-decoration: none;
+        color: v.$color4;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    input+ a > img{
+        width: 35px;
+        height: 35px;
+        margin-left: 0;
+    }
+    > div > div > div > input{
+        background: v.$color2;
+        border: 1px v.$color4 solid;
+        font-size: 18px;
+        background-image: url(/resources/images/lupa.png);
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: 0.5rem center;
+        padding-left: 35px;
+    }
+    td:last-child {
+        height: 100%;
+        white-space: nowrap;
+    }
+    .scroll{
+        max-width: 1600px;
+        max-height: 600px;
+        overflow-y: scroll;
+
+        a{
+            display: inline-block;
+            width: fit-content;
+            height: 35px;
+        }
+
+        thead {
+            position: sticky;
+            top: 0px;
+        }
+    }
+}
+
+@mixin imagenPreview{
+    td>img{
+        height: 40px;
+        width: 40px;
+    }
+
+    .img-preview {
+        display: none;
+    }
+    
+    .img-preview.active {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        position: absolute;
+        place-content: center;
+        background-color: rgba(0, 0, 0, 0.712);
+        img{
+            max-width: 95vw;
+            max-height: 95vh;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@use "vars" as v;
+@use "mixins" as mx;
+
+.bensExposicions{
+    @include mx.tableStyle;
+    p{
+        margin-top: 10px;
+    }
+    h2{
+        text-align: center;
+    }
+}

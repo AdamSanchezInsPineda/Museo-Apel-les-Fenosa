@@ -1,0 +1,116 @@
+@use "vars" as v;
+@use "mixins" as mx;
+
+.createObject{
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            h1{
+                margin-top: 50px;
+            }
+            button{
+                margin: 25px 0 50px 0;
+                padding: 0 15px;
+                background-color: v.$color1;
+                border-radius: 10px;
+                border-color: rgb(39, 40, 41, 0.4);
+            }
+            h1 + div{
+                border-radius: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                display: grid;
+                grid-template-columns: 50% 50%;
+                grid-template-rows: 100%;
+                height: 400px;
+                padding: 15px;
+                label{
+                    display: flex;
+                }
+                img{
+                    height: 300px;
+                }
+                :first-child p {
+                    margin-bottom: 15px;
+                    text-align: center;
+                }
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 5px;
+                    label {
+                        flex-direction: column;
+                    }
+                }
+                div + div{
+                    margin-left: 2.5%;
+                }
+            }
+            h1 + div + div{
+                width: 60%;
+                margin-top: 25px;
+                div{
+                    box-shadow: 0 -2px 7px 0  rgba(0, 0, 0, 0.2);
+                    padding: 10px;
+                    border-radius: 15px;
+                    background-color: v.$color1;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+    
+                    &::before {
+                        $icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3C!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cpath fill='white' d='M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z'/%3E%3C/svg%3E");
+                        content: "";
+                        left: 0;
+                        top: 0;
+                        width: 0.65rem;
+                        aspect-ratio: 320 / 512;
+                        display: inline-block;
+                        margin-right: 0.75rem;
+                        transform: rotate(0deg);
+                        mask-image: $icon;
+                        mask-size: 100% 100%;
+                        -webkit-mask-image: $icon;
+                        -webkit-mask-size: 100% 100%;
+                        transition: transform cubic-bezier(0.86, 0, 0.07, 1) 0.5s;
+                        background-color: currentColor;
+                    }
+                }
+                section{
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    margin-bottom: 10px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.5s;
+                    grid-template-columns: 50% 50%;
+                    display: grid;
+                    justify-items: start;
+                    padding: 0 20px;
+                    border-radius: 0 0 15px 15px;
+                    p:first-child{
+                        margin-top: 10px;
+                    }
+                    p:last-child{
+                        margin-bottom: 15px;
+                    }
+                }
+                .rotate{
+                    border-radius: 15px 15px 0 0;
+                    &::before{
+                        transform: rotate(90deg);
+                    }
+                }
+                .show{
+                    max-height: 200px;
+                }
+            }
+        }
+    }
+}

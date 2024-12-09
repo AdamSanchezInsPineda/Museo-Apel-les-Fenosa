@@ -1,0 +1,35 @@
+@use "vars" as v;
+
+@mixin h1-gray-btn {
+    background-color: v.$color2;
+    color: v.$colorNegro;
+    font-family: v.$fontfamily;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: v.$color3;
+        color: v.$colorBlanco;
+    }
+    transition-duration: 0.2s;
+}
+
+.index-vocabulary{
+    height: 100%;
+
+    main {
+        margin-top: 140px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            @include h1-gray-btn;
+        }
+    }
+}
