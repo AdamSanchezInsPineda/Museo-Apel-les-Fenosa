@@ -67,12 +67,13 @@
 
         function afegirBensObj($found, $id) {
             try {
-                $where = ($found == "") ? "" : " AND (o.RegistroNº LIKE '%' :found '%' OR o.Imagen LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%' OR o.Titulo LIKE '%' :found '%' OR a.Nombre LIKE '%' :found '%' OR u.Nombre LIKE '%' :found'%' OR d.descripcion LIKE '%' :found '%')";
-                $sql = $this -> db->prepare("SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as Autor, u.Nombre as Ubicacion, d.descripcion as Datacion 
-                                         FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id 
-                                         LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id 
-                                         LEFT JOIN Datacion d ON o.DatacionID = d.id 
-                                         WHERE o.ObjetoID not in (SELECT oe.ObjetoID FROM ObjetoExposicion oe WHERE oe.ExposicionID = :id) $where");
+                $where = ($found == "") ? "" : " AND (o.RegistroNº LIKE '%' :found '%' OR o.Imagen LIKE '%' :found '%' OR o.Nombre LIKE '%' :found '%' OR o.Titulo LIKE '%' :found '%' OR a.Nombre LIKE '%' :found '%' OR u.Nombre LIKE '%' :found '%' OR d.descripcion LIKE '%' :found '%')";
+                $sql = $this -> db->prepare("SELECT o.ObjetoID, o.RegistroNº, o.Imagen, o.Nombre, o.Titulo, a.Nombre as autor, u.Nombre as ubicacion, d.descripcion as Datacion 
+                                            FROM Objetos o LEFT JOIN Autors a ON o.AutorID = a.id 
+                                            LEFT JOIN UbicacionObjeto uo ON uo.ObjetoID = o.ObjetoID 
+                                            LEFT JOIN Ubicaciones u ON uo.UbicacionID = u.id
+                                            LEFT JOIN Datacion d ON o.DatacionID = d.id 
+                                            WHERE o.Activo = true AND o.ObjetoID not in (SELECT oe.ObjetoID FROM ObjetoExposicion oe WHERE oe.ExposicionID = :id) $where");
         
                 $sql->bindParam(':id', $id);    
                 

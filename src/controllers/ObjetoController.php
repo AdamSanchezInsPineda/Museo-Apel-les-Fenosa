@@ -88,13 +88,12 @@ class ObjetoController extends Controller{
     public function bensAddExposicioSearchDef($id, $found = "") {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
-        exit(json_encode($this->objeto->afegirBensObj($id, $found)));
+        exit(json_encode($this->objeto->afegirBensObj($found, $id)));
     }
 
     public function bensAddExposicioSearch($id, $found) {
-
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
-        exit(json_encode($this->objeto->afegirBensObj($id, $found)));
+        exit(json_encode($this->objeto->afegirBensObj($found, $id)));
     }
 }

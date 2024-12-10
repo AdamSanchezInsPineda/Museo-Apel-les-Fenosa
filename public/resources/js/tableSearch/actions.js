@@ -44,4 +44,3 @@ export async function userActions(id){
     }
     return(output);
 }
-    

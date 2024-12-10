@@ -12,10 +12,10 @@ export async function content(data) {
                 }
                 else if (key == "Imagen") {
                     output +="<td>";
-                    output +="<img src='resources/images/obras/" + value + ".jpg' alt='Foto de " + value + "' class='button1'>";
+                    output +="<img src='/resources/images/obras/" + value + ".jpg' alt='Foto de " + value + "' class='button1'>";
                     output +="<div class='img-preview'>";
                     output +="<button class='button2'>Salir</button>";
-                    output +="<img src='resources/images/obras/" + value + ".jpg' alt='Foto de " + value + "'>";
+                    output +="<img src='/resources/images/obras/" + value + ".jpg' alt='Foto de " + value + "'>";
                     output +="</div>";
                     output +="</td>";
                 };
