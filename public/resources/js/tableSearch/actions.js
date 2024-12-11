@@ -38,7 +38,7 @@ export async function userActions(id){
             }
             break;
         case "add":
-            output += "<td><input type='checkbox' name='afegir[]' value='"+ id +"'></td>";
+            output += "<td><label class='checkbox'><input class='checkbox-input' type='checkbox' name='afegir[]' value='"+ id +"'><svg class='checkbox-check' width='28' height='28'><polyline points='20 6 9 17 4 12'></polyline></svg></label></td>";
             break;
     
     }

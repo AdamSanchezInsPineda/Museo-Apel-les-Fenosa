@@ -29,6 +29,9 @@
         align-items: center;
         display: flex;
     }
+    button{
+        margin-top: 10px;
+    }
     .scroll{
         max-height: 600px;
         overflow-y: scroll;
