@@ -5,6 +5,7 @@
     @include mx.tableStyle;
     @include mx.imagenPreview;
 
+    
     div + a:has(>img){
         display: flex;
         align-items: center;
@@ -138,5 +139,9 @@
         text-decoration: none;
         cursor: pointer;
     }
-    
+ 
+    #mostrarBuscador{
+        margin-left: 20px;
+        height: 29px;
+    }
 }
