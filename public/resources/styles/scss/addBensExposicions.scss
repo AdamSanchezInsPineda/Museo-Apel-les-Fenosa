@@ -2,82 +2,183 @@
 @use "mixins" as mx;
 
 .addBensExposicions{
+    
+    @include mx.tableStyle;
     @include mx.imagenPreview;
-    header + div{
-        margin-top: 5%;
-        display: flex;
+
+    input{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    td>input{
+        height: 30px;
+        width: 30px;
+    }
+    h2{
+        text-align: center;
+    }
+    section>table{
+        width: 1570px;
+        
+    }
+    button>a{
+        text-decoration: none;
+        color: v.$color4;
+        font-size: 20px;
+    }
+    button{
+        color: v.$color4;
+        margin-top: 20px;
+        padding: 5px 20px 5px 20px;
+        background-color: v.$color1;
+        cursor: pointer;
+    }
+    >div>div>div:last-of-type{
         justify-content: center;
+        text-align: center;
+        align-items: center;
+        display: flex;
+    }
+    .scroll{
+        max-height: 600px;
+        overflow-y: scroll;
+
+        thead {
+            position: sticky;
+            top: 0px;
         }
-        td>a>img{
-            height: 35px;
-            width: 35px;
+    }
+    td{
+        padding: 0 20px;
+    }
+    th:nth-child(3){
+        width: 15%;
+    }
+    th:nth-child(4){
+        width: 20%;
+    }
+    th:nth-child(5){
+        width: 15%;
+    }
+    th:nth-child(6){
+        width: 15%;
+    }
+    th:nth-child(7){
+        width: 15%;
+    }
+    .modal {
+        display: none;
+        position: absolute; 
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 750px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        .modal-header{
+            margin: 15px 0;
         }
-        header + div > div{
-            width: fit-content;
-        }
-        div > div > div{
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5%;
-        }
-        table{
-            display: block;
-        }
-        th, td{
-            height: 50px;
-            text-align: center;
-            font-size: 20px;
-            padding: 0 20px;
-        }
-        th{
-            background-color: v.$color3;
-            color: v.$colorBlanco;
-        }
-        td{
-            background-color: v.$color2;
-        }
-        input + a{
-            text-decoration: none;
-            color: v.$color4;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-        }
-        input+ a > img{
-            width: 35px;
-            height: 35px;
-            margin-left: 0;
-        }
-        input{
-            background: v.$color2;
-            border: 1px v.$color4 solid;
-            font-size: 18px;
-            background-image: url(/resources/images/lupa.png);
-            background-size: 20px 20px;
-            background-repeat: no-repeat;
-            background-position: 0.5rem center;
-            padding-left: 35px;
-        }
-    div{
-        div{
-            input{
-                height: 35px;
-                margin-bottom: 10px;
+        .modal-body{
+            #advancedSearch{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 686px;
             }
-        }
-        form{
-            div{
-                button{
-                    width: 80px;
-                    height: 30px;
-                    background-color: v.$color1;
-                    border-radius: 10px;
-                    border-color: rgb(39, 40, 41, 0.4);
-                    padding: 0;
-                    margin-top: 10px;
-                }   
+            h3{
+                margin: 10px 0;
+            }
+            #filters-container{
+                .filter{
+                    > :nth-child(1){
+                        width: 275px;
+                    }
+                    > :nth-child(2){
+                        width: 301px;
+                    }
+                    > :nth-child(3){
+                        width: 54px;
+                    }
+                }
+            }
+            #filters-container + div{
+                height: 115px;
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                margin: 20px 0;
+                justify-content: space-evenly;
             }
         }
     }
     
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+
+
+
+    /* From Uiverse.io by elijahgummer */ 
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .checkbox:hover .checkbox-check {
+    background: #00000025;
+  }
+  
+  .checkbox-input {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  
+  .checkbox-input:checked + .checkbox-check {
+    background: v.$colorNegro;
+    stroke-dashoffset: 0;
+  }
+  
+  .checkbox-check {
+    border: 0.2rem solid v.$colorNegro;
+    stroke: #f9f9f9;
+    stroke-dasharray: 25;
+    stroke-dashoffset: 25;
+    stroke-linecap: round;
+    stroke-width: 0.2rem;
+    border-radius: 0.2rem;
+    fill: none;
+    transition:
+      background 0.4s,
+      stroke-dashoffset 0.6s;
+  }
+  
 }
