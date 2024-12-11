@@ -32,7 +32,7 @@ document.getElementById('addFilter').addEventListener('click', function() {
     }; 
 });
 
-document.getElementById('advancedSearch').addEventListener('submit', async function(event) {
+document.getElementById('buscadorAvanzado').addEventListener('submit', async function(event) {
     console.log("holas")
     event.preventDefault();
     
@@ -49,7 +49,7 @@ document.getElementById('advancedSearch').addEventListener('submit', async funct
         criteria[fieldName].push(fieldValue);
     });
 
-    const response = await fetch('/registers/advancedSearch', {
+    const response = await fetch('/registers/buscadorAvanzado', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -27,12 +27,12 @@ class ObjetoController extends Controller{
         exit(json_encode($this -> objeto-> getObjetos($found)));
     }
 
-    public function advancedSearch() {
+    public function buscadorAvanzado() {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
         header('Content-Type: application/json');
         
         $criteria = json_decode(file_get_contents('php://input'), true)['criteria'];
-        exit(json_encode($this->objeto->advancedSearch($criteria)));
+        exit(json_encode($this->objeto->buscadorAvanzado($criteria)));
     }
 
     public function createView() {

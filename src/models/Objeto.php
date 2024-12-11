@@ -20,7 +20,7 @@
             }
         }
 
-        function advancedSearch($criteria) {
+        function buscadorAvanzado($criteria) {
             try {
                 $whereClauses = [];
                 $params = [];
