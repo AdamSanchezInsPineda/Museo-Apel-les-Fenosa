@@ -6,10 +6,11 @@
     <div>
         <div>
             <h1>Registres</h1>
-            <button id="mostrarBuscador">Buscador avançat</button>
             <div>
-                <input type="text" placeholder="Cercar" id="search"> 
-                
+                <div>
+                    <input type="text" placeholder="Cercar" id="search"> 
+                    <button id="mostrarBuscador">Buscador avançat</button>
+                </div>
                 <a href="/registers/add">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
 
@@ -21,7 +22,7 @@
                     </div>
 
                     <div class="modal-body">
-                    <form id="advancedSearch">
+                    <form id="buscadorAvanzado">
                         <h3>Buscar Obres</h3>
                         
                         <table id="filters-container">
@@ -86,7 +87,7 @@
     </div>
     <!--Scripts-->
     <script type="module" src="/resources/js/tableSearch/search.js"></script>
-    <script src="/resources/js/tableSearch/advancedSearch.js"></script>
+    <script src="/resources/js/tableSearch/buscadorAvanzado.js"></script>
     <script src="resources/js/imagePreview.js"></script>
     <?php
     include "resources/components/footer.php";

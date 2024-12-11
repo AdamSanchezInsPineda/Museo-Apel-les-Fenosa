@@ -21,7 +21,7 @@ $router->get('/registers/search', 'ObjetoController@searchDef');
 
 $router->get('/registers/search/{found}', 'ObjetoController@search');
 
-$router ->post('/registers/advancedSearch', 'ObjetoController@advancedeSearch');
+$router ->post('/registers/buscadorAvanzado', 'ObjetoController@advancedeSearch');
 
 $router->get('/registers/add', 'ObjetoController@createView');
 

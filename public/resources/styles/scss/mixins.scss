@@ -20,6 +20,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 0.5%;
+        align-items: center;
     }
     table{
         display: block;
@@ -53,7 +54,7 @@
         height: 35px;
         margin-left: 0;
     }
-    > div > div > div > input{
+    #search{
         background: v.$color2;
         border: 1px v.$color4 solid;
         font-size: 18px;
