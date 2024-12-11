@@ -13,6 +13,13 @@
     div + a > img{
         height: 30px;
     }
+    div>div+a{
+        color:v.$colorNegro;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
     h1{
         text-align: center;
     }
@@ -41,7 +48,7 @@
         align-items: center;
         display: flex;
     }
-    button{
+    div:last-child>button{
         margin-top: 10px;
     }
     .scroll{
