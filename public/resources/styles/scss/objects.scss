@@ -13,13 +13,6 @@
     div + a > img{
         height: 30px;
     }
-    div>div+a{
-        color:v.$colorNegro;
-        text-decoration: none;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-    }
     h1{
         text-align: center;
     }
@@ -27,29 +20,24 @@
         width: 1570px;
         
     }
-    button>a{
-        text-decoration: none;
-        color: v.$color4;
-        font-size: 20px;
-    }
     div:has(> #search){
         display: flex;
         align-items: center;
     }
     button{
-        color: v.$color4;
+        color: v.$textoBotones;
         padding: 5px 5px 5px 5px;
         background-color: v.$color1;
         cursor: pointer;
+    }
+    button:hover{
+        background-color: v.$color1palHover;
     }
     >div>div>div:last-of-type{
         justify-content: center;
         text-align: center;
         align-items: center;
         display: flex;
-    }
-    div:last-child>button{
-        margin-top: 10px;
     }
     .scroll{
         max-height: 600px;
@@ -60,23 +48,18 @@
             top: 0px;
         }
     }
+    .scroll + div > button{
+        margin-top: 10px;
+        font-size: 20px
+    }
     td{
         padding: 0 20px;
     }
-    th:nth-child(3){
+    th:nth-child(3), th:nth-child(5), th:nth-child(6), th:nth-child(7){
         width: 15%;
     }
     th:nth-child(4){
         width: 20%;
-    }
-    th:nth-child(5){
-        width: 15%;
-    }
-    th:nth-child(6){
-        width: 15%;
-    }
-    th:nth-child(7){
-        width: 15%;
     }
     .modal {
         display: none;

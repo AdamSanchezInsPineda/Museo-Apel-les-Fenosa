@@ -8,7 +8,7 @@ export async function userActions(id){
             if (rol && rol === 'admin') {
                 output += "<td>";
                 output += "<a href='/users/" + id + "'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                output += "<a href='/users/" + id + "/delete' class='links'><img src='resources/images/accions/delete.png' alt='Borrar'></a>";
+                output += "<a href='/users/" + id + "/delete' class='links'><img src='resources/images/accions/delete.svg' alt='Borrar'></a>";
                 output += "</td>";
             }
             break;
@@ -17,7 +17,7 @@ export async function userActions(id){
             output += "<a href='/registers/"  + id + "'><img src='resources/images/accions/eye.svg' alt='Ficha'></a>";
             if (rol && rol !== "convidat") {
                 output += "<a href='/registers/"  + id + "/updateView'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                output += "<a href='/registers/" + id + "/delete'><img src='resources/images/accions/delete.png' alt='Ficha'></a>";
+                output += "<a href='/registers/" + id + "/delete'><img src='resources/images/accions/delete.svg' alt='Ficha'></a>";
             }
             output += "</td>";
             break;
@@ -26,14 +26,14 @@ export async function userActions(id){
             output += "<a href='/exposicions/"  + id + "/bens'><img src='resources/images/accions/papel.png' alt='Ver Objeto de la exposición'></a>";
             if (rol && rol == "admin"){
                 output += "<a href='/exposicions/"  + id + "'><img src='resources/images/accions/edit.svg' alt='Ficha'></a>";
-                output += "<a href='/exposicions/"  + id + "/delete'><img src='resources/images/accions/delete.png' alt='Borrar'></a>"; 
+                output += "<a href='/exposicions/"  + id + "/delete'><img src='resources/images/accions/delete.svg' alt='Borrar'></a>"; 
             }
             output += "</td>";
             break;
         case "bens":
             if (rol && rol == "admin"){
                 output += "<td>";
-                output += "<a href='" + window.location.pathname + "/" + id + "/delete'><img src='/resources/images/accions/delete.png' alt='Borrar'></a>";
+                output += "<a href='" + window.location.pathname + "/" + id + "/delete'><img src='/resources/images/accions/delete.svg' alt='Borrar'></a>";
                 output += "</td>";
             }
             break;

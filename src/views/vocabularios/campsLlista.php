@@ -53,7 +53,7 @@
                             if ($_SESSION['rol'] == "admin" |  $_SESSION['rol'] == "tecnic"){
                                 echo "<td>";
                                 echo "<a href='/vocabularis/{$path}/{$vocabulari['id']}'><img src='/resources/images/accions/edit.svg' alt='Ficha'></a>";
-                                echo "<a href='/vocabularis/{$path}/{$vocabulari['id']}/delete'><img src='/resources/images/accions/delete.png' alt='Ficha'></a>";
+                                echo "<a href='/vocabularis/{$path}/{$vocabulari['id']}/delete'><img src='/resources/images/accions/delete.svg' alt='Ficha'></a>";
                                 echo "</td>";
                             }
                         echo"</tr>";
