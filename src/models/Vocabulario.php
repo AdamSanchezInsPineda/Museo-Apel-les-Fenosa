@@ -96,4 +96,42 @@ class Vocabulario extends Database
             throw new Exception("El modelo $modelClass no existe");
         }
     }
+    public function getAllAutors()
+    {
+        $sql = $this->db->prepare('SELECT id, Nombre FROM Autors');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllMuseos()
+    {
+        $sql = $this->db->prepare('SELECT MuseoID, Nombre FROM Museos');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllMaterial(){
+        $sql = $this->db->prepare('SELECT id, valor FROM Material');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllTecnicas(){
+        $sql = $this->db->prepare('SELECT id, valor FROM Tecnica');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllBajas(){
+        $sql = $this->db->prepare('SELECT id, valor FROM Baja');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllCausaBaja(){
+        $sql = $this->db->prepare('SELECT id, valor FROM CausaBaja');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllFormaIngreso(){
+        $sql = $this->db->prepare('SELECT id, valor FROM FormaIngreso');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }

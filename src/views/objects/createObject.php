@@ -17,14 +17,24 @@
                 </div>
 
                 <div>
-                    <label for="nombre">Nom:
-                    <input type="text" id="nombre" name="nombre" required></label>
-                    <label for="museo">Museu:
-                    <input type="text" id="museo" name="museo"></label>
-                    <label for="autor">Autor:
-                    <input type="text" id="autor" name="autor"></label>
-                    <label for="titulo">Títol:
-                    <input type="text" id="titulo" name="titulo" required></label>
+                    <label for="Nombre">Nom:
+                    <input type="text" id="Nombre" name="Nombre" required></label>
+                    <label for="Museo">Museu:</label>
+                    <select name="Museo" id="Museo">
+                        <option value=null>Selecciona un museu</option>
+                        <?php foreach ($museos as $museo): ?>
+                            <option value="<?php echo $museo['Nombre']; ?>"><?php echo $museo['Nombre']; ?></option>
+                        <?php endforeach; ?>
+                    </select> 
+                    <label for="Autor">Autor:</label>
+                    <select name="Autor" id="Autor" required>
+                        <option value=null>Selecciona un autor</option>
+                        <?php foreach ($autores as $autor): ?>
+                            <option value="<?php echo $autor['Nombre']; ?>"><?php echo $autor['Nombre']; ?></option>
+                        <?php endforeach; ?>
+                    </select>                    
+                    <label for="Titulo">Títol:
+                    <input type="text" id="Titulo" name="Titulo" required></label>
                 </div>
             </div>
 
@@ -57,22 +67,42 @@
                     <input type="text" id="profundidad" name="profundidad"></label>
                     <label for="anyFinal">Any Final:
                     <input type="text" id="anyFinal" name="anyFinal"></label>
-                    <label for="material">Material:
-                    <input type="text" id="material" name="material"></label>
-                    <label for="tecnica">Tècnica:
-                    <input type="text" id="tecnica" name="tecnica"></label>
+                    <label for="Material">Material:
+                    <select name="Material" id="Material">
+                        <option value=null>Selecciona un material</option>
+                        <?php foreach ($materials as $material): ?>
+                            <option value="<?php echo $material['valor']; ?>"><?php echo $material['valor']; ?></option>
+                        <?php endforeach; ?>
+                    </select> </label>
+                    <label for="Tecnica">Técnica:
+                    <select name="Tecnica" id="Tecnica">
+                        <option value=null>Selecciona una Técnica</option>
+                        <?php foreach ($tecnicas as $tecnica): ?>
+                            <option value="<?php echo $tecnica['valor']; ?>"><?php echo $tecnica['valor']; ?></option>
+                        <?php endforeach; ?>
+                    </select> </label>
                 </section>
 
                 <div class="toggle-hide"><h2>Baixa</h2><span></span></div>
 
                 <section class="hide">
-                    <label for="baja">Baixa:
-                    <input type="text" id="baja" name="baja"></label>
+                    <label for="Baja">Baixa:
+                    <select name="Baja" id="Baja">
+                        <option value=null>Selecciona un valor per a Baixa</option>
+                        <?php foreach ($bajas as $baja): ?>
+                            <option value="<?php echo $baja['valor']; ?>"><?php echo $baja['valor']; ?></option>
+                        <?php endforeach; ?>
+                    </select> </label>
                     <label for="causaBaja">Causa Baixa:
-                    <input type="text" id="causaBaja" name="causaBaja"></label>
+                    <select name="causaBaja" id="causaBaja">
+                        <option value=null>Selecciona la causa de la baixa</option>
+                        <?php foreach ($causaBajas as $causaBaja): ?>
+                            <option value="<?php echo $causaBaja['valor']; ?>"><?php echo $causaBaja['valor']; ?></option>
+                        <?php endforeach; ?>
+                    </select> </label>
                     <label for="fechaBaja">Data Baixa:
                     <input type="datetime-local" id="fechaBaja" name="fechaBaja"></label>
-                    <label for="personaAutorizadaBaja">Persona Autorizada Baja:
+                    <label for="personaAutorizadaBaja">Persona Autoritzada Baixa:
                     <input type="text" id="personaAutorizadaBaja" name="personaAutorizadaBaja"></label>
                 </section>
 
@@ -95,7 +125,12 @@
 
                 <section class="hide">
                     <label for="formaIngreso">Forma d'Ingrés:
-                    <input type="text" id="formaIngreso" name="formaIngreso"></label>
+                        <select name="formaIngreso" id="formaIngreso">
+                        <option value=null>Selecciona una forma d'ingrés</option>
+                        <?php foreach ($formaIngresos as $formaIngreso): ?>
+                            <option value="<?php echo $formaIngreso['valor']; ?>"><?php echo $formaIngreso['valor']; ?></option>
+                        <?php endforeach; ?>
+                    </select> </label>                    
                     <label for="fuenteIngreso">Font d'Ingrés:
                     <input type="text" id="fuenteIngreso" name="fuenteIngreso"></label>
                     <label for="fechaIngreso">Data d'Ingrés:
