@@ -43,7 +43,7 @@
                                 echo "<td>";
                                 echo "<a href='/vocabulary/llista/{$vocabularis['id']}/valors'><img src='/resources/images/accions/eye.svg' alt='Ficha'></a>";
                                 echo "<a href='/vocabulary/llista/{$vocabularis['id']}'><img src='/resources/images/accions/edit.svg' alt='Ficha'></a>";
-                                echo "<a href='/vocabulary/llista/{$vocabularis['id']}/delete'><img src='/resources/images/accions/delete.png' alt='Ficha'></a>";
+                                echo "<a href='/vocabulary/llista/{$vocabularis['id']}/delete'><img src='/resources/images/accions/delete.svg' alt='Ficha'></a>";
                                 echo "</td>";
                             }
                         echo"</tr>";

@@ -81,7 +81,7 @@
                 </table>
             </section>
             <div>
-                <button><a href="/registers/llibreRegistre" target="_blank">Generar Llibre de Registre</a></button>
+                <button onclick="window.open('/registers/llibreRegistre', '_blank');">Generar Llibre de Registre</button>
             </div>
         </div>
     </div>
