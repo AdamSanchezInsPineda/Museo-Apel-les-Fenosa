@@ -106,15 +106,6 @@ for ($i=0; $i< count($cont[0]); $i++) {
                 <td>Estat de conservació: ".$cont[0][$i]['EstadoConservacionNombre']."</td>
             </tr>
             <tr>
-                <th colspan='4'>Exposicions</th>
-            </tr>
-            <tr>
-                <td>Nom: ".$cont[0][$i]['ExposicionNombre']."</td>
-                <td>Lloc: ".$cont[0][$i]['LugarExposicion']."</td>
-                <td>Data Inicial: ".$cont[0][$i]['FechaInicioExposicion']."</td>
-                <td>Data Final: ".$cont[0][$i]['FechaFinExposicion']."</td>
-            </tr>
-            <tr>
                 <td>Tipus: ".$cont[0][$i]['TipoExposicionNombre']."</td>
             </tr>
             <tr>

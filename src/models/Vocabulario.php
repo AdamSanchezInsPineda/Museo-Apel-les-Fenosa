@@ -133,5 +133,15 @@ class Vocabulario extends Database
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getAllClGenericas(){
+        $sql = $this->db->prepare('SELECT id, valor FROM Classificacion');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllEConservacion(){
+        $sql = $this->db->prepare('SELECT id, valor FROM EstadoConservacion');
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }

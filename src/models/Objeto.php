@@ -93,7 +93,6 @@
         function fitxesCreate($registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $fechaRegistro, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo) {
             // Preparar la declaración
             $sql = $this->db->prepare('INSERT INTO Objetos (RegistroNº, UsuarioID, Imagen, Nombre, ClasificacionGenericaID, ColeccionProcedencia, Altura, Anchura, Profundidad, MaterialID, TecnicaID, AutorID, Titulo, DatacionID, UbicacionActualID, FechaRegistro, NumeroEjemplares, FormaIngresoID, FechaIngreso, FuenteIngreso, BajaID, CausaBajaID, FechaBaja, PersonaAutorizadaBaja, EstadoConservacionID, LugarEjecucion, LugarProcedencia, NumeroTiraje, OtrosNrosIdentificacion, ValoracionEconomica, Bibliografia, Descripcion, HistoriaObjeto, MuseoID, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        
             // Ejecutar la consulta pasando las variables en el mismo orden
             $sql->execute([
                 $registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, 
@@ -153,11 +152,6 @@
                 r.CodigoRestauracion,
                 r.NombreRestaurador,
                 r.ComentarioRestauracion,
-                e.Nombre as ExposicionNombre,
-                e.FechaInicio as FechaInicioExposicion,
-                e.FechaFin as FechaFinExposicion,
-                e.LugarExposicion,
-                te.valor as TipoExposicionNombre,
                 o.Activo
                 FROM Objetos o
                 LEFT JOIN Autors a ON o.AutorID = a.id
@@ -174,9 +168,6 @@
                 LEFT JOIN FormaIngreso fi ON o.FormaIngresoID = fi.id
                 LEFT JOIN Restauraciones r ON r.ObjetoID = o.ObjetoID
                 LEFT JOIN Usuarios us ON us.UsuarioID = o.UsuarioID
-                LEFT JOIN ObjetoExposicion oe ON  o.ObjetoID = oe.ObjetoID
-                LEFT JOIN Exposiciones e ON oe.ExposicionID = e.ExposicionID
-                LEFT JOIN TiposExposicion te  ON e.TipoExposicionID = te.id
                 WHERE o.RegistroNº = :registroN AND uo.FechaFinUbicacion IS NULL');
         
             $sql->bindParam(':registroN', $registroN, PDO::PARAM_INT);
@@ -269,11 +260,6 @@
                 r.CodigoRestauracion,
                 r.NombreRestaurador,
                 r.ComentarioRestauracion,
-                e.Nombre as ExposicionNombre,
-                e.FechaInicio as FechaInicioExposicion,
-                e.FechaFin as FechaFinExposicion,
-                e.LugarExposicion,
-                te.valor as TipoExposicionNombre,
                 o.Activo
                 FROM Objetos o
                 LEFT JOIN Autors a ON o.AutorID = a.id
@@ -290,9 +276,6 @@
                 LEFT JOIN FormaIngreso fi ON o.FormaIngresoID = fi.id
                 LEFT JOIN Restauraciones r ON r.ObjetoID = o.ObjetoID
                 LEFT JOIN Usuarios us ON us.UsuarioID = o.UsuarioID
-                LEFT JOIN ObjetoExposicion oe ON  o.ObjetoID = oe.ObjetoID
-                LEFT JOIN Exposiciones e ON oe.ExposicionID = e.ExposicionID
-                LEFT JOIN TiposExposicion te  ON e.TipoExposicionID = te.id
                 WHERE o.Activo = true');
         
             $sql->execute();

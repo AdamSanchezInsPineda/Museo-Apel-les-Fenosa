@@ -47,8 +47,10 @@ class ObjetoController extends Controller{
         $bajas = $model->getAllBajas();
         $causaBajas = $model->getAllCausaBaja();
         $formaIngresos = $model->getAllFormaIngreso();
+        $clGenericas = $model->getAllClGenericas();
+        $eConservaciones = $model->getAllEConservacion();
         var_dump($autores);
-        $this->render('objects/createObject', ['autores' => $autores, 'museos' => $museos, 'materials' => $materials, 'tecnicas' => $tecnicas, 'bajas' =>$bajas, 'causaBajas' => $causaBajas, 'formaIngresos' => $formaIngresos]);
+        $this->render('objects/createObject', ['autores' => $autores, 'museos' => $museos, 'materials' => $materials, 'tecnicas' => $tecnicas, 'bajas' =>$bajas, 'causaBajas' => $causaBajas, 'formaIngresos' => $formaIngresos, 'clGenericas' => $clGenericas, 'eConservaciones' => $eConservaciones]);
     }
 
     public function new($registroN) {

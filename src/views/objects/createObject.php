@@ -136,10 +136,15 @@
                     <label for="fechaIngreso">Data d'Ingrés:
                     <input type="datetime-local" id="fechaIngreso" name="fechaIngreso"></label>
                     <label for="estadoConservacion">Estat de conservació:
-                    <input type="text" id="estadoConservacion" name="estadoConservacion"></label>
+                        <select name="estadoConservacion" id="estadoConservacion">
+                        <option value=null>Selecciona l'estat de conservació</option>
+                        <?php foreach ($eConservaciones as $eConservacion): ?>
+                            <option value="<?php echo $eConservacion['valor']; ?>"><?php echo $eConservacion['valor']; ?></option>
+                        <?php endforeach; ?>
+                        </select> </label>                 
                 </section>
 
-                <div class="toggle-hide"><h2>Exposicions</h2><span></span></div>
+                <!-- <div class="toggle-hide"><h2>Exposicions</h2><span></span></div>
 
                 <section class="hide">
                     <label for="exposicionNombre">Nom:
@@ -152,7 +157,7 @@
                     <input type="datetime-local" id="fechaFinExposicion" name="fechaFinExposicion"></label>
                     <label for="tipoExposicion">Tipus:
                     <input type="text" id="tipoExposicion" name="tipoExposicion"></label>
-                </section>
+                </section> -->
 
                 <div class="toggle-hide"><h2>Altres Dades</h2><span></span></div>
 
@@ -172,6 +177,12 @@
                     <label for="otrosNrosIdentificacion">Altres Nº Identificació:
                     <input type="text" id="otrosNrosIdentificacion" name="otrosNrosIdentificacion"></label>
                     <label for="clasificacionGenerica">Classificació Genérica:
+                        <select name="clasificacionGenerica" id="clasificacionGenerica">
+                        <option value=null>Selecciona una Classificació Genérica</option>
+                        <?php foreach ($clGenericas as $clGenerica): ?>
+                            <option value="<?php echo $clGenerica['valor']; ?>"><?php echo $clGenerica['valor']; ?></option>
+                        <?php endforeach; ?>
+                    </select> </label>
                     <input type="text" id="clasificacionGenerica" name="clasificacionGenerica"></label>
                     <label for="bibliografia">Bibliografia:
                     <textarea id="bibliografia" name="bibliografia"></textarea></label>

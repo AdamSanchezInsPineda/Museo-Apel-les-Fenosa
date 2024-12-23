@@ -123,20 +123,6 @@ $content = "
                         <td>Data d'Ingrés: ".$cont[1][0]['FechaIngreso']."</td>
                         <td>Estat de conservació: ".$cont[1][0]['EstadoConservacionNombre']."</td>
                     </tr>
-                    <tr>
-                        <th colspan='2'>Exposicions</th>
-                    </tr>
-                    <tr>
-                        <td>Nom: ".$cont[1][0]['ExposicionNombre']."</td>
-                        <td>Lloc: ".$cont[1][0]['LugarExposicion']."</td>
-                    </tr>
-                    <tr>
-                        <td>Data Inicial: ".$cont[1][0]['FechaInicioExposicion']."</td>
-                        <td>Data Final: ".$cont[1][0]['FechaFinExposicion']."</td>
-                    </tr>
-                    <tr>
-                        <td>Tipus: ".$cont[1][0]['TipoExposicionNombre']."</td>
-                    </tr>
                 </table>
             </div>
             <div>
