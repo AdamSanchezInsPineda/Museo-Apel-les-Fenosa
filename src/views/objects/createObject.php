@@ -11,7 +11,7 @@
                 <div>
                     <label for="RegistroNº">Nº de Registre:</label>
                     <input type="text" id="RegistroNº" name="RegistroNº" required>
-
+                    <span id="errorMessage" style="display: none; color: red;">Formato inválido. Debe ser una letra opcional seguida de 5 dígitos.</span>
                     <label for="imagen">Imagen:
                     <input type="file" name="imagen" id="imagen" accept="image/*"></label>
                 </div>
