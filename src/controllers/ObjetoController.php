@@ -59,6 +59,9 @@ class ObjetoController extends Controller{
     }
     public function create() {
         $this->checkRole(['admin', 'tecnic', 'convidat']); // Verificar permisos
+        
+        
+        
         // Recoger datos del formulario con validación
         $this->objeto->fitxesCreate(
             $_POST['RegistroNº'] ?? null,
