@@ -60,11 +60,21 @@ class ObjetoController extends Controller{
     public function create() {
         $this->checkRole(['admin', 'tecnic', 'convidat']); // Verificar permisos
         
-        
+        $registroNumero = $_POST['RegistroNº'] ?? null;
+        $regex = '/^[A-Za-z]?\d{5}$/'; // Expresión regular para validar el formato
+
+
+        if (!$registroNumero || !preg_match($regex, $registroNumero)) {
+            // Si el número de registro no es válido, mostrar un error
+            $_SESSION['error'] = "El número de registro no cumple con el formato requerido.";
+            // Mostrar el formulario con el error
+            $this->render('objects/createObject');
+            return;
+        }
         
         // Recoger datos del formulario con validación
         $this->objeto->fitxesCreate(
-            $_POST['RegistroNº'] ?? null,
+            $registroNumero,
             $_POST['UsuarioID'] ?? null, // Asegúrate de que este campo esté en el formulario
             $_FILES['Imagen']['name'] ?? null, // Si estás subiendo una imagen
             $_POST['Nombre'] ?? null,

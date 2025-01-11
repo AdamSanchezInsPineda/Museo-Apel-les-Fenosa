@@ -12,6 +12,12 @@
                     <label for="RegistroNº">Nº de Registre:</label>
                     <input type="text" id="RegistroNº" name="RegistroNº" required>
                     <span id="errorMessage" style="display: none; color: red;">Formato inválido. Debe ser una letra opcional seguida de 5 dígitos.</span>
+                    <?php if (isset($_SESSION['error'])): ?>
+                        <div class="error">
+                            <?= $_SESSION['error'] ?>
+                        </div>
+                        <?php unset($_SESSION['error']); ?>
+                    <?php endif; ?>
                     <label for="imagen">Imagen:
                     <input type="file" name="imagen" id="imagen" accept="image/*"></label>
                 </div>
