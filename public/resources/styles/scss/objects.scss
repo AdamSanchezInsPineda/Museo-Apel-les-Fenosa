@@ -13,9 +13,6 @@
     div + a > img{
         height: 30px;
     }
-    h1{
-        text-align: center;
-    }
     section>table{
         width: 1570px;
         
@@ -136,5 +133,10 @@
     #mostrarBuscador{
         margin-left: 20px;
         height: 29px;
+    }
+
+    form input{
+        width: 250px;
+        display: block;
     }
 }

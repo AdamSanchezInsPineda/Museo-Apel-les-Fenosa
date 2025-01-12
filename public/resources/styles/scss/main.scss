@@ -9,6 +9,7 @@
 //Tables
 @use "objects.scss";
 @use "users.scss";
+@use "backups.scss";
 @use "campsLlista.scss";
 @use "exposicions.scss";
 @use "addBensExposicions.scss";
@@ -20,7 +21,7 @@
 @use "createExposicions.scss";
 
 //Create
-@use "createObject.scss";
+@use "createObject.scss";                           
 @use "createUser.scss";
 @use "indexVocabulary.scss";
 @use "createAutor.scss";

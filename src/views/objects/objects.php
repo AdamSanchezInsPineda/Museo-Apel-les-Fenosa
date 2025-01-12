@@ -13,14 +13,78 @@
                 </div>
                 <a href="/registers/add">Fer un nou registre<img src="resources/images/plus.png" alt="Afegir registre"></a>
             </div>
+            <!--<form>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="nom">Nom: <input id="nom" name="nom" type="text"></label>
+                        </td>
 
+                        <td>
+                            <label for="titol">Títol: <input id="titol" name="titol" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="colleccioProcedencia">Col·lecció Procedència: <input id="colleccioProcedencia" name="colleccioProcedencia" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="altura">Alçada: <input id="altura" name="altura" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="amplada">Amplada: <input id="amplada" name="amplada" type="text"></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="profunditat">Profunditat: <input id="profunditat" name="profunditat" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="numeroExemplars">Número d'Exemplars: <input id="numeroExemplars" name="numeroExemplars" type="number"></label>
+                        </td>
+
+                        <td>
+                            <label for="numeroTiratge">Número Tiratge: <input id="numeroTiratge" name="numeroTiratge" type="number"></label>
+                        </td>
+
+                        <td>
+                            <label for="dataRegistre">Data de Registre: <input id="dataRegistre" name="dataRegistre" type="date"></label>
+                        </td>
+
+                        <td>
+                            <label for="dataIngress">Data d'Ingress: <input id="dataIngress" name="dataIngress" type="date"></label>
+                        </td>
+                    </tr>
+                        
+                    <tr>
+                        <td>
+                            <label for="fontIngress">Font d'Ingress: <input id="fontIngress" name="fontIngress" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="ubicacio">Ubicació: <input id="ubicacio" name="ubicacio" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="llocProcedencia">Lloc de Procedència: <input id="llocProcedencia" name="llocProcedencia" type="text"></label>
+                        </td>
+
+                        <td>
+                            <label for="valoracioEconomica">Valoració Econòmica: <input id="valoracioEconomica" name="valoracioEconomica" type="text"></label>
+                        </td>
+                    </tr>
+                </table>
+            </form>--> 
             <div id="buscadorAvanzado" class="modal">
 
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2>Buscador avançat</h2>
                     </div>
-
+                
                     <div class="modal-body">
                     <form id="buscadorAvanzado">
                         <h3>Buscar Obres</h3>
