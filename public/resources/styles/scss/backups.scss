@@ -1,0 +1,32 @@
+@use "vars" as v;
+@use "mixins" as mx;
+
+.backups{
+    @include mx.tableStyle;
+    table{
+        width: 750px;
+    }
+    td{
+        height: 100%;
+        width: 40%;
+        padding: 0 50px;
+    }
+    td + td + td{
+        width: 160px;
+    }
+    header + div > div{
+        min-width: 30%;
+    }
+    h1{
+        text-align: center;
+    }
+    button{
+        color: v.$textoBotones;
+        padding: 5px 5px 5px 5px;
+        background-color: v.$color1;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: v.$color1palHover;
+    }
+}

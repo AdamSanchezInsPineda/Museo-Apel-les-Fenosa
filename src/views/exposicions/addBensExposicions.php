@@ -4,9 +4,11 @@
 <body class = "addBensExposicions">  
     <div>
         <div> 
-            <h2>Bens per afegir a la exposició</h2>
+            <h1>Bens per afegir a la exposició</h1>
             <div>
-                <input type="text" placeholder="Cercar" id="search">
+                <div>
+                    <input type="text" placeholder="Cercar" id="search">
+                </div>
             </div>
             <div>
                 <form method="POST" action="/exposicions/<?php echo explode("/", $_SERVER['REQUEST_URI'])[2] ?>/bens/create"id="addObjectsForm" onsubmit="return validateForm()">

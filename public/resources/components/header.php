@@ -17,16 +17,16 @@
                 echo "<a href='/vocabularis'>Vocabulari</a>";
                 echo "<a href='/ubicacions'>Ubicacions</a>";
                 echo "<a href='/exposicions'>Exposicions</a>";
-                echo "<a href=''>Copies de seguretat</a>";
+                echo "<a href='/backups'>Copies de seguretat</a>";
                 break;
             case "tecnic":
                 echo "<a href='/users'>Usuaris</a>";
-                echo "<a href=''>Ubicacions</a>";
+                echo "<a href='/ubicacions'>Ubicacions</a>";
                 echo "<a href='/exposicions'>Exposicions</a>";
-                echo "<a href=''>Copies de seguretat</a>";
+                echo "<a href='/backups'>Copies de seguretat</a>";
                 break;
             case "convidat":
-                echo "<a href=''>Ubicacions</a>";
+                echo "<a href='/ubicacions'>Ubicacions</a>";
                 echo "<a href='/exposicions'>Exposicions</a>";
                 break;
         }

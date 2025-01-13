@@ -5,7 +5,6 @@
     <div>
         <div>
             <div>
-                <input type="text" placeholder="Cercar">
                 <a href="/vocabularis/<?php echo $path; ?>/add">Afegir un vocabulari nou<img src="/resources/images/plus.png" alt="Afegir camp llista nou"></a>
             </div>
             <table>
