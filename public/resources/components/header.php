@@ -26,7 +26,7 @@
                 echo "<a href='/backups'>Copies de seguretat</a>";
                 break;
             case "convidat":
-                echo "<a href=''>Ubicacions</a>";
+                echo "<a href='/ubicacions'>Ubicacions</a>";
                 echo "<a href='/exposicions'>Exposicions</a>";
                 break;
         }

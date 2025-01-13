@@ -69,4 +69,22 @@ class BackupController extends Controller
         exit;
     }
 
+    public function exportTables()
+    {
+        $this->checkRole(['admin', 'tecnic']);
+
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="export_bienes_' . date('Y-m-d') . '.csv"');
+
+        try {
+            $this->backup->exportTablesToCSV();
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo "Error al exportar las tablas: " . $e->getMessage();
+        }
+
+        exit;
+    }
+
+
 }

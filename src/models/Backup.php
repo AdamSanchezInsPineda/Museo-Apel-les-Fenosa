@@ -95,4 +95,55 @@ class Backup extends Database
         }
         return $backups;
     }
+
+    public function exportTablesToCSV()
+    {
+        // Definir las tablas a exportar
+        $tables = [
+            'Autors' => 'Autores',
+            'Baja' => 'Baja',
+            'CausaBaja' => 'Causas de Baja',
+            'Classificacion' => 'Clasificación',
+            'CodigoGetty' => 'Código Getty',
+            'Datacion' => 'Datación',
+            'EstadoConservacion' => 'Estado de Conservación',
+            'Exposiciones' => 'Exposiciones',
+            'FormaIngreso' => 'Formas de Ingreso',
+            'Material' => 'Materiales',
+            'Museos' => 'Museos',
+            'Objetos' => 'Objetos',
+            'Restauraciones' => 'Restauraciones',
+            'Tecnica' => 'Técnicas',
+            'TiposExposicion' => 'Tipos de Exposición',
+            'UbicacionObjeto' => 'Ubicación de Objetos',
+            'Ubicaciones' => 'Ubicaciones'
+        ];
+
+        // Preparar la salida para CSV
+        $output = fopen('php://output', 'w');
+        if (!$output) {
+            throw new Exception('No se pudo abrir el flujo de salida.');
+        }
+
+        foreach ($tables as $table => $title) {
+            // Agregar el nombre de la tabla como título
+            fputcsv($output, ["Tabla: $title"]);
+
+            // Obtener columnas y filas
+            $stmt = $this->db->query("DESCRIBE $table"); // Usamos $this->db en lugar de $this->pdo
+            $columns = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            fputcsv($output, $columns);
+
+            $stmt = $this->db->query("SELECT * FROM $table"); // Consultar datos de la tabla
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                fputcsv($output, $row);
+            }
+
+            // Separador entre tablas
+            fputcsv($output, []);
+        }
+
+        fclose($output);
+    }
+
 }

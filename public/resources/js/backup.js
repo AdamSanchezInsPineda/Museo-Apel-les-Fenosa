@@ -94,4 +94,10 @@ document.querySelectorAll('.importBackup').forEach(button => {
                 alert(`Hubo un problema al importar el backup: ${error.message}`);
             });
     });
+    
+});
+
+document.querySelector('.exportTable').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.open('/backup/export', '_blank');
 });

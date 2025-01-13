@@ -141,4 +141,6 @@ $router->post('/backup/delete', 'BackupController@delete');
 
 $router->post('/backup/import', 'BackupController@import');
 
+$router->get('/backup/export', 'BackupController@exportTables');
+
 $router->dispatch();

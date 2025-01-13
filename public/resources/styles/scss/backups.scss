@@ -20,4 +20,13 @@
     h1{
         text-align: center;
     }
+    button{
+        color: v.$textoBotones;
+        padding: 5px 5px 5px 5px;
+        background-color: v.$color1;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: v.$color1palHover;
+    }
 }
