@@ -230,41 +230,6 @@
             </tr>
             <tr>
                 <td colspan = "2">
-                    <h2>Exposicions</h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="NombreExposicion">Nom:</label>
-                    <input type="text" id="NombreExposicion" name="NombreExposicion" value="<?php echo $objetos[0]['ExposicionNombre']?>">
-                </td>
-                <td>
-                    <label for="LugarExposicion">Lloc:</label>
-                    <input type="text" id="LugarExposicion" name="LugarExposicion" value="<?php echo $objetos[0]['e.LugarExposicion']?>">
-                </td>
-                     
-            </tr>
-            <tr>
-                <td>
-                    <label for="InicioExposicion">Data Inicial:</label>
-                    <input type="datetime-local" id="InicioExposicion" name="InicioExposicion" value="<?php echo $objetos[0]['FechaInicioExposicion']?>">
-                </td>
-                <td>
-                    <label for="FinalExposicion">Data Final:</label>
-                    <input type="datetime-local" id="FinalExposicion" name="FinalExposicion" value="<?php echo $objetos[0]['FechaFinExposicion']?>">
-                </td>
-            </tr>
-                
-            <tr>
-                <td>
-                    <label for="TiposExposicion">Tipus:</label>
-                    <select name="TiposExposicion" id="TiposExposicion" value="<?php echo $objetos[0]['TipoExposicionNombre']?>">
-                        <!-- Select de valor de TiposExposicion -->
-                    </select>                  
-                </td>
-            </tr>
-            <tr>
-                <td colspan = "2">
                     <h2>Altres Dades</h2>
                 </td>
             </tr>

@@ -4,7 +4,6 @@
 
 <body class = "verFichaCompleta">
     <main>
-        <!--Contenido variable de la pagina-->
         <h1>Fitxa completa de <?php echo $cont[1][0]['Nombre']?></h1>                       
         <div>
             <div>
@@ -73,16 +72,7 @@
                 <p>Data d'Ingrés: <?php echo $cont[1][0]['FechaIngreso']?></p>
                 <p>Estat de conservació: <?php echo $cont[1][0]['EstadoConservacionNombre']?></p>
             </section>
-                        
-            <!-- <div class="toggle-hide"><h2>Exposicions</h2></div>
-
-            <section>
-                <p>Nom: <?php echo $cont[1][0]['ExposicionNombre']?></p>
-                <p>Lloc: <?php echo $cont[1][0]['LugarExposicion']?></p>
-                <p>Data Inicial: <?php echo $cont[1][0]['FechaInicioExposicion']?></p>
-                <p>Data Final: <?php echo $cont[1][0]['FechaFinExposicion']?></p>
-                <p>Tipus: <?php echo $cont[1][0]['TipoExposicionNombre']?></p>
-            </section>  -->
+            
                         
             <div class="toggle-hide"><h2>Altres Dades</h2></div>
 

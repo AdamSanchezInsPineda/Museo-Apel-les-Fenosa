@@ -49,7 +49,7 @@ class ObjetoController extends Controller{
         $formaIngresos = $model->getAllFormaIngreso();
         $clGenericas = $model->getAllClGenericas();
         $eConservaciones = $model->getAllEConservacion();
-        var_dump($autores);
+        //var_dump($autores);
         $this->render('objects/createObject', ['autores' => $autores, 'museos' => $museos, 'materials' => $materials, 'tecnicas' => $tecnicas, 'bajas' =>$bajas, 'causaBajas' => $causaBajas, 'formaIngresos' => $formaIngresos, 'clGenericas' => $clGenericas, 'eConservaciones' => $eConservaciones]);
     }
 
@@ -65,9 +65,7 @@ class ObjetoController extends Controller{
 
 
         if (!$registroNumero || !preg_match($regex, $registroNumero)) {
-            // Si el número de registro no es válido, mostrar un error
             $_SESSION['error'] = "El número de registro no cumple con el formato requerido.";
-            // Mostrar el formulario con el error
             $this->render('objects/createObject');
             return;
         }
@@ -75,30 +73,30 @@ class ObjetoController extends Controller{
         // Recoger datos del formulario con validación
         $this->objeto->fitxesCreate(
             $registroNumero,
-            $_POST['UsuarioID'] ?? null, // Asegúrate de que este campo esté en el formulario
-            $_FILES['Imagen']['name'] ?? null, // Si estás subiendo una imagen
+            $_POST['UsuarioID'] ?? null, 
+            $_FILES['Imagen']['name'] ?? null, 
             $_POST['Nombre'] ?? null,
-            $_POST['ClasificacionGenerica'] ?? null, // Asegúrate de que este campo esté en el formulario
+            $_POST['ClasificacionGenerica'] ?? null, 
             $_POST['ColeccionProcedencia'] ?? null,
             $_POST['Altura'] ?? null,
             $_POST['Anchura'] ?? null,
             $_POST['Profundidad'] ?? null,
-            $_POST['MaterialID'] ?? null, // Asegúrate de que este campo esté en el formulario
-            $_POST['TecnicaID'] ?? null, // Asegúrate de que este campo esté en el formulario
-            $_POST['AutorID'] ?? null, // Asegúrate de que este campo esté en el formulario
+            $_POST['MaterialID'] ?? null, 
+            $_POST['TecnicaID'] ?? null, 
+            $_POST['AutorID'] ?? null, 
             $_POST['Titulo'] ?? null,
-            $_POST['DatacionID'] ?? null, // Asegúrate de que este campo esté en el formulario
-            $_POST['UbicacionActualID'] ?? null, // Asegúrate de que este campo esté en el formulario
+            $_POST['DatacionID'] ?? null, 
+            $_POST['UbicacionActualID'] ?? null, 
             date('Y-m-d H:i:s'),
             $_POST['NumeroEjemplares'] ?? null,
-            $_POST['FormaIngresoID'] ?? null, // Asegúrate de que este campo esté en el formulario
+            $_POST['FormaIngresoID'] ?? null, 
             $_POST['FechaIngreso'] ?? null,
             $_POST['FuenteIngreso'] ?? null,
-            $_POST['BajaID'] ?? null, // Asegúrate de que este campo esté en el formulario
-            $_POST['CausaBajaID'] ?? null, // Asegúrate de que este campo esté en el formulario
+            $_POST['BajaID'] ?? null, 
+            $_POST['CausaBajaID'] ?? null, 
             $_POST['FechaBaja'] ?? null,
             $_POST['PersonaAutorizadaBaja'] ?? null,
-            $_POST['EstadoConservacionID'] ?? null, // Asegúrate de que este campo esté en el formulario
+            $_POST['EstadoConservacionID'] ?? null, 
             $_POST['LugarEjecucion'] ?? null,
             $_POST['LugarProcedencia'] ?? null,
             $_POST['NumeroTiraje'] ?? null,
@@ -107,11 +105,10 @@ class ObjetoController extends Controller{
             $_POST['Bibliografia'] ?? null,
             $_POST['Descripcion'] ?? null,
             $_POST['HistoriaObjeto'] ?? null,
-            $_POST['MuseoID'] ?? null, // Asegúrate de que este campo esté en el formulario
-            1 // O el valor que desees para el campo activo
+            $_POST['MuseoID'] ?? null, 
+            1 
         );
     
-        // Redirigir a la página de registros
         header('Location: /registers');
         exit();
     }

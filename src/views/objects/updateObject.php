@@ -104,21 +104,6 @@
                     <input type="text" id="estadoConservacion" name="estadoConservacion" value="<?php echo $cont[1][0]['EstadoConservacionNombre']; ?>" ></label>
                 </section>
 
-                <div class="toggle-hide"><h2>Exposicions</h2><span></span></div>
-
-                <section class="hide">
-                    <label for="exposicionNombre">Nom:
-                    <input type="text" id="exposicionNombre" name="exposicionNombre" value="<?php echo $cont[1][0]['ExposicionNombre']; ?>" ></label>
-                    <label for="lugarExposicion">Lloc:
-                    <input type="text" id="lugarExposicion" name="lugarExposicion" value="<?php echo $cont[1][0]['LugarExposicion']; ?>" ></label>
-                    <label for="fechaInicioExposicion">Data Inicial:
-                    <input type="datetime-local" id="fechaInicioExposicion" name="fechaInicioExposicion" value="<?php echo $cont[1][0]['FechaInicioExposicion']; ?>" ></label>
-                    <label for="fechaFinExposicion">Data Final:
-                    <input type="datetime-local" id="fechaFinExposicion" name="fechaFinExposicion" value="<?php echo $cont[1][0]['FechaFinExposicion']; ?>" ></label>
-                    <label for="tipoExposicion">Tipus:
-                    <input type="text" id="tipoExposicion" name="tipoExposicion" value="<?php echo $cont[1][0]['TipoExposicionNombre']; ?>" ></label>
-                </section>
-
                 <div class="toggle-hide"><h2>Altres Dades</h2><span></span></div>
 
                 <section class="hide">

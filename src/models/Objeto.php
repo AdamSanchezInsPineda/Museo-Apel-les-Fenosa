@@ -91,10 +91,8 @@
         }
 
         function fitxesCreate($registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $fechaRegistro, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo) {
-            // Preparar la declaración
             
             $sql = $this->db->prepare('INSERT INTO Objetos (RegistroNº, UsuarioID, Imagen, Nombre, ClasificacionGenericaID, ColeccionProcedencia, Altura, Anchura, Profundidad, MaterialID, TecnicaID, AutorID, Titulo, DatacionID, UbicacionActualID, FechaRegistro, NumeroEjemplares, FormaIngresoID, FechaIngreso, FuenteIngreso, BajaID, CausaBajaID, FechaBaja, PersonaAutorizadaBaja, EstadoConservacionID, LugarEjecucion, LugarProcedencia, NumeroTiraje, OtrosNrosIdentificacion, ValoracionEconomica, Bibliografia, Descripcion, HistoriaObjeto, MuseoID, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)');
-            // Ejecutar la consulta pasando las variables en el mismo orden
             $sql->execute([
                 $registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, 
                 $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, 
@@ -202,17 +200,20 @@
         }
         function fitxesDisable($registroN){
 
-            $sql = $this -> db->prepare('DELETE FROM ObjetoExposicion WHERE ObjetoID = ( SELECT ObjetoID FROM Objetos WHERE RegistroNº = :registroN )');
+            // $sql = $this -> db->prepare('DELETE FROM ObjetoExposicion WHERE ObjetoID = ( SELECT ObjetoID FROM Objetos WHERE RegistroNº = :registroN )');
 
-            $sql->bindParam(':registroN', $registroN, PDO::PARAM_STR);
+            // $sql->bindParam(':registroN', $registroN, PDO::PARAM_STR);
             
-            $sql->execute();
-
-            $sql = $this -> db->prepare('UPDATE Objetos SET Activo = 0 WHERE RegistroNº = :registroN');
+            // $sql->execute();
+            try {
+                $sql = $this -> db->prepare('UPDATE Objetos SET Activo = 0 WHERE RegistroNº = :registroN');
             
-            $sql->bindParam(':registroN', $registroN, PDO::PARAM_STR);
+                $sql->bindParam(':registroN', $registroN, PDO::PARAM_STR);
             
-            $sql->execute();
+                $sql->execute();
+            } catch (PDOException $e) {
+                echo 'Error al desactivar el objeto: ' . $e->getMessage();
+            }
         }
 
         function generarLlibre(){
