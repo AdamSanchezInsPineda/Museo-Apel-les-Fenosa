@@ -6,24 +6,24 @@
     <!--Contenido variable de la pagina-->
     <main>
         <!--Contenido variable de la pagina-->              
-        <form action="/registers/update" method="POST" enctype="multipart/form-data">
+        <form action="/registers/<?php echo $cont[1][0]['RegistroNº'] ?>/update" method="POST" enctype="multipart/form-data">
             <h1>Actualizar Objeto <?php echo $cont[1][0]['Nombre']?></h1>
             <div>
                 <div>
                     <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 
 
-                    <label for="imagen">Imagen:
+                    <label for="imagen">*Imagen:
                     <input type="file" name="imagen" id="imagen" accept="image/*"></label>
                 </div>
 
                 <div>
-                    <label for="nombre">Nom:
+                    <label for="nombre">*Nom:
                     <input type="text" id="nombre" name="nombre" value="<?php echo $cont[1][0]['Nombre']; ?>" required></label>
                     <label for="museo">Museu:
                     <input type="text" id="museo" name="museo" value="<?php echo $cont[1][0]['MuseoNombre']; ?>" ></label>
                     <label for="autor">Autor:
-                    <input type="text" id="autor" name="autor" value="<?php echo $cont[1][0]['AutorNombre']; ?>" required></label>
-                    <label for="titulo">Títol:
+                    <input type="text" id="autor" name="autor" value="<?php echo $cont[1][0]['AutorNombre']; ?>"></label>
+                    <label for="titulo">*Títol:
                     <input type="text" id="titulo" name="titulo" value="<?php echo $cont[1][0]['Titulo']; ?>" required></label>
                 </div>
             </div>

@@ -9,7 +9,7 @@
         <h1>Afegir un registre</h1>
             <div>
                 <div>
-                    <label for="RegistroNº">Nº de Registre:</label>
+                    <label for="RegistroNº">*Nº de Registre:</label>
                     <input type="text" id="RegistroNº" name="RegistroNº" required>
                     <span id="errorMessage" style="display: none; color: red;">Formato inválido. Debe ser una letra opcional seguida de 5 dígitos.</span>
                     <?php if (isset($_SESSION['error'])): ?>
@@ -18,12 +18,12 @@
                         </div>
                         <?php unset($_SESSION['error']); ?>
                     <?php endif; ?>
-                    <label for="imagen">Imagen:
+                    <label for="imagen">*Imagen:
                     <input type="file" name="imagen" id="imagen" accept="image/*" required></label>
                 </div>
 
                 <div>
-                    <label for="Nombre">Nom:
+                    <label for="Nombre">*Nom:
                     <input type="text" id="Nombre" name="Nombre" required></label>
                     <label for="Museo">Museu:</label>
                     <select name="Museo" id="Museo">
@@ -33,13 +33,13 @@
                         <?php endforeach; ?>
                     </select> 
                     <label for="Autor">Autor:</label>
-                    <select name="Autor" id="Autor" required>
+                    <select name="Autor" id="Autor">
                         <option value=null>Selecciona un autor</option>
                         <?php foreach ($autores as $autor): ?>
                             <option value="<?php echo $autor['Nombre']; ?>"><?php echo $autor['Nombre']; ?></option>
                         <?php endforeach; ?>
                     </select>                    
-                    <label for="Titulo">Títol:
+                    <label for="Titulo">*Títol:
                     <input type="text" id="Titulo" name="Titulo" required></label>
                 </div>
             </div>

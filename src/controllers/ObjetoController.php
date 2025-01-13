@@ -120,7 +120,44 @@ class ObjetoController extends Controller{
 
     public function update($registroN) {
         $this->checkRole(['admin', 'tecnic', 'convidat']);
-        $this->render('objects/updateObject', ['objeto' => $this -> objeto->fitxesMostrar($registroN)]);
+        $this->objeto->fitxesUpdate(
+            $registroN,
+            $_POST['UsuarioID'] ?? null, 
+            $_FILES['Imagen']['name'] ?? null, 
+            $_POST['Nombre'] ?? null,
+            $_POST['ClasificacionGenerica'] ?? null, 
+            $_POST['ColeccionProcedencia'] ?? null,
+            $_POST['Altura'] ?? null,
+            $_POST['Anchura'] ?? null,
+            $_POST['Profundidad'] ?? null,
+            $_POST['MaterialID'] ?? null, 
+            $_POST['TecnicaID'] ?? null, 
+            $_POST['AutorID'] ?? null, 
+            $_POST['Titulo'] ?? null,
+            $_POST['DatacionID'] ?? null, 
+            $_POST['UbicacionActualID'] ?? null, 
+            $_POST['NumeroEjemplares'] ?? null,
+            $_POST['FormaIngresoID'] ?? null, 
+            $_POST['FechaIngreso'] ?? null,
+            $_POST['FuenteIngreso'] ?? null,
+            $_POST['BajaID'] ?? null, 
+            $_POST['CausaBajaID'] ?? null, 
+            $_POST['FechaBaja'] ?? null,
+            $_POST['PersonaAutorizadaBaja'] ?? null,
+            $_POST['EstadoConservacionID'] ?? null, 
+            $_POST['LugarEjecucion'] ?? null,
+            $_POST['LugarProcedencia'] ?? null,
+            $_POST['NumeroTiraje'] ?? null,
+            $_POST['OtrosNrosIdentificacion'] ?? null,
+            $_POST['ValoracionEconomica'] ?? null,
+            $_POST['Bibliografia'] ?? null,
+            $_POST['Descripcion'] ?? null,
+            $_POST['HistoriaObjeto'] ?? null,
+            $_POST['MuseoID'] ?? null, 
+            1,
+            $registroN // Agregar el valor de ObjetoID como último parámetro
+        );
+        $this->render('objects/fitxaCompleta', ['cont' => [$registroN, $this -> objeto->fitxesMostrar($registroN)]]);
     }
 
     public function delete($registroN) {
