@@ -12,15 +12,15 @@
 namespace Spipu\Html2Pdf\Tag\Html;
 
 /**
- * Tag Cite
+ * Tag Figure
  */
-class Cite extends I
+class Figure extends Span
 {
     /**
      * @inheritdoc
      */
     public function getName()
     {
-        return 'cite';
+        return 'figure';
     }
 }

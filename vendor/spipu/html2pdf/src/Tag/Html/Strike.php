@@ -14,16 +14,16 @@ namespace Spipu\Html2Pdf\Tag\Html;
 use Spipu\Html2Pdf\Tag\AbstractHtmlTag;
 
 /**
- * Tag Sup
+ * Tag Strike
  */
-class Sup extends AbstractHtmlTag
+class Strike extends AbstractHtmlTag
 {
     /**
      * @inheritdoc
      */
     public function getName()
     {
-        return 'sup';
+        return 'strike';
     }
 
     /**
@@ -31,8 +31,7 @@ class Sup extends AbstractHtmlTag
      */
     protected function overrideStyles()
     {
-        $this->parsingCss->value['mini-decal']-= $this->parsingCss->value['mini-size']*0.15;
-        $this->parsingCss->value['mini-size'] *= 0.75;
+        $this->parsingCss->value['font-linethrough'] = true;
 
         return $this;
     }

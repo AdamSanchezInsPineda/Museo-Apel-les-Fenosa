@@ -48,7 +48,8 @@
                         d.descripcion
                         FROM Objetos o
                         LEFT JOIN Autors a ON o.AutorID = a.id
-                        LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id
+                        LEFT JOIN UbicacionObjeto uo ON o.ObjetoID = uo.ObjetoID
+                        LEFT JOIN Ubicaciones u ON uo.UbicacionID = u.id
                         LEFT JOIN Datacion d ON o.DatacionID = d.id
                         WHERE o.Activo = true" . (!empty($where) ? " AND ($where)" : ""));
         
@@ -174,14 +175,14 @@
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
-        function fitxesUpdate($registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo, $objetoID){
+        function fitxesUpdate($registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo, $objetoID){
             
     
             $sql = $this -> db->prepare('UPDATE Objetos SET 
-                    RegistroNº = ?, UsuarioID = ?, Imagen = ?, Nombre = ?, ClasificacionGenericaID = ?, ColeccionProcedencia = ?, Altura = ?, Anchura = ?, Profundidad = ?, MaterialID = ?, TecnicaID = ?, AutorID = ?, Titulo = ?, DatacionID = ?, UbicacionActualID = ?, NumeroEjemplares = ?, FormaIngresoID = ?, FechaIngreso = ?, FuenteIngreso = ?, BajaID = ?, CausaBajaID = ?, FechaBaja = ?, PersonaAutorizadaBaja = ?, EstadoConservacionID = ?, LugarEjecucion = ?, LugarProcedencia = ?, NumeroTiraje = ?, OtrosNrosIdentificacion = ?, ValoracionEconomica = ?, Bibliografia = ?, Descripcion = ?, HistoriaObjeto = ?, MuseoID = ?, Activo = ? WHERE ObjetoID = ?');
+                    RegistroNº = ?, UsuarioID = ?, Imagen = ?, Nombre = ?, ClasificacionGenericaID = ?, ColeccionProcedencia = ?, Altura = ?, Anchura = ?, Profundidad = ?, MaterialID = ?, TecnicaID = ?, AutorID = ?, Titulo = ?, DatacionID = ? NumeroEjemplares = ?, FormaIngresoID = ?, FechaIngreso = ?, FuenteIngreso = ?, BajaID = ?, CausaBajaID = ?, FechaBaja = ?, PersonaAutorizadaBaja = ?, EstadoConservacionID = ?, LugarEjecucion = ?, LugarProcedencia = ?, NumeroTiraje = ?, OtrosNrosIdentificacion = ?, ValoracionEconomica = ?, Bibliografia = ?, Descripcion = ?, HistoriaObjeto = ?, MuseoID = ?, Activo = ? WHERE ObjetoID = ?');
             
             $sql->execute([
-                $registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $ubicacionActualID, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo, $objetoID
+                $registroN, $usuarioID, $imagen, $nombre, $clasificacionGenericaID, $coleccionProcedencia, $altura, $anchura, $profundidad, $materialID, $tecnicaID, $autorID, $titulo, $datacionID, $numeroEjemplares, $formaIngresoID, $fechaIngreso, $fuenteIngreso, $bajaID, $causaBajaID, $fechaBaja, $personaAutorizadaBaja, $estadoConservacionID, $lugarEjecucion, $lugarProcedencia, $numeroTiraje, $otrosNrosIdentificacion, $valoracionEconomica, $bibliografia, $descripcion, $historiaObjeto, $museoID, $activo, $objetoID
             ]);
         }
         function fitxesDelete($registroN){
@@ -268,8 +269,8 @@
                 LEFT JOIN Classificacion c ON o.ClasificacionGenericaID = c.id
                 LEFT JOIN Material m ON o.MaterialID = m.id
                 LEFT JOIN Tecnica t ON o.TecnicaID = t.id
-                LEFT JOIN Ubicaciones u ON o.UbicacionActualID = u.id
-                LEFT JOIN UbicacionObjeto uo ON  o.UbicacionActualID = uo.UbicacionID
+                LEFT JOIN UbicacionObjeto uo ON  o.ObjetoID = uo.ObjetoID
+                LEFT JOIN Ubicaciones u ON uo.UbicacionID = u.id
                 LEFT JOIN EstadoConservacion ec ON o.EstadoConservacionID = ec.id
                 LEFT JOIN Museos mu ON o.MuseoID = mu.MuseoID
                 LEFT JOIN Datacion d ON o.DatacionID = d.id

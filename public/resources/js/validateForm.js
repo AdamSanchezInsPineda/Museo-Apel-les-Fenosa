@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Función de validación
     function validarRegistro() {
         const registroValue = registroInput.value.trim();
-        const regex = /^[A-Za-z]?\d{5}$/;
+        const regex = /^[A-Za-z]?\d{5}(\.\d{2})?$/;
         return regex.test(registroValue); // Devuelve true si es válido, false si no
     }
 

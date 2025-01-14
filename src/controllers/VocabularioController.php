@@ -29,7 +29,6 @@ class VocabularioController extends Controller {
         $vocabularisList = [
             "Autors" => "autor",
             "Baixes" => "baixa",
-            "Causa de la baixa" => "causa-baixa",
             "Classificació genèrica" => "classificacio",
             "Codi Getty" => "getty",
             "Datació" => "datacio",
