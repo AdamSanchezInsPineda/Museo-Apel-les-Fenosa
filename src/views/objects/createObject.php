@@ -18,8 +18,8 @@
                         </div>
                         <?php unset($_SESSION['error']); ?>
                     <?php endif; ?>
-                    <label for="imagen">*Imagen:
-                    <input type="file" name="imagen" id="imagen" accept="image/*" required></label>
+                    <label for="imagen">Imagen:
+                    <input type="file" name="imagen" id="imagen" accept="image/*"></label>
                 </div>
 
                 <div>

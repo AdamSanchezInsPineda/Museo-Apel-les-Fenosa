@@ -12,7 +12,7 @@
                 <div>
                     <p>Nº de Registre: <?php echo $cont[1][0]['RegistroNº']?></p> 
 
-                    <label for="imagen">*Imagen:
+                    <label for="imagen">Imagen:
                     <input type="file" name="imagen" id="imagen" accept="image/*"></label>
                 </div>
 
